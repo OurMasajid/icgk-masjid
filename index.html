@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eid al-Adha 2026 — Islamic Community of Greater Killeen</title>
+<title>Muharram 1448 — Islamic Community of Greater Killeen</title>
+<meta name="description" content="Muharram, the Month of Allah: its importance, blessings, the Day of Ashura, and what to do — from the Islamic Community of Greater Killeen.">
 <style>
   :root {
     --green-dark: #0c2a1f;
@@ -12,57 +13,89 @@
     --gold-bright: #f0c674;
     --cream: #f5e9c8;
     --text: #f8efd6;
+    --muted: #cdbf9a;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: 'Georgia', 'Times New Roman', serif;
-    background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
+    background:
+      radial-gradient(1200px 600px at 50% -10%, rgba(212,166,74,0.10), transparent 60%),
+      linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
+    background-attachment: fixed;
     color: var(--text);
     min-height: 100vh;
-    padding: 24px 16px;
-    line-height: 1.6;
+    padding: 24px 16px 64px;
+    line-height: 1.65;
   }
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-  }
+  .container { max-width: 920px; margin: 0 auto; }
+
+  /* ---------- Header ---------- */
   header {
+    position: relative;
     text-align: center;
-    padding: 32px 16px;
+    padding: 44px 20px 38px;
     border: 2px solid var(--gold);
-    border-radius: 16px;
-    background: rgba(0,0,0,0.25);
-    margin-bottom: 24px;
+    border-radius: 18px;
+    background:
+      radial-gradient(600px 300px at 50% 0%, rgba(212,166,74,0.12), transparent 70%),
+      rgba(0,0,0,0.28);
+    margin-bottom: 26px;
+    overflow: hidden;
   }
+  header::before {
+    content: "";
+    position: absolute; inset: 8px;
+    border: 1px solid rgba(212,166,74,0.35);
+    border-radius: 12px;
+    pointer-events: none;
+  }
+  .moon { font-size: 2.6rem; line-height: 1; filter: drop-shadow(0 0 12px rgba(240,198,116,0.5)); }
   header .small {
     color: var(--gold-bright);
-    font-size: 1.1rem;
-    letter-spacing: 2px;
+    font-size: 0.95rem;
+    letter-spacing: 4px;
     text-transform: uppercase;
+    margin-top: 10px;
   }
   header h1 {
     color: var(--gold);
-    font-size: 2.6rem;
-    margin: 8px 0;
+    font-size: 3rem;
+    margin: 6px 0 2px;
     letter-spacing: 1px;
+    text-shadow: 0 2px 18px rgba(0,0,0,0.4);
   }
-  header h2 {
+  .arabic {
+    font-size: 2.2rem;
     color: var(--gold-bright);
-    font-size: 2rem;
-    margin-top: 8px;
-    font-weight: normal;
+    margin: 6px 0;
+    direction: rtl;
+    line-height: 1.4;
   }
   header .sub {
     color: var(--cream);
-    letter-spacing: 6px;
-    margin-top: 4px;
-    font-size: 1.1rem;
+    letter-spacing: 5px;
+    margin-top: 6px;
+    font-size: 1rem;
+    text-transform: uppercase;
   }
+  header .year {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 6px 18px;
+    border: 1px solid var(--gold);
+    border-radius: 999px;
+    color: var(--gold-bright);
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+  }
+
+  /* ---------- Quick facts ---------- */
   .info-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 16px;
-    margin-bottom: 24px;
+    margin-bottom: 26px;
   }
   .card {
     background: rgba(0,0,0,0.3);
@@ -72,84 +105,117 @@
     display: flex;
     align-items: center;
     gap: 14px;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
   }
-  .card .icon {
-    font-size: 2rem;
-    color: var(--gold-bright);
-    min-width: 40px;
-    text-align: center;
-  }
-  .card .label {
-    color: var(--gold-bright);
-    font-weight: bold;
-    font-size: 1.05rem;
-    display: block;
-  }
-  .card .value {
-    color: var(--text);
-    font-size: 1.1rem;
-  }
-  .location {
-    grid-column: 1 / -1;
-  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.35); border-color: var(--gold-bright); }
+  .card .icon { font-size: 1.9rem; color: var(--gold-bright); min-width: 40px; text-align: center; }
+  .card .label { color: var(--gold-bright); font-weight: bold; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; display: block; }
+  .card .value { color: var(--text); font-size: 1.1rem; }
+
+  /* ---------- Sections ---------- */
   section {
     background: rgba(0,0,0,0.25);
     border: 1.5px solid var(--gold);
     border-radius: 12px;
-    padding: 24px 28px;
-    margin-bottom: 20px;
+    padding: 28px 30px;
+    margin-bottom: 22px;
   }
-  section h3 {
+  section h2 {
     color: var(--gold);
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     margin-bottom: 14px;
-    border-bottom: 1px solid rgba(212,166,74,0.4);
-    padding-bottom: 8px;
-  }
-  ul {
-    padding-left: 22px;
-  }
-  li {
-    margin-bottom: 10px;
-  }
-  .highlight {
-    color: var(--gold-bright);
-    font-weight: bold;
-  }
-  .schedule-list {
-    list-style: none;
-    padding: 0;
-  }
-  .schedule-list li {
-    padding: 10px 0;
-    border-bottom: 1px dashed rgba(212,166,74,0.3);
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px;
+    align-items: center;
+    gap: 12px;
   }
-  .schedule-list li:last-child { border-bottom: none; }
-  .schedule-list .time {
+  section h2 .badge { font-size: 1.5rem; }
+  section h3 { color: var(--gold-bright); font-size: 1.2rem; margin: 18px 0 6px; }
+  section p { margin-bottom: 12px; color: var(--text); }
+  section p:last-child { margin-bottom: 0; }
+  .lead { font-size: 1.12rem; color: var(--cream); }
+
+  ul.clean { list-style: none; margin: 8px 0; }
+  ul.clean li {
+    position: relative;
+    padding: 8px 0 8px 30px;
+    border-bottom: 1px solid rgba(212,166,74,0.15);
+  }
+  ul.clean li:last-child { border-bottom: none; }
+  ul.clean li::before {
+    content: "✦";
+    position: absolute; left: 4px; top: 8px;
     color: var(--gold-bright);
-    font-weight: bold;
   }
-  .note {
-    background: rgba(212,166,74,0.1);
-    border-left: 4px solid var(--gold);
+
+  /* Hadith / quote blocks */
+  blockquote {
+    border-left: 3px solid var(--gold);
+    background: rgba(212,166,74,0.07);
+    border-radius: 0 10px 10px 0;
     padding: 14px 18px;
-    border-radius: 6px;
-    margin-top: 12px;
+    margin: 14px 0;
     font-style: italic;
+    color: var(--cream);
   }
+  blockquote .src { display: block; margin-top: 8px; font-style: normal; font-size: 0.85rem; color: var(--muted); letter-spacing: 1px; }
+
+  /* Ashura highlight */
+  .ashura {
+    border: 2px solid var(--gold-bright);
+    background:
+      radial-gradient(400px 200px at 50% 0%, rgba(240,198,116,0.10), transparent 70%),
+      rgba(0,0,0,0.35);
+  }
+  .day-number {
+    text-align: center;
+    font-size: 4.5rem;
+    color: var(--gold);
+    line-height: 1;
+    margin: 4px 0 2px;
+    text-shadow: 0 2px 20px rgba(240,198,116,0.4);
+  }
+  .day-caption { text-align: center; color: var(--gold-bright); letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 16px; }
+
+  .fast-plan {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    margin-top: 14px;
+  }
+  .fast-day {
+    text-align: center;
+    border: 1.5px solid var(--gold);
+    border-radius: 10px;
+    padding: 16px 12px;
+    background: rgba(0,0,0,0.3);
+  }
+  .fast-day .num { font-size: 2rem; color: var(--gold); }
+  .fast-day .name { color: var(--gold-bright); font-weight: bold; letter-spacing: 1px; }
+  .fast-day .note { color: var(--muted); font-size: 0.85rem; margin-top: 4px; }
+  .fast-day.best { border-color: var(--gold-bright); box-shadow: 0 0 0 1px var(--gold-bright) inset; }
+
+  /* To-do checklist */
+  .todo li { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid rgba(212,166,74,0.15); }
+  .todo li:last-child { border-bottom: none; }
+  .todo .chk { color: var(--gold-bright); font-size: 1.2rem; flex-shrink: 0; }
+  .todo b { color: var(--gold-bright); }
+
+  /* Footer */
   footer {
     text-align: center;
-    color: var(--gold-bright);
-    padding: 20px;
-    font-size: 1.1rem;
+    color: var(--muted);
+    padding: 28px 16px 4px;
+    font-size: 0.9rem;
   }
-  @media (max-width: 500px) {
-    header h1 { font-size: 1.9rem; }
-    header h2 { font-size: 1.5rem; }
+  footer .name { color: var(--gold-bright); font-size: 1.1rem; letter-spacing: 2px; display: block; margin-bottom: 6px; }
+  footer .dua { color: var(--cream); font-style: italic; margin-bottom: 14px; }
+  .note { font-size: 0.82rem; color: var(--muted); }
+
+  @media (max-width: 560px) {
+    header h1 { font-size: 2.2rem; }
+    .arabic { font-size: 1.7rem; }
+    section { padding: 22px 18px; }
+    .day-number { font-size: 3.4rem; }
   }
 </style>
 </head>
@@ -157,89 +223,150 @@
 <div class="container">
 
   <header>
-    <div class="small">The Islamic Community of</div>
-    <h1>Greater Killeen</h1>
-    <h2>Eid-Al-Adha</h2>
-    <div class="sub">M U B A R A K</div>
+    <div class="moon">☪</div>
+    <div class="small">The Month of Allah</div>
+    <h1>Muharram</h1>
+    <div class="arabic">شَهْرُ ٱللَّٰهِ ٱلْمُحَرَّم</div>
+    <div class="sub">The Sacred New Year</div>
+    <div class="year">1448 After Hijrah &nbsp;•&nbsp; June 2026</div>
   </header>
 
+  <!-- Quick facts -->
   <div class="info-grid">
     <div class="card">
-      <div class="icon">&#128197;</div>
+      <div class="icon">📅</div>
       <div>
-        <span class="label">Arafat Day</span>
-        <span class="value">Tuesday, May 26th, 2026</span>
+        <span class="label">First Month</span>
+        <span class="value">of the Islamic (Hijri) year</span>
       </div>
     </div>
     <div class="card">
-      <div class="icon">&#9789;</div>
+      <div class="icon">🕊️</div>
       <div>
-        <span class="label">Eid al-Adha</span>
-        <span class="value">Wednesday, May 27th, 2026</span>
+        <span class="label">Sacred Month</span>
+        <span class="value">One of the four sacred months</span>
       </div>
     </div>
     <div class="card">
-      <div class="icon">&#128340;</div>
+      <div class="icon">⭐</div>
       <div>
-        <span class="label">Takbir starts at</span>
-        <span class="value">8:30 AM</span>
+        <span class="label">The Highlight</span>
+        <span class="value">The Day of Ashura — the 10th</span>
       </div>
     </div>
     <div class="card">
-      <div class="icon">&#128101;</div>
+      <div class="icon">🌙</div>
       <div>
-        <span class="label">Salatu-Eid</span>
-        <span class="value">9:00 AM</span>
-      </div>
-    </div>
-    <div class="card location">
-      <div class="icon">&#128205;</div>
-      <div>
-        <span class="label">Location</span>
-        <span class="value">Killeen Civic Center, 3601 S W Young Dr, Killeen, TX 76542</span>
+        <span class="label">Ashura 1448</span>
+        <span class="value">~ Late June 2026 (per moon sighting)</span>
       </div>
     </div>
   </div>
 
+  <!-- What is Muharram -->
   <section>
-    <h3>Order of the Day</h3>
-    <ul class="schedule-list">
-      <li><span>Takbir</span><span class="time">8:30 AM</span></li>
-      <li><span>Salatu-Eid (Prayer)</span><span class="time">9:00 AM</span></li>
-      <li><span>Khutba (Sermon) immediately after the prayer</span><span class="time">~ 9:20 AM</span></li>
-      <li><span>Refreshments &amp; Greetings</span><span class="time">After Khutba</span></li>
-    </ul>
+    <h2><span class="badge">📖</span> What Is Muharram?</h2>
+    <p class="lead">Muharram is the first month of the Islamic calendar and one of the most honored months of the entire year. Its very name comes from <em>ḥarām</em> — "sacred" or "forbidden" — because fighting and wrongdoing in it were prohibited even before Islam.</p>
+    <p>Allah ﷻ set apart four sacred months in His Book:</p>
+    <blockquote>
+      "Indeed, the number of months with Allah is twelve… of which four are sacred."
+      <span class="src">— Qur'an 9:36</span>
+    </blockquote>
+    <p>Those four are <b>Dhul-Qa'dah, Dhul-Hijjah, Muharram, and Rajab</b>. In these months, good deeds carry greater weight and sins are graver — a reason to be especially mindful of how we spend our days.</p>
+    <p>The Prophet ﷺ gave Muharram a unique title of honor, calling it <b>"Shahrullāh" — the Month of Allah</b>. Of all twelve months, this is the one the Prophet ﷺ attributed directly to Allah, a sign of its tremendous status.</p>
   </section>
 
+  <!-- Importance & Blessings -->
   <section>
-    <h3>Please Observe These Etiquettes</h3>
-    <ul>
-      <li><span class="highlight">Bring your own prayer mat (musallah).</span> Space is limited and floor coverage is not guaranteed for everyone.</li>
-      <li><span class="highlight">Remain quiet throughout the prayer and the Khutba.</span> Please do not begin catching up with friends or chatting during the Salah or sermon.</li>
-      <li>The Khutba is part of the Eid observance &mdash; listen attentively from beginning to end.</li>
-      <li><span class="highlight">After the Khutba is the time to greet, hug, and reconnect with friends and family</span> &mdash; please wait until then.</li>
-      <li>Refreshments will be served after the Khutba. Kindly help keep the venue clean.</li>
-      <li>Arrive early so you can settle in before Takbir begins at 8:30 AM.</li>
-    </ul>
+    <h2><span class="badge">✨</span> Its Importance &amp; Blessings</h2>
+    <p>Muharram is a month of mercy, renewal, and reward. A few of the blessings the Prophet ﷺ taught us about it:</p>
+
+    <h3>The best fasting after Ramadan</h3>
+    <blockquote>
+      "The best fasting after Ramadan is in the Month of Allah — Muharram; and the best prayer after the obligatory is the night prayer."
+      <span class="src">— Sahih Muslim</span>
+    </blockquote>
+
+    <h3>A sacred month — deeds amplified</h3>
+    <p>Because Muharram is one of the four sacred months, righteous actions are especially beloved to Allah and wrongdoing is especially serious. It is a season to lean into worship and to leave off sin.</p>
+
+    <h3>A fresh start</h3>
+    <p>As the opening of the new Hijri year, Muharram is a natural moment for <b>repentance, gratitude, and resolve</b> — to turn a new page with Allah and to set the tone for the entire year ahead.</p>
   </section>
 
-  <section>
-    <h3>Sunnah of Eid al-Adha &amp; the Day of Arafah</h3>
-    <ul>
-      <li><span class="highlight">Fasting on the Day of Arafah</span> (Tuesday, May 26th) is highly recommended for those not performing Hajj. The Prophet &#65018; said it expiates the sins of the previous year and the coming year.</li>
-      <li><span class="highlight">Make abundant du&#699;a</span> on the Day of Arafah &mdash; it is among the best days of the year for supplication. Remember your family, the Ummah, and those in need.</li>
-      <li>Increase in Takbir, Tahmid, and Tahlil from the dawn of Arafah through the days of Tashreeq.</li>
-      <li><span class="highlight">Perform Udhiya (Qurbani / Sacrifice)</span> after the Eid prayer if you are able. It is a confirmed Sunnah commemorating the sacrifice of Prophet Ibrahim &#65018;.</li>
-      <li>Recommended Sunnahs on Eid day: take a Ghusl, wear your best clothes, apply perfume (for men), and do not eat before the Eid prayer (eat from your Udhiya afterward).</li>
-      <li>Give generously &mdash; share meat from your Udhiya with family, neighbors, and the poor.</li>
-    </ul>
-    <div class="note">
-      &ldquo;It is neither their meat nor their blood that reaches Allah, but it is your piety that reaches Him.&rdquo; &mdash; Qur&rsquo;an 22:37
+  <!-- The 10th — Ashura -->
+  <section class="ashura">
+    <h2><span class="badge">⭐</span> The 10th — The Day of Ashura</h2>
+    <div class="day-number">10</div>
+    <div class="day-caption">Yawm al-Ashura</div>
+
+    <p>The tenth of Muharram, <b>Ashura</b>, is the most blessed day of the month. On this day Allah ﷻ saved Prophet Musa (Moses) عليه السلام and the Children of Israel from Pharaoh, parting the sea before them.</p>
+    <p>When the Prophet ﷺ came to Madinah, he found the Jews fasting this day in gratitude. He said:</p>
+    <blockquote>
+      "We have more right to Musa than you," and he fasted it and ordered that it be fasted.
+      <span class="src">— Sahih al-Bukhari &amp; Muslim</span>
+    </blockquote>
+
+    <h3>The great reward of fasting Ashura</h3>
+    <blockquote>
+      The Prophet ﷺ was asked about fasting the day of Ashura, and he said: "It expiates the sins of the previous year."
+      <span class="src">— Sahih Muslim</span>
+    </blockquote>
+
+    <h3>How to fast it — fast two days</h3>
+    <p>To distinguish our fast from others, the Prophet ﷺ taught us to add a day. He said: <em>"If I live to the next year, I will fast the ninth (as well)."</em> (Muslim). So the recommended practice is to fast <b>the 9th and 10th</b> (or the 10th and 11th):</p>
+    <div class="fast-plan">
+      <div class="fast-day">
+        <div class="num">9</div>
+        <div class="name">Tasu'a</div>
+        <div class="note">The day before</div>
+      </div>
+      <div class="fast-day best">
+        <div class="num">10</div>
+        <div class="name">Ashura</div>
+        <div class="note">The blessed day</div>
+      </div>
+      <div class="fast-day">
+        <div class="num">11</div>
+        <div class="name">Or the day after</div>
+        <div class="note">If you missed the 9th</div>
+      </div>
     </div>
+
+    <p style="margin-top:16px">Ashura is also remembered as the day of the martyrdom of <b>Imam Husayn ibn Ali</b> رضي الله عنه, the beloved grandson of the Prophet ﷺ, at Karbala — a profound reminder of sacrifice, justice, and standing for the truth. We honor his memory with the dignity and respect it deserves.</p>
+  </section>
+
+  <!-- Things to do -->
+  <section>
+    <h2><span class="badge">✅</span> Things To Do This Muharram</h2>
+    <ul class="clean todo">
+      <li><span class="chk">☑</span><span><b>Fast Ashura (and Tasu'a).</b> Aim for the 9th and 10th. Even fasting the 10th alone carries the great reward.</span></li>
+      <li><span class="chk">☑</span><span><b>Make sincere tawbah.</b> Begin the new year by turning back to Allah and seeking forgiveness.</span></li>
+      <li><span class="chk">☑</span><span><b>Increase your night prayer.</b> The Prophet ﷺ called it the best prayer after the obligatory.</span></li>
+      <li><span class="chk">☑</span><span><b>Give in charity (sadaqah).</b> Reward is multiplied in a sacred month — feed someone, help a family, support your masjid.</span></li>
+      <li><span class="chk">☑</span><span><b>Connect with the Qur'an.</b> Set a daily portion to read and reflect upon throughout the month.</span></li>
+      <li><span class="chk">☑</span><span><b>Keep your tongue moist with dhikr.</b> Istighfār, salawāt upon the Prophet ﷺ, and gratitude.</span></li>
+      <li><span class="chk">☑</span><span><b>Guard against sin.</b> Wrongdoing is graver in the sacred months — protect your deeds.</span></li>
+      <li><span class="chk">☑</span><span><b>Set your year's intentions.</b> Make du'a and plan goals for your worship, family, and growth.</span></li>
+      <li><span class="chk">☑</span><span><b>Be generous to your family.</b> Bring warmth and goodness into your home on Ashura.</span></li>
+    </ul>
+  </section>
+
+  <!-- A few cautions / things to keep in mind -->
+  <section>
+    <h2><span class="badge">💡</span> A Few Things To Keep In Mind</h2>
+    <ul class="clean">
+      <li>Muharram is a month of worship and reflection — not of superstition. There is nothing "unlucky" about it; it is one of the most blessed times of the year.</li>
+      <li>Keep your acts of worship rooted in the authentic Sunnah. The Prophet ﷺ emphasized fasting, prayer, charity, and remembrance.</li>
+      <li>Honor the family of the Prophet ﷺ and remember Karbala with reverence, dignity, and good character toward all.</li>
+      <li>Dates depend on the sighting of the moon — confirm the start of Muharram and the day of Ashura with your local masjid.</li>
+    </ul>
   </section>
 
   <footer>
-    &#10052; Eid Mubarak from the Islamic Community of Greater Killeen &#10052;
+    <span class="name">Islamic Community of Greater Killeen</span>
+    <p class="dua">May Allah accept your fasting, forgive your sins of the past year, and make this Hijri year one of barakah, health, and nearness to Him. Āmīn.</p>
+    <p class="note">For confirmed dates, prayer times, and Ashura programs, please check with your local masjid &nbsp;•&nbsp; a.icgk.org</p>
   </footer>
 
 </div>
