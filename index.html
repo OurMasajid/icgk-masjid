@@ -3,17 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Muharram 1448 — Islamic Community of Greater Killeen</title>
-<meta name="description" content="Muharram, the Month of Allah: its importance, blessings, the Day of Ashura, and what to do — from the Islamic Community of Greater Killeen.">
+<title>Islamic Community of Greater Killeen</title>
+<meta name="description" content="The Islamic Community of Greater Killeen (ICGK) — daily prayer times, Jumu'ah, programs, and community in Killeen, Texas. All are welcome.">
 <style>
   :root {
     --green-dark: #0c2a1f;
     --green-mid: #11402f;
+    --green-soft: #16513b;
     --gold: #d4a64a;
     --gold-bright: #f0c674;
     --cream: #f5e9c8;
     --text: #f8efd6;
     --muted: #cdbf9a;
+    --panel: rgba(0,0,0,0.28);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -25,350 +27,546 @@
     background-attachment: fixed;
     color: var(--text);
     min-height: 100vh;
-    padding: 24px 16px 64px;
     line-height: 1.65;
   }
-  .container { max-width: 920px; margin: 0 auto; }
+  a { color: var(--gold-bright); }
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
 
-  /* ---------- Header ---------- */
-  header {
-    position: relative;
+  /* ---------- Nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(8,26,19,0.86);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(212,166,74,0.35);
+  }
+  nav .inner {
+    max-width: 1000px; margin: 0 auto; padding: 10px 16px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--gold); text-decoration: none; }
+  .brand .mark { font-size: 1.5rem; filter: drop-shadow(0 0 8px rgba(240,198,116,0.5)); }
+  .brand .txt b { display: block; font-size: 1rem; color: var(--gold); letter-spacing: .5px; line-height: 1.1; }
+  .brand .txt span { font-size: .72rem; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+  .nav-links { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .nav-links a {
+    color: var(--cream); text-decoration: none; font-size: .92rem;
+    padding: 6px 10px; border-radius: 8px; transition: background .2s, color .2s;
+  }
+  .nav-links a:hover { background: rgba(212,166,74,0.15); color: var(--gold-bright); }
+  .nav-links a.donate {
+    border: 1px solid var(--gold); color: var(--gold-bright);
+  }
+  .nav-links a.donate:hover { background: var(--gold); color: var(--green-dark); }
+  .nav-toggle { display: none; background: none; border: 1px solid var(--gold); color: var(--gold-bright); border-radius: 8px; padding: 6px 10px; font-size: 1.1rem; cursor: pointer; }
+
+  /* ---------- Hero ---------- */
+  .hero {
     text-align: center;
-    padding: 44px 20px 38px;
-    border: 2px solid var(--gold);
-    border-radius: 18px;
-    background:
-      radial-gradient(600px 300px at 50% 0%, rgba(212,166,74,0.12), transparent 70%),
-      rgba(0,0,0,0.28);
-    margin-bottom: 26px;
-    overflow: hidden;
+    padding: 64px 16px 48px;
+    position: relative;
   }
-  header::before {
-    content: "";
-    position: absolute; inset: 8px;
-    border: 1px solid rgba(212,166,74,0.35);
-    border-radius: 12px;
-    pointer-events: none;
+  .hero .eyebrow { color: var(--gold-bright); letter-spacing: 4px; text-transform: uppercase; font-size: .9rem; }
+  .hero .bismillah { direction: rtl; color: var(--gold-bright); font-size: 1.9rem; margin: 14px 0 6px; }
+  .hero h1 { color: var(--gold); font-size: 3rem; line-height: 1.1; margin: 8px 0; text-shadow: 0 2px 18px rgba(0,0,0,0.4); }
+  .hero .tagline { color: var(--cream); font-size: 1.25rem; font-style: italic; margin: 10px auto 6px; max-width: 640px; }
+  .hero .where { color: var(--muted); letter-spacing: 1px; margin-top: 6px; }
+  .hero .cta { margin-top: 26px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px; border-radius: 999px; text-decoration: none;
+    font-size: 1rem; font-weight: bold; letter-spacing: .5px;
+    border: 1.5px solid var(--gold); transition: transform .15s, background .2s, color .2s, box-shadow .2s;
   }
-  .moon { font-size: 2.6rem; line-height: 1; filter: drop-shadow(0 0 12px rgba(240,198,116,0.5)); }
-  header .small {
-    color: var(--gold-bright);
-    font-size: 0.95rem;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    margin-top: 10px;
-  }
-  header h1 {
-    color: var(--gold);
-    font-size: 3rem;
-    margin: 6px 0 2px;
-    letter-spacing: 1px;
-    text-shadow: 0 2px 18px rgba(0,0,0,0.4);
-  }
-  .arabic {
-    font-size: 2.2rem;
-    color: var(--gold-bright);
-    margin: 6px 0;
-    direction: rtl;
-    line-height: 1.4;
-  }
-  header .sub {
-    color: var(--cream);
-    letter-spacing: 5px;
-    margin-top: 6px;
-    font-size: 1rem;
-    text-transform: uppercase;
-  }
-  header .year {
-    display: inline-block;
-    margin-top: 16px;
-    padding: 6px 18px;
-    border: 1px solid var(--gold);
-    border-radius: 999px;
-    color: var(--gold-bright);
-    font-size: 0.95rem;
-    letter-spacing: 2px;
-  }
-
-  /* ---------- Quick facts ---------- */
-  .info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 16px;
-    margin-bottom: 26px;
-  }
-  .card {
-    background: rgba(0,0,0,0.3);
-    border: 1.5px solid var(--gold);
-    border-radius: 12px;
-    padding: 18px 20px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-  }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.35); border-color: var(--gold-bright); }
-  .card .icon { font-size: 1.9rem; color: var(--gold-bright); min-width: 40px; text-align: center; }
-  .card .label { color: var(--gold-bright); font-weight: bold; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; display: block; }
-  .card .value { color: var(--text); font-size: 1.1rem; }
+  .btn-primary { background: var(--gold); color: var(--green-dark); }
+  .btn-primary:hover { background: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,166,74,0.3); }
+  .btn-ghost { color: var(--gold-bright); }
+  .btn-ghost:hover { background: rgba(212,166,74,0.15); transform: translateY(-2px); }
 
   /* ---------- Sections ---------- */
-  section {
-    background: rgba(0,0,0,0.25);
+  section { padding: 40px 0; }
+  .section-head { text-align: center; margin-bottom: 28px; }
+  .section-head h2 { color: var(--gold); font-size: 2rem; }
+  .section-head .sub { color: var(--muted); margin-top: 4px; }
+  hr.star { max-width: 200px; border: none; border-top: 1px solid rgba(212,166,74,0.4); margin: 10px auto 0; position: relative; }
+  hr.star::after { content: "✦"; color: var(--gold); position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--green-mid); padding: 0 10px; }
+
+  /* ---------- Prayer times ---------- */
+  #prayer { scroll-margin-top: 70px; }
+  .prayer-wrap {
+    background: var(--panel);
     border: 1.5px solid var(--gold);
-    border-radius: 12px;
-    padding: 28px 30px;
-    margin-bottom: 22px;
+    border-radius: 16px;
+    padding: 24px;
   }
-  section h2 {
-    color: var(--gold);
-    font-size: 1.7rem;
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  .prayer-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 6px; }
+  .prayer-top .today { color: var(--cream); font-size: 1.05rem; }
+  .prayer-top .next { color: var(--green-dark); background: var(--gold-bright); padding: 6px 14px; border-radius: 999px; font-weight: bold; font-size: .9rem; }
+  .prayer-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 16px;
   }
-  section h2 .badge { font-size: 1.5rem; }
-  section h3 { color: var(--gold-bright); font-size: 1.2rem; margin: 18px 0 6px; }
-  section p { margin-bottom: 12px; color: var(--text); }
-  section p:last-child { margin-bottom: 0; }
-  .lead { font-size: 1.12rem; color: var(--cream); }
+  .pcard {
+    background: rgba(0,0,0,0.3); border: 1px solid rgba(212,166,74,0.4);
+    border-radius: 12px; padding: 16px 10px; text-align: center;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+  }
+  .pcard .pname { color: var(--gold-bright); font-weight: bold; letter-spacing: 1px; font-size: .95rem; }
+  .pcard .parab { color: var(--muted); font-size: .8rem; direction: rtl; margin-bottom: 8px; min-height: 1em; }
+  .pcard .padhan { color: var(--text); font-size: 1.35rem; line-height: 1.2; }
+  .pcard .piqama { color: var(--muted); font-size: .8rem; margin-top: 6px; }
+  .pcard .piqama b { color: var(--cream); }
+  .pcard.is-next {
+    border-color: var(--gold-bright);
+    background: radial-gradient(200px 120px at 50% 0%, rgba(240,198,116,0.18), rgba(0,0,0,0.3));
+    box-shadow: 0 0 0 1px var(--gold-bright) inset, 0 8px 28px rgba(0,0,0,0.4);
+    transform: translateY(-4px);
+  }
+  .pcard.sunrise { opacity: .9; }
+  .pcard.sunrise .piqama { visibility: hidden; }
+  .prayer-foot { margin-top: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; color: var(--muted); font-size: .85rem; }
+  .linkish { background: none; border: none; color: var(--gold-bright); cursor: pointer; font: inherit; text-decoration: underline; padding: 0; }
+  .monthly-box { margin-top: 18px; display: none; }
+  .monthly-box.open { display: block; }
+  .monthly-box iframe { width: 100%; height: 780px; border: none; border-radius: 12px; background: #fff; }
+  .loading { color: var(--muted); text-align: center; padding: 20px; font-style: italic; }
 
-  ul.clean { list-style: none; margin: 8px 0; }
-  ul.clean li {
-    position: relative;
-    padding: 8px 0 8px 30px;
-    border-bottom: 1px solid rgba(212,166,74,0.15);
+  /* ---------- Jumu'ah ---------- */
+  .jumuah-card {
+    display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: center;
+    background: linear-gradient(135deg, rgba(212,166,74,0.12), var(--panel));
+    border: 1.5px solid var(--gold-bright); border-radius: 16px; padding: 26px 30px;
   }
-  ul.clean li:last-child { border-bottom: none; }
-  ul.clean li::before {
-    content: "✦";
-    position: absolute; left: 4px; top: 8px;
-    color: var(--gold-bright);
-  }
+  .jumuah-card .big { text-align: center; }
+  .jumuah-card .big .word { color: var(--gold); font-size: 1.4rem; letter-spacing: 1px; }
+  .jumuah-card .big .time { color: var(--gold-bright); font-size: 2.6rem; line-height: 1; margin-top: 4px; }
+  .jumuah-card .big .label { color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: 2px; }
+  .jumuah-card .det p { margin: 4px 0; }
+  .jumuah-card .det b { color: var(--gold-bright); }
 
-  /* Hadith / quote blocks */
-  blockquote {
-    border-left: 3px solid var(--gold);
-    background: rgba(212,166,74,0.07);
-    border-radius: 0 10px 10px 0;
-    padding: 14px 18px;
-    margin: 14px 0;
-    font-style: italic;
-    color: var(--cream);
-  }
-  blockquote .src { display: block; margin-top: 8px; font-style: normal; font-size: 0.85rem; color: var(--muted); letter-spacing: 1px; }
+  /* ---------- Generic cards / about ---------- */
+  .panel { background: var(--panel); border: 1.5px solid var(--gold); border-radius: 14px; padding: 28px 30px; }
+  .about p { margin-bottom: 12px; color: var(--text); }
+  .about p:last-child { margin-bottom: 0; }
+  .about .lead { font-size: 1.15rem; color: var(--cream); }
 
-  /* Ashura highlight */
-  .ashura {
-    border: 2px solid var(--gold-bright);
-    background:
-      radial-gradient(400px 200px at 50% 0%, rgba(240,198,116,0.10), transparent 70%),
-      rgba(0,0,0,0.35);
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;
   }
-  .day-number {
+  .feature {
+    background: var(--panel); border: 1px solid rgba(212,166,74,0.4); border-radius: 12px;
+    padding: 20px; transition: transform .2s, border-color .2s, box-shadow .2s;
+  }
+  .feature:hover { transform: translateY(-4px); border-color: var(--gold-bright); box-shadow: 0 10px 26px rgba(0,0,0,0.35); }
+  .feature .fi { font-size: 1.8rem; margin-bottom: 8px; }
+  .feature h3 { color: var(--gold-bright); font-size: 1.1rem; margin-bottom: 4px; }
+  .feature p { color: var(--muted); font-size: .92rem; }
+
+  /* ---------- Visit ---------- */
+  .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch; }
+  .visit-info { display: flex; flex-direction: column; justify-content: center; }
+  .visit-info .row { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(212,166,74,0.18); }
+  .visit-info .row:last-child { border-bottom: none; }
+  .visit-info .ri { color: var(--gold-bright); font-size: 1.3rem; min-width: 28px; text-align: center; }
+  .visit-info .rl { color: var(--gold-bright); font-weight: bold; display: block; font-size: .85rem; letter-spacing: 1px; text-transform: uppercase; }
+  .visit-info .rv { color: var(--text); }
+  .map-box iframe { width: 100%; height: 100%; min-height: 320px; border: none; border-radius: 12px; filter: saturate(.9) brightness(.95); }
+
+  /* ---------- Donate ---------- */
+  .donate-band {
     text-align: center;
-    font-size: 4.5rem;
-    color: var(--gold);
-    line-height: 1;
-    margin: 4px 0 2px;
-    text-shadow: 0 2px 20px rgba(240,198,116,0.4);
+    background: linear-gradient(135deg, rgba(212,166,74,0.16), rgba(0,0,0,0.3));
+    border: 1.5px solid var(--gold); border-radius: 16px; padding: 40px 24px;
   }
-  .day-caption { text-align: center; color: var(--gold-bright); letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 16px; }
+  .donate-band h2 { color: var(--gold); font-size: 2rem; }
+  .donate-band p { color: var(--cream); max-width: 600px; margin: 10px auto 22px; }
+  .donate-band .cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
-  .fast-plan {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 14px;
-    margin-top: 14px;
-  }
-  .fast-day {
-    text-align: center;
-    border: 1.5px solid var(--gold);
-    border-radius: 10px;
-    padding: 16px 12px;
-    background: rgba(0,0,0,0.3);
-  }
-  .fast-day .num { font-size: 2rem; color: var(--gold); }
-  .fast-day .name { color: var(--gold-bright); font-weight: bold; letter-spacing: 1px; }
-  .fast-day .note { color: var(--muted); font-size: 0.85rem; margin-top: 4px; }
-  .fast-day.best { border-color: var(--gold-bright); box-shadow: 0 0 0 1px var(--gold-bright) inset; }
-
-  /* To-do checklist */
-  .todo li { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid rgba(212,166,74,0.15); }
-  .todo li:last-child { border-bottom: none; }
-  .todo .chk { color: var(--gold-bright); font-size: 1.2rem; flex-shrink: 0; }
-  .todo b { color: var(--gold-bright); }
-
-  /* Footer */
+  /* ---------- Footer ---------- */
   footer {
-    text-align: center;
-    color: var(--muted);
-    padding: 28px 16px 4px;
-    font-size: 0.9rem;
+    border-top: 1px solid rgba(212,166,74,0.35);
+    margin-top: 40px; padding: 36px 16px 28px;
+    background: rgba(8,26,19,0.6);
   }
-  footer .name { color: var(--gold-bright); font-size: 1.1rem; letter-spacing: 2px; display: block; margin-bottom: 6px; }
-  footer .dua { color: var(--cream); font-style: italic; margin-bottom: 14px; }
-  .note { font-size: 0.82rem; color: var(--muted); }
+  .foot-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 28px; }
+  .foot-grid h4 { color: var(--gold-bright); font-size: .9rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
+  .foot-grid a { color: var(--cream); text-decoration: none; display: block; padding: 4px 0; font-size: .95rem; }
+  .foot-grid a:hover { color: var(--gold-bright); }
+  .foot-brand .mark { font-size: 1.6rem; color: var(--gold); }
+  .foot-brand .nm { color: var(--gold); font-size: 1.2rem; display: block; margin: 6px 0; }
+  .foot-brand p { color: var(--muted); font-size: .9rem; }
+  .foot-bottom { text-align: center; color: var(--muted); font-size: .82rem; margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(212,166,74,0.15); }
 
-  @media (max-width: 560px) {
-    header h1 { font-size: 2.2rem; }
-    .arabic { font-size: 1.7rem; }
-    section { padding: 22px 18px; }
-    .day-number { font-size: 3.4rem; }
+  /* ---------- Responsive ---------- */
+  @media (max-width: 820px) {
+    .visit-grid { grid-template-columns: 1fr; }
+    .prayer-grid { grid-template-columns: repeat(3, 1fr); }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+    .foot-brand { grid-column: 1 / -1; }
+  }
+  @media (max-width: 640px) {
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; background: rgba(8,26,19,0.98); padding: 10px 16px 16px; border-bottom: 1px solid rgba(212,166,74,0.35); }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 10px; }
+    .nav-toggle { display: block; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero .tagline { font-size: 1.05rem; }
+    .jumuah-card { grid-template-columns: 1fr; text-align: center; }
+    .prayer-grid { grid-template-columns: repeat(2, 1fr); }
+    .panel, .prayer-wrap, .donate-band { padding: 22px 18px; }
   }
 </style>
 </head>
 <body>
-<div class="container">
 
-  <header>
-    <div class="moon">☪</div>
-    <div class="small">The Month of Allah</div>
-    <h1>Muharram</h1>
-    <div class="arabic">شَهْرُ ٱللَّٰهِ ٱلْمُحَرَّم</div>
-    <div class="sub">The Sacred New Year</div>
-    <div class="year">1448 After Hijrah &nbsp;•&nbsp; June 2026</div>
-  </header>
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="inner">
+    <a class="brand" href="#top">
+      <span class="mark">☪</span>
+      <span class="txt"><b>ICGK</b><span>Greater Killeen</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="navlinks">
+      <a href="#prayer">Prayer Times</a>
+      <a href="#jumuah">Jumu'ah</a>
+      <a href="#about">About</a>
+      <a href="#programs">Programs</a>
+      <a href="#visit">Visit</a>
+      <a href="muharram.html">Muharram</a>
+      <a class="donate" href="https://icgk.org/donate/" target="_blank" rel="noopener">Donate</a>
+    </div>
+  </div>
+</nav>
 
-  <!-- Quick facts -->
-  <div class="info-grid">
-    <div class="card">
-      <div class="icon">📅</div>
-      <div>
-        <span class="label">First Month</span>
-        <span class="value">of the Islamic (Hijri) year</span>
-      </div>
+<a id="top"></a>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">As-salāmu ʿalaykum &amp; Welcome</div>
+    <div class="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+    <h1>Islamic Community of<br>Greater Killeen</h1>
+    <p class="tagline">A house of worship and a home for the Muslim community of Killeen and Fort&nbsp;Hood — open to all.</p>
+    <p class="where">📍 Killeen, Texas</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#prayer">🕌 Prayer Times</a>
+      <a class="btn btn-ghost" href="#visit">Plan Your Visit</a>
     </div>
-    <div class="card">
-      <div class="icon">🕊️</div>
-      <div>
-        <span class="label">Sacred Month</span>
-        <span class="value">One of the four sacred months</span>
-      </div>
+  </div>
+</header>
+
+<!-- ===== PRAYER TIMES ===== -->
+<section id="prayer">
+  <div class="container">
+    <div class="section-head">
+      <h2>Prayer Times</h2>
+      <div class="sub">Daily ṣalāh times for Killeen, TX</div>
+      <hr class="star">
     </div>
-    <div class="card">
-      <div class="icon">⭐</div>
-      <div>
-        <span class="label">The Highlight</span>
-        <span class="value">The Day of Ashura — the 10th</span>
+
+    <div class="prayer-wrap">
+      <div class="prayer-top">
+        <div class="today" id="today-date">Loading today's date…</div>
+        <div class="next" id="next-prayer" style="display:none"></div>
       </div>
-    </div>
-    <div class="card">
-      <div class="icon">🌙</div>
-      <div>
-        <span class="label">Ashura 1448</span>
-        <span class="value">~ Late June 2026 (per moon sighting)</span>
+
+      <div id="prayer-grid" class="prayer-grid">
+        <div class="loading" style="grid-column:1/-1">Loading prayer times…</div>
+      </div>
+
+      <div class="prayer-foot">
+        <span id="iqama-note">Adhan times calculated for Killeen (ISNA method). Iqāmah times set by the masjid.</span>
+        <button class="linkish" id="monthly-toggle" onclick="toggleMonthly()">View full monthly schedule ▾</button>
+      </div>
+
+      <div class="monthly-box" id="monthly-box">
+        <!-- iframe injected on first open -->
       </div>
     </div>
   </div>
+</section>
 
-  <!-- What is Muharram -->
-  <section>
-    <h2><span class="badge">📖</span> What Is Muharram?</h2>
-    <p class="lead">Muharram is the first month of the Islamic calendar and one of the most honored months of the entire year. Its very name comes from <em>ḥarām</em> — "sacred" or "forbidden" — because fighting and wrongdoing in it were prohibited even before Islam.</p>
-    <p>Allah ﷻ set apart four sacred months in His Book:</p>
-    <blockquote>
-      "Indeed, the number of months with Allah is twelve… of which four are sacred."
-      <span class="src">— Qur'an 9:36</span>
-    </blockquote>
-    <p>Those four are <b>Dhul-Qa'dah, Dhul-Hijjah, Muharram, and Rajab</b>. In these months, good deeds carry greater weight and sins are graver — a reason to be especially mindful of how we spend our days.</p>
-    <p>The Prophet ﷺ gave Muharram a unique title of honor, calling it <b>"Shahrullāh" — the Month of Allah</b>. Of all twelve months, this is the one the Prophet ﷺ attributed directly to Allah, a sign of its tremendous status.</p>
-  </section>
-
-  <!-- Importance & Blessings -->
-  <section>
-    <h2><span class="badge">✨</span> Its Importance &amp; Blessings</h2>
-    <p>Muharram is a month of mercy, renewal, and reward. A few of the blessings the Prophet ﷺ taught us about it:</p>
-
-    <h3>The best fasting after Ramadan</h3>
-    <blockquote>
-      "The best fasting after Ramadan is in the Month of Allah — Muharram; and the best prayer after the obligatory is the night prayer."
-      <span class="src">— Sahih Muslim</span>
-    </blockquote>
-
-    <h3>A sacred month — deeds amplified</h3>
-    <p>Because Muharram is one of the four sacred months, righteous actions are especially beloved to Allah and wrongdoing is especially serious. It is a season to lean into worship and to leave off sin.</p>
-
-    <h3>A fresh start</h3>
-    <p>As the opening of the new Hijri year, Muharram is a natural moment for <b>repentance, gratitude, and resolve</b> — to turn a new page with Allah and to set the tone for the entire year ahead.</p>
-  </section>
-
-  <!-- The 10th — Ashura -->
-  <section class="ashura">
-    <h2><span class="badge">⭐</span> The 10th — The Day of Ashura</h2>
-    <div class="day-number">10</div>
-    <div class="day-caption">Yawm al-Ashura</div>
-
-    <p>The tenth of Muharram, <b>Ashura</b>, is the most blessed day of the month. On this day Allah ﷻ saved Prophet Musa (Moses) عليه السلام and the Children of Israel from Pharaoh, parting the sea before them.</p>
-    <p>When the Prophet ﷺ came to Madinah, he found the Jews fasting this day in gratitude. He said:</p>
-    <blockquote>
-      "We have more right to Musa than you," and he fasted it and ordered that it be fasted.
-      <span class="src">— Sahih al-Bukhari &amp; Muslim</span>
-    </blockquote>
-
-    <h3>The great reward of fasting Ashura</h3>
-    <blockquote>
-      The Prophet ﷺ was asked about fasting the day of Ashura, and he said: "It expiates the sins of the previous year."
-      <span class="src">— Sahih Muslim</span>
-    </blockquote>
-
-    <h3>How to fast it — fast two days</h3>
-    <p>To distinguish our fast from others, the Prophet ﷺ taught us to add a day. He said: <em>"If I live to the next year, I will fast the ninth (as well)."</em> (Muslim). So the recommended practice is to fast <b>the 9th and 10th</b> (or the 10th and 11th):</p>
-    <div class="fast-plan">
-      <div class="fast-day">
-        <div class="num">9</div>
-        <div class="name">Tasu'a</div>
-        <div class="note">The day before</div>
+<!-- ===== JUMU'AH ===== -->
+<section id="jumuah">
+  <div class="container">
+    <div class="section-head">
+      <h2>Jumu'ah — Friday Prayer</h2>
+      <hr class="star">
+    </div>
+    <div class="jumuah-card">
+      <div class="big">
+        <div class="word">الجُمُعَة</div>
+        <div class="time" id="jumuah-time">1:30 PM</div>
+        <div class="label">Khuṭbah begins</div>
       </div>
-      <div class="fast-day best">
-        <div class="num">10</div>
-        <div class="name">Ashura</div>
-        <div class="note">The blessed day</div>
-      </div>
-      <div class="fast-day">
-        <div class="num">11</div>
-        <div class="name">Or the day after</div>
-        <div class="note">If you missed the 9th</div>
+      <div class="det">
+        <p><b>Khaṭīb:</b> <span id="jumuah-khateeb">Dr. Ihab Abdelgawad Al-Faidy</span></p>
+        <p><b>Language:</b> <span id="jumuah-lang">English</span></p>
+        <p>Please arrive early — space fills quickly. Come join us for community and an activity after Jumu'ah. Brothers and sisters welcome.</p>
       </div>
     </div>
+  </div>
+</section>
 
-    <p style="margin-top:16px">Ashura is also remembered as the day of the martyrdom of <b>Imam Husayn ibn Ali</b> رضي الله عنه, the beloved grandson of the Prophet ﷺ, at Karbala — a profound reminder of sacrifice, justice, and standing for the truth. We honor his memory with the dignity and respect it deserves.</p>
-  </section>
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="container">
+    <div class="section-head">
+      <h2>About Our Community</h2>
+      <hr class="star">
+    </div>
+    <div class="panel about">
+      <p class="lead">The Islamic Community of Greater Killeen (ICGK) is a welcoming masjid serving the Muslims of Killeen, Harker Heights, Copperas Cove, and the Fort&nbsp;Hood area.</p>
+      <p>We are a place of prayer, learning, and brotherhood and sisterhood. Whether you are a lifelong resident, new to the area, a soldier stationed nearby, or simply curious about Islam, our doors are open to you. We gather for the five daily prayers, Jumu'ah, Ramadan and the two Eids, and year-round programs for every age.</p>
+      <p>Our community is growing — and we are excited to expand our masjid to better serve everyone. We invite you to be part of it through your prayers, your presence, and your support.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- Things to do -->
-  <section>
-    <h2><span class="badge">✅</span> Things To Do This Muharram</h2>
-    <ul class="clean todo">
-      <li><span class="chk">☑</span><span><b>Fast Ashura (and Tasu'a).</b> Aim for the 9th and 10th. Even fasting the 10th alone carries the great reward.</span></li>
-      <li><span class="chk">☑</span><span><b>Make sincere tawbah.</b> Begin the new year by turning back to Allah and seeking forgiveness.</span></li>
-      <li><span class="chk">☑</span><span><b>Increase your night prayer.</b> The Prophet ﷺ called it the best prayer after the obligatory.</span></li>
-      <li><span class="chk">☑</span><span><b>Give in charity (sadaqah).</b> Reward is multiplied in a sacred month — feed someone, help a family, support your masjid.</span></li>
-      <li><span class="chk">☑</span><span><b>Connect with the Qur'an.</b> Set a daily portion to read and reflect upon throughout the month.</span></li>
-      <li><span class="chk">☑</span><span><b>Keep your tongue moist with dhikr.</b> Istighfār, salawāt upon the Prophet ﷺ, and gratitude.</span></li>
-      <li><span class="chk">☑</span><span><b>Guard against sin.</b> Wrongdoing is graver in the sacred months — protect your deeds.</span></li>
-      <li><span class="chk">☑</span><span><b>Set your year's intentions.</b> Make du'a and plan goals for your worship, family, and growth.</span></li>
-      <li><span class="chk">☑</span><span><b>Be generous to your family.</b> Bring warmth and goodness into your home on Ashura.</span></li>
-    </ul>
-  </section>
+<!-- ===== PROGRAMS ===== -->
+<section id="programs">
+  <div class="container">
+    <div class="section-head">
+      <h2>Programs &amp; Services</h2>
+      <div class="sub">Ways to learn, grow, and get involved</div>
+      <hr class="star">
+    </div>
+    <div class="grid">
+      <div class="feature"><div class="fi">📖</div><h3>Da'wah &amp; Education</h3><p>Outreach, Qur'an &amp; Hadith study, and learning circles for the community.</p></div>
+      <div class="feature"><div class="fi">🔤</div><h3>Arabic Classes</h3><p>Learn to read and understand the language of the Qur'an.</p></div>
+      <div class="feature"><div class="fi">🧒</div><h3>Youth &amp; Sunday School</h3><p>Sunday School, Family Day, and a youth leadership program.</p></div>
+      <div class="feature"><div class="fi">☀️</div><h3>Summer Program</h3><p>Seasonal activities and learning for children and families.</p></div>
+      <div class="feature"><div class="fi">💍</div><h3>Nikāḥ &amp; Matrimonial</h3><p>Marriage (nikāḥ) services and matrimonial support.</p></div>
+      <div class="feature"><div class="fi">🤝</div><h3>Counseling</h3><p>Confidential guidance and support for individuals and families.</p></div>
+      <div class="feature"><div class="fi">🌙</div><h3>New Muslim Support</h3><p>Welcoming and mentoring those who have embraced Islam.</p></div>
+      <div class="feature"><div class="fi">🕊️</div><h3>Interfaith Relations</h3><p>Building bridges of understanding with our neighbors.</p></div>
+      <div class="feature"><div class="fi">🤲</div><h3>Janāzah &amp; Burial</h3><p>Funeral prayers and burial assistance for families in need.</p></div>
+      <div class="feature"><div class="fi">🪪</div><h3>Membership</h3><p>Join ICGK and help shape the future of our community.</p></div>
+    </div>
+  </div>
+</section>
 
-  <!-- A few cautions / things to keep in mind -->
-  <section>
-    <h2><span class="badge">💡</span> A Few Things To Keep In Mind</h2>
-    <ul class="clean">
-      <li>Muharram is a month of worship and reflection — not of superstition. There is nothing "unlucky" about it; it is one of the most blessed times of the year.</li>
-      <li>Keep your acts of worship rooted in the authentic Sunnah. The Prophet ﷺ emphasized fasting, prayer, charity, and remembrance.</li>
-      <li>Honor the family of the Prophet ﷺ and remember Karbala with reverence, dignity, and good character toward all.</li>
-      <li>Dates depend on the sighting of the moon — confirm the start of Muharram and the day of Ashura with your local masjid.</li>
-    </ul>
-  </section>
+<!-- ===== VISIT ===== -->
+<section id="visit">
+  <div class="container">
+    <div class="section-head">
+      <h2>Visit Us</h2>
+      <div class="sub">You are always welcome at the masjid</div>
+      <hr class="star">
+    </div>
+    <div class="visit-grid">
+      <div class="panel visit-info">
+        <div class="row">
+          <div class="ri">📍</div>
+          <div><span class="rl">Address</span><span class="rv" id="addr-line">5600 TX-195, Killeen, TX 76542</span></div>
+        </div>
+        <div class="row">
+          <div class="ri">🕌</div>
+          <div><span class="rl">Daily Prayers</span><span class="rv">All five daily ṣalāh in congregation — see times above</span></div>
+        </div>
+        <div class="row">
+          <div class="ri">🌐</div>
+          <div><span class="rl">Website</span><span class="rv"><a href="https://icgk.org" target="_blank" rel="noopener">icgk.org</a></span></div>
+        </div>
+        <div class="row">
+          <div class="ri">📘</div>
+          <div><span class="rl">Facebook</span><span class="rv"><a href="https://www.facebook.com/Islamic-Community-of-Greater-Killeen-256571815189294/" target="_blank" rel="noopener">@IslamicCommunityofGreaterKilleen</a></span></div>
+        </div>
+        <div class="row">
+          <div class="ri">🧭</div>
+          <div><span class="rl">Directions</span><span class="rv"><a id="dir-link" href="https://www.google.com/maps/dir/?api=1&destination=31.0699627,-97.7614774" target="_blank" rel="noopener">Open in Google Maps</a></span></div>
+        </div>
+      </div>
+      <div class="map-box panel" style="padding:6px">
+        <iframe id="map" title="ICGK location map" loading="lazy" src="https://www.google.com/maps?q=31.0699627,-97.7614774&z=15&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <footer>
-    <span class="name">Islamic Community of Greater Killeen</span>
-    <p class="dua">May Allah accept your fasting, forgive your sins of the past year, and make this Hijri year one of barakah, health, and nearness to Him. Āmīn.</p>
-    <p class="note">For confirmed dates, prayer times, and Ashura programs, please check with your local masjid &nbsp;•&nbsp; a.icgk.org</p>
-  </footer>
+<!-- ===== DONATE ===== -->
+<section id="donate">
+  <div class="container">
+    <div class="donate-band">
+      <h2>Support Your Masjid</h2>
+      <p>Ṣadaqah jāriyah — your giving keeps the masjid running and helps us build a bigger home for our growing community. The Prophet ﷺ said charity does not decrease wealth.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://icgk.org/donate/" target="_blank" rel="noopener">❤️ Donate Now</a>
+        <a class="btn btn-ghost" href="https://app.autobooks.co/pay/icgk" target="_blank" rel="noopener">Give Monthly</a>
+        <a class="btn btn-ghost" href="https://gofund.me/bcecde3c" target="_blank" rel="noopener">Masjid Expansion Fund</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-</div>
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <span class="mark">☪</span>
+      <span class="nm">Islamic Community of Greater Killeen</span>
+      <p id="foot-addr">5600 TX-195, Killeen, TX 76542</p>
+      <p style="margin-top:8px">May Allah accept from us and from you. 🤲</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <a href="#prayer">Prayer Times</a>
+      <a href="#jumuah">Jumu'ah</a>
+      <a href="#about">About</a>
+      <a href="#programs">Programs</a>
+      <a href="muharram.html">Muharram</a>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <a href="https://icgk.org" target="_blank" rel="noopener">icgk.org</a>
+      <a href="https://www.facebook.com/Islamic-Community-of-Greater-Killeen-256571815189294/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://icgk.org/donate/" target="_blank" rel="noopener">Donate</a>
+      <a id="foot-dir" href="https://www.google.com/maps/dir/?api=1&destination=31.0699627,-97.7614774" target="_blank" rel="noopener">Directions</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    © <span id="year"></span> Islamic Community of Greater Killeen · Killeen, Texas ·
+    Prayer times via <a href="https://ourmasajid.com" target="_blank" rel="noopener">OurMasajid</a>
+  </div>
+</footer>
+
+<!-- Adhan.js (same library the OurMasajid widget uses) with fallback -->
+<script src="https://cdn.jsdelivr.net/npm/adhan@4.4.3/lib/bundles/adhan.umd.min.js"></script>
+<script>
+  // ===== Config =====
+  var MASJID_KEY = "https://ourmasajid.github.io/masjid-1qBN97_jl61meT05BcR_K14kP63MOMSVJjZnhMoPipEs";
+  var MONTHLY_URL = "https://r.ourmasajid.com/prayer/monthly3.html?masjidKey=" + MASJID_KEY + "&showHijri=false&hijriAdjustment=0";
+
+  var PRAYERS = [
+    { key: "fajr",    name: "Fajr",    ar: "الفجر",   iqama: "Fajr_Iqamah" },
+    { key: "sunrise", name: "Sunrise", ar: "الشروق",  iqama: null },
+    { key: "dhuhr",   name: "Dhuhr",   ar: "الظهر",   iqama: "Zuhr_Iqamah" },
+    { key: "asr",     name: "Asr",     ar: "العصر",   iqama: "Asr_Iqamah" },
+    { key: "maghrib", name: "Maghrib", ar: "المغرب",  iqama: "Maghrib_Iqamah" },
+    { key: "isha",    name: "Isha",    ar: "العشاء",  iqama: "Esha_Iqamah" }
+  ];
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  function fmt(date) {
+    return date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+  }
+  function fmtDate(date) {
+    return date.toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
+  }
+
+  // Most recent iqama change on or before `date` (mirrors the OurMasajid widget logic)
+  function iqamaFor(prayerData, date) {
+    var current = {};
+    for (var i = 0; i < prayerData.length; i++) {
+      var c = prayerData[i];
+      if (new Date(c.Date) <= date) {
+        current = c;
+      } else { break; }
+    }
+    return current;
+  }
+
+  function renderError(msg) {
+    var grid = document.getElementById("prayer-grid");
+    grid.innerHTML = '<div class="loading" style="grid-column:1/-1">' + msg +
+      ' <br><br><button class="linkish" onclick="toggleMonthly(true)">Open the full prayer schedule →</button></div>';
+  }
+
+  function buildPrayers() {
+    if (!window.adhan) { renderError("Prayer calculation library could not load."); return; }
+    var today = new Date();
+    document.getElementById("today-date").textContent = "🗓️ " + fmtDate(today);
+
+    fetch(MASJID_KEY + "/data.json?cache=" + Date.now())
+      .then(function (r) { if (!r.ok) throw new Error("data"); return r.json(); })
+      .then(function (data) {
+        var info = data["Info"]["data"][0];
+        var coordsParts = info.coordinates.split(",");
+        var lat = parseFloat(coordsParts[0]);
+        var lon = parseFloat(coordsParts[1]);
+
+        // Populate identity / map / jumu'ah from the live feed where available
+        if (info.address) {
+          var full = [info.address, info.city, info.state].filter(Boolean).join(", ") + (info.zip ? " " + info.zip : "");
+          document.getElementById("addr-line").textContent = full;
+          document.getElementById("foot-addr").textContent = full;
+        }
+        document.getElementById("map").src = "https://www.google.com/maps?q=" + lat + "," + lon + "&z=15&output=embed";
+        var dir = "https://www.google.com/maps/dir/?api=1&destination=" + lat + "," + lon;
+        document.getElementById("dir-link").href = dir;
+        document.getElementById("foot-dir").href = dir;
+
+        if (data["Jumma"] && data["Jumma"]["data"] && data["Jumma"]["data"][0]) {
+          var j = data["Jumma"]["data"][0];
+          if (j.Khutba) document.getElementById("jumuah-time").textContent = j.Khutba;
+          if (j.Khateeb) document.getElementById("jumuah-khateeb").textContent = j.Khateeb;
+          if (j.Language) document.getElementById("jumuah-lang").textContent = j.Language;
+        }
+
+        var coordinates = new adhan.Coordinates(lat, lon);
+        var params = adhan.CalculationMethod.NorthAmerica();
+        var times = new adhan.PrayerTimes(coordinates, today, params);
+        var iq = iqamaFor(data["Daily Prayer"]["data"], today);
+
+        // Determine the next upcoming prayer today
+        var now = new Date();
+        var nextKey = null;
+        for (var i = 0; i < PRAYERS.length; i++) {
+          var k = PRAYERS[i].key;
+          if (k === "sunrise") continue;
+          if (times[k] > now) { nextKey = k; break; }
+        }
+
+        var grid = document.getElementById("prayer-grid");
+        grid.innerHTML = "";
+        PRAYERS.forEach(function (p) {
+          var t = times[p.key];
+          var iqText = "";
+          if (p.iqama && iq[p.iqama]) iqText = '<div class="piqama">Iqāmah <b>' + iq[p.iqama] + "</b></div>";
+          else if (p.key === "sunrise") iqText = '<div class="piqama">—</div>';
+          var cls = "pcard" + (p.key === "sunrise" ? " sunrise" : "") + (p.key === nextKey ? " is-next" : "");
+          grid.innerHTML +=
+            '<div class="' + cls + '">' +
+              '<div class="pname">' + p.name + "</div>" +
+              '<div class="parab">' + p.ar + "</div>" +
+              '<div class="padhan">' + fmt(t) + "</div>" +
+              iqText +
+            "</div>";
+        });
+
+        var nextEl = document.getElementById("next-prayer");
+        if (nextKey) {
+          var np = PRAYERS.filter(function (p) { return p.key === nextKey; })[0];
+          var mins = Math.round((times[nextKey] - now) / 60000);
+          var h = Math.floor(mins / 60), m = mins % 60;
+          var inTxt = (h > 0 ? h + "h " : "") + m + "m";
+          nextEl.textContent = "Next: " + np.name + " in " + inTxt;
+          nextEl.style.display = "";
+        } else {
+          nextEl.textContent = "Fajr tomorrow, in shā' Allāh";
+          nextEl.style.display = "";
+        }
+      })
+      .catch(function () {
+        renderError("Couldn't load live prayer times right now.");
+      });
+  }
+
+  // Lazy-load the official monthly schedule iframe only when opened
+  function toggleMonthly(forceOpen) {
+    var box = document.getElementById("monthly-box");
+    var btn = document.getElementById("monthly-toggle");
+    var open = forceOpen || !box.classList.contains("open");
+    box.classList.toggle("open", open);
+    if (open && !box.dataset.loaded) {
+      box.innerHTML = '<iframe title="Monthly prayer schedule" loading="lazy" src="' + MONTHLY_URL + '"></iframe>';
+      box.dataset.loaded = "1";
+    }
+    btn.textContent = open ? "Hide monthly schedule ▴" : "View full monthly schedule ▾";
+  }
+
+  if (document.readyState !== "loading") buildPrayers();
+  else document.addEventListener("DOMContentLoaded", buildPrayers);
+</script>
 </body>
 </html>
