@@ -181,6 +181,37 @@
   .donate-band p { color: var(--cream); max-width: 600px; margin: 10px auto 22px; }
   .donate-band .cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
+  /* ---------- Contact form ---------- */
+  .contact-wrap { max-width: 760px; margin: 0 auto; }
+  .hp { position: absolute; left: -9999px; }
+  .cform-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .cfield { margin-bottom: 16px; display: flex; flex-direction: column; }
+  .cfield label { color: var(--gold-bright); font-size: .88rem; letter-spacing: .5px; margin-bottom: 6px; }
+  .cfield .req { color: var(--gold); }
+  .cfield .opt { color: var(--muted); font-size: .8rem; }
+  .cform input, .cform select, .cform textarea {
+    font-family: inherit; font-size: 1rem; color: var(--text);
+    background: rgba(0,0,0,0.3); border: 1px solid rgba(212,166,74,0.45);
+    border-radius: 10px; padding: 11px 14px; width: 100%;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .cform textarea { resize: vertical; min-height: 120px; }
+  .cform input::placeholder, .cform textarea::placeholder { color: var(--muted); opacity: .7; }
+  .cform input:focus, .cform select:focus, .cform textarea:focus {
+    outline: none; border-color: var(--gold-bright); box-shadow: 0 0 0 3px rgba(212,166,74,0.18);
+  }
+  .cform select { appearance: none; -webkit-appearance: none; cursor: pointer; }
+  .cform select option { background: var(--green-dark); color: var(--text); }
+  .cform-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 4px; }
+  .cform-actions .btn { cursor: pointer; font-family: inherit; }
+  .cform-actions .btn:disabled { opacity: .6; cursor: default; }
+  .cform-status { color: var(--muted); font-size: .9rem; }
+  .cform-status.err { color: #f0a674; }
+  .cform-success { text-align: center; padding: 30px 10px; }
+  .cform-success .ci { font-size: 3rem; }
+  .cform-success h3 { color: var(--gold-bright); font-size: 1.5rem; margin: 10px 0 6px; }
+  .cform-success p { color: var(--cream); }
+
   /* ---------- Footer ---------- */
   footer {
     border-top: 1px solid rgba(212,166,74,0.35);
@@ -213,6 +244,7 @@
     .jumuah-card { grid-template-columns: 1fr; text-align: center; }
     .prayer-grid { grid-template-columns: repeat(2, 1fr); }
     .panel, .prayer-wrap, .donate-band { padding: 22px 18px; }
+    .cform-row { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -232,6 +264,7 @@
       <a href="#about">About</a>
       <a href="#programs">Programs</a>
       <a href="#visit">Visit</a>
+      <a href="#contact">Contact</a>
       <a href="muharram.html">Muharram</a>
       <a class="donate" href="https://icgk.org/donate/" target="_blank" rel="noopener">Donate</a>
     </div>
@@ -384,6 +417,65 @@
   </div>
 </section>
 
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="container">
+    <div class="section-head">
+      <h2>Get in Touch</h2>
+      <div class="sub">Questions, suggestions, or want to get involved? Send us a message.</div>
+      <hr class="star">
+    </div>
+    <div class="panel contact-wrap">
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contact-form" class="cform">
+        <input type="hidden" name="form-name" value="contact">
+        <p class="hp"><label>Please leave this field empty: <input name="bot-field"></label></p>
+        <div class="cform-row">
+          <div class="cfield">
+            <label for="cf-name">Name <span class="req">*</span></label>
+            <input id="cf-name" name="name" type="text" required autocomplete="name" placeholder="Your name">
+          </div>
+          <div class="cfield">
+            <label for="cf-email">Email <span class="req">*</span></label>
+            <input id="cf-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+          </div>
+        </div>
+        <div class="cform-row">
+          <div class="cfield">
+            <label for="cf-phone">Phone <span class="opt">(optional)</span></label>
+            <input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="(254) 000-0000">
+          </div>
+          <div class="cfield">
+            <label for="cf-reason">Reason for contacting</label>
+            <select id="cf-reason" name="reason">
+              <option>General inquiry</option>
+              <option>Membership / Get involved</option>
+              <option>New Muslim support</option>
+              <option>Nikāḥ / Matrimonial</option>
+              <option>Janāzah / Burial</option>
+              <option>Counseling</option>
+              <option>Donations</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="cfield">
+          <label for="cf-message">Message <span class="req">*</span></label>
+          <textarea id="cf-message" name="message" rows="5" required placeholder="How can we help you?"></textarea>
+        </div>
+        <div class="cform-actions">
+          <button type="submit" class="btn btn-primary">✉️ Send Message</button>
+          <span class="cform-status" id="cform-status" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+      <div class="cform-success" id="cform-success" hidden>
+        <div class="ci">✅</div>
+        <h3>Jazākum Allāhu khayran!</h3>
+        <p>Your message has been received, in shā' Allāh we'll get back to you soon.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== DONATE ===== -->
 <section id="donate">
   <div class="container">
@@ -414,6 +506,7 @@
       <a href="#jumuah">Jumu'ah</a>
       <a href="#about">About</a>
       <a href="#programs">Programs</a>
+      <a href="#contact">Contact</a>
       <a href="muharram.html">Muharram</a>
     </div>
     <div>
@@ -573,6 +666,36 @@
     }
     btn.textContent = open ? "Hide monthly schedule ▴" : "View full monthly schedule ▾";
   }
+
+  // ===== Contact form — submit to Netlify via AJAX so the visitor stays on the page =====
+  (function () {
+    var form = document.getElementById("contact-form");
+    if (!form) return;
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var status = document.getElementById("cform-status");
+      var btn = form.querySelector('button[type="submit"]');
+      status.classList.remove("err");
+      status.textContent = "Sending…";
+      btn.disabled = true;
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(new FormData(form)).toString()
+      })
+        .then(function (r) {
+          if (!r.ok) throw new Error("submit failed");
+          form.hidden = true;
+          document.getElementById("cform-success").hidden = false;
+          document.getElementById("cform-success").scrollIntoView({ block: "center" });
+        })
+        .catch(function () {
+          status.classList.add("err");
+          status.innerHTML = 'Couldn\'t send right now — please try again, or reach us on <a href="https://www.facebook.com/Islamic-Community-of-Greater-Killeen-256571815189294/" target="_blank" rel="noopener">Facebook</a>.';
+          btn.disabled = false;
+        });
+    });
+  })();
 
   if (document.readyState !== "loading") buildPrayers();
   else document.addEventListener("DOMContentLoaded", buildPrayers);
