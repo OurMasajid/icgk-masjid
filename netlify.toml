@@ -1,0 +1,17 @@
+# Netlify configuration — Islamic Community of Greater Killeen
+# Static HTML site (no build step). Netlify Forms are detected automatically
+# from the data-netlify form in index.html.
+
+[build]
+  publish = "."
+  # No build command needed — this is plain static HTML.
+  command = ""
+
+# Sensible security headers (these do not affect the external widgets/maps
+# this site embeds — they only apply to our own responses).
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

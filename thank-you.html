@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You — Islamic Community of Greater Killeen</title>
+<meta name="robots" content="noindex">
+<style>
+  :root {
+    --green-dark: #0c2a1f;
+    --green-mid: #11402f;
+    --gold: #d4a64a;
+    --gold-bright: #f0c674;
+    --cream: #f5e9c8;
+    --text: #f8efd6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, rgba(212,166,74,0.10), transparent 60%),
+      linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px; text-align: center;
+  }
+  .card {
+    max-width: 560px;
+    background: rgba(0,0,0,0.28);
+    border: 2px solid var(--gold);
+    border-radius: 18px;
+    padding: 52px 34px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: ""; position: absolute; inset: 8px;
+    border: 1px solid rgba(212,166,74,0.35); border-radius: 12px; pointer-events: none;
+  }
+  .icon { font-size: 4rem; filter: drop-shadow(0 0 14px rgba(240,198,116,0.4)); }
+  .ar { direction: rtl; color: var(--gold-bright); font-size: 1.7rem; margin: 12px 0 4px; }
+  h1 { color: var(--gold); font-size: 2.1rem; margin: 6px 0 10px; }
+  p { color: var(--cream); font-size: 1.12rem; line-height: 1.6; margin-bottom: 28px; }
+  .btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px; border-radius: 999px; text-decoration: none;
+    font-size: 1rem; font-weight: bold; letter-spacing: .5px;
+    border: 1.5px solid var(--gold); transition: transform .15s, background .2s, color .2s;
+  }
+  .btn-primary { background: var(--gold); color: var(--green-dark); }
+  .btn-primary:hover { background: var(--gold-bright); transform: translateY(-2px); }
+  .btn-ghost { color: var(--gold-bright); }
+  .btn-ghost:hover { background: rgba(212,166,74,0.15); transform: translateY(-2px); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">🤲</div>
+    <div class="ar">جَزَاكُمُ ٱللَّٰهُ خَيْرًا</div>
+    <h1>Thank You!</h1>
+    <p>Your message has been received. In shā' Allāh, someone from the Islamic Community of Greater Killeen will get back to you soon.</p>
+    <div class="btns">
+      <a class="btn btn-primary" href="/">← Back to Home</a>
+      <a class="btn btn-ghost" href="/#prayer">Prayer Times</a>
+    </div>
+  </div>
+</body>
+</html>
