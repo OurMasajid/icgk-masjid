@@ -110,10 +110,11 @@
     transition: transform .2s, border-color .2s, box-shadow .2s;
   }
   .pcard .pname { color: var(--gold-bright); font-weight: bold; letter-spacing: 1px; font-size: .95rem; }
-  .pcard .parab { color: var(--muted); font-size: .8rem; direction: rtl; margin-bottom: 8px; min-height: 1em; }
-  .pcard .padhan { color: var(--text); font-size: 1.35rem; line-height: 1.2; }
-  .pcard .piqama { color: var(--muted); font-size: .8rem; margin-top: 6px; }
-  .pcard .piqama b { color: var(--cream); }
+  .pcard .parab { color: var(--muted); font-size: .8rem; direction: rtl; margin-bottom: 10px; min-height: 1em; }
+  .pcard .plabel { color: var(--gold-bright); font-size: .66rem; letter-spacing: 2px; text-transform: uppercase; }
+  .pcard .piqama { color: var(--text); font-size: 1.55rem; line-height: 1.15; }
+  .pcard .padhan { color: var(--muted); font-size: .82rem; margin-top: 6px; }
+  .pcard .padhan b { color: var(--cream); font-weight: normal; }
   .pcard.is-next {
     border-color: var(--gold-bright);
     background: radial-gradient(200px 120px at 50% 0%, rgba(240,198,116,0.18), rgba(0,0,0,0.3));
@@ -121,7 +122,7 @@
     transform: translateY(-4px);
   }
   .pcard.sunrise { opacity: .9; }
-  .pcard.sunrise .piqama { visibility: hidden; }
+  .pcard.sunrise .plabel { visibility: hidden; }
   .prayer-foot { margin-top: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; color: var(--muted); font-size: .85rem; }
   .linkish { background: none; border: none; color: var(--gold-bright); cursor: pointer; font: inherit; text-decoration: underline; padding: 0; }
   .monthly-box { margin-top: 18px; display: none; }
@@ -521,16 +522,24 @@
         grid.innerHTML = "";
         PRAYERS.forEach(function (p) {
           var t = times[p.key];
-          var iqText = "";
-          if (p.iqama && iq[p.iqama]) iqText = '<div class="piqama">Iqāmah <b>' + iq[p.iqama] + "</b></div>";
-          else if (p.key === "sunrise") iqText = '<div class="piqama">—</div>';
           var cls = "pcard" + (p.key === "sunrise" ? " sunrise" : "") + (p.key === nextKey ? " is-next" : "");
+          var label, bigTime, sub;
+          if (p.key === "sunrise") {
+            label = "Sunrise";                 // hidden via CSS, keeps vertical rhythm
+            bigTime = fmt(t);                  // sunrise has no iqāmah — show its time
+            sub = "&nbsp;";
+          } else {
+            label = "Iqāmah";
+            bigTime = (p.iqama && iq[p.iqama]) ? iq[p.iqama] : "—";
+            sub = "Adhan <b>" + fmt(t) + "</b>";
+          }
           grid.innerHTML +=
             '<div class="' + cls + '">' +
               '<div class="pname">' + p.name + "</div>" +
               '<div class="parab">' + p.ar + "</div>" +
-              '<div class="padhan">' + fmt(t) + "</div>" +
-              iqText +
+              '<div class="plabel">' + label + "</div>" +
+              '<div class="piqama">' + bigTime + "</div>" +
+              '<div class="padhan">' + sub + "</div>" +
             "</div>";
         });
 
