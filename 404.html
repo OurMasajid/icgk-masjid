@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found — Islamic Community of Greater Killeen</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-deep:  #0c2a1f;
+      --green-mid:   #11402f;
+      --green-soft:  #16513b;
+      --gold:        #d4a64a;
+      --gold-bright: #f0c674;
+      --gold-deep:   #a07830;
+      --cream:       #f5e9c8;
+      --muted:       #cdbf9a;
+    }
+
+    html { overflow-x: hidden; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background:
+        radial-gradient(1200px 600px at 50% -10%, rgba(212,166,74,0.10), transparent 60%),
+        linear-gradient(135deg, var(--green-deep) 0%, var(--green-mid) 100%);
+      color: var(--cream);
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem 1rem 3.5rem;
+      position: relative;
+    }
+
+    /* ── Islamic geometric tessellation background ── */
+    #geo-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.16;
+    }
+
+    /* ── Radial glow behind content ── */
+    .glow {
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      max-width: 100vw; max-height: 100vw;
+      background: radial-gradient(circle, rgba(212,166,74,0.18) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+      animation: pulse 5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+      50%      { opacity: 1;   transform: translate(-50%, -50%) scale(1.12); }
+    }
+
+    /* ── Main card ── */
+    .card {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 1rem;
+      max-width: 680px;
+      width: 100%;
+      animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Rotating star ornament ── */
+    .star-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+      animation: spin-slow 30s linear infinite;
+    }
+
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* ── 404 number ── */
+    .num-404 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(6rem, 18vw, 10rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0.08em;
+      background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 50%, var(--gold-deep) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.25rem;
+    }
+
+    /* ── Thin divider with star ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1rem auto 1.5rem;
+      max-width: 340px;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .divider span { color: var(--gold); font-size: 1.4rem; line-height: 1; }
+
+    /* ── Arabic ── */
+    .arabic-text {
+      font-family: 'Amiri', serif;
+      font-size: 1.6rem;
+      color: var(--gold-bright);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Headline ── */
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-weight: 600;
+      color: var(--cream);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Body copy ── */
+    p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 440px;
+      margin: 0 auto 2rem;
+    }
+
+    /* ── Actions ── */
+    .actions { display: flex; flex-direction: column; align-items: center; gap: 1.1rem; }
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2.4rem;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
+      color: var(--green-deep);
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+    }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(212,166,74,0.35); }
+    .link-soft {
+      color: var(--gold-bright);
+      font-size: 0.92rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(212,166,74,0.4);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .link-soft:hover { color: var(--cream); border-color: var(--gold-bright); }
+
+    /* ── Footer brand ── */
+    .brand {
+      position: fixed;
+      bottom: 1.6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      color: rgba(212,166,74,0.55);
+      text-transform: uppercase;
+      text-align: center;
+      width: 90%;
+      animation: fadeUp 1.2s 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .glow, .star-wrap, .card, .brand { animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Islamic geometric tessellation background -->
+  <svg id="geo-canvas" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <!-- 8-point star tile -->
+      <pattern id="stars" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+        <polygon points="40,4 56,14 70,28 76,46 70,62 56,72 40,76 24,72 10,62 4,46 10,28 24,14"
+                 fill="none" stroke="#d4a64a" stroke-width="0.8"/>
+        <polygon points="40,14 45,30 60,30 48,40 52,56 40,47 28,56 32,40 20,30 35,30"
+                 fill="none" stroke="#d4a64a" stroke-width="0.6"/>
+        <circle cx="40" cy="40" r="2" fill="#d4a64a" opacity="0.5"/>
+      </pattern>
+
+      <!-- Moroccan lattice tile -->
+      <pattern id="lattice" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+        <rect width="40" height="40" fill="none"/>
+        <polygon points="20,2 38,20 20,38 2,20" fill="none" stroke="#d4a64a" stroke-width="0.5"/>
+        <line x1="20" y1="2" x2="20" y2="38" stroke="#d4a64a" stroke-width="0.3"/>
+        <line x1="2" y1="20" x2="38" y2="20" stroke="#d4a64a" stroke-width="0.3"/>
+      </pattern>
+    </defs>
+
+    <rect width="100%" height="100%" fill="url(#stars)" />
+    <rect width="100%" height="100%" fill="url(#lattice)" opacity="0.35"/>
+  </svg>
+
+  <div class="glow"></div>
+
+  <main class="card">
+
+    <!-- Rotating 8-pointed star ornament -->
+    <div class="star-wrap" aria-hidden="true">
+      <svg width="52" height="52" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="#d4a64a" stroke-width="1.5">
+          <rect x="11" y="11" width="30" height="30" transform="rotate(0 26 26)"/>
+          <rect x="11" y="11" width="30" height="30" transform="rotate(45 26 26)"/>
+          <circle cx="26" cy="26" r="5" fill="#d4a64a" opacity="0.6"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="num-404">404</div>
+
+    <div class="divider" aria-hidden="true"><span>✦</span></div>
+
+    <div class="arabic-text" lang="ar" dir="rtl">الصفحة غير موجودة</div>
+
+    <h1>Page Not Found</h1>
+
+    <p>
+      The page you are looking for may have been moved, renamed, or no longer exists.
+      Return to the ICGK homepage and we will guide you from there, in shā' Allāh.
+    </p>
+
+    <div class="actions">
+      <a class="btn" href="/">Return Home</a>
+      <a class="link-soft" href="/#prayer">View Prayer Times →</a>
+    </div>
+
+  </main>
+
+  <div class="brand">Islamic Community of Greater Killeen &nbsp;·&nbsp; ICGK</div>
+
+</body>
+</html>
