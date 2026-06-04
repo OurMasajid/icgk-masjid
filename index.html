@@ -115,7 +115,7 @@
   .pcard .piqama { color: var(--text); font-size: 1.55rem; line-height: 1.15; }
   .pcard .padhan { color: var(--muted); font-size: .82rem; margin-top: 6px; }
   .pcard .padhan b { color: var(--cream); font-weight: normal; }
-  .pcard.is-next {
+  .pcard.is-active {
     border-color: var(--gold-bright);
     background: radial-gradient(200px 120px at 50% 0%, rgba(240,198,116,0.18), rgba(0,0,0,0.3));
     box-shadow: 0 0 0 1px var(--gold-bright) inset, 0 8px 28px rgba(0,0,0,0.4);
@@ -537,6 +537,9 @@
     { key: "isha",    name: "Isha",    ar: "العشاء",  iqama: "Esha_Iqamah" }
   ];
 
+  // Keep the current prayer highlighted until 20 minutes before the next adhan.
+  var HIGHLIGHT_LEAD_MS = 20 * 60 * 1000;
+
   document.getElementById("year").textContent = new Date().getFullYear();
 
   function fmt(date) {
@@ -600,52 +603,77 @@
         var times = new adhan.PrayerTimes(coordinates, today, params);
         var iq = iqamaFor(data["Daily Prayer"]["data"], today);
 
-        // Determine the next upcoming prayer today
-        var now = new Date();
-        var nextKey = null;
-        for (var i = 0; i < PRAYERS.length; i++) {
-          var k = PRAYERS[i].key;
-          if (k === "sunrise") continue;
-          if (times[k] > now) { nextKey = k; break; }
-        }
-
+        // Re-evaluate the highlight and countdown on a timer so a page left open
+        // (e.g. on a display at the masjid) stays current through the day.
         var grid = document.getElementById("prayer-grid");
-        grid.innerHTML = "";
-        PRAYERS.forEach(function (p) {
-          var t = times[p.key];
-          var cls = "pcard" + (p.key === "sunrise" ? " sunrise" : "") + (p.key === nextKey ? " is-next" : "");
-          var label, bigTime, sub;
-          if (p.key === "sunrise") {
-            label = "Sunrise";                 // hidden via CSS, keeps vertical rhythm
-            bigTime = fmt(t);                  // sunrise has no iqāmah — show its time
-            sub = "&nbsp;";
-          } else {
-            label = "Iqāmah";
-            bigTime = (p.iqama && iq[p.iqama]) ? iq[p.iqama] : "—";
-            sub = "Adhan <b>" + fmt(t) + "</b>";
-          }
-          grid.innerHTML +=
-            '<div class="' + cls + '">' +
-              '<div class="pname">' + p.name + "</div>" +
-              '<div class="parab">' + p.ar + "</div>" +
-              '<div class="plabel">' + label + "</div>" +
-              '<div class="piqama">' + bigTime + "</div>" +
-              '<div class="padhan">' + sub + "</div>" +
-            "</div>";
-        });
-
         var nextEl = document.getElementById("next-prayer");
-        if (nextKey) {
-          var np = PRAYERS.filter(function (p) { return p.key === nextKey; })[0];
-          var mins = Math.round((times[nextKey] - now) / 60000);
-          var h = Math.floor(mins / 60), m = mins % 60;
-          var inTxt = (h > 0 ? h + "h " : "") + m + "m";
-          nextEl.textContent = "Next: " + np.name + " in " + inTxt;
-          nextEl.style.display = "";
-        } else {
-          nextEl.textContent = "Fajr tomorrow, in shā' Allāh";
+
+        function render() {
+          var now = new Date();
+
+          // Next upcoming prayer today (sunrise has no iqāmah, so skip it)
+          var nextKey = null;
+          for (var i = 0; i < PRAYERS.length; i++) {
+            var k = PRAYERS[i].key;
+            if (k === "sunrise") continue;
+            if (times[k] > now) { nextKey = k; break; }
+          }
+
+          // Current prayer = the most recent one whose adhan has already passed.
+          // Before Fajr, the active prayer is the previous night's Isha.
+          var currentKey = null;
+          for (var c = 0; c < PRAYERS.length; c++) {
+            var ck = PRAYERS[c].key;
+            if (ck === "sunrise") continue;
+            if (times[ck] <= now) currentKey = ck;
+          }
+          if (!currentKey) currentKey = "isha";
+
+          // Stay on the current prayer until 20 min before the next adhan,
+          // then move the highlight to the next prayer.
+          var highlightKey = currentKey;
+          if (nextKey && (times[nextKey] - now) <= HIGHLIGHT_LEAD_MS) {
+            highlightKey = nextKey;
+          }
+
+          grid.innerHTML = "";
+          PRAYERS.forEach(function (p) {
+            var t = times[p.key];
+            var cls = "pcard" + (p.key === "sunrise" ? " sunrise" : "") + (p.key === highlightKey ? " is-active" : "");
+            var label, bigTime, sub;
+            if (p.key === "sunrise") {
+              label = "Sunrise";                 // hidden via CSS, keeps vertical rhythm
+              bigTime = fmt(t);                  // sunrise has no iqāmah — show its time
+              sub = "&nbsp;";
+            } else {
+              label = "Iqāmah";
+              bigTime = (p.iqama && iq[p.iqama]) ? iq[p.iqama] : "—";
+              sub = "Adhan <b>" + fmt(t) + "</b>";
+            }
+            grid.innerHTML +=
+              '<div class="' + cls + '">' +
+                '<div class="pname">' + p.name + "</div>" +
+                '<div class="parab">' + p.ar + "</div>" +
+                '<div class="plabel">' + label + "</div>" +
+                '<div class="piqama">' + bigTime + "</div>" +
+                '<div class="padhan">' + sub + "</div>" +
+              "</div>";
+          });
+
+          if (nextKey) {
+            var np = PRAYERS.filter(function (p) { return p.key === nextKey; })[0];
+            var mins = Math.round((times[nextKey] - now) / 60000);
+            var h = Math.floor(mins / 60), m = mins % 60;
+            var inTxt = (h > 0 ? h + "h " : "") + m + "m";
+            nextEl.textContent = "Next: " + np.name + " in " + inTxt;
+          } else {
+            nextEl.textContent = "Fajr tomorrow, in shā' Allāh";
+          }
           nextEl.style.display = "";
         }
+
+        render();
+        setInterval(render, 30000);
       })
       .catch(function () {
         renderError("Couldn't load live prayer times right now.");
