@@ -92,6 +92,13 @@
   }
   .res-card.soon .tag { background: rgba(212,166,74,0.25); color: var(--gold-bright); }
 
+  /* ---------- Category headings ---------- */
+  .res-cat { margin: 38px 0 16px; }
+  .res-cat:first-of-type { margin-top: 8px; }
+  .res-cat h2 { color: var(--gold); font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
+  .res-cat .line { flex: 1; height: 1px; background: rgba(212,166,74,0.3); }
+  .res-cat p { color: var(--muted); font-size: .92rem; margin-top: 2px; }
+
   /* ---------- Footer ---------- */
   footer {
     border-top: 1px solid rgba(212,166,74,0.35);
@@ -156,51 +163,175 @@
 <!-- ===== RESOURCE CARDS ===== -->
 <section>
   <div class="container">
-    <div class="res-grid">
 
-      <a class="res-card" href="what-is-islam.html">
-        <div class="ri">📖</div>
-        <h3>What Is Islam?</h3>
-        <p>A clear, welcoming introduction to Islam — what Muslims believe, the Five Pillars, and the message of the Prophets, peace be upon them.</p>
-        <span class="go">Read more →</span>
-      </a>
-
-      <a class="res-card" href="new-to-islam.html">
-        <div class="ri">🕌</div>
-        <h3>New to Islam?</h3>
-        <p>A step-by-step guide for new Muslims — how to take your shahādah, learn to pray, and find support in our community.</p>
-        <span class="go">Read more →</span>
-      </a>
-
-      <a class="res-card" href="how-to-pray.html">
-        <div class="ri">🤲</div>
-        <h3>How to Pray (Ṣalāh)</h3>
-        <p>A simple, step-by-step walkthrough of wuḍū' and the five daily prayers.</p>
-        <span class="go">Read more →</span>
-      </a>
-
-      <a class="res-card" href="ramadan.html">
-        <div class="ri">🌑</div>
-        <h3>Ramadan Guide</h3>
-        <p>Fasting, Taraweeh, Laylat al-Qadr, and Zakat al-Fitr — everything to make the most of the blessed month.</p>
-        <span class="go">Read more →</span>
-      </a>
-
-      <a class="res-card" href="hajj.html">
-        <div class="ri">🕋</div>
-        <h3>Hajj &amp; Umrah</h3>
-        <p>An overview of the pilgrimage to Makkah — the rites, the preparation, and its place in a Muslim's life.</p>
-        <span class="go">Read more →</span>
-      </a>
-
-      <a class="res-card" href="muharram.html">
-        <div class="ri">🌙</div>
-        <h3>Muharram &amp; Ashura</h3>
-        <p>The Month of Allah: its sacredness, the blessings of fasting, the Day of Ashura, and what to do this Hijri new year.</p>
-        <span class="go">Read more →</span>
-      </a>
-
+    <!-- Start Here -->
+    <div class="res-cat">
+      <h2>🌱 Start Here <span class="line"></span></h2>
+      <p>New to Islam, or just curious? Begin with these.</p>
     </div>
+    <div class="res-grid">
+      <a class="res-card" href="what-is-islam.html">
+        <div class="ri">📖</div><h3>What Is Islam?</h3>
+        <p>A clear, welcoming introduction — what Muslims believe, the Five Pillars, and the message of the Prophets.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="res-card" href="new-to-islam.html">
+        <div class="ri">🕌</div><h3>New to Islam?</h3>
+        <p>A step-by-step guide for new Muslims — taking your shahādah, learning to pray, and finding support.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="res-card" href="first-year.html">
+        <div class="ri">📈</div><h3>Your First Year</h3>
+        <p>A gentle, month-by-month roadmap for growing in your new faith at your own pace.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="res-card" href="faq.html">
+        <div class="ri">❓</div><h3>FAQ About Islam</h3>
+        <p>Honest answers to the questions we hear most — for neighbors, friends, and the curious.</p>
+        <span class="go">Read more →</span>
+      </a>
+    </div>
+
+    <!-- Worship & Practice -->
+    <div class="res-cat">
+      <h2>🤲 Worship &amp; Practice <span class="line"></span></h2>
+      <p>The how-to of daily Islamic life.</p>
+    </div>
+    <div class="res-grid">
+      <a class="res-card" href="how-to-pray.html">
+        <div class="ri">🤲</div><h3>How to Pray (Ṣalāh)</h3>
+        <p>A step-by-step walkthrough of the five daily prayers, with Arabic and transliteration.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="res-card" href="wudu.html">
+        <div class="ri">💧</div><h3>Wuḍū' &amp; Ghusl</h3>
+        <p>How to perform ablution and the full ritual bath — and what breaks them.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="res-card" href="quran.html">
+        <div class="ri">📖</div><h3>The Qur'an</h3>
+        <p>What the Qur'an is, how to start reading, recommended translations, and its etiquette.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="res-card" href="dua-dhikr.html">
+        <div class="ri">📿</div><h3>Du'ā &amp; Dhikr</h3>
+        <p>Everyday supplications and the remembrance of Allah — morning and evening adhkār.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="res-card" href="zakat.html">
+        <div class="ri">💰</div><h3>Zakāt</h3>
+        <p>The third pillar — who pays, the niṣāb, how to calculate 2.5%, and who can receive it.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="res-card" href="voluntary-fasting.html">
+        <div class="ri">🌙</div><h3>Fasting Beyond Ramadan</h3>
+        <p>The Sunnah fasts — Mondays &amp; Thursdays, the white days, Arafah, Ashura, and Shawwāl.</p>
+        <span class="go">Read more →</span>
+      </a>
+    </div>
+
+    <!-- The Islamic Year -->
+    <div class="res-cat">
+      <h2>🗓️ The Islamic Year <span class="line"></span></h2>
+      <p>The blessed months, seasons, and holy days.</p>
+    </div>
+    <div class="res-grid">
+      <a class="res-card" href="ramadan.html">
+        <div class="ri">🌑</div><h3>Ramadan Guide</h3>
+        <p>Fasting, Taraweeh, Laylat al-Qadr, and Zakāt al-Fiṭr — making the most of the month.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="res-card" href="eid.html">
+        <div class="ri">🎉</div><h3>The Two Eids</h3>
+        <p>Eid al-Fiṭr and Eid al-Adḥā — the Eid prayer, Qurbānī, and the sunnahs of the day.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="res-card" href="dhul-hijjah.html">
+        <div class="ri">⭐</div><h3>Dhul-Hijjah</h3>
+        <p>The best ten days of the year, the Day of Arafah, and what to do if you're not on Hajj.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="res-card" href="hajj.html">
+        <div class="ri">🕋</div><h3>Hajj &amp; Umrah</h3>
+        <p>The pilgrimage to Makkah — the rites, the preparation, and its place in a Muslim's life.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="res-card" href="muharram.html">
+        <div class="ri">🌙</div><h3>Muharram &amp; Ashura</h3>
+        <p>The Month of Allah: its sacredness, the Day of Ashura, and the Hijri new year.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="res-card" href="islamic-calendar.html">
+        <div class="ri">📅</div><h3>The Islamic Calendar</h3>
+        <p>The twelve lunar months, the four sacred months, and how dates are set by the moon.</p>
+        <span class="go">Read more →</span>
+      </a>
+    </div>
+
+    <!-- Belief & Character -->
+    <div class="res-cat">
+      <h2>🌟 Belief &amp; Character <span class="line"></span></h2>
+      <p>The foundations of faith and how to live it.</p>
+    </div>
+    <div class="res-grid">
+      <a class="res-card" href="seerah.html">
+        <div class="ri">🌟</div><h3>The Prophet Muhammad ﷺ</h3>
+        <p>His life, his character, and his message — the example every Muslim strives to follow.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="res-card" href="prophets.html">
+        <div class="ri">📜</div><h3>The Prophets of Islam</h3>
+        <p>From Adam to Muhammad ﷺ — one message through many messengers, including Musa and Isa.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="res-card" href="akhlaq.html">
+        <div class="ri">🤝</div><h3>Manners &amp; Character</h3>
+        <p>Honesty, kindness to parents and neighbors, good speech — the heart of faith.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="res-card" href="hijab.html">
+        <div class="ri">🧕</div><h3>Modesty &amp; Dress</h3>
+        <p>The meaning of ḥijāb and ḥayā' for women and men, and why Muslims dress modestly.</p>
+        <span class="go">Read more →</span>
+      </a>
+    </div>
+
+    <!-- Life & Living -->
+    <div class="res-cat">
+      <h2>🏡 Life &amp; Living <span class="line"></span></h2>
+      <p>Islam in everyday life and its milestones.</p>
+    </div>
+    <div class="res-grid">
+      <a class="res-card" href="halal.html">
+        <div class="ri">🍽️</div><h3>Halal Eating</h3>
+        <p>What's ḥalāl and ḥarām, reading labels, and eating out with confidence.</p>
+        <span class="go">Read more →</span>
+      </a>
+      <a class="res-card" href="life-events.html">
+        <div class="ri">🕊️</div><h3>Life Events</h3>
+        <p>Nikāḥ (marriage), Janāzah (funerals), and Aqīqah (welcoming a newborn).</p>
+        <span class="go">Read more →</span>
+      </a>
+    </div>
+
+    <!-- Tools & Reference -->
+    <div class="res-cat">
+      <h2>🧭 Tools &amp; Reference <span class="line"></span></h2>
+      <p>Handy utilities and quick lookups.</p>
+    </div>
+    <div class="res-grid">
+      <a class="res-card" href="tools.html">
+        <div class="ri">🧭</div><h3>Qibla &amp; Date Tools</h3>
+        <p>Find the Qibla direction from your location and convert Gregorian dates to Hijri.</p>
+        <span class="go">Open tools →</span>
+      </a>
+      <a class="res-card" href="glossary.html">
+        <div class="ri">📚</div><h3>Glossary</h3>
+        <p>A searchable list of common Arabic and Islamic terms used across the site.</p>
+        <span class="go">Read more →</span>
+      </a>
+    </div>
+
   </div>
 </section>
 

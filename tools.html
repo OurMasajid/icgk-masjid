@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qibla &amp; Date Tools — Islamic Community of Greater Killeen</title>
+<meta name="description" content="Handy Islamic tools — find the Qibla direction from your location and convert between Gregorian and Hijri dates. From the Islamic Community of Greater Killeen.">
+<link rel="stylesheet" href="resource.css">
+</head>
+<body>
+<div class="container">
+
+  <a class="back" href="resources.html">← Back to Resources</a>
+
+  <header>
+    <div class="moon">🧭</div>
+    <div class="small">Handy Tools</div>
+    <h1>Qibla &amp; Date Tools</h1>
+    <div class="arabic">أَدَوَات</div>
+    <div class="sub">Direction &amp; Calendar</div>
+  </header>
+
+  <!-- Qibla -->
+  <section class="tool">
+    <h2 class="center"><span class="badge">🧭</span> Qibla Finder</h2>
+    <p>Find the direction of the Kaʿbah in Makkah from where you are. Tap below to use your location.</p>
+    <div class="compass">
+      <div class="kaaba">🕋</div>
+      <div class="needle" id="needle"></div>
+    </div>
+    <div class="readout" id="qibla-readout">— <small>° from North</small></div>
+    <p class="hint" id="qibla-hint">Align the top of the dial with North (use a compass), and the needle points to the Qibla.</p>
+    <div style="margin-top:14px">
+      <button class="btn btn-primary" id="qibla-btn" type="button">📍 Use My Location</button>
+    </div>
+  </section>
+
+  <!-- Today's date -->
+  <section class="tool">
+    <h2 class="center"><span class="badge">🗓️</span> Today's Date</h2>
+    <div class="readout" id="hijri-today">…</div>
+    <p class="hint" id="greg-today"></p>
+  </section>
+
+  <!-- Converter -->
+  <section>
+    <h2><span class="badge">🔄</span> Gregorian → Hijri Converter</h2>
+    <p>Pick any Gregorian date to see its Islamic (Hijri) date.</p>
+    <p style="margin-top:10px">
+      <input type="date" id="conv-input" class="glossary-search" style="max-width:260px; cursor:pointer">
+    </p>
+    <div class="readout" id="conv-output" style="font-size:1.6rem">—</div>
+    <p class="hint">Hijri dates are approximate (calculated by the Umm al-Qura calendar) and may differ by a day from the official moon sighting.</p>
+  </section>
+
+  <section class="cta-band">
+    <h2 class="center"><span class="badge">🕌</span> Need Prayer Times?</h2>
+    <p>For daily prayer times in Killeen, see our homepage.</p>
+    <div style="margin-top:18px">
+      <a class="btn btn-primary" href="index.html#prayer">🕌 Prayer Times</a>
+      <a class="btn btn-ghost" href="islamic-calendar.html">🌙 The Islamic Calendar</a>
+    </div>
+  </section>
+
+  <footer>
+    <span class="name">Islamic Community of Greater Killeen</span>
+    <p class="dua">May Allah accept our prayers, wherever we turn to face Him. Āmīn.</p>
+    <p class="note">Tools are for convenience — confirm important dates with your local masjid &nbsp;•&nbsp; icgk.org</p>
+  </footer>
+
+</div>
+
+<script>
+  // ----- Hijri date (Umm al-Qura via Intl) -----
+  function hijri(date) {
+    try {
+      return new Intl.DateTimeFormat("en-US-u-ca-islamic-umalqura",
+        { day: "numeric", month: "long", year: "numeric", era: "short" }).format(date);
+    } catch (e) {
+      return new Intl.DateTimeFormat("en-US-u-ca-islamic",
+        { day: "numeric", month: "long", year: "numeric", era: "short" }).format(date);
+    }
+  }
+  function gregLong(date) {
+    return date.toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
+  }
+
+  var today = new Date();
+  document.getElementById("hijri-today").textContent = hijri(today);
+  document.getElementById("greg-today").textContent = "🗓️ " + gregLong(today);
+
+  // ----- Converter -----
+  var convInput = document.getElementById("conv-input");
+  var convOutput = document.getElementById("conv-output");
+  function pad(n){ return (n<10?"0":"")+n; }
+  convInput.value = today.getFullYear() + "-" + pad(today.getMonth()+1) + "-" + pad(today.getDate());
+  function doConvert() {
+    var parts = convInput.value.split("-");
+    if (parts.length !== 3) { convOutput.textContent = "—"; return; }
+    // noon to avoid timezone edge cases
+    var d = new Date(parseInt(parts[0],10), parseInt(parts[1],10)-1, parseInt(parts[2],10), 12, 0, 0);
+    convOutput.textContent = hijri(d);
+  }
+  convInput.addEventListener("change", doConvert);
+  doConvert();
+
+  // ----- Qibla -----
+  var KAABA_LAT = 21.4225, KAABA_LON = 39.8262;
+  function toRad(d){ return d * Math.PI / 180; }
+  function toDeg(r){ return r * 180 / Math.PI; }
+  function qiblaBearing(lat, lon) {
+    var dLon = toRad(KAABA_LON - lon);
+    var y = Math.sin(dLon) * Math.cos(toRad(KAABA_LAT));
+    var x = Math.cos(toRad(lat)) * Math.sin(toRad(KAABA_LAT)) -
+            Math.sin(toRad(lat)) * Math.cos(toRad(KAABA_LAT)) * Math.cos(dLon);
+    var brng = toDeg(Math.atan2(y, x));
+    return (brng + 360) % 360;
+  }
+  var btn = document.getElementById("qibla-btn");
+  var readout = document.getElementById("qibla-readout");
+  var hint = document.getElementById("qibla-hint");
+  var needle = document.getElementById("needle");
+  btn.addEventListener("click", function () {
+    if (!navigator.geolocation) { hint.textContent = "Geolocation isn't available in this browser."; return; }
+    readout.innerHTML = "Locating… <small></small>";
+    navigator.geolocation.getCurrentPosition(function (pos) {
+      var b = qiblaBearing(pos.coords.latitude, pos.coords.longitude);
+      var deg = Math.round(b);
+      readout.innerHTML = deg + " <small>° from North (clockwise)</small>";
+      needle.style.transform = "translate(-50%, -100%) rotate(" + deg + "deg)";
+      hint.textContent = "Face North, then turn " + deg + "° clockwise to face the Qibla.";
+    }, function () {
+      hint.textContent = "Couldn't get your location. Please allow location access and try again.";
+      readout.innerHTML = "— <small>° from North</small>";
+    });
+  });
+</script>
+</body>
+</html>

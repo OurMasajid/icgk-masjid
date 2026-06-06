@@ -163,7 +163,7 @@
 
   /* ---------- Resources (front-page teaser) ---------- */
   #resources { scroll-margin-top: 70px; }
-  .res-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  .res-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
   a.res-link {
     display: flex; align-items: center; gap: 14px; text-decoration: none;
     background: var(--panel); border: 1px solid rgba(212,166,74,0.4); border-radius: 12px;
@@ -248,6 +248,7 @@
     .prayer-grid { grid-template-columns: repeat(3, 1fr); }
     .foot-grid { grid-template-columns: 1fr 1fr; }
     .foot-brand { grid-column: 1 / -1; }
+    .res-links { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 640px) {
     .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; background: rgba(8,26,19,0.98); padding: 10px 16px 16px; border-bottom: 1px solid rgba(212,166,74,0.35); }
@@ -260,6 +261,7 @@
     .prayer-grid { grid-template-columns: repeat(2, 1fr); }
     .panel, .prayer-wrap, .donate-band { padding: 22px 18px; }
     .cform-row { grid-template-columns: 1fr; }
+    .res-links { grid-template-columns: 1fr; }
   }
 </style>
 </head>
