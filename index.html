@@ -161,6 +161,21 @@
   .feature h3 { color: var(--gold-bright); font-size: 1.1rem; margin-bottom: 4px; }
   .feature p { color: var(--muted); font-size: .92rem; }
 
+  /* ---------- Resources (front-page teaser) ---------- */
+  #resources { scroll-margin-top: 70px; }
+  .res-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  a.res-link {
+    display: flex; align-items: center; gap: 14px; text-decoration: none;
+    background: var(--panel); border: 1px solid rgba(212,166,74,0.4); border-radius: 12px;
+    padding: 16px 18px; transition: transform .2s, border-color .2s, box-shadow .2s;
+  }
+  a.res-link:hover { transform: translateY(-3px); border-color: var(--gold-bright); box-shadow: 0 10px 26px rgba(0,0,0,0.35); }
+  a.res-link .ri { font-size: 1.7rem; line-height: 1; }
+  a.res-link h3 { color: var(--gold-bright); font-size: 1.05rem; margin: 0; }
+  a.res-link .arrow { margin-left: auto; color: var(--gold); font-size: 1.1rem; transition: transform .2s; }
+  a.res-link:hover .arrow { transform: translateX(3px); }
+  .res-more { text-align: center; margin-top: 22px; }
+
   /* ---------- Visit ---------- */
   .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch; }
   .visit-info { display: flex; flex-direction: column; justify-content: center; }
@@ -263,9 +278,9 @@
       <a href="#jumuah">Jumu'ah</a>
       <a href="#about">About</a>
       <a href="#programs">Programs</a>
+      <a href="#resources">Resources</a>
       <a href="#visit">Visit</a>
       <a href="#contact">Contact</a>
-      <a href="resources.html">Resources</a>
       <a class="donate" href="https://app.autobooks.co/pay/icgk" target="_blank" rel="noopener">Donate</a>
     </div>
   </div>
@@ -375,6 +390,28 @@
       <div class="feature"><div class="fi">🕊️</div><h3>Interfaith Relations</h3><p>Building bridges of understanding with our neighbors.</p></div>
       <div class="feature"><div class="fi">🤲</div><h3>Janāzah &amp; Burial</h3><p>Funeral prayers and burial assistance for families in need.</p></div>
       <div class="feature"><div class="fi">🪪</div><h3>Membership</h3><p>Join ICGK and help shape the future of our community.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESOURCES ===== -->
+<section id="resources">
+  <div class="container">
+    <div class="section-head">
+      <h2>Resources</h2>
+      <div class="sub">Learn about Islam, the sacred months, and the path of faith</div>
+      <hr class="star">
+    </div>
+    <div class="res-links">
+      <a class="res-link" href="what-is-islam.html"><span class="ri">📖</span><h3>What Is Islam?</h3><span class="arrow">→</span></a>
+      <a class="res-link" href="new-to-islam.html"><span class="ri">🕌</span><h3>New to Islam?</h3><span class="arrow">→</span></a>
+      <a class="res-link" href="how-to-pray.html"><span class="ri">🤲</span><h3>How to Pray (Ṣalāh)</h3><span class="arrow">→</span></a>
+      <a class="res-link" href="ramadan.html"><span class="ri">🌑</span><h3>Ramadan Guide</h3><span class="arrow">→</span></a>
+      <a class="res-link" href="hajj.html"><span class="ri">🕋</span><h3>Hajj &amp; Umrah</h3><span class="arrow">→</span></a>
+      <a class="res-link" href="muharram.html"><span class="ri">🌙</span><h3>Muharram &amp; Ashura</h3><span class="arrow">→</span></a>
+    </div>
+    <div class="res-more">
+      <a class="btn btn-primary" href="resources.html">Browse all resources →</a>
     </div>
   </div>
 </section>
@@ -504,8 +541,8 @@
       <a href="#jumuah">Jumu'ah</a>
       <a href="#about">About</a>
       <a href="#programs">Programs</a>
+      <a href="#resources">Resources</a>
       <a href="#contact">Contact</a>
-      <a href="resources.html">Resources</a>
     </div>
     <div>
       <h4>Connect</h4>
