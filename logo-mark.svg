@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400" role="img" aria-label="ICGK">
+  <title>ICGK — Islamic Community of Greater Killeen</title>
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6d488"/>
+      <stop offset="0.5" stop-color="#e3b85e"/>
+      <stop offset="1" stop-color="#c8923a"/>
+    </linearGradient>
+    <linearGradient id="goldText" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6d488"/>
+      <stop offset="1" stop-color="#d4a64a"/>
+    </linearGradient>
+    <path id="markFrame" d="
+      M250,58
+      C328,68 394,120 408,160
+      C416,181 436,185 436,200
+      C436,215 416,219 408,240
+      C394,280 328,332 250,342
+      C172,332 106,280 92,240
+      C84,219 64,215 64,200
+      C64,185 84,181 92,160
+      C106,120 172,68 250,58 Z"/>
+  </defs>
+
+  <use href="#markFrame" fill="none" stroke="url(#gold)" stroke-width="8"/>
+  <use href="#markFrame" fill="none" stroke="url(#gold)" stroke-width="2.5" opacity="0.85"
+       transform="translate(250 200) scale(0.9) translate(-250 -200)"/>
+  <circle cx="250" cy="50" r="5" fill="url(#gold)"/>
+  <circle cx="250" cy="350" r="5" fill="url(#gold)"/>
+
+  <text x="250" y="232" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif" font-size="118" font-weight="700"
+        letter-spacing="6" fill="url(#goldText)">ICGK</text>
+</svg>

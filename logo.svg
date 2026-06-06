@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" role="img" aria-label="Islamic Community of Greater Killeen">
+  <title>Islamic Community of Greater Killeen</title>
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6d488"/>
+      <stop offset="0.5" stop-color="#e3b85e"/>
+      <stop offset="1" stop-color="#c8923a"/>
+    </linearGradient>
+    <linearGradient id="goldText" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6d488"/>
+      <stop offset="1" stop-color="#d4a64a"/>
+    </linearGradient>
+    <!-- ornate horizontal cartouche frame -->
+    <path id="frame" d="
+      M250,108
+      C328,118 394,170 408,210
+      C416,231 436,235 436,250
+      C436,265 416,269 408,290
+      C394,330 328,382 250,392
+      C172,382 106,330 92,290
+      C84,269 64,265 64,250
+      C64,235 84,231 92,210
+      C106,170 172,118 250,108 Z"/>
+  </defs>
+
+  <!-- double gold outline -->
+  <use href="#frame" fill="none" stroke="url(#gold)" stroke-width="7"/>
+  <use href="#frame" fill="none" stroke="url(#gold)" stroke-width="2.5" opacity="0.85"
+       transform="translate(250 250) scale(0.9) translate(-250 -250)"/>
+
+  <!-- corner finials -->
+  <g fill="url(#gold)">
+    <circle cx="250" cy="100" r="4.5"/>
+    <circle cx="250" cy="400" r="4.5"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="250" y="252" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif" font-size="92" font-weight="700"
+        letter-spacing="6" fill="url(#goldText)">ICGK</text>
+
+  <!-- subtitle -->
+  <text x="250" y="292" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif" font-size="16.5"
+        letter-spacing="3.2" fill="#e3c98a">ISLAMIC COMMUNITY OF GREATER KILLEEN</text>
+</svg>
