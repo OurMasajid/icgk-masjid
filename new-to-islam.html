@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New to Islam? — Islamic Community of Greater Killeen</title>
+<meta name="description" content="A welcoming step-by-step guide for new Muslims — how to take your shahādah, learn to pray, and find support at the Islamic Community of Greater Killeen.">
+<style>
+  :root {
+    --green-dark: #0c2a1f;
+    --green-mid: #11402f;
+    --gold: #d4a64a;
+    --gold-bright: #f0c674;
+    --cream: #f5e9c8;
+    --text: #f8efd6;
+    --muted: #cdbf9a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, rgba(212,166,74,0.10), transparent 60%),
+      linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
+    background-attachment: fixed;
+    color: var(--text);
+    min-height: 100vh;
+    padding: 24px 16px 64px;
+    line-height: 1.65;
+  }
+  .container { max-width: 920px; margin: 0 auto; }
+
+  .back { display: inline-block; margin-bottom: 18px; color: var(--gold-bright); text-decoration: none; font-size: .92rem; letter-spacing: .5px; }
+  .back:hover { color: var(--gold); }
+
+  /* ---------- Header ---------- */
+  header {
+    position: relative;
+    text-align: center;
+    padding: 44px 20px 38px;
+    border: 2px solid var(--gold);
+    border-radius: 18px;
+    background:
+      radial-gradient(600px 300px at 50% 0%, rgba(212,166,74,0.12), transparent 70%),
+      rgba(0,0,0,0.28);
+    margin-bottom: 26px;
+    overflow: hidden;
+  }
+  header::before {
+    content: "";
+    position: absolute; inset: 8px;
+    border: 1px solid rgba(212,166,74,0.35);
+    border-radius: 12px;
+    pointer-events: none;
+  }
+  .moon { font-size: 2.6rem; line-height: 1; filter: drop-shadow(0 0 12px rgba(240,198,116,0.5)); }
+  header .small { color: var(--gold-bright); font-size: 0.95rem; letter-spacing: 4px; text-transform: uppercase; margin-top: 10px; }
+  header h1 { color: var(--gold); font-size: 3rem; margin: 6px 0 2px; letter-spacing: 1px; text-shadow: 0 2px 18px rgba(0,0,0,0.4); }
+  .arabic { font-size: 2rem; color: var(--gold-bright); margin: 6px 0; direction: rtl; line-height: 1.4; }
+  header .sub { color: var(--cream); letter-spacing: 4px; margin-top: 6px; font-size: 1rem; text-transform: uppercase; }
+
+  /* ---------- Quick facts ---------- */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 26px;
+  }
+  .card {
+    background: rgba(0,0,0,0.3);
+    border: 1.5px solid var(--gold);
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.35); border-color: var(--gold-bright); }
+  .card .icon { font-size: 1.9rem; color: var(--gold-bright); min-width: 40px; text-align: center; }
+  .card .label { color: var(--gold-bright); font-weight: bold; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; display: block; }
+  .card .value { color: var(--text); font-size: 1.05rem; }
+
+  /* ---------- Sections ---------- */
+  section {
+    background: rgba(0,0,0,0.25);
+    border: 1.5px solid var(--gold);
+    border-radius: 12px;
+    padding: 28px 30px;
+    margin-bottom: 22px;
+  }
+  section h2 { color: var(--gold); font-size: 1.7rem; margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
+  section h2 .badge { font-size: 1.5rem; }
+  section h3 { color: var(--gold-bright); font-size: 1.2rem; margin: 18px 0 6px; }
+  section p { margin-bottom: 12px; color: var(--text); }
+  section p:last-child { margin-bottom: 0; }
+  .lead { font-size: 1.12rem; color: var(--cream); }
+
+  ul.clean { list-style: none; margin: 8px 0; }
+  ul.clean li { position: relative; padding: 8px 0 8px 30px; border-bottom: 1px solid rgba(212,166,74,0.15); }
+  ul.clean li:last-child { border-bottom: none; }
+  ul.clean li::before { content: "✦"; position: absolute; left: 4px; top: 8px; color: var(--gold-bright); }
+  ul.clean b { color: var(--gold-bright); }
+
+  /* Quote blocks */
+  blockquote {
+    border-left: 3px solid var(--gold);
+    background: rgba(212,166,74,0.07);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-style: italic;
+    color: var(--cream);
+  }
+  blockquote .src { display: block; margin-top: 8px; font-style: normal; font-size: 0.85rem; color: var(--muted); letter-spacing: 1px; }
+
+  /* Numbered steps */
+  ol.steps { list-style: none; counter-reset: step; margin: 8px 0; }
+  ol.steps li {
+    position: relative; padding: 10px 0 10px 50px; counter-increment: step;
+    border-bottom: 1px solid rgba(212,166,74,0.15);
+  }
+  ol.steps li:last-child { border-bottom: none; }
+  ol.steps li::before {
+    content: counter(step);
+    position: absolute; left: 0; top: 10px;
+    width: 34px; height: 34px; line-height: 34px; text-align: center;
+    background: var(--gold); color: var(--green-dark);
+    border-radius: 999px; font-weight: bold;
+  }
+  ol.steps b { color: var(--gold-bright); }
+
+  /* Shahadah highlight */
+  .shahadah {
+    border: 2px solid var(--gold-bright);
+    background:
+      radial-gradient(400px 200px at 50% 0%, rgba(240,198,116,0.10), transparent 70%),
+      rgba(0,0,0,0.35);
+    text-align: center;
+  }
+  .shahadah .ar-big { font-size: 1.9rem; color: var(--gold); direction: rtl; line-height: 1.6; margin: 6px 0; }
+  .shahadah .translit { color: var(--gold-bright); font-style: italic; letter-spacing: 1px; }
+  .shahadah .en { color: var(--cream); font-size: 1.1rem; margin-top: 6px; }
+
+  /* Inline page links */
+  .pagelink { color: var(--gold-bright); text-decoration: none; border-bottom: 1px solid rgba(212,166,74,0.4); }
+  .pagelink:hover { color: var(--gold); }
+
+  /* CTA */
+  .cta-band { text-align: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px; border-radius: 999px; text-decoration: none;
+    font-size: 1rem; font-weight: bold; letter-spacing: .5px; margin: 6px;
+    border: 1.5px solid var(--gold); transition: transform .15s, background .2s, color .2s, box-shadow .2s;
+  }
+  .btn-primary { background: var(--gold); color: var(--green-dark); }
+  .btn-primary:hover { background: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,166,74,0.3); }
+  .btn-ghost { color: var(--gold-bright); }
+  .btn-ghost:hover { background: rgba(212,166,74,0.15); transform: translateY(-2px); }
+
+  /* Footer */
+  footer { text-align: center; color: var(--muted); padding: 28px 16px 4px; font-size: 0.9rem; }
+  footer .name { color: var(--gold-bright); font-size: 1.1rem; letter-spacing: 2px; display: block; margin-bottom: 6px; }
+  footer .dua { color: var(--cream); font-style: italic; margin-bottom: 14px; }
+  .note { font-size: 0.82rem; color: var(--muted); }
+
+  @media (max-width: 560px) {
+    header h1 { font-size: 2.2rem; }
+    .arabic { font-size: 1.6rem; }
+    section { padding: 22px 18px; }
+    .shahadah .ar-big { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <a class="back" href="resources.html">← Back to Resources</a>
+
+  <header>
+    <div class="moon">☪</div>
+    <div class="small">Welcome — You Belong Here</div>
+    <h1>New to Islam?</h1>
+    <div class="arabic">أَهْلًا وَسَهْلًا</div>
+    <div class="sub">Your First Steps</div>
+  </header>
+
+  <!-- Quick facts -->
+  <div class="info-grid">
+    <div class="card">
+      <div class="icon">🤲</div>
+      <div>
+        <span class="label">It Begins With</span>
+        <span class="value">One sincere testimony</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="icon">🧼</div>
+      <div>
+        <span class="label">A Fresh Start</span>
+        <span class="value">All past sins forgiven</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="icon">🕌</div>
+      <div>
+        <span class="label">You're Not Alone</span>
+        <span class="value">A whole community with you</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="icon">📈</div>
+      <div>
+        <span class="label">Take It Step by Step</span>
+        <span class="value">Learn at your own pace</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Welcome -->
+  <section>
+    <h2><span class="badge">💚</span> Welcome — We're So Glad You're Here</h2>
+    <p class="lead">If you are exploring Islam or have just embraced it, this is one of the most beautiful journeys of your life — and you don't have to walk it alone.</p>
+    <p>Becoming a Muslim does not require any ceremony, payment, or paperwork. It is a matter between you and Allah, built on sincerity. When a person enters Islam, the Prophet ﷺ taught us that Allah wipes away everything that came before:</p>
+    <blockquote>
+      "Islam wipes out whatever came before it."
+      <span class="src">— Sahih Muslim</span>
+    </blockquote>
+    <p>You begin with a clean slate — like a newborn. Whatever your past, it is forgiven. Take a breath: there's no rush, and we're here to support you every step of the way.</p>
+  </section>
+
+  <!-- Step 1: Shahadah -->
+  <section class="shahadah">
+    <h2 style="justify-content:center"><span class="badge">☝️</span> Step 1 — The Shahādah</h2>
+    <p>You become a Muslim by sincerely believing in and declaring the testimony of faith:</p>
+    <div class="ar-big">لَا إِلَٰهَ إِلَّا ٱللَّٰهُ مُحَمَّدٌ رَسُولُ ٱللَّٰهِ</div>
+    <p class="translit">Lā ilāha illā Allāh, Muḥammadun rasūlu Allāh</p>
+    <p class="en">"There is no god but Allah, and Muhammad is the Messenger of Allah."</p>
+    <p style="margin-top:14px">That's it. Said with belief and sincerity, this single sentence makes you a Muslim. Many new Muslims like to say it with witnesses at the masjid — we would be honored to be there with you, but it is not required.</p>
+  </section>
+
+  <!-- Step 2: After -->
+  <section>
+    <h2><span class="badge">🌱</span> Step 2 — Your First Days</h2>
+    <p>Once you've taken your shahādah, here are gentle first steps. Don't feel you must do everything at once — Islam is learned little by little.</p>
+    <ol class="steps">
+      <li><b>Take a ghusl (full shower) with intention.</b> A simple, symbolic fresh start for your new life.</li>
+      <li><b>Start learning the five daily prayers.</b> See our <a class="pagelink" href="how-to-pray.html">How to Pray guide</a> — begin with one prayer and build up.</li>
+      <li><b>Learn a few short surahs.</b> Start with Al-Fātiḥah (the opening of the Qur'an), which you'll recite in every prayer.</li>
+      <li><b>Connect with the community.</b> Come to the masjid, make Muslim friends, and never hesitate to ask questions.</li>
+      <li><b>Be patient and gentle with yourself.</b> You're learning a new way of life. Allah looks at your sincerity and effort, not perfection.</li>
+    </ol>
+  </section>
+
+  <!-- Things to keep in mind -->
+  <section>
+    <h2><span class="badge">💡</span> Things to Keep in Mind</h2>
+    <ul class="clean">
+      <li><b>Go at your own pace.</b> Islam was revealed over 23 years — no one expects you to change overnight.</li>
+      <li><b>Ask freely.</b> No question is too small or "silly." Asking is how every Muslim learns.</li>
+      <li><b>Find good company.</b> Surround yourself with patient, knowledgeable, kind Muslims who encourage you.</li>
+      <li><b>Your family and old life.</b> Islam teaches you to remain kind, respectful, and dutiful to your family, even if they don't share your faith.</li>
+      <li><b>Beware of discouragement.</b> You may stumble — everyone does. Turn back to Allah, who is endlessly Forgiving and Merciful.</li>
+    </ul>
+  </section>
+
+  <!-- Learn more -->
+  <section>
+    <h2><span class="badge">📚</span> Keep Learning</h2>
+    <p>These resources are a great next step on your journey:</p>
+    <ul class="clean">
+      <li><a class="pagelink" href="what-is-islam.html">What Is Islam?</a> — the core beliefs, the Five Pillars, and the Six Articles of Faith.</li>
+      <li><a class="pagelink" href="how-to-pray.html">How to Pray (Ṣalāh)</a> — a step-by-step walkthrough of wuḍū' and the daily prayers.</li>
+      <li><a class="pagelink" href="resources.html">All Resources</a> — guides on Ramadan, the sacred months, and more.</li>
+    </ul>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <h2 style="justify-content:center"><span class="badge">🤝</span> We Want to Meet You</h2>
+    <p>Reach out and let us welcome you in person. We can help you take your shahādah, learn to pray, and connect you with mentors and friends in the community. There is never any pressure — just support.</p>
+    <div style="margin-top:18px">
+      <a class="btn btn-primary" href="index.html#contact">✉️ Get in Touch</a>
+      <a class="btn btn-ghost" href="index.html#visit">📍 Visit the Masjid</a>
+    </div>
+  </section>
+
+  <footer>
+    <span class="name">Islamic Community of Greater Killeen</span>
+    <p class="dua">May Allah make your journey easy, keep your heart firm, and fill your new life with peace and barakah. Āmīn.</p>
+    <p class="note">For new Muslim support, classes, and mentorship, please reach out to your local masjid &nbsp;•&nbsp; icgk.org</p>
+  </footer>
+
+</div>
+</body>
+</html>

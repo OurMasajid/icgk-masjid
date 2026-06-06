@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Pray (Ṣalāh) — Islamic Community of Greater Killeen</title>
+<meta name="description" content="A simple step-by-step guide to wuḍū' (ablution) and the five daily prayers (ṣalāh) for new Muslims — from the Islamic Community of Greater Killeen.">
+<style>
+  :root {
+    --green-dark: #0c2a1f;
+    --green-mid: #11402f;
+    --gold: #d4a64a;
+    --gold-bright: #f0c674;
+    --cream: #f5e9c8;
+    --text: #f8efd6;
+    --muted: #cdbf9a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, rgba(212,166,74,0.10), transparent 60%),
+      linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
+    background-attachment: fixed;
+    color: var(--text);
+    min-height: 100vh;
+    padding: 24px 16px 64px;
+    line-height: 1.65;
+  }
+  .container { max-width: 920px; margin: 0 auto; }
+
+  .back { display: inline-block; margin-bottom: 18px; color: var(--gold-bright); text-decoration: none; font-size: .92rem; letter-spacing: .5px; }
+  .back:hover { color: var(--gold); }
+
+  /* ---------- Header ---------- */
+  header {
+    position: relative;
+    text-align: center;
+    padding: 44px 20px 38px;
+    border: 2px solid var(--gold);
+    border-radius: 18px;
+    background:
+      radial-gradient(600px 300px at 50% 0%, rgba(212,166,74,0.12), transparent 70%),
+      rgba(0,0,0,0.28);
+    margin-bottom: 26px;
+    overflow: hidden;
+  }
+  header::before {
+    content: "";
+    position: absolute; inset: 8px;
+    border: 1px solid rgba(212,166,74,0.35);
+    border-radius: 12px;
+    pointer-events: none;
+  }
+  .moon { font-size: 2.6rem; line-height: 1; filter: drop-shadow(0 0 12px rgba(240,198,116,0.5)); }
+  header .small { color: var(--gold-bright); font-size: 0.95rem; letter-spacing: 4px; text-transform: uppercase; margin-top: 10px; }
+  header h1 { color: var(--gold); font-size: 3rem; margin: 6px 0 2px; letter-spacing: 1px; text-shadow: 0 2px 18px rgba(0,0,0,0.4); }
+  .arabic { font-size: 2rem; color: var(--gold-bright); margin: 6px 0; direction: rtl; line-height: 1.4; }
+  header .sub { color: var(--cream); letter-spacing: 4px; margin-top: 6px; font-size: 1rem; text-transform: uppercase; }
+
+  /* ---------- Quick facts ---------- */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 26px;
+  }
+  .card {
+    background: rgba(0,0,0,0.3);
+    border: 1.5px solid var(--gold);
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.35); border-color: var(--gold-bright); }
+  .card .icon { font-size: 1.9rem; color: var(--gold-bright); min-width: 40px; text-align: center; }
+  .card .label { color: var(--gold-bright); font-weight: bold; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; display: block; }
+  .card .value { color: var(--text); font-size: 1.05rem; }
+
+  /* ---------- Sections ---------- */
+  section {
+    background: rgba(0,0,0,0.25);
+    border: 1.5px solid var(--gold);
+    border-radius: 12px;
+    padding: 28px 30px;
+    margin-bottom: 22px;
+  }
+  section h2 { color: var(--gold); font-size: 1.7rem; margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
+  section h2 .badge { font-size: 1.5rem; }
+  section h3 { color: var(--gold-bright); font-size: 1.2rem; margin: 18px 0 6px; }
+  section p { margin-bottom: 12px; color: var(--text); }
+  section p:last-child { margin-bottom: 0; }
+  .lead { font-size: 1.12rem; color: var(--cream); }
+
+  ul.clean { list-style: none; margin: 8px 0; }
+  ul.clean li { position: relative; padding: 8px 0 8px 30px; border-bottom: 1px solid rgba(212,166,74,0.15); }
+  ul.clean li:last-child { border-bottom: none; }
+  ul.clean li::before { content: "✦"; position: absolute; left: 4px; top: 8px; color: var(--gold-bright); }
+  ul.clean b { color: var(--gold-bright); }
+
+  /* Quote blocks */
+  blockquote {
+    border-left: 3px solid var(--gold);
+    background: rgba(212,166,74,0.07);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-style: italic;
+    color: var(--cream);
+  }
+  blockquote .src { display: block; margin-top: 8px; font-style: normal; font-size: 0.85rem; color: var(--muted); letter-spacing: 1px; }
+
+  /* Numbered steps */
+  ol.steps { list-style: none; counter-reset: step; margin: 8px 0; }
+  ol.steps li {
+    position: relative; padding: 12px 0 12px 50px; counter-increment: step;
+    border-bottom: 1px solid rgba(212,166,74,0.15);
+  }
+  ol.steps li:last-child { border-bottom: none; }
+  ol.steps li::before {
+    content: counter(step);
+    position: absolute; left: 0; top: 12px;
+    width: 34px; height: 34px; line-height: 34px; text-align: center;
+    background: var(--gold); color: var(--green-dark);
+    border-radius: 999px; font-weight: bold;
+  }
+  ol.steps b { color: var(--gold-bright); }
+  ol.steps .ar { color: var(--gold-bright); direction: rtl; font-size: 1.15rem; display: inline-block; }
+  ol.steps .translit { color: var(--muted); font-style: italic; }
+
+  /* Prayer count table */
+  .table-wrap { overflow-x: auto; margin-top: 14px; }
+  table { width: 100%; border-collapse: collapse; min-width: 460px; }
+  th, td { padding: 11px 14px; text-align: left; border-bottom: 1px solid rgba(212,166,74,0.18); }
+  th { color: var(--gold-bright); font-size: 0.82rem; letter-spacing: 1px; text-transform: uppercase; }
+  td { color: var(--text); }
+  td .ar { color: var(--gold-bright); direction: rtl; }
+  tr:last-child td { border-bottom: none; }
+  td .rak { color: var(--gold); font-weight: bold; }
+
+  /* Inline page links */
+  .pagelink { color: var(--gold-bright); text-decoration: none; border-bottom: 1px solid rgba(212,166,74,0.4); }
+  .pagelink:hover { color: var(--gold); }
+
+  /* CTA */
+  .cta-band { text-align: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px; border-radius: 999px; text-decoration: none;
+    font-size: 1rem; font-weight: bold; letter-spacing: .5px; margin: 6px;
+    border: 1.5px solid var(--gold); transition: transform .15s, background .2s, color .2s, box-shadow .2s;
+  }
+  .btn-primary { background: var(--gold); color: var(--green-dark); }
+  .btn-primary:hover { background: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,166,74,0.3); }
+  .btn-ghost { color: var(--gold-bright); }
+  .btn-ghost:hover { background: rgba(212,166,74,0.15); transform: translateY(-2px); }
+
+  /* Footer */
+  footer { text-align: center; color: var(--muted); padding: 28px 16px 4px; font-size: 0.9rem; }
+  footer .name { color: var(--gold-bright); font-size: 1.1rem; letter-spacing: 2px; display: block; margin-bottom: 6px; }
+  footer .dua { color: var(--cream); font-style: italic; margin-bottom: 14px; }
+  .note { font-size: 0.82rem; color: var(--muted); }
+
+  @media (max-width: 560px) {
+    header h1 { font-size: 2.2rem; }
+    .arabic { font-size: 1.6rem; }
+    section { padding: 22px 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <a class="back" href="resources.html">← Back to Resources</a>
+
+  <header>
+    <div class="moon">☪</div>
+    <div class="small">A Step-by-Step Guide</div>
+    <h1>How to Pray</h1>
+    <div class="arabic">الصَّلَاة</div>
+    <div class="sub">The Pillar of Worship</div>
+  </header>
+
+  <!-- Quick facts -->
+  <div class="info-grid">
+    <div class="card">
+      <div class="icon">🕔</div>
+      <div>
+        <span class="label">Five Times</span>
+        <span class="value">A Day</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="icon">🧭</div>
+      <div>
+        <span class="label">Facing</span>
+        <span class="value">The Qiblah (Makkah)</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="icon">💧</div>
+      <div>
+        <span class="label">First</span>
+        <span class="value">Make Wuḍū'</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why pray -->
+  <section>
+    <h2><span class="badge">🕌</span> Ṣalāh — The Heart of Worship</h2>
+    <p class="lead">Ṣalāh, the five daily prayers, is the second pillar of Islam and the first thing we will be asked about on the Day of Judgment. It is your direct connection to Allah — five appointments a day to stand before your Creator.</p>
+    <p>If you are new to Islam, don't worry about learning everything at once. Start with one prayer, learn it well, and build from there. Allah looks at your sincerity and effort.</p>
+  </section>
+
+  <!-- The five prayers -->
+  <section>
+    <h2><span class="badge">🕔</span> The Five Daily Prayers</h2>
+    <p>Each prayer has a set number of obligatory units, called <b>rakʿahs</b>. Here are the five, with their obligatory (farḍ) rakʿahs:</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Prayer</th><th>Arabic</th><th>When</th><th>Farḍ Rakʿahs</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Fajr</td><td><span class="ar">الفجر</span></td><td>Dawn, before sunrise</td><td><span class="rak">2</span></td></tr>
+          <tr><td>Dhuhr</td><td><span class="ar">الظهر</span></td><td>After midday</td><td><span class="rak">4</span></td></tr>
+          <tr><td>Asr</td><td><span class="ar">العصر</span></td><td>Late afternoon</td><td><span class="rak">4</span></td></tr>
+          <tr><td>Maghrib</td><td><span class="ar">المغرب</span></td><td>Just after sunset</td><td><span class="rak">3</span></td></tr>
+          <tr><td>Isha</td><td><span class="ar">العشاء</span></td><td>Night</td><td><span class="rak">4</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:14px">For today's exact times in Killeen, see the <a class="pagelink" href="index.html#prayer">prayer times on our homepage</a>.</p>
+  </section>
+
+  <!-- Wudu -->
+  <section>
+    <h2><span class="badge">💧</span> Step 1 — Wuḍū' (Ablution)</h2>
+    <p>Before praying, you must be in a state of purity. Make wuḍū' by washing in this order, beginning with the intention in your heart and saying <em>Bismillāh</em>:</p>
+    <ol class="steps">
+      <li><b>Wash your hands</b> up to the wrists, three times.</li>
+      <li><b>Rinse your mouth</b> three times, then your <b>nose</b> (sniff water in, blow out) three times.</li>
+      <li><b>Wash your face</b> three times, from forehead to chin and ear to ear.</li>
+      <li><b>Wash your arms</b> up to and including the elbows, three times — right then left.</li>
+      <li><b>Wipe your head</b> once, passing wet hands from front to back, and wipe your <b>ears</b>.</li>
+      <li><b>Wash your feet</b> up to and including the ankles, three times — right then left.</li>
+    </ol>
+    <p style="margin-top:12px">Your wuḍū' lasts until it is broken (e.g. by using the bathroom or sleeping). You only need to renew it when broken.</p>
+  </section>
+
+  <!-- How to pray -->
+  <section>
+    <h2><span class="badge">🤲</span> Step 2 — Praying One Rakʿah</h2>
+    <p>Face the Qiblah (the direction of the Kaʿbah in Makkah), make the intention in your heart for the prayer you're about to perform, then begin. Here is one rakʿah:</p>
+    <ol class="steps">
+      <li><b>Takbīr.</b> Raise your hands and say <span class="ar">اللّٰهُ أَكْبَر</span> <span class="translit">(Allāhu Akbar — "Allah is the Greatest")</span>, then place your right hand over your left on your chest.</li>
+      <li><b>Recite Al-Fātiḥah.</b> The opening chapter of the Qur'an, recited in every rakʿah. In the first two rakʿahs you may add another short surah (e.g. Al-Ikhlāṣ).</li>
+      <li><b>Rukūʿ (bowing).</b> Say <em>Allāhu Akbar</em> and bow, hands on knees, back straight. Say three times: <span class="translit">Subḥāna Rabbiyal-ʿAẓīm</span> ("Glory to my Lord, the Most Great").</li>
+      <li><b>Stand back up.</b> Rise saying <span class="translit">Samiʿa Allāhu liman ḥamidah, Rabbanā wa lakal-ḥamd</span> ("Allah hears the one who praises Him; our Lord, to You is all praise").</li>
+      <li><b>Sujūd (prostration).</b> Say <em>Allāhu Akbar</em> and prostrate — forehead, nose, palms, knees, and toes on the ground. Say three times: <span class="translit">Subḥāna Rabbiyal-Aʿlā</span> ("Glory to my Lord, the Most High").</li>
+      <li><b>Sit briefly,</b> saying <em>Allāhu Akbar</em>, then prostrate a <b>second time</b> the same way.</li>
+    </ol>
+    <p style="margin-top:12px">That completes one rakʿah. Stand up saying <em>Allāhu Akbar</em> and repeat for the next rakʿah.</p>
+
+    <h3>Finishing the prayer</h3>
+    <p>After the last rakʿah, remain sitting and recite the <b>Tashahhud</b>, send blessings upon the Prophet ﷺ, then end the prayer by turning your head to the <b>right</b> and saying <span class="translit">As-salāmu ʿalaykum wa raḥmatullāh</span>, then to the <b>left</b> and repeating it.</p>
+  </section>
+
+  <!-- Tips -->
+  <section>
+    <h2><span class="badge">💡</span> Tips for New Muslims</h2>
+    <ul class="clean">
+      <li><b>Start small.</b> Learn Fajr (just 2 rakʿahs) first, then add the others one at a time.</li>
+      <li><b>Memorize Al-Fātiḥah first</b> — you need it in every prayer. The masjid can help you learn it.</li>
+      <li><b>Use a prayer app or chart</b> for the times and the qiblah direction until it becomes second nature.</li>
+      <li><b>Pray in congregation</b> at the masjid when you can — it's a beautiful way to learn by following along.</li>
+      <li><b>Don't be discouraged</b> by mistakes. Everyone learns gradually. Allah rewards your effort and consistency.</li>
+    </ul>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band">
+    <h2 style="justify-content:center"><span class="badge">🤝</span> Learn to Pray With Us</h2>
+    <p>The best way to learn ṣalāh is in person. Come to the masjid and let a brother or sister walk you through it step by step — you're always welcome.</p>
+    <div style="margin-top:18px">
+      <a class="btn btn-primary" href="index.html#visit">📍 Visit the Masjid</a>
+      <a class="btn btn-ghost" href="new-to-islam.html">🌱 New to Islam?</a>
+    </div>
+  </section>
+
+  <footer>
+    <span class="name">Islamic Community of Greater Killeen</span>
+    <p class="dua">May Allah accept your prayers and make them a source of light and peace in your life. Āmīn.</p>
+    <p class="note">For prayer learning circles and new Muslim support, please reach out to your local masjid &nbsp;•&nbsp; icgk.org</p>
+  </footer>
+
+</div>
+</body>
+</html>

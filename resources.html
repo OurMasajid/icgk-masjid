@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources — Islamic Community of Greater Killeen</title>
+<meta name="description" content="Islamic resources from the Islamic Community of Greater Killeen — learn about Islam, the sacred months, new Muslim guides, and more.">
+<style>
+  :root {
+    --green-dark: #0c2a1f;
+    --green-mid: #11402f;
+    --gold: #d4a64a;
+    --gold-bright: #f0c674;
+    --cream: #f5e9c8;
+    --text: #f8efd6;
+    --muted: #cdbf9a;
+    --panel: rgba(0,0,0,0.28);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, rgba(212,166,74,0.10), transparent 60%),
+      linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
+    background-attachment: fixed;
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.65;
+  }
+  a { color: var(--gold-bright); }
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
+
+  /* ---------- Nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(8,26,19,0.86);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(212,166,74,0.35);
+  }
+  nav .inner {
+    max-width: 1000px; margin: 0 auto; padding: 10px 16px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--gold); text-decoration: none; }
+  .brand .mark { font-size: 1.5rem; filter: drop-shadow(0 0 8px rgba(240,198,116,0.5)); }
+  .brand .txt b { display: block; font-size: 1rem; color: var(--gold); letter-spacing: .5px; line-height: 1.1; }
+  .brand .txt span { font-size: .72rem; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+  .nav-links { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .nav-links a {
+    color: var(--cream); text-decoration: none; font-size: .92rem;
+    padding: 6px 10px; border-radius: 8px; transition: background .2s, color .2s;
+  }
+  .nav-links a:hover { background: rgba(212,166,74,0.15); color: var(--gold-bright); }
+  .nav-links a.active { color: var(--gold-bright); background: rgba(212,166,74,0.12); }
+  .nav-links a.donate { border: 1px solid var(--gold); color: var(--gold-bright); }
+  .nav-links a.donate:hover { background: var(--gold); color: var(--green-dark); }
+  .nav-toggle { display: none; background: none; border: 1px solid var(--gold); color: var(--gold-bright); border-radius: 8px; padding: 6px 10px; font-size: 1.1rem; cursor: pointer; }
+
+  /* ---------- Hero ---------- */
+  .hero { text-align: center; padding: 56px 16px 36px; }
+  .hero .eyebrow { color: var(--gold-bright); letter-spacing: 4px; text-transform: uppercase; font-size: .9rem; }
+  .hero h1 { color: var(--gold); font-size: 2.8rem; line-height: 1.1; margin: 10px 0 8px; text-shadow: 0 2px 18px rgba(0,0,0,0.4); }
+  .hero .arabic { direction: rtl; color: var(--gold-bright); font-size: 1.8rem; margin: 4px 0 10px; }
+  .hero .tagline { color: var(--cream); font-size: 1.15rem; font-style: italic; margin: 8px auto 0; max-width: 640px; }
+  hr.star { max-width: 200px; border: none; border-top: 1px solid rgba(212,166,74,0.4); margin: 22px auto 0; position: relative; }
+  hr.star::after { content: "✦"; color: var(--gold); position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--green-mid); padding: 0 10px; }
+
+  /* ---------- Resource cards ---------- */
+  section { padding: 24px 0 56px; }
+  .res-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px;
+  }
+  .res-card {
+    display: flex; flex-direction: column;
+    background: var(--panel); border: 1.5px solid var(--gold); border-radius: 14px;
+    padding: 24px 24px 20px; text-decoration: none; color: inherit;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+  }
+  .res-card:hover { transform: translateY(-4px); border-color: var(--gold-bright); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
+  .res-card .ri { font-size: 2.2rem; line-height: 1; margin-bottom: 12px; filter: drop-shadow(0 0 8px rgba(240,198,116,0.35)); }
+  .res-card h3 { color: var(--gold-bright); font-size: 1.25rem; margin-bottom: 6px; }
+  .res-card p { color: var(--muted); font-size: .95rem; flex: 1; }
+  .res-card .go { color: var(--gold); font-size: .9rem; letter-spacing: .5px; margin-top: 14px; font-weight: bold; }
+  .res-card.soon { cursor: default; opacity: .72; }
+  .res-card.soon:hover { transform: none; border-color: var(--gold); box-shadow: none; }
+  .res-card .tag {
+    align-self: flex-start; margin-bottom: 10px;
+    font-size: .68rem; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--green-dark); background: var(--gold-bright);
+    padding: 3px 10px; border-radius: 999px; font-family: 'Georgia', serif; font-weight: bold;
+  }
+  .res-card.soon .tag { background: rgba(212,166,74,0.25); color: var(--gold-bright); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 1px solid rgba(212,166,74,0.35);
+    margin-top: 20px; padding: 36px 16px 28px;
+    background: rgba(8,26,19,0.6);
+  }
+  .foot-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 28px; }
+  .foot-grid h4 { color: var(--gold-bright); font-size: .9rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
+  .foot-grid a { color: var(--cream); text-decoration: none; display: block; padding: 4px 0; font-size: .95rem; }
+  .foot-grid a:hover { color: var(--gold-bright); }
+  .foot-brand .mark { font-size: 1.6rem; color: var(--gold); }
+  .foot-brand .nm { color: var(--gold); font-size: 1.2rem; display: block; margin: 6px 0; }
+  .foot-brand p { color: var(--muted); font-size: .9rem; }
+  .foot-bottom { text-align: center; color: var(--muted); font-size: .82rem; margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(212,166,74,0.15); }
+
+  @media (max-width: 820px) {
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+    .foot-brand { grid-column: 1 / -1; }
+  }
+  @media (max-width: 640px) {
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; background: rgba(8,26,19,0.98); padding: 10px 16px 16px; border-bottom: 1px solid rgba(212,166,74,0.35); }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 10px; }
+    .nav-toggle { display: block; }
+    .hero h1 { font-size: 2.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="inner">
+    <a class="brand" href="index.html">
+      <span class="mark">☪</span>
+      <span class="txt"><b>ICGK</b><span>Greater Killeen</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="navlinks">
+      <a href="index.html#prayer">Prayer Times</a>
+      <a href="index.html#jumuah">Jumu'ah</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#programs">Programs</a>
+      <a href="index.html#visit">Visit</a>
+      <a href="resources.html" class="active">Resources</a>
+      <a class="donate" href="https://app.autobooks.co/pay/icgk" target="_blank" rel="noopener">Donate</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Learn &amp; Grow</div>
+    <h1>Resources</h1>
+    <div class="arabic">اقْرَأْ بِاسْمِ رَبِّكَ</div>
+    <p class="tagline">Guides and readings to learn about Islam, the sacred months, and the path of faith — for Muslims, new Muslims, and curious neighbors alike.</p>
+    <hr class="star">
+  </div>
+</header>
+
+<!-- ===== RESOURCE CARDS ===== -->
+<section>
+  <div class="container">
+    <div class="res-grid">
+
+      <a class="res-card" href="what-is-islam.html">
+        <div class="ri">📖</div>
+        <h3>What Is Islam?</h3>
+        <p>A clear, welcoming introduction to Islam — what Muslims believe, the Five Pillars, and the message of the Prophets, peace be upon them.</p>
+        <span class="go">Read more →</span>
+      </a>
+
+      <a class="res-card" href="muharram.html">
+        <div class="ri">🌙</div>
+        <h3>Muharram &amp; Ashura</h3>
+        <p>The Month of Allah: its sacredness, the blessings of fasting, the Day of Ashura, and what to do this Hijri new year.</p>
+        <span class="go">Read more →</span>
+      </a>
+
+      <a class="res-card" href="new-to-islam.html">
+        <div class="ri">🕌</div>
+        <h3>New to Islam?</h3>
+        <p>A step-by-step guide for new Muslims — how to take your shahādah, learn to pray, and find support in our community.</p>
+        <span class="go">Read more →</span>
+      </a>
+
+      <a class="res-card" href="how-to-pray.html">
+        <div class="ri">🤲</div>
+        <h3>How to Pray (Ṣalāh)</h3>
+        <p>A simple, step-by-step walkthrough of wuḍū' and the five daily prayers.</p>
+        <span class="go">Read more →</span>
+      </a>
+
+      <div class="res-card soon">
+        <span class="tag">Coming Soon</span>
+        <div class="ri">🌑</div>
+        <h3>Ramadan Guide</h3>
+        <p>Fasting, Taraweeh, Laylat al-Qadr, and Zakat al-Fitr — everything to make the most of the blessed month.</p>
+      </div>
+
+      <div class="res-card soon">
+        <span class="tag">Coming Soon</span>
+        <div class="ri">🕋</div>
+        <h3>Hajj &amp; Umrah</h3>
+        <p>An overview of the pilgrimage to Makkah — the rites, the preparation, and its place in a Muslim's life.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <span class="mark">☪</span>
+      <span class="nm">Islamic Community of Greater Killeen</span>
+      <p>5600 TX-195, Killeen, TX 76542</p>
+      <p style="margin-top:8px">May Allah accept from us and from you. 🤲</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <a href="index.html#prayer">Prayer Times</a>
+      <a href="index.html#jumuah">Jumu'ah</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#programs">Programs</a>
+      <a href="resources.html">Resources</a>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <a href="https://icgk.org" target="_blank" rel="noopener">icgk.org</a>
+      <a href="https://www.facebook.com/Islamic-Community-of-Greater-Killeen-256571815189294/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://app.autobooks.co/pay/icgk" target="_blank" rel="noopener">Donate</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    © <span id="year"></span> Islamic Community of Greater Killeen · Killeen, Texas
+  </div>
+</footer>
+
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
