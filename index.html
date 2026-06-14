@@ -62,15 +62,43 @@
   /* ---------- Hero ---------- */
   .hero {
     text-align: center;
-    padding: 64px 16px 48px;
+    padding: 28px 16px 22px;
     position: relative;
   }
-  .hero .eyebrow { color: var(--gold-bright); letter-spacing: 4px; text-transform: uppercase; font-size: .9rem; }
-  .hero .bismillah { direction: rtl; color: var(--gold-bright); font-size: 1.9rem; margin: 14px 0 6px; }
-  .hero h1 { color: var(--gold); font-size: 3rem; line-height: 1.1; margin: 8px 0; text-shadow: 0 2px 18px rgba(0,0,0,0.4); }
-  .hero .tagline { color: var(--cream); font-size: 1.25rem; font-style: italic; margin: 10px auto 6px; max-width: 640px; }
-  .hero .where { color: var(--muted); letter-spacing: 1px; margin-top: 6px; }
-  .hero .cta { margin-top: 26px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .hero .eyebrow { color: var(--gold-bright); letter-spacing: 4px; text-transform: uppercase; font-size: .8rem; }
+  .hero .bismillah { direction: rtl; color: var(--gold-bright); font-size: 1.4rem; margin: 8px 0 4px; }
+  .hero h1 { color: var(--gold); font-size: 2rem; line-height: 1.1; margin: 6px 0; text-shadow: 0 2px 18px rgba(0,0,0,0.4); }
+  .hero .tagline { color: var(--cream); font-size: 1rem; font-style: italic; margin: 6px auto 4px; max-width: 640px; }
+  .hero .where { color: var(--muted); letter-spacing: 1px; margin-top: 4px; font-size: .9rem; }
+  .hero .cta { margin-top: 16px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  /* ---------- Muharram Banner ---------- */
+  .muharram-banner {
+    text-align: center;
+    padding: 56px 16px;
+    background: linear-gradient(135deg, var(--green-soft) 0%, var(--green-mid) 100%);
+    border-top: 1px solid rgba(212,166,74,0.35);
+    border-bottom: 1px solid rgba(212,166,74,0.35);
+    position: relative;
+    overflow: hidden;
+  }
+  .muharram-banner .moon { font-size: 3.5rem; animation: banner-pulse 2.4s ease-in-out infinite; }
+  .muharram-banner h2 {
+    color: var(--gold-bright); font-size: 2.6rem; margin: 12px 0 10px;
+    text-shadow: 0 2px 18px rgba(0,0,0,0.4);
+  }
+  .muharram-banner p {
+    color: var(--cream); font-size: 1.2rem; max-width: 700px; margin: 0 auto 22px;
+  }
+  .muharram-banner .btn { font-size: 1.1rem; padding: 14px 32px; }
+  @keyframes banner-pulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 6px rgba(212,166,74,0.5)); }
+    50% { transform: scale(1.12); filter: drop-shadow(0 0 18px rgba(212,166,74,0.9)); }
+  }
+  @media (max-width: 600px) {
+    .muharram-banner h2 { font-size: 1.8rem; }
+    .muharram-banner p { font-size: 1rem; }
+  }
   .btn {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 12px 24px; border-radius: 999px; text-decoration: none;
@@ -304,6 +332,16 @@
     </div>
   </div>
 </header>
+
+<!-- ===== MUHARRAM BANNER ===== -->
+<section class="muharram-banner">
+  <div class="container">
+    <div class="moon">🌙</div>
+    <h2>Shahrullāh Muḥarram is Here</h2>
+    <p>The sacred month of Allah has begun. Discover the virtues of Muḥarram, the significance of Āshūrā, and how to make the most of these blessed days.</p>
+    <a class="btn btn-primary" href="muharram.html">Explore the Muharram &amp; Ashura Guide</a>
+  </div>
+</section>
 
 <!-- ===== PRAYER TIMES ===== -->
 <section id="prayer">
