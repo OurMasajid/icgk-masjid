@@ -177,6 +177,46 @@
   .about p:last-child { margin-bottom: 0; }
   .about .lead { font-size: 1.15rem; color: var(--cream); }
 
+  /* ---------- Events ---------- */
+  #events { scroll-margin-top: 70px; }
+  .events-empty { display: none; }
+  .event-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 0;
+    background: var(--panel);
+    border: 1.5px solid var(--gold);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+  }
+  .event-card + .event-card { margin-top: 20px; }
+  .event-card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,0.4); border-color: var(--gold-bright); }
+  .event-flyer {
+    background: #000;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 320px;
+  }
+  .event-flyer img { display: block; width: 100%; height: 100%; max-height: 620px; object-fit: contain; }
+  .event-body { padding: 28px 30px; display: flex; flex-direction: column; justify-content: center; }
+  .event-eyebrow { color: var(--gold-bright); letter-spacing: 3px; text-transform: uppercase; font-size: .76rem; }
+  .event-title { color: var(--gold); font-size: 1.7rem; line-height: 1.15; margin: 6px 0 2px; }
+  .event-tagline { color: var(--cream); font-style: italic; margin-bottom: 14px; }
+  .event-meta { display: grid; gap: 8px; margin: 10px 0 14px; }
+  .event-meta .row { display: flex; gap: 10px; align-items: flex-start; }
+  .event-meta .ri { color: var(--gold-bright); min-width: 22px; text-align: center; }
+  .event-meta .rv { color: var(--text); }
+  .event-meta .rv .sub { display: block; color: var(--muted); font-size: .85rem; }
+  .event-blurb { color: var(--cream); margin-bottom: 16px; }
+  .event-cta { display: flex; gap: 10px; flex-wrap: wrap; }
+  .events-foot { text-align: center; margin-top: 20px; }
+  @media (max-width: 760px) {
+    .event-card { grid-template-columns: 1fr; }
+    .event-flyer { min-height: 0; }
+    .event-flyer img { max-height: 580px; }
+    .event-body { padding: 22px 22px 24px; }
+  }
+
   /* ---------- Imam card ---------- */
   #imam { scroll-margin-top: 70px; }
   .imam-card {
@@ -347,6 +387,7 @@
     <div class="nav-links" id="navlinks">
       <a href="#prayer">Prayer Times</a>
       <a href="#jumuah">Jumu'ah</a>
+      <a href="#events">Events</a>
       <a href="#about">About</a>
       <a href="#imam">Our Imam</a>
       <a href="#programs">Programs</a>
@@ -382,6 +423,21 @@
     <h2>Shahrullāh Muḥarram is Here</h2>
     <p>The sacred month of Allah has begun. Discover the virtues of Muḥarram, the significance of Āshūrā, and how to make the most of these blessed days.</p>
     <a class="btn btn-primary" href="muharram.html">Explore the Muharram &amp; Ashura Guide</a>
+  </div>
+</section>
+
+<!-- ===== UPCOMING EVENTS ===== -->
+<section id="events" hidden>
+  <div class="container">
+    <div class="section-head">
+      <h2>Upcoming Events</h2>
+      <div class="sub">Join us at the masjid</div>
+      <hr class="star">
+    </div>
+    <div id="events-list"></div>
+    <div class="events-foot">
+      <a class="btn btn-ghost" href="events-archive.html">View past events →</a>
+    </div>
   </div>
 </section>
 
@@ -468,7 +524,7 @@
       <div class="imam-text">
         <div class="eyebrow">Imam of ICGK</div>
         <h3>Dr. Ihab Abdelgawad Al-Faidy</h3>
-        <div class="role">Ph.D. in Islamic Theology · Al-Azhar trained · Ḥāfiẓ of the Qur'an</div>
+        <div class="role">Ph.D. in Islamic Theology · Al-Azhar University · Ḥāfiẓ of the Qur'an</div>
         <p>Dr. Al-Faidy has served as the Imam of the Islamic Community of Greater Killeen since 2013. He is also President of the Aman Institute for Youth Intellectual Security, and previously taught for nearly two decades at the Al-Azhar Institutes in Cairo.</p>
         <p>His Ph.D. dissertation — <em>Intellectual Security for Youth in North America</em> — reflects his lifelong commitment to helping young Muslims overcome the challenges they face today with authentic knowledge and sound understanding.</p>
         <div class="tags">
@@ -652,6 +708,8 @@
       <h4>Explore</h4>
       <a href="#prayer">Prayer Times</a>
       <a href="#jumuah">Jumu'ah</a>
+      <a href="#events">Events</a>
+      <a href="events-archive.html">Past Events</a>
       <a href="#about">About</a>
       <a href="imam.html">Our Imam</a>
       <a href="#programs">Programs</a>
@@ -672,7 +730,8 @@
   </div>
 </footer>
 
-<!-- Adhan.js (same library the OurMasajid widget uses) with fallback -->
+<!-- Events data + Adhan.js -->
+<script src="events-data.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/adhan@4.4.3/lib/bundles/adhan.umd.min.js"></script>
 <script>
   // ===== Config =====
@@ -874,8 +933,47 @@
     });
   })();
 
-  if (document.readyState !== "loading") buildPrayers();
-  else document.addEventListener("DOMContentLoaded", buildPrayers);
+  // ===== Upcoming events — auto-hides anything more than 2 days past its end =====
+  function renderEvents() {
+    if (!window.ICGK_EVENTS) return;
+    var section = document.getElementById("events");
+    var list = document.getElementById("events-list");
+    if (!section || !list) return;
+    var active = window.ICGK_getActiveEvents();
+    if (!active.length) { section.hidden = true; return; }
+    section.hidden = false;
+    list.innerHTML = active.map(function (ev) {
+      var when = window.ICGK_formatEventDate(ev);
+      var dir = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(ev.address || ev.location || "");
+      var cta = ev.cta
+        ? '<a class="btn btn-primary" href="' + ev.cta.href + '" target="_blank" rel="noopener">' + ev.cta.label + '</a>'
+        : "";
+      return '' +
+        '<article class="event-card">' +
+          '<div class="event-flyer">' +
+            (ev.image ? '<img src="' + ev.image + '" alt="' + (ev.imageAlt || ev.title) + '">' : '') +
+          '</div>' +
+          '<div class="event-body">' +
+            '<div class="event-eyebrow">Upcoming Event</div>' +
+            '<h3 class="event-title">' + ev.title + '</h3>' +
+            (ev.tagline ? '<div class="event-tagline">' + ev.tagline + '</div>' : '') +
+            '<div class="event-meta">' +
+              '<div class="row"><div class="ri">📅</div><div class="rv">' + when.date + '<span class="sub">' + when.time + '</span></div></div>' +
+              '<div class="row"><div class="ri">📍</div><div class="rv">' + (ev.location || '') + (ev.address ? '<span class="sub">' + ev.address + '</span>' : '') + '</div></div>' +
+              (ev.price ? '<div class="row"><div class="ri">🍽️</div><div class="rv">' + ev.price + '</div></div>' : '') +
+            '</div>' +
+            (ev.blurb ? '<p class="event-blurb">' + ev.blurb + '</p>' : '') +
+            '<div class="event-cta">' +
+              cta +
+              '<a class="btn btn-ghost" href="' + dir + '" target="_blank" rel="noopener">🧭 Directions</a>' +
+            '</div>' +
+          '</div>' +
+        '</article>';
+    }).join("");
+  }
+
+  if (document.readyState !== "loading") { buildPrayers(); renderEvents(); }
+  else document.addEventListener("DOMContentLoaded", function () { buildPrayers(); renderEvents(); });
 </script>
 </body>
 </html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Past Events — Islamic Community of Greater Killeen</title>
+<meta name="description" content="Archive of past events at the Islamic Community of Greater Killeen (ICGK) — fundraisers, programs, and community gatherings.">
+<style>
+  :root {
+    --green-dark: #0c2a1f;
+    --green-mid: #11402f;
+    --gold: #d4a64a;
+    --gold-bright: #f0c674;
+    --cream: #f5e9c8;
+    --text: #f8efd6;
+    --muted: #cdbf9a;
+    --panel: rgba(0,0,0,0.28);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, rgba(212,166,74,0.10), transparent 60%),
+      linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
+    background-attachment: fixed;
+    color: var(--text);
+    min-height: 100vh;
+    padding: 24px 16px 64px;
+    line-height: 1.65;
+  }
+  .container { max-width: 1000px; margin: 0 auto; }
+  a { color: var(--gold-bright); }
+
+  .back { display: inline-block; margin-bottom: 18px; color: var(--gold-bright); text-decoration: none; font-size: .92rem; letter-spacing: .5px; }
+  .back:hover { color: var(--gold); }
+
+  header.page-head {
+    text-align: center;
+    padding: 40px 20px 30px;
+    border: 2px solid var(--gold);
+    border-radius: 18px;
+    background:
+      radial-gradient(600px 300px at 50% 0%, rgba(212,166,74,0.12), transparent 70%),
+      rgba(0,0,0,0.28);
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  header.page-head::before {
+    content: ""; position: absolute; inset: 8px;
+    border: 1px solid rgba(212,166,74,0.35); border-radius: 12px;
+    pointer-events: none;
+  }
+  header.page-head .moon { font-size: 2.4rem; line-height: 1; filter: drop-shadow(0 0 12px rgba(240,198,116,0.5)); }
+  header.page-head .small { color: var(--gold-bright); font-size: .9rem; letter-spacing: 4px; text-transform: uppercase; margin-top: 8px; }
+  header.page-head h1 { color: var(--gold); font-size: 2.4rem; margin: 6px 0 4px; text-shadow: 0 2px 18px rgba(0,0,0,0.4); }
+  header.page-head .sub { color: var(--cream); font-style: italic; margin-top: 4px; }
+
+  .archive-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .archive-card {
+    display: flex; flex-direction: column;
+    background: var(--panel);
+    border: 1.5px solid var(--gold);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+  }
+  .archive-card:hover { transform: translateY(-3px); border-color: var(--gold-bright); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
+  .archive-card .flyer { background: #000; display: flex; align-items: center; justify-content: center; }
+  .archive-card .flyer img { display: block; width: 100%; height: auto; max-height: 420px; object-fit: contain; }
+  .archive-card .body { padding: 20px 22px 22px; }
+  .archive-card .eyebrow { color: var(--gold-bright); letter-spacing: 2px; text-transform: uppercase; font-size: .72rem; }
+  .archive-card h3 { color: var(--gold); font-size: 1.3rem; margin: 4px 0 6px; }
+  .archive-card .when { color: var(--cream); font-size: .95rem; margin-bottom: 4px; }
+  .archive-card .where { color: var(--muted); font-size: .9rem; }
+  .archive-card .blurb { color: var(--text); margin-top: 10px; font-size: .95rem; }
+
+  .empty {
+    text-align: center; padding: 60px 24px;
+    border: 1.5px dashed rgba(212,166,74,0.5);
+    border-radius: 14px; color: var(--muted);
+  }
+  .empty .ic { font-size: 2.4rem; display: block; margin-bottom: 10px; color: var(--gold); }
+  .empty h2 { color: var(--gold-bright); font-size: 1.3rem; margin-bottom: 6px; }
+
+  .cta-band { text-align: center; margin-top: 30px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px; border-radius: 999px; text-decoration: none;
+    font-size: 1rem; font-weight: bold; letter-spacing: .5px; margin: 6px;
+    border: 1.5px solid var(--gold); transition: transform .15s, background .2s, color .2s, box-shadow .2s;
+  }
+  .btn-primary { background: var(--gold); color: var(--green-dark); }
+  .btn-primary:hover { background: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,166,74,0.3); }
+  .btn-ghost { color: var(--gold-bright); }
+  .btn-ghost:hover { background: rgba(212,166,74,0.15); transform: translateY(-2px); }
+
+  footer { text-align: center; color: var(--muted); padding: 28px 16px 4px; font-size: .9rem; margin-top: 30px; }
+  footer .name { color: var(--gold-bright); font-size: 1.05rem; letter-spacing: 2px; display: block; margin-bottom: 6px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <a class="back" href="index.html">← Back to Home</a>
+
+  <header class="page-head">
+    <div class="moon">📜</div>
+    <div class="small">Archive</div>
+    <h1>Past Events</h1>
+    <div class="sub">Looking back at our community gatherings</div>
+  </header>
+
+  <div id="archive-list" class="archive-grid"></div>
+  <div id="empty-state" class="empty" hidden>
+    <span class="ic">🌙</span>
+    <h2>No past events yet</h2>
+    <p>Events will appear here automatically after they conclude.</p>
+  </div>
+
+  <div class="cta-band">
+    <a class="btn btn-primary" href="index.html#events">See upcoming events →</a>
+    <a class="btn btn-ghost" href="index.html">← Home</a>
+  </div>
+
+  <footer>
+    <span class="name">Islamic Community of Greater Killeen</span>
+    <div>May Allah accept from us and from you. 🤲</div>
+  </footer>
+
+</div>
+
+<script src="events-data.js"></script>
+<script>
+  (function () {
+    var list = document.getElementById("archive-list");
+    var empty = document.getElementById("empty-state");
+    var archived = window.ICGK_getArchivedEvents();
+    if (!archived.length) {
+      list.hidden = true;
+      empty.hidden = false;
+      return;
+    }
+    list.innerHTML = archived.map(function (ev) {
+      var when = window.ICGK_formatEventDate(ev);
+      return '' +
+        '<article class="archive-card">' +
+          (ev.image ? '<div class="flyer"><img src="' + ev.image + '" alt="' + (ev.imageAlt || ev.title) + '"></div>' : '') +
+          '<div class="body">' +
+            '<div class="eyebrow">Past Event</div>' +
+            '<h3>' + ev.title + '</h3>' +
+            '<div class="when">📅 ' + when.date + '</div>' +
+            (ev.location ? '<div class="where">📍 ' + ev.location + '</div>' : '') +
+            (ev.blurb ? '<div class="blurb">' + ev.blurb + '</div>' : '') +
+          '</div>' +
+        '</article>';
+    }).join("");
+  })();
+</script>
+</body>
+</html>
