@@ -177,6 +177,47 @@
   .about p:last-child { margin-bottom: 0; }
   .about .lead { font-size: 1.15rem; color: var(--cream); }
 
+  /* ---------- Imam card ---------- */
+  #imam { scroll-margin-top: 70px; }
+  .imam-card {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 28px;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(212,166,74,0.08), var(--panel));
+    border: 1.5px solid var(--gold);
+    border-radius: 16px;
+    padding: 28px 30px;
+  }
+  .imam-photo {
+    border: 3px solid var(--gold);
+    border-radius: 14px;
+    padding: 5px;
+    background: rgba(0,0,0,0.3);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+  }
+  .imam-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 9px;
+  }
+  .imam-text .eyebrow { color: var(--gold-bright); letter-spacing: 3px; text-transform: uppercase; font-size: .78rem; }
+  .imam-text h3 { color: var(--gold); font-size: 1.6rem; margin: 6px 0 2px; }
+  .imam-text .role { color: var(--cream); font-style: italic; margin-bottom: 12px; }
+  .imam-text p { color: var(--text); margin-bottom: 12px; }
+  .imam-text .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 14px; }
+  .imam-text .tag {
+    background: rgba(0,0,0,0.3); border: 1px solid rgba(212,166,74,0.55);
+    border-radius: 999px; padding: 4px 12px; color: var(--cream); font-size: .82rem;
+  }
+  .imam-text .more { margin-top: 4px; }
+  @media (max-width: 760px) {
+    .imam-card { grid-template-columns: 1fr; text-align: center; }
+    .imam-photo { max-width: 280px; margin: 0 auto; }
+    .imam-text .tags { justify-content: center; }
+  }
+
   .grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;
   }
@@ -307,6 +348,7 @@
       <a href="#prayer">Prayer Times</a>
       <a href="#jumuah">Jumu'ah</a>
       <a href="#about">About</a>
+      <a href="#imam">Our Imam</a>
       <a href="#programs">Programs</a>
       <a href="#resources">Resources</a>
       <a href="#visit">Visit</a>
@@ -407,6 +449,37 @@
       <p class="lead">The Islamic Community of Greater Killeen (ICGK) is a welcoming masjid serving the Muslims of Killeen, Harker Heights, Copperas Cove, and the Fort&nbsp;Hood area.</p>
       <p>We are a place of prayer, learning, and brotherhood and sisterhood. Whether you are a lifelong resident, new to the area, a soldier stationed nearby, or simply curious about Islam, our doors are open to you. We gather for the five daily prayers, Jumu'ah, Ramadan and the two Eids, and year-round programs for every age.</p>
       <p>Our community is growing — and we are excited to expand our masjid to better serve everyone. We invite you to be part of it through your prayers, your presence, and your support.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OUR IMAM ===== -->
+<section id="imam">
+  <div class="container">
+    <div class="section-head">
+      <h2>Our Imam</h2>
+      <div class="sub">Leading our community since 2013</div>
+      <hr class="star">
+    </div>
+    <div class="imam-card">
+      <div class="imam-photo">
+        <img src="imam-faidy.jpg" alt="Dr. Ihab Abdelgawad Al-Faidy, Imam of ICGK">
+      </div>
+      <div class="imam-text">
+        <div class="eyebrow">Imam of ICGK</div>
+        <h3>Dr. Ihab Abdelgawad Al-Faidy</h3>
+        <div class="role">Ph.D. in Islamic Theology · Al-Azhar trained · Ḥāfiẓ of the Qur'an</div>
+        <p>Dr. Al-Faidy has served as the Imam of the Islamic Community of Greater Killeen since 2013. He is also President of the Aman Institute for Youth Intellectual Security, and previously taught for nearly two decades at the Al-Azhar Institutes in Cairo.</p>
+        <p>His Ph.D. dissertation — <em>Intellectual Security for Youth in North America</em> — reflects his lifelong commitment to helping young Muslims overcome the challenges they face today with authentic knowledge and sound understanding.</p>
+        <div class="tags">
+          <span class="tag">🇸🇦 Arabic</span>
+          <span class="tag">🇺🇸 English</span>
+          <span class="tag">🇪🇸 Spanish</span>
+        </div>
+        <div class="more">
+          <a class="btn btn-primary" href="imam.html">Read more about the Imam →</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -580,6 +653,7 @@
       <a href="#prayer">Prayer Times</a>
       <a href="#jumuah">Jumu'ah</a>
       <a href="#about">About</a>
+      <a href="imam.html">Our Imam</a>
       <a href="#programs">Programs</a>
       <a href="#resources">Resources</a>
       <a href="#contact">Contact</a>
