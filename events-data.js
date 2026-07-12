@@ -5,22 +5,7 @@
 //
 // Date format: ISO local — "YYYY-MM-DDTHH:MM" (no timezone suffix).
 // All times are interpreted in the visitor's local time.
-window.ICGK_EVENTS = [
-  {
-    id: "fundraising-lunch-2026-07-03",
-    title: "Fundraising Lunch",
-    tagline: "Together we build. Together we grow.",
-    blurb: "Support your masjid — every plate makes a difference in building our future together.",
-    start: "2026-07-03T13:00",
-    end:   "2026-07-03T14:30",
-    location: "ICGK Masjid",
-    address: "5600 TX-195, Killeen, TX 76542",
-    price: "$10 per plate · larger donations welcomed",
-    image: "img/7-3-2026-event.jpg",
-    imageAlt: "ICGK Fundraising Lunch flyer — Friday, July 3, 2026, 1:00–2:30 PM, $10 per plate",
-    cta: { label: "❤️ Donate", href: "https://app.autobooks.co/pay/icgk" }
-  }
-];
+window.ICGK_EVENTS = [];
 
 // ---- Helpers ----
 // Event is considered "archived" 2 days (48h) after its end time.

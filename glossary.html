@@ -1,104 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Glossary of Islamic Terms — Islamic Community of Greater Killeen</title>
 <meta name="description" content="A searchable glossary of common Arabic and Islamic terms used across the site — from adhan to zakat. From the Islamic Community of Greater Killeen.">
-<link rel="stylesheet" href="resource.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="tailwind-config.js"></script>
+<style type="text/tailwindcss">
+  @layer components {
+    .btn {
+      @apply inline-flex items-center gap-2 px-6 py-3 m-1.5 rounded-full no-underline text-base font-bold tracking-wide border-[1.5px] border-icgk-gold transition duration-200;
+    }
+    .btn-primary {
+      @apply bg-icgk-gold text-icgk-green-dark hover:bg-icgk-gold-bright hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(212,166,74,0.3)];
+    }
+    .btn-ghost {
+      @apply text-icgk-gold-bright hover:bg-icgk-gold/15 hover:-translate-y-0.5;
+    }
+  }
+</style>
 </head>
-<body>
-<div class="container">
+<body class="font-serif text-icgk-text min-h-screen leading-[1.65] bg-fixed px-4 pt-6 pb-16 bg-[radial-gradient(1200px_600px_at_50%_-10%,rgba(212,166,74,0.10),transparent_60%),linear-gradient(135deg,#0c2a1f_0%,#11402f_100%)]">
+<div class="max-w-[920px] mx-auto">
 
-  <a class="back" href="resources.html">← Back to Resources</a>
+  <a class="inline-block mb-4.5 text-icgk-gold-bright no-underline text-[0.92rem] tracking-wide hover:text-icgk-gold" href="resources.html">← Back to Resources</a>
 
-  <header>
-    <div class="moon">📚</div>
-    <div class="small">Words You'll See</div>
-    <h1>Glossary</h1>
-    <div class="arabic">مُصْطَلَحَات</div>
-    <div class="sub">Common Islamic Terms</div>
+  <header class="relative text-center px-5 pt-11 pb-9.5 border-2 border-icgk-gold rounded-2xl mb-6.5 overflow-hidden bg-[radial-gradient(600px_300px_at_50%_0%,rgba(212,166,74,0.12),transparent_70%),rgba(0,0,0,0.28)] before:content-[''] before:absolute before:inset-2 before:border before:border-icgk-gold/35 before:rounded-xl before:pointer-events-none">
+    <div class="text-[2.6rem] leading-none drop-shadow-[0_0_12px_rgba(240,198,116,0.5)]">📚</div>
+    <div class="text-icgk-gold-bright text-[0.95rem] tracking-[4px] uppercase mt-2.5">Words You'll See</div>
+    <h1 class="text-icgk-gold text-[2.2rem] sm:text-[3rem] mt-1.5 mb-0.5 tracking-wide drop-shadow-[0_2px_18px_rgba(0,0,0,0.4)]">Glossary</h1>
+    <div dir="rtl" class="text-[1.6rem] sm:text-[2rem] text-icgk-gold-bright my-1.5 leading-[1.4]">مُصْطَلَحَات</div>
+    <div class="text-icgk-cream tracking-[4px] mt-1.5 text-base uppercase">Common Islamic Terms</div>
   </header>
 
-  <section>
-    <h2><span class="badge">🔎</span> Search the Terms</h2>
-    <input type="text" id="gloss-search" class="glossary-search" placeholder="Type to filter, e.g. 'zakat' or 'prayer'…" autocomplete="off">
-    <p class="hint" id="gloss-count" style="color:var(--muted); font-size:.85rem; margin-top:4px"></p>
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center gap-3"><span class="text-2xl">🔎</span> Search the Terms</h2>
+    <input type="text" id="gloss-search" class="w-full font-serif text-base text-icgk-text bg-black/30 border border-icgk-gold/45 rounded-lg px-4 py-3 mb-1.5 focus:outline-none focus:border-icgk-gold-bright focus:shadow-[0_0_0_3px_rgba(212,166,74,0.18)]" placeholder="Type to filter, e.g. 'zakat' or 'prayer'…" autocomplete="off">
+    <p class="text-icgk-muted text-[0.85rem] mt-1" id="gloss-count"></p>
     <div id="gloss-list">
-      <div class="gloss-item"><span class="term">Adhān</span> <span class="ar">أَذَان</span><div class="def">The call to prayer, announced before each of the five daily prayers.</div></div>
-      <div class="gloss-item"><span class="term">Akhlāq</span> <span class="ar">أَخْلَاق</span><div class="def">Character and manners — a central part of Islamic practice.</div></div>
-      <div class="gloss-item"><span class="term">Alḥamdulillāh</span> <span class="ar">ٱلْحَمْدُ لِلَّٰه</span><div class="def">"All praise is due to Allah" — said in gratitude.</div></div>
-      <div class="gloss-item"><span class="term">Allāh</span> <span class="ar">ٱللَّٰه</span><div class="def">The Arabic word for the One God.</div></div>
-      <div class="gloss-item"><span class="term">Aqīqah</span> <span class="ar">عَقِيقَة</span><div class="def">The sacrifice and celebration to welcome a newborn.</div></div>
-      <div class="gloss-item"><span class="term">Ashura</span> <span class="ar">عَاشُورَاء</span><div class="def">The 10th of Muharram, a recommended day of fasting.</div></div>
-      <div class="gloss-item"><span class="term">Barakah</span> <span class="ar">بَرَكَة</span><div class="def">Blessing; divine goodness placed in something.</div></div>
-      <div class="gloss-item"><span class="term">Bismillāh</span> <span class="ar">بِسْمِ ٱللَّٰه</span><div class="def">"In the name of Allah" — said before beginning an action.</div></div>
-      <div class="gloss-item"><span class="term">Dhikr</span> <span class="ar">ذِكْر</span><div class="def">Remembrance of Allah through repeated words of praise.</div></div>
-      <div class="gloss-item"><span class="term">Du'ā</span> <span class="ar">دُعَاء</span><div class="def">Supplication; personal prayer and calling upon Allah.</div></div>
-      <div class="gloss-item"><span class="term">Eid</span> <span class="ar">عِيد</span><div class="def">A festival; Islam has two — Eid al-Fiṭr and Eid al-Adḥā.</div></div>
-      <div class="gloss-item"><span class="term">Fajr</span> <span class="ar">فَجْر</span><div class="def">The dawn prayer, the first of the five daily prayers.</div></div>
-      <div class="gloss-item"><span class="term">Farḍ</span> <span class="ar">فَرْض</span><div class="def">An obligatory act of worship or duty.</div></div>
-      <div class="gloss-item"><span class="term">Ghusl</span> <span class="ar">غُسْل</span><div class="def">The full-body ritual purification.</div></div>
-      <div class="gloss-item"><span class="term">Hadith</span> <span class="ar">حَدِيث</span><div class="def">A recorded saying, action, or approval of the Prophet ﷺ.</div></div>
-      <div class="gloss-item"><span class="term">Hajj</span> <span class="ar">حَجّ</span><div class="def">The pilgrimage to Makkah; the fifth pillar of Islam.</div></div>
-      <div class="gloss-item"><span class="term">Ḥalāl</span> <span class="ar">حَلَال</span><div class="def">Permissible according to Islamic law.</div></div>
-      <div class="gloss-item"><span class="term">Ḥarām</span> <span class="ar">حَرَام</span><div class="def">Forbidden according to Islamic law.</div></div>
-      <div class="gloss-item"><span class="term">Ḥayā'</span> <span class="ar">حَيَاء</span><div class="def">Modesty, bashfulness, and a sense of dignity.</div></div>
-      <div class="gloss-item"><span class="term">Hijrah</span> <span class="ar">هِجْرَة</span><div class="def">The Prophet's ﷺ migration to Madinah; start of the Islamic calendar.</div></div>
-      <div class="gloss-item"><span class="term">Ḥijāb</span> <span class="ar">حِجَاب</span><div class="def">Modest dress, including the headscarf worn by Muslim women.</div></div>
-      <div class="gloss-item"><span class="term">Iftar</span> <span class="ar">إِفْطَار</span><div class="def">The meal to break the fast at sunset.</div></div>
-      <div class="gloss-item"><span class="term">Iḥrām</span> <span class="ar">إِحْرَام</span><div class="def">The sacred state and garments for Hajj and Umrah.</div></div>
-      <div class="gloss-item"><span class="term">Imām</span> <span class="ar">إِمَام</span><div class="def">One who leads the prayer; a community religious leader.</div></div>
-      <div class="gloss-item"><span class="term">Iqāmah</span> <span class="ar">إِقَامَة</span><div class="def">The second call announcing that prayer is starting.</div></div>
-      <div class="gloss-item"><span class="term">In shā' Allāh</span> <span class="ar">إِنْ شَاءَ ٱللَّٰه</span><div class="def">"If Allah wills" — said about future plans.</div></div>
-      <div class="gloss-item"><span class="term">Janāzah</span> <span class="ar">جَنَازَة</span><div class="def">The funeral and funeral prayer.</div></div>
-      <div class="gloss-item"><span class="term">Jumu'ah</span> <span class="ar">جُمُعَة</span><div class="def">The Friday congregational prayer.</div></div>
-      <div class="gloss-item"><span class="term">Ka'bah</span> <span class="ar">كَعْبَة</span><div class="def">The cube-shaped House of Allah in Makkah; the direction of prayer.</div></div>
-      <div class="gloss-item"><span class="term">Khuṭbah</span> <span class="ar">خُطْبَة</span><div class="def">The sermon, given at Jumu'ah and the Eids.</div></div>
-      <div class="gloss-item"><span class="term">Laylat al-Qadr</span> <span class="ar">لَيْلَة ٱلْقَدْر</span><div class="def">The Night of Decree in Ramadan, better than a thousand months.</div></div>
-      <div class="gloss-item"><span class="term">Mahr</span> <span class="ar">مَهْر</span><div class="def">The marriage gift given by the groom to the bride.</div></div>
-      <div class="gloss-item"><span class="term">Masjid</span> <span class="ar">مَسْجِد</span><div class="def">A mosque; the Muslim place of worship.</div></div>
-      <div class="gloss-item"><span class="term">Niṣāb</span> <span class="ar">نِصَاب</span><div class="def">The minimum wealth threshold at which zakāt becomes due.</div></div>
-      <div class="gloss-item"><span class="term">Nikāḥ</span> <span class="ar">نِكَاح</span><div class="def">The Islamic marriage contract.</div></div>
-      <div class="gloss-item"><span class="term">Qiblah</span> <span class="ar">قِبْلَة</span><div class="def">The direction of the Ka'bah, faced during prayer.</div></div>
-      <div class="gloss-item"><span class="term">Qurbānī</span> <span class="ar">قُرْبَانِي</span><div class="def">The animal sacrifice offered at Eid al-Adḥā.</div></div>
-      <div class="gloss-item"><span class="term">Rakʿah</span> <span class="ar">رَكْعَة</span><div class="def">A unit of prayer with its bowing and prostration.</div></div>
-      <div class="gloss-item"><span class="term">Ramadan</span> <span class="ar">رَمَضَان</span><div class="def">The month of fasting; the ninth Islamic month.</div></div>
-      <div class="gloss-item"><span class="term">Ṣadaqah</span> <span class="ar">صَدَقَة</span><div class="def">Voluntary charity given for the sake of Allah.</div></div>
-      <div class="gloss-item"><span class="term">Ṣalāh</span> <span class="ar">صَلَاة</span><div class="def">The formal prayer; the five daily prayers.</div></div>
-      <div class="gloss-item"><span class="term">Ṣawm</span> <span class="ar">صَوْم</span><div class="def">Fasting — abstaining from food, drink, and more from dawn to sunset.</div></div>
-      <div class="gloss-item"><span class="term">Shahādah</span> <span class="ar">شَهَادَة</span><div class="def">The testimony of faith; the first pillar of Islam.</div></div>
-      <div class="gloss-item"><span class="term">Sūrah</span> <span class="ar">سُورَة</span><div class="def">A chapter of the Qur'an; there are 114.</div></div>
-      <div class="gloss-item"><span class="term">Sunnah</span> <span class="ar">سُنَّة</span><div class="def">The example and teachings of the Prophet ﷺ.</div></div>
-      <div class="gloss-item"><span class="term">Suḥūr</span> <span class="ar">سُحُور</span><div class="def">The pre-dawn meal eaten before fasting.</div></div>
-      <div class="gloss-item"><span class="term">Tahajjud</span> <span class="ar">تَهَجُّد</span><div class="def">The voluntary night prayer.</div></div>
-      <div class="gloss-item"><span class="term">Takbīr</span> <span class="ar">تَكْبِير</span><div class="def">Saying "Allāhu Akbar" — "Allah is the Greatest."</div></div>
-      <div class="gloss-item"><span class="term">Taqwā</span> <span class="ar">تَقْوَى</span><div class="def">God-consciousness; mindfulness of Allah.</div></div>
-      <div class="gloss-item"><span class="term">Taraweeh</span> <span class="ar">تَرَاوِيح</span><div class="def">The special night prayer performed in Ramadan.</div></div>
-      <div class="gloss-item"><span class="term">Tawḥīd</span> <span class="ar">تَوْحِيد</span><div class="def">The Oneness of God; the core of Islamic belief.</div></div>
-      <div class="gloss-item"><span class="term">Tayammum</span> <span class="ar">تَيَمُّم</span><div class="def">Dry purification with clean earth when water is unavailable.</div></div>
-      <div class="gloss-item"><span class="term">Ummah</span> <span class="ar">أُمَّة</span><div class="def">The global community of Muslims.</div></div>
-      <div class="gloss-item"><span class="term">Umrah</span> <span class="ar">عُمْرَة</span><div class="def">The "lesser pilgrimage" to Makkah, made any time of year.</div></div>
-      <div class="gloss-item"><span class="term">Walī</span> <span class="ar">وَلِيّ</span><div class="def">A guardian; for marriage, the bride's representative.</div></div>
-      <div class="gloss-item"><span class="term">Wuḍū'</span> <span class="ar">وُضُوء</span><div class="def">The ablution (washing) performed before prayer.</div></div>
-      <div class="gloss-item"><span class="term">Zakāt</span> <span class="ar">زَكَاة</span><div class="def">The obligatory annual charity; the third pillar of Islam.</div></div>
-      <div class="gloss-item"><span class="term">Zakāt al-Fiṭr</span> <span class="ar">زَكَاة ٱلْفِطْر</span><div class="def">The charity of food given before Eid al-Fiṭr.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Adhān</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">أَذَان</span><div class="text-icgk-text def">The call to prayer, announced before each of the five daily prayers.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Akhlāq</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">أَخْلَاق</span><div class="text-icgk-text def">Character and manners — a central part of Islamic practice.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Alḥamdulillāh</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">ٱلْحَمْدُ لِلَّٰه</span><div class="text-icgk-text def">"All praise is due to Allah" — said in gratitude.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Allāh</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">ٱللَّٰه</span><div class="text-icgk-text def">The Arabic word for the One God.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Aqīqah</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">عَقِيقَة</span><div class="text-icgk-text def">The sacrifice and celebration to welcome a newborn.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Ashura</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">عَاشُورَاء</span><div class="text-icgk-text def">The 10th of Muharram, a recommended day of fasting.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Barakah</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">بَرَكَة</span><div class="text-icgk-text def">Blessing; divine goodness placed in something.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Bismillāh</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">بِسْمِ ٱللَّٰه</span><div class="text-icgk-text def">"In the name of Allah" — said before beginning an action.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Dhikr</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">ذِكْر</span><div class="text-icgk-text def">Remembrance of Allah through repeated words of praise.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Du'ā</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">دُعَاء</span><div class="text-icgk-text def">Supplication; personal prayer and calling upon Allah.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Eid</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">عِيد</span><div class="text-icgk-text def">A festival; Islam has two — Eid al-Fiṭr and Eid al-Adḥā.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Fajr</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">فَجْر</span><div class="text-icgk-text def">The dawn prayer, the first of the five daily prayers.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Farḍ</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">فَرْض</span><div class="text-icgk-text def">An obligatory act of worship or duty.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Ghusl</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">غُسْل</span><div class="text-icgk-text def">The full-body ritual purification.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Hadith</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">حَدِيث</span><div class="text-icgk-text def">A recorded saying, action, or approval of the Prophet ﷺ.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Hajj</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">حَجّ</span><div class="text-icgk-text def">The pilgrimage to Makkah; the fifth pillar of Islam.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Ḥalāl</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">حَلَال</span><div class="text-icgk-text def">Permissible according to Islamic law.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Ḥarām</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">حَرَام</span><div class="text-icgk-text def">Forbidden according to Islamic law.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Ḥayā'</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">حَيَاء</span><div class="text-icgk-text def">Modesty, bashfulness, and a sense of dignity.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Hijrah</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">هِجْرَة</span><div class="text-icgk-text def">The Prophet's ﷺ migration to Madinah; start of the Islamic calendar.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Ḥijāb</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">حِجَاب</span><div class="text-icgk-text def">Modest dress, including the headscarf worn by Muslim women.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Iftar</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">إِفْطَار</span><div class="text-icgk-text def">The meal to break the fast at sunset.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Iḥrām</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">إِحْرَام</span><div class="text-icgk-text def">The sacred state and garments for Hajj and Umrah.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Imām</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">إِمَام</span><div class="text-icgk-text def">One who leads the prayer; a community religious leader.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Iqāmah</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">إِقَامَة</span><div class="text-icgk-text def">The second call announcing that prayer is starting.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">In shā' Allāh</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">إِنْ شَاءَ ٱللَّٰه</span><div class="text-icgk-text def">"If Allah wills" — said about future plans.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Janāzah</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">جَنَازَة</span><div class="text-icgk-text def">The funeral and funeral prayer.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Jumu'ah</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">جُمُعَة</span><div class="text-icgk-text def">The Friday congregational prayer.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Ka'bah</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">كَعْبَة</span><div class="text-icgk-text def">The cube-shaped House of Allah in Makkah; the direction of prayer.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Khuṭbah</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">خُطْبَة</span><div class="text-icgk-text def">The sermon, given at Jumu'ah and the Eids.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Laylat al-Qadr</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">لَيْلَة ٱلْقَدْر</span><div class="text-icgk-text def">The Night of Decree in Ramadan, better than a thousand months.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Mahr</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">مَهْر</span><div class="text-icgk-text def">The marriage gift given by the groom to the bride.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Masjid</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">مَسْجِد</span><div class="text-icgk-text def">A mosque; the Muslim place of worship.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Niṣāb</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">نِصَاب</span><div class="text-icgk-text def">The minimum wealth threshold at which zakāt becomes due.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Nikāḥ</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">نِكَاح</span><div class="text-icgk-text def">The Islamic marriage contract.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Qiblah</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">قِبْلَة</span><div class="text-icgk-text def">The direction of the Ka'bah, faced during prayer.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Qurbānī</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">قُرْبَانِي</span><div class="text-icgk-text def">The animal sacrifice offered at Eid al-Adḥā.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Rakʿah</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">رَكْعَة</span><div class="text-icgk-text def">A unit of prayer with its bowing and prostration.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Ramadan</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">رَمَضَان</span><div class="text-icgk-text def">The month of fasting; the ninth Islamic month.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Ṣadaqah</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">صَدَقَة</span><div class="text-icgk-text def">Voluntary charity given for the sake of Allah.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Ṣalāh</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">صَلَاة</span><div class="text-icgk-text def">The formal prayer; the five daily prayers.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Ṣawm</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">صَوْم</span><div class="text-icgk-text def">Fasting — abstaining from food, drink, and more from dawn to sunset.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Shahādah</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">شَهَادَة</span><div class="text-icgk-text def">The testimony of faith; the first pillar of Islam.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Sūrah</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">سُورَة</span><div class="text-icgk-text def">A chapter of the Qur'an; there are 114.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Sunnah</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">سُنَّة</span><div class="text-icgk-text def">The example and teachings of the Prophet ﷺ.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Suḥūr</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">سُحُور</span><div class="text-icgk-text def">The pre-dawn meal eaten before fasting.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Tahajjud</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">تَهَجُّد</span><div class="text-icgk-text def">The voluntary night prayer.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Takbīr</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">تَكْبِير</span><div class="text-icgk-text def">Saying "Allāhu Akbar" — "Allah is the Greatest."</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Taqwā</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">تَقْوَى</span><div class="text-icgk-text def">God-consciousness; mindfulness of Allah.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Taraweeh</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">تَرَاوِيح</span><div class="text-icgk-text def">The special night prayer performed in Ramadan.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Tawḥīd</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">تَوْحِيد</span><div class="text-icgk-text def">The Oneness of God; the core of Islamic belief.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Tayammum</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">تَيَمُّم</span><div class="text-icgk-text def">Dry purification with clean earth when water is unavailable.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Ummah</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">أُمَّة</span><div class="text-icgk-text def">The global community of Muslims.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Umrah</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">عُمْرَة</span><div class="text-icgk-text def">The "lesser pilgrimage" to Makkah, made any time of year.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Walī</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">وَلِيّ</span><div class="text-icgk-text def">A guardian; for marriage, the bride's representative.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Wuḍū'</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">وُضُوء</span><div class="text-icgk-text def">The ablution (washing) performed before prayer.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Zakāt</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">زَكَاة</span><div class="text-icgk-text def">The obligatory annual charity; the third pillar of Islam.</div></div>
+      <div class="py-3 border-b border-icgk-gold/[0.15] last:border-0 gloss-item"><span class="text-icgk-gold-bright font-bold term">Zakāt al-Fiṭr</span> <span dir="rtl" class="text-icgk-muted ml-1.5 ar">زَكَاة ٱلْفِطْر</span><div class="text-icgk-text def">The charity of food given before Eid al-Fiṭr.</div></div>
     </div>
-    <p id="gloss-none" class="hint" style="display:none; color:var(--muted); padding:12px 0">No terms match your search.</p>
+    <p id="gloss-none" class="hidden text-icgk-muted py-3">No terms match your search.</p>
   </section>
 
-  <section class="cta-band">
-    <h2 class="center"><span class="badge">📚</span> Keep Exploring</h2>
-    <p>Browse the full set of guides on the Resources page.</p>
-    <div style="margin-top:18px">
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5 text-center">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center justify-center gap-3"><span class="text-2xl">📚</span> Keep Exploring</h2>
+    <p class="text-icgk-text">Browse the full set of guides on the Resources page.</p>
+    <div class="mt-4.5">
       <a class="btn btn-primary" href="resources.html">📚 All Resources</a>
     </div>
   </section>
 
-  <footer>
-    <span class="name">Islamic Community of Greater Killeen</span>
-    <p class="dua">May Allah increase us in beneficial knowledge. Āmīn.</p>
-    <p class="note">Have a term to add? Let us know &nbsp;•&nbsp; icgk.org</p>
+  <footer class="text-center text-icgk-muted px-4 pt-7 pb-1 text-[0.9rem]">
+    <span class="text-icgk-gold-bright text-[1.1rem] tracking-[2px] block mb-1.5">Islamic Community of Greater Killeen</span>
+    <p class="text-icgk-cream italic mb-3.5">May Allah increase us in beneficial knowledge. Āmīn.</p>
+    <p class="text-[0.82rem] text-icgk-muted">Have a term to add? Let us know &nbsp;•&nbsp; icgk.org</p>
   </footer>
 
 </div>

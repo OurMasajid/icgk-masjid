@@ -1,373 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Islamic Community of Greater Killeen</title>
 <meta name="description" content="The Islamic Community of Greater Killeen (ICGK) — daily prayer times, Jumu'ah, programs, and community in Killeen, Texas. All are welcome.">
-<style>
-  :root {
-    --green-dark: #0c2a1f;
-    --green-mid: #11402f;
-    --green-soft: #16513b;
-    --gold: #d4a64a;
-    --gold-bright: #f0c674;
-    --cream: #f5e9c8;
-    --text: #f8efd6;
-    --muted: #cdbf9a;
-    --panel: rgba(0,0,0,0.28);
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="tailwind-config.js"></script>
+<style type="text/tailwindcss">
+  @layer base {
+    a { @apply text-icgk-gold-bright; }
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Georgia', 'Times New Roman', serif;
-    background:
-      radial-gradient(1200px 600px at 50% -10%, rgba(212,166,74,0.10), transparent 60%),
-      linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
-    background-attachment: fixed;
-    color: var(--text);
-    min-height: 100vh;
-    line-height: 1.65;
-  }
-  a { color: var(--gold-bright); }
-  .container { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
+  @layer components {
+    .btn {
+      @apply inline-flex items-center gap-2 px-6 py-3 rounded-full no-underline text-base font-bold tracking-wide border-[1.5px] border-icgk-gold transition duration-200;
+    }
+    .btn-primary {
+      @apply bg-icgk-gold text-icgk-green-dark hover:bg-icgk-gold-bright hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(212,166,74,0.3)];
+    }
+    .btn-ghost {
+      @apply text-icgk-gold-bright hover:bg-icgk-gold/15 hover:-translate-y-0.5;
+    }
+    .linkish {
+      @apply bg-transparent border-none text-icgk-gold-bright cursor-pointer underline p-0 font-serif;
+    }
+    .loading {
+      @apply text-icgk-muted text-center py-5 italic;
+    }
 
-  /* ---------- Nav ---------- */
-  nav {
-    position: sticky; top: 0; z-index: 50;
-    background: rgba(8,26,19,0.86);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(212,166,74,0.35);
-  }
-  nav .inner {
-    max-width: 1000px; margin: 0 auto; padding: 10px 16px;
-    display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  }
-  .brand { display: flex; align-items: center; gap: 10px; color: var(--gold); text-decoration: none; }
-  .brand .mark { font-size: 1.5rem; filter: drop-shadow(0 0 8px rgba(240,198,116,0.5)); }
-  .brand .txt b { display: block; font-size: 1rem; color: var(--gold); letter-spacing: .5px; line-height: 1.1; }
-  .brand .txt span { font-size: .72rem; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
-  .nav-links { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-  .nav-links a {
-    color: var(--cream); text-decoration: none; font-size: .92rem;
-    padding: 6px 10px; border-radius: 8px; transition: background .2s, color .2s;
-  }
-  .nav-links a:hover { background: rgba(212,166,74,0.15); color: var(--gold-bright); }
-  .nav-links a.donate {
-    border: 1px solid var(--gold); color: var(--gold-bright);
-  }
-  .nav-links a.donate:hover { background: var(--gold); color: var(--green-dark); }
-  .nav-toggle { display: none; background: none; border: 1px solid var(--gold); color: var(--gold-bright); border-radius: 8px; padding: 6px 10px; font-size: 1.1rem; cursor: pointer; }
+    .pcard {
+      @apply bg-black/30 border border-icgk-gold/40 rounded-xl px-2.5 py-4 text-center transition duration-200;
+    }
+    .pcard.is-active {
+      @apply border-icgk-gold-bright -translate-y-1;
+      background: radial-gradient(200px 120px at 50% 0%, rgba(240,198,116,0.18), rgba(0,0,0,0.3));
+      box-shadow: 0 0 0 1px #f0c674 inset, 0 8px 28px rgba(0,0,0,0.4);
+    }
+    .pcard.sunrise { @apply opacity-90; }
+    .pcard.sunrise .plabel { @apply invisible; }
+    .pname { @apply text-icgk-gold-bright font-bold tracking-wide text-[0.95rem]; }
+    .parab { @apply text-icgk-muted text-[0.8rem] mb-2.5 min-h-[1em]; }
+    .plabel { @apply text-icgk-gold-bright text-[0.66rem] tracking-[2px] uppercase; }
+    .piqama { @apply text-icgk-text text-[1.55rem] leading-[1.15]; }
+    .padhan { @apply text-icgk-muted text-[0.82rem] mt-1.5; }
+    .padhan b { @apply text-icgk-cream font-normal; }
 
-  /* ---------- Hero ---------- */
-  .hero {
-    text-align: center;
-    padding: 28px 16px 22px;
-    position: relative;
-  }
-  .hero .eyebrow { color: var(--gold-bright); letter-spacing: 4px; text-transform: uppercase; font-size: .8rem; }
-  .hero .bismillah { direction: rtl; color: var(--gold-bright); font-size: 1.4rem; margin: 8px 0 4px; }
-  .hero h1 { color: var(--gold); font-size: 2rem; line-height: 1.1; margin: 6px 0; text-shadow: 0 2px 18px rgba(0,0,0,0.4); }
-  .hero .tagline { color: var(--cream); font-size: 1rem; font-style: italic; margin: 6px auto 4px; max-width: 640px; }
-  .hero .where { color: var(--muted); letter-spacing: 1px; margin-top: 4px; font-size: .9rem; }
-  .hero .cta { margin-top: 16px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .event-card {
+      @apply grid gap-0 bg-black/25 border-[1.5px] border-icgk-gold rounded-2xl overflow-hidden transition duration-200 hover:-translate-y-1 hover:shadow-[0_14px_32px_rgba(0,0,0,0.4)] hover:border-icgk-gold-bright;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    }
+    .event-card + .event-card { @apply mt-5; }
+    .event-flyer { @apply bg-black flex items-center justify-center min-h-[320px]; }
+    .event-flyer img { @apply block w-full h-full object-contain max-h-[620px]; }
+    .event-body { @apply px-7 py-7 flex flex-col justify-center; }
+    .event-eyebrow { @apply text-icgk-gold-bright tracking-[3px] uppercase text-[0.76rem]; }
+    .event-title { @apply text-icgk-gold text-2xl leading-tight mt-1.5 mb-0.5; }
+    .event-tagline { @apply text-icgk-cream italic mb-3.5; }
+    .event-meta { @apply grid gap-2 my-2.5; }
+    .event-meta .row { @apply flex gap-2.5 items-start; }
+    .event-meta .ri { @apply text-icgk-gold-bright min-w-[22px] text-center; }
+    .event-meta .rv { @apply text-icgk-text; }
+    .event-meta .rv .sub { @apply block text-icgk-muted text-[0.85rem]; }
+    .event-blurb { @apply text-icgk-cream mb-4; }
+    .event-cta { @apply flex gap-2.5 flex-wrap; }
+    @media (max-width: 760px) {
+      .event-card { grid-template-columns: 1fr; }
+      .event-flyer { min-height: 0; }
+      .event-flyer img { max-height: 580px; }
+      .event-body { padding: 22px 22px 24px; }
+    }
 
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 12px 24px; border-radius: 999px; text-decoration: none;
-    font-size: 1rem; font-weight: bold; letter-spacing: .5px;
-    border: 1.5px solid var(--gold); transition: transform .15s, background .2s, color .2s, box-shadow .2s;
-  }
-  .btn-primary { background: var(--gold); color: var(--green-dark); }
-  .btn-primary:hover { background: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,166,74,0.3); }
-  .btn-ghost { color: var(--gold-bright); }
-  .btn-ghost:hover { background: rgba(212,166,74,0.15); transform: translateY(-2px); }
-
-  /* ---------- Sections ---------- */
-  section { padding: 40px 0; }
-  .section-head { text-align: center; margin-bottom: 28px; }
-  .section-head h2 { color: var(--gold); font-size: 2rem; }
-  .section-head .sub { color: var(--muted); margin-top: 4px; }
-  hr.star { max-width: 200px; border: none; border-top: 1px solid rgba(212,166,74,0.4); margin: 10px auto 0; position: relative; }
-  hr.star::after { content: "✦"; color: var(--gold); position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--green-mid); padding: 0 10px; }
-
-  /* ---------- Prayer times ---------- */
-  #prayer { scroll-margin-top: 70px; }
-  .prayer-wrap {
-    background: var(--panel);
-    border: 1.5px solid var(--gold);
-    border-radius: 16px;
-    padding: 24px;
-  }
-  .prayer-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 6px; }
-  .prayer-top .today { color: var(--cream); font-size: 1.05rem; }
-  .prayer-top .next { color: var(--green-dark); background: var(--gold-bright); padding: 6px 14px; border-radius: 999px; font-weight: bold; font-size: .9rem; }
-  .prayer-grid {
-    display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 16px;
-  }
-  .pcard {
-    background: rgba(0,0,0,0.3); border: 1px solid rgba(212,166,74,0.4);
-    border-radius: 12px; padding: 16px 10px; text-align: center;
-    transition: transform .2s, border-color .2s, box-shadow .2s;
-  }
-  .pcard .pname { color: var(--gold-bright); font-weight: bold; letter-spacing: 1px; font-size: .95rem; }
-  .pcard .parab { color: var(--muted); font-size: .8rem; direction: rtl; margin-bottom: 10px; min-height: 1em; }
-  .pcard .plabel { color: var(--gold-bright); font-size: .66rem; letter-spacing: 2px; text-transform: uppercase; }
-  .pcard .piqama { color: var(--text); font-size: 1.55rem; line-height: 1.15; }
-  .pcard .padhan { color: var(--muted); font-size: .82rem; margin-top: 6px; }
-  .pcard .padhan b { color: var(--cream); font-weight: normal; }
-  .pcard.is-active {
-    border-color: var(--gold-bright);
-    background: radial-gradient(200px 120px at 50% 0%, rgba(240,198,116,0.18), rgba(0,0,0,0.3));
-    box-shadow: 0 0 0 1px var(--gold-bright) inset, 0 8px 28px rgba(0,0,0,0.4);
-    transform: translateY(-4px);
-  }
-  .pcard.sunrise { opacity: .9; }
-  .pcard.sunrise .plabel { visibility: hidden; }
-  .prayer-foot { margin-top: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; color: var(--muted); font-size: .85rem; }
-  .linkish { background: none; border: none; color: var(--gold-bright); cursor: pointer; font: inherit; text-decoration: underline; padding: 0; }
-  .monthly-box { margin-top: 18px; display: none; }
-  .monthly-box.open { display: block; }
-  .monthly-box iframe { width: 100%; height: 780px; border: none; border-radius: 12px; background: #fff; }
-  .loading { color: var(--muted); text-align: center; padding: 20px; font-style: italic; }
-
-  /* ---------- Jumu'ah ---------- */
-  .jumuah-card {
-    display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: center;
-    background: linear-gradient(135deg, rgba(212,166,74,0.12), var(--panel));
-    border: 1.5px solid var(--gold-bright); border-radius: 16px; padding: 26px 30px;
-  }
-  .jumuah-card .big { text-align: center; }
-  .jumuah-card .big .word { color: var(--gold); font-size: 1.4rem; letter-spacing: 1px; }
-  .jumuah-card .big .time { color: var(--gold-bright); font-size: 2.6rem; line-height: 1; margin-top: 4px; }
-  .jumuah-card .big .label { color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: 2px; }
-  .jumuah-card .det p { margin: 4px 0; }
-  .jumuah-card .det b { color: var(--gold-bright); }
-
-  /* ---------- Generic cards / about ---------- */
-  .panel { background: var(--panel); border: 1.5px solid var(--gold); border-radius: 14px; padding: 28px 30px; }
-  .about p { margin-bottom: 12px; color: var(--text); }
-  .about p:last-child { margin-bottom: 0; }
-  .about .lead { font-size: 1.15rem; color: var(--cream); }
-
-  /* ---------- Events ---------- */
-  #events { scroll-margin-top: 70px; }
-  .events-empty { display: none; }
-  .event-card {
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-    gap: 0;
-    background: var(--panel);
-    border: 1.5px solid var(--gold);
-    border-radius: 16px;
-    overflow: hidden;
-    transition: transform .2s, box-shadow .2s, border-color .2s;
-  }
-  .event-card + .event-card { margin-top: 20px; }
-  .event-card:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0,0,0,0.4); border-color: var(--gold-bright); }
-  .event-flyer {
-    background: #000;
-    display: flex; align-items: center; justify-content: center;
-    min-height: 320px;
-  }
-  .event-flyer img { display: block; width: 100%; height: 100%; max-height: 620px; object-fit: contain; }
-  .event-body { padding: 28px 30px; display: flex; flex-direction: column; justify-content: center; }
-  .event-eyebrow { color: var(--gold-bright); letter-spacing: 3px; text-transform: uppercase; font-size: .76rem; }
-  .event-title { color: var(--gold); font-size: 1.7rem; line-height: 1.15; margin: 6px 0 2px; }
-  .event-tagline { color: var(--cream); font-style: italic; margin-bottom: 14px; }
-  .event-meta { display: grid; gap: 8px; margin: 10px 0 14px; }
-  .event-meta .row { display: flex; gap: 10px; align-items: flex-start; }
-  .event-meta .ri { color: var(--gold-bright); min-width: 22px; text-align: center; }
-  .event-meta .rv { color: var(--text); }
-  .event-meta .rv .sub { display: block; color: var(--muted); font-size: .85rem; }
-  .event-blurb { color: var(--cream); margin-bottom: 16px; }
-  .event-cta { display: flex; gap: 10px; flex-wrap: wrap; }
-  .events-foot { text-align: center; margin-top: 20px; }
-  @media (max-width: 760px) {
-    .event-card { grid-template-columns: 1fr; }
-    .event-flyer { min-height: 0; }
-    .event-flyer img { max-height: 580px; }
-    .event-body { padding: 22px 22px 24px; }
-  }
-
-  /* ---------- Imam card ---------- */
-  #imam { scroll-margin-top: 70px; }
-  .imam-card {
-    display: grid;
-    grid-template-columns: 340px 1fr;
-    gap: 32px;
-    align-items: center;
-    background: linear-gradient(135deg, rgba(212,166,74,0.08), var(--panel));
-    border: 1.5px solid var(--gold);
-    border-radius: 16px;
-    padding: 30px 32px;
-  }
-  .imam-photo {
-    border: 3px solid var(--gold);
-    border-radius: 14px;
-    padding: 5px;
-    background: rgba(0,0,0,0.3);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-  }
-  .imam-photo img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 9px;
-  }
-  .imam-text .eyebrow { color: var(--gold-bright); letter-spacing: 3px; text-transform: uppercase; font-size: .78rem; }
-  .imam-text h3 { color: var(--gold); font-size: 1.6rem; margin: 6px 0 2px; }
-  .imam-text .role { color: var(--cream); font-style: italic; margin-bottom: 12px; }
-  .imam-text p { color: var(--text); margin-bottom: 12px; }
-  .imam-text .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 14px; }
-  .imam-text .tag {
-    background: rgba(0,0,0,0.3); border: 1px solid rgba(212,166,74,0.55);
-    border-radius: 999px; padding: 4px 12px; color: var(--cream); font-size: .82rem;
-  }
-  .imam-text .more { margin-top: 4px; }
-  @media (max-width: 760px) {
-    .imam-card { grid-template-columns: 1fr; text-align: center; }
-    .imam-photo { max-width: 360px; margin: 0 auto; }
-    .imam-text .tags { justify-content: center; }
-  }
-
-  .grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;
-  }
-  .feature {
-    background: var(--panel); border: 1px solid rgba(212,166,74,0.4); border-radius: 12px;
-    padding: 20px; transition: transform .2s, border-color .2s, box-shadow .2s;
-  }
-  .feature:hover { transform: translateY(-4px); border-color: var(--gold-bright); box-shadow: 0 10px 26px rgba(0,0,0,0.35); }
-  .feature .fi { font-size: 1.8rem; margin-bottom: 8px; }
-  .feature h3 { color: var(--gold-bright); font-size: 1.1rem; margin-bottom: 4px; }
-  .feature p { color: var(--muted); font-size: .92rem; }
-
-  /* ---------- Resources (front-page teaser) ---------- */
-  #resources { scroll-margin-top: 70px; }
-  .res-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  a.res-link {
-    display: flex; align-items: center; gap: 14px; text-decoration: none;
-    background: var(--panel); border: 1px solid rgba(212,166,74,0.4); border-radius: 12px;
-    padding: 16px 18px; transition: transform .2s, border-color .2s, box-shadow .2s;
-  }
-  a.res-link:hover { transform: translateY(-3px); border-color: var(--gold-bright); box-shadow: 0 10px 26px rgba(0,0,0,0.35); }
-  a.res-link .ri { font-size: 1.7rem; line-height: 1; }
-  a.res-link h3 { color: var(--gold-bright); font-size: 1.05rem; margin: 0; }
-  a.res-link .arrow { margin-left: auto; color: var(--gold); font-size: 1.1rem; transition: transform .2s; }
-  a.res-link:hover .arrow { transform: translateX(3px); }
-  .res-more { text-align: center; margin-top: 22px; }
-
-  /* ---------- Visit ---------- */
-  .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch; }
-  .visit-info { display: flex; flex-direction: column; justify-content: center; }
-  .visit-info .row { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(212,166,74,0.18); }
-  .visit-info .row:last-child { border-bottom: none; }
-  .visit-info .ri { color: var(--gold-bright); font-size: 1.3rem; min-width: 28px; text-align: center; }
-  .visit-info .rl { color: var(--gold-bright); font-weight: bold; display: block; font-size: .85rem; letter-spacing: 1px; text-transform: uppercase; }
-  .visit-info .rv { color: var(--text); }
-  .map-box iframe { width: 100%; height: 100%; min-height: 320px; border: none; border-radius: 12px; filter: saturate(.9) brightness(.95); }
-
-  /* ---------- Donate ---------- */
-  .donate-band {
-    text-align: center;
-    background: linear-gradient(135deg, rgba(212,166,74,0.16), rgba(0,0,0,0.3));
-    border: 1.5px solid var(--gold); border-radius: 16px; padding: 40px 24px;
-  }
-  .donate-band h2 { color: var(--gold); font-size: 2rem; }
-  .donate-band p { color: var(--cream); max-width: 600px; margin: 10px auto 22px; }
-  .donate-band .cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-
-  /* ---------- Contact form ---------- */
-  .contact-wrap { max-width: 760px; margin: 0 auto; }
-  .hp { position: absolute; left: -9999px; }
-  .cform-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .cfield { margin-bottom: 16px; display: flex; flex-direction: column; }
-  .cfield label { color: var(--gold-bright); font-size: .88rem; letter-spacing: .5px; margin-bottom: 6px; }
-  .cfield .req { color: var(--gold); }
-  .cfield .opt { color: var(--muted); font-size: .8rem; }
-  .cform input, .cform select, .cform textarea {
-    font-family: inherit; font-size: 1rem; color: var(--text);
-    background: rgba(0,0,0,0.3); border: 1px solid rgba(212,166,74,0.45);
-    border-radius: 10px; padding: 11px 14px; width: 100%;
-    transition: border-color .2s, box-shadow .2s;
-  }
-  .cform textarea { resize: vertical; min-height: 120px; }
-  .cform input::placeholder, .cform textarea::placeholder { color: var(--muted); opacity: .7; }
-  .cform input:focus, .cform select:focus, .cform textarea:focus {
-    outline: none; border-color: var(--gold-bright); box-shadow: 0 0 0 3px rgba(212,166,74,0.18);
-  }
-  .cform select { appearance: none; -webkit-appearance: none; cursor: pointer; }
-  .cform select option { background: var(--green-dark); color: var(--text); }
-  .cform-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 4px; }
-  .cform-actions .btn { cursor: pointer; font-family: inherit; }
-  .cform-actions .btn:disabled { opacity: .6; cursor: default; }
-  .cform-status { color: var(--muted); font-size: .9rem; }
-  .cform-status.err { color: #f0a674; }
-  .cform-success { text-align: center; padding: 30px 10px; }
-  .cform-success .ci { font-size: 3rem; }
-  .cform-success h3 { color: var(--gold-bright); font-size: 1.5rem; margin: 10px 0 6px; }
-  .cform-success p { color: var(--cream); }
-
-  /* ---------- Footer ---------- */
-  footer {
-    border-top: 1px solid rgba(212,166,74,0.35);
-    margin-top: 40px; padding: 36px 16px 28px;
-    background: rgba(8,26,19,0.6);
-  }
-  .foot-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 28px; }
-  .foot-grid h4 { color: var(--gold-bright); font-size: .9rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
-  .foot-grid a { color: var(--cream); text-decoration: none; display: block; padding: 4px 0; font-size: .95rem; }
-  .foot-grid a:hover { color: var(--gold-bright); }
-  .foot-brand .mark { font-size: 1.6rem; color: var(--gold); }
-  .foot-brand .nm { color: var(--gold); font-size: 1.2rem; display: block; margin: 6px 0; }
-  .foot-brand p { color: var(--muted); font-size: .9rem; }
-  .foot-bottom { text-align: center; color: var(--muted); font-size: .82rem; margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(212,166,74,0.15); }
-
-  /* ---------- Responsive ---------- */
-  @media (max-width: 820px) {
-    .visit-grid { grid-template-columns: 1fr; }
-    .prayer-grid { grid-template-columns: repeat(3, 1fr); }
-    .foot-grid { grid-template-columns: 1fr 1fr; }
-    .foot-brand { grid-column: 1 / -1; }
-    .res-links { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 640px) {
-    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; background: rgba(8,26,19,0.98); padding: 10px 16px 16px; border-bottom: 1px solid rgba(212,166,74,0.35); }
-    .nav-links.open { display: flex; }
-    .nav-links a { padding: 10px; }
-    .nav-toggle { display: block; }
-    .hero h1 { font-size: 2.2rem; }
-    .hero .tagline { font-size: 1.05rem; }
-    .jumuah-card { grid-template-columns: 1fr; text-align: center; }
-    .prayer-grid { grid-template-columns: repeat(2, 1fr); }
-    .panel, .prayer-wrap, .donate-band { padding: 22px 18px; }
-    .cform-row { grid-template-columns: 1fr; }
-    .res-links { grid-template-columns: 1fr; }
+    .cform-status.err { @apply text-[#f0a674]; }
   }
 </style>
 </head>
-<body>
+<body class="font-serif text-icgk-text min-h-screen leading-[1.65] bg-fixed bg-[radial-gradient(1200px_600px_at_50%_-10%,rgba(212,166,74,0.10),transparent_60%),linear-gradient(135deg,#0c2a1f_0%,#11402f_100%)]">
 
 <!-- ===== NAV ===== -->
-<nav>
-  <div class="inner">
-    <a class="brand" href="#top">
-      <span class="mark">☪</span>
-      <span class="txt"><b>ICGK</b><span>Greater Killeen</span></span>
+<nav class="sticky top-0 z-50 bg-icgk-green-dark/[0.86] backdrop-blur-md border-b border-icgk-gold/35">
+  <div class="max-w-[1000px] mx-auto flex items-center justify-between gap-3 px-4 py-2.5">
+    <a class="flex items-center gap-2.5 text-icgk-gold no-underline" href="#top">
+      <span class="text-2xl drop-shadow-[0_0_8px_rgba(240,198,116,0.5)]">☪</span>
+      <span class="leading-tight"><b class="block text-base text-icgk-gold tracking-wide leading-tight">ICGK</b><span class="text-[0.72rem] text-icgk-muted tracking-[2px] uppercase">Greater Killeen</span></span>
     </a>
-    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
-    <div class="nav-links" id="navlinks">
-      <a href="#prayer">Prayer Times</a>
-      <a href="#jumuah">Jumu'ah</a>
-      <a href="#events">Events</a>
-      <a href="#about">About</a>
-      <a href="#imam">Our Imam</a>
-      <a href="#programs">Programs</a>
-      <a href="#resources">Resources</a>
-      <a href="#visit">Visit</a>
-      <a href="#contact">Contact</a>
-      <a class="donate" href="https://app.autobooks.co/pay/icgk" target="_blank" rel="noopener">Donate</a>
+    <button class="md:hidden bg-transparent border border-icgk-gold text-icgk-gold-bright rounded-lg px-2.5 py-1.5 text-lg cursor-pointer" aria-label="Menu" onclick="toggleNav()">☰</button>
+    <div class="hidden md:flex flex-col md:flex-row items-stretch md:items-center gap-1.5 flex-wrap absolute md:relative top-full inset-x-0 md:inset-auto bg-icgk-green-dark/[0.98] md:bg-transparent px-4 md:px-0 pt-2.5 md:pt-0 pb-4 md:pb-0 border-b md:border-0 border-icgk-gold/35" id="navlinks">
+      <a class="text-icgk-cream no-underline text-[0.92rem] px-2.5 py-1.5 rounded-lg transition duration-200 hover:bg-icgk-gold/15 hover:text-icgk-gold-bright" href="#prayer">Prayer Times</a>
+      <a class="text-icgk-cream no-underline text-[0.92rem] px-2.5 py-1.5 rounded-lg transition duration-200 hover:bg-icgk-gold/15 hover:text-icgk-gold-bright" href="#jumuah">Jumu'ah</a>
+      <a class="text-icgk-cream no-underline text-[0.92rem] px-2.5 py-1.5 rounded-lg transition duration-200 hover:bg-icgk-gold/15 hover:text-icgk-gold-bright" href="#events">Events</a>
+      <a class="text-icgk-cream no-underline text-[0.92rem] px-2.5 py-1.5 rounded-lg transition duration-200 hover:bg-icgk-gold/15 hover:text-icgk-gold-bright" href="#about">About</a>
+      <a class="text-icgk-cream no-underline text-[0.92rem] px-2.5 py-1.5 rounded-lg transition duration-200 hover:bg-icgk-gold/15 hover:text-icgk-gold-bright" href="#imam">Our Imam</a>
+      <a class="text-icgk-cream no-underline text-[0.92rem] px-2.5 py-1.5 rounded-lg transition duration-200 hover:bg-icgk-gold/15 hover:text-icgk-gold-bright" href="#programs">Programs</a>
+      <a class="text-icgk-cream no-underline text-[0.92rem] px-2.5 py-1.5 rounded-lg transition duration-200 hover:bg-icgk-gold/15 hover:text-icgk-gold-bright" href="#resources">Resources</a>
+      <a class="text-icgk-cream no-underline text-[0.92rem] px-2.5 py-1.5 rounded-lg transition duration-200 hover:bg-icgk-gold/15 hover:text-icgk-gold-bright" href="#visit">Visit</a>
+      <a class="text-icgk-cream no-underline text-[0.92rem] px-2.5 py-1.5 rounded-lg transition duration-200 hover:bg-icgk-gold/15 hover:text-icgk-gold-bright" href="#contact">Contact</a>
+      <a class="text-icgk-cream no-underline text-[0.92rem] px-2.5 py-1.5 rounded-lg transition duration-200 border border-icgk-gold hover:bg-icgk-gold hover:text-icgk-green-dark" href="https://app.autobooks.co/pay/icgk" target="_blank" rel="noopener">Donate</a>
     </div>
   </div>
 </nav>
@@ -375,14 +102,14 @@
 <a id="top"></a>
 
 <!-- ===== HERO ===== -->
-<header class="hero">
-  <div class="container">
-    <div class="eyebrow">As-salāmu ʿalaykum &amp; Welcome</div>
-    <div class="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
-    <h1>Islamic Community of<br>Greater Killeen</h1>
-    <p class="tagline">A house of worship and a home for the Muslim community of Killeen and Fort&nbsp;Hood — open to all.</p>
-    <p class="where">📍 Killeen, Texas</p>
-    <div class="cta">
+<header class="text-center px-4 pt-7 pb-5 relative">
+  <div class="max-w-[1000px] mx-auto px-4">
+    <div class="text-icgk-gold-bright tracking-[4px] uppercase text-[0.8rem]">As-salāmu ʿalaykum &amp; Welcome</div>
+    <div dir="rtl" class="text-icgk-gold-bright text-2xl mt-2 mb-1">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+    <h1 class="text-icgk-gold text-[2rem] leading-[1.1] my-1.5 drop-shadow-[0_2px_18px_rgba(0,0,0,0.4)]">Islamic Community of<br>Greater Killeen</h1>
+    <p class="text-icgk-cream text-base italic mt-1.5 mx-auto mb-1 max-w-[640px]">A house of worship and a home for the Muslim community of Killeen and Fort&nbsp;Hood — open to all.</p>
+    <p class="text-icgk-muted tracking-wide mt-1 text-[0.9rem]">📍 Killeen, Texas</p>
+    <div class="mt-4 flex gap-3.5 justify-center flex-wrap">
       <a class="btn btn-primary" href="#prayer">🕌 Prayer Times</a>
       <a class="btn btn-ghost" href="#visit">Plan Your Visit</a>
     </div>
@@ -390,45 +117,45 @@
 </header>
 
 <!-- ===== UPCOMING EVENTS ===== -->
-<section id="events" hidden>
-  <div class="container">
-    <div class="section-head">
-      <h2>Upcoming Events</h2>
-      <div class="sub">Join us at the masjid</div>
-      <hr class="star">
+<section id="events" class="py-10 scroll-mt-[70px]" hidden>
+  <div class="max-w-[1000px] mx-auto px-4">
+    <div class="text-center mb-7">
+      <h2 class="text-icgk-gold text-[2rem]">Upcoming Events</h2>
+      <div class="text-icgk-muted mt-1">Join us at the masjid</div>
+      <hr class="max-w-[200px] border-0 border-t border-icgk-gold/40 mt-2.5 mx-auto relative after:content-['✦'] after:text-icgk-gold after:absolute after:-top-3 after:left-1/2 after:-translate-x-1/2 after:bg-icgk-green-mid after:px-2.5">
     </div>
     <div id="events-list"></div>
-    <div class="events-foot">
+    <div class="text-center mt-5">
       <a class="btn btn-ghost" href="events-archive.html">View past events →</a>
     </div>
   </div>
 </section>
 
 <!-- ===== PRAYER TIMES ===== -->
-<section id="prayer">
-  <div class="container">
-    <div class="section-head">
-      <h2>Prayer Times</h2>
-      <div class="sub">Daily ṣalāh times for Killeen, TX</div>
-      <hr class="star">
+<section id="prayer" class="py-10 scroll-mt-[70px]">
+  <div class="max-w-[1000px] mx-auto px-4">
+    <div class="text-center mb-7">
+      <h2 class="text-icgk-gold text-[2rem]">Prayer Times</h2>
+      <div class="text-icgk-muted mt-1">Daily ṣalāh times for Killeen, TX</div>
+      <hr class="max-w-[200px] border-0 border-t border-icgk-gold/40 mt-2.5 mx-auto relative after:content-['✦'] after:text-icgk-gold after:absolute after:-top-3 after:left-1/2 after:-translate-x-1/2 after:bg-icgk-green-mid after:px-2.5">
     </div>
 
-    <div class="prayer-wrap">
-      <div class="prayer-top">
-        <div class="today" id="today-date">Loading today's date…</div>
-        <div class="next" id="next-prayer" style="display:none"></div>
+    <div class="bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl p-6">
+      <div class="flex justify-between items-center flex-wrap gap-2.5 mb-1.5">
+        <div class="text-icgk-cream text-[1.05rem]" id="today-date">Loading today's date…</div>
+        <div class="hidden text-icgk-green-dark bg-icgk-gold-bright px-3.5 py-1.5 rounded-full font-bold text-sm" id="next-prayer"></div>
       </div>
 
-      <div id="prayer-grid" class="prayer-grid">
-        <div class="loading" style="grid-column:1/-1">Loading prayer times…</div>
+      <div id="prayer-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 mt-4">
+        <div class="loading col-span-full">Loading prayer times…</div>
       </div>
 
-      <div class="prayer-foot">
+      <div class="flex justify-between items-center flex-wrap gap-2.5 mt-4 text-icgk-muted text-[0.85rem]">
         <span id="iqama-note">Adhan times calculated for Killeen (ISNA method). Iqāmah times set by the masjid.</span>
         <button class="linkish" id="monthly-toggle" onclick="toggleMonthly()">View full monthly schedule ▾</button>
       </div>
 
-      <div class="monthly-box" id="monthly-box">
+      <div class="mt-4.5 hidden" id="monthly-box">
         <!-- iframe injected on first open -->
       </div>
     </div>
@@ -436,66 +163,66 @@
 </section>
 
 <!-- ===== JUMU'AH ===== -->
-<section id="jumuah">
-  <div class="container">
-    <div class="section-head">
-      <h2>Jumu'ah — Friday Prayer</h2>
-      <hr class="star">
+<section id="jumuah" class="py-10">
+  <div class="max-w-[1000px] mx-auto px-4">
+    <div class="text-center mb-7">
+      <h2 class="text-icgk-gold text-[2rem]">Jumu'ah — Friday Prayer</h2>
+      <hr class="max-w-[200px] border-0 border-t border-icgk-gold/40 mt-2.5 mx-auto relative after:content-['✦'] after:text-icgk-gold after:absolute after:-top-3 after:left-1/2 after:-translate-x-1/2 after:bg-icgk-green-mid after:px-2.5">
     </div>
-    <div class="jumuah-card">
-      <div class="big">
-        <div class="word">الجُمُعَة</div>
-        <div class="time" id="jumuah-time">1:30 PM</div>
-        <div class="label">Khuṭbah begins</div>
+    <div class="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-5 items-center text-center sm:text-left bg-gradient-to-br from-icgk-gold/10 to-black/[0.28] border-[1.5px] border-icgk-gold-bright rounded-2xl px-7 py-6">
+      <div class="text-center">
+        <div dir="rtl" class="text-icgk-gold text-2xl tracking-wide">الجُمُعَة</div>
+        <div class="text-icgk-gold-bright text-4xl leading-none mt-1" id="jumuah-time">1:30 PM</div>
+        <div class="text-icgk-muted text-xs uppercase tracking-[2px]">Khuṭbah begins</div>
       </div>
-      <div class="det">
-        <p><b>Khaṭīb:</b> <span id="jumuah-khateeb">Dr. Ihab Abdelgawad Al-Faidy</span></p>
-        <p><b>Language:</b> <span id="jumuah-lang">English</span></p>
-        <p>Please arrive early — space fills quickly. Come join us for community and an activity after Jumu'ah. Brothers and sisters welcome.</p>
+      <div>
+        <p class="my-1"><b class="text-icgk-gold-bright">Khaṭīb:</b> <span id="jumuah-khateeb">Dr. Ihab Abdelgawad Al-Faidy</span></p>
+        <p class="my-1"><b class="text-icgk-gold-bright">Language:</b> <span id="jumuah-lang">English</span></p>
+        <p class="my-1">Please arrive early — space fills quickly. Come join us for community and an activity after Jumu'ah. Brothers and sisters welcome.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ===== ABOUT ===== -->
-<section id="about">
-  <div class="container">
-    <div class="section-head">
-      <h2>About Our Community</h2>
-      <hr class="star">
+<section id="about" class="py-10">
+  <div class="max-w-[1000px] mx-auto px-4">
+    <div class="text-center mb-7">
+      <h2 class="text-icgk-gold text-[2rem]">About Our Community</h2>
+      <hr class="max-w-[200px] border-0 border-t border-icgk-gold/40 mt-2.5 mx-auto relative after:content-['✦'] after:text-icgk-gold after:absolute after:-top-3 after:left-1/2 after:-translate-x-1/2 after:bg-icgk-green-mid after:px-2.5">
     </div>
-    <div class="panel about">
-      <p class="lead">The Islamic Community of Greater Killeen (ICGK) is a welcoming masjid serving the Muslims of Killeen, Harker Heights, Copperas Cove, and the Fort&nbsp;Hood area.</p>
-      <p>We are a place of prayer, learning, and brotherhood and sisterhood. Whether you are a lifelong resident, new to the area, a soldier stationed nearby, or simply curious about Islam, our doors are open to you. We gather for the five daily prayers, Jumu'ah, Ramadan and the two Eids, and year-round programs for every age.</p>
-      <p>Our community is growing — and we are excited to expand our masjid to better serve everyone. We invite you to be part of it through your prayers, your presence, and your support.</p>
+    <div class="bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-7 py-7">
+      <p class="mb-3 text-lg text-icgk-cream">The Islamic Community of Greater Killeen (ICGK) is a welcoming masjid serving the Muslims of Killeen, Harker Heights, Copperas Cove, and the Fort&nbsp;Hood area.</p>
+      <p class="mb-3 text-icgk-text">We are a place of prayer, learning, and brotherhood and sisterhood. Whether you are a lifelong resident, new to the area, a soldier stationed nearby, or simply curious about Islam, our doors are open to you. We gather for the five daily prayers, Jumu'ah, Ramadan and the two Eids, and year-round programs for every age.</p>
+      <p class="text-icgk-text">Our community is growing — and we are excited to expand our masjid to better serve everyone. We invite you to be part of it through your prayers, your presence, and your support.</p>
     </div>
   </div>
 </section>
 
 <!-- ===== OUR IMAM ===== -->
-<section id="imam">
-  <div class="container">
-    <div class="section-head">
-      <h2>Our Imam</h2>
-      <div class="sub">Leading our community since 2013</div>
-      <hr class="star">
+<section id="imam" class="py-10 scroll-mt-[70px]">
+  <div class="max-w-[1000px] mx-auto px-4">
+    <div class="text-center mb-7">
+      <h2 class="text-icgk-gold text-[2rem]">Our Imam</h2>
+      <div class="text-icgk-muted mt-1">Leading our community since 2013</div>
+      <hr class="max-w-[200px] border-0 border-t border-icgk-gold/40 mt-2.5 mx-auto relative after:content-['✦'] after:text-icgk-gold after:absolute after:-top-3 after:left-1/2 after:-translate-x-1/2 after:bg-icgk-green-mid after:px-2.5">
     </div>
-    <div class="imam-card">
-      <div class="imam-photo">
-        <img src="img/ihab.png" alt="Dr. Ihab Abdelgawad Al-Faidy, Imam of ICGK">
+    <div class="grid grid-cols-1 md:grid-cols-[340px_1fr] gap-8 items-center bg-gradient-to-br from-icgk-gold/[0.08] to-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-8 py-7 text-center md:text-left">
+      <div class="border-[3px] border-icgk-gold rounded-2xl p-1.5 bg-black/30 shadow-[0_12px_30px_rgba(0,0,0,0.4)] max-w-[360px] mx-auto md:max-w-none md:mx-0">
+        <img class="block w-full h-auto rounded-lg" src="img/ihab.png" alt="Dr. Ihab Abdelgawad Al-Faidy, Imam of ICGK">
       </div>
-      <div class="imam-text">
-        <div class="eyebrow">Imam of ICGK</div>
-        <h3>Dr. Ihab Abdelgawad Al-Faidy</h3>
-        <div class="role">Ph.D. in Islamic Theology · Al-Azhar University · Ḥāfiẓ of the Qur'an</div>
-        <p>Dr. Al-Faidy has served as the Imam of the Islamic Community of Greater Killeen since 2013. He is also President of the Aman Institute for Youth Intellectual Security, and previously taught for nearly two decades at the Al-Azhar Institutes in Cairo.</p>
-        <p>His Ph.D. dissertation — <em>Intellectual Security for Youth in North America</em> — reflects his lifelong commitment to helping young Muslims overcome the challenges they face today with authentic knowledge and sound understanding.</p>
-        <div class="tags">
-          <span class="tag">🇸🇦 Arabic</span>
-          <span class="tag">🇺🇸 English</span>
-          <span class="tag">🇪🇸 Spanish</span>
+      <div>
+        <div class="text-icgk-gold-bright tracking-[3px] uppercase text-[0.78rem]">Imam of ICGK</div>
+        <h3 class="text-icgk-gold text-2xl mt-1.5 mb-0.5">Dr. Ihab Abdelgawad Al-Faidy</h3>
+        <div class="text-icgk-cream italic mb-3">Ph.D. in Islamic Theology · Al-Azhar University · Ḥāfiẓ of the Qur'an</div>
+        <p class="text-icgk-text mb-3">Dr. Al-Faidy has served as the Imam of the Islamic Community of Greater Killeen since 2013. He is also President of the Aman Institute for Youth Intellectual Security, and previously taught for nearly two decades at the Al-Azhar Institutes in Cairo.</p>
+        <p class="text-icgk-text mb-3">His Ph.D. dissertation — <em>Intellectual Security for Youth in North America</em> — reflects his lifelong commitment to helping young Muslims overcome the challenges they face today with authentic knowledge and sound understanding.</p>
+        <div class="flex flex-wrap gap-2 my-2.5 justify-center md:justify-start">
+          <span class="bg-black/30 border border-icgk-gold/[0.55] rounded-full px-3 py-1 text-icgk-cream text-[0.82rem]">🇸🇦 Arabic</span>
+          <span class="bg-black/30 border border-icgk-gold/[0.55] rounded-full px-3 py-1 text-icgk-cream text-[0.82rem]">🇺🇸 English</span>
+          <span class="bg-black/30 border border-icgk-gold/[0.55] rounded-full px-3 py-1 text-icgk-cream text-[0.82rem]">🇪🇸 Spanish</span>
         </div>
-        <div class="more">
+        <div class="mt-1">
           <a class="btn btn-primary" href="imam.html">Read more about the Imam →</a>
         </div>
       </div>
@@ -504,118 +231,118 @@
 </section>
 
 <!-- ===== PROGRAMS ===== -->
-<section id="programs">
-  <div class="container">
-    <div class="section-head">
-      <h2>Programs &amp; Services</h2>
-      <div class="sub">Ways to learn, grow, and get involved</div>
-      <hr class="star">
+<section id="programs" class="py-10">
+  <div class="max-w-[1000px] mx-auto px-4">
+    <div class="text-center mb-7">
+      <h2 class="text-icgk-gold text-[2rem]">Programs &amp; Services</h2>
+      <div class="text-icgk-muted mt-1">Ways to learn, grow, and get involved</div>
+      <hr class="max-w-[200px] border-0 border-t border-icgk-gold/40 mt-2.5 mx-auto relative after:content-['✦'] after:text-icgk-gold after:absolute after:-top-3 after:left-1/2 after:-translate-x-1/2 after:bg-icgk-green-mid after:px-2.5">
     </div>
-    <div class="grid">
-      <div class="feature"><div class="fi">📖</div><h3>Da'wah &amp; Education</h3><p>Outreach, Qur'an &amp; Hadith study, and learning circles for the community.</p></div>
-      <div class="feature"><div class="fi">🔤</div><h3>Arabic Classes</h3><p>Learn to read and understand the language of the Qur'an.</p></div>
-      <div class="feature"><div class="fi">🧒</div><h3>Youth &amp; Sunday School</h3><p>Sunday School, Family Day, and a youth leadership program.</p></div>
-      <div class="feature"><div class="fi">☀️</div><h3>Summer Program</h3><p>Seasonal activities and learning for children and families.</p></div>
-      <div class="feature"><div class="fi">💍</div><h3>Nikāḥ &amp; Matrimonial</h3><p>Marriage (nikāḥ) services and matrimonial support.</p></div>
-      <div class="feature"><div class="fi">🤝</div><h3>Counseling</h3><p>Confidential guidance and support for individuals and families.</p></div>
-      <div class="feature"><div class="fi">🌙</div><h3>New Muslim Support</h3><p>Welcoming and mentoring those who have embraced Islam.</p></div>
-      <div class="feature"><div class="fi">🕊️</div><h3>Interfaith Relations</h3><p>Building bridges of understanding with our neighbors.</p></div>
-      <div class="feature"><div class="fi">🤲</div><h3>Janāzah &amp; Burial</h3><p>Funeral prayers and burial assistance for families in need.</p></div>
-      <div class="feature"><div class="fi">🪪</div><h3>Membership</h3><p>Join ICGK and help shape the future of our community.</p></div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div class="bg-black/[0.28] border border-icgk-gold/40 rounded-xl p-5 transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_10px_26px_rgba(0,0,0,0.35)]"><div class="text-3xl mb-2">📖</div><h3 class="text-icgk-gold-bright text-lg mb-1">Da'wah &amp; Education</h3><p class="text-icgk-muted text-[0.92rem]">Outreach, Qur'an &amp; Hadith study, and learning circles for the community.</p></div>
+      <div class="bg-black/[0.28] border border-icgk-gold/40 rounded-xl p-5 transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_10px_26px_rgba(0,0,0,0.35)]"><div class="text-3xl mb-2">🔤</div><h3 class="text-icgk-gold-bright text-lg mb-1">Arabic Classes</h3><p class="text-icgk-muted text-[0.92rem]">Learn to read and understand the language of the Qur'an.</p></div>
+      <div class="bg-black/[0.28] border border-icgk-gold/40 rounded-xl p-5 transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_10px_26px_rgba(0,0,0,0.35)]"><div class="text-3xl mb-2">🧒</div><h3 class="text-icgk-gold-bright text-lg mb-1">Youth &amp; Sunday School</h3><p class="text-icgk-muted text-[0.92rem]">Sunday School, Family Day, and a youth leadership program.</p></div>
+      <div class="bg-black/[0.28] border border-icgk-gold/40 rounded-xl p-5 transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_10px_26px_rgba(0,0,0,0.35)]"><div class="text-3xl mb-2">☀️</div><h3 class="text-icgk-gold-bright text-lg mb-1">Summer Program</h3><p class="text-icgk-muted text-[0.92rem]">Seasonal activities and learning for children and families.</p></div>
+      <div class="bg-black/[0.28] border border-icgk-gold/40 rounded-xl p-5 transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_10px_26px_rgba(0,0,0,0.35)]"><div class="text-3xl mb-2">💍</div><h3 class="text-icgk-gold-bright text-lg mb-1">Nikāḥ &amp; Matrimonial</h3><p class="text-icgk-muted text-[0.92rem]">Marriage (nikāḥ) services and matrimonial support.</p></div>
+      <div class="bg-black/[0.28] border border-icgk-gold/40 rounded-xl p-5 transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_10px_26px_rgba(0,0,0,0.35)]"><div class="text-3xl mb-2">🤝</div><h3 class="text-icgk-gold-bright text-lg mb-1">Counseling</h3><p class="text-icgk-muted text-[0.92rem]">Confidential guidance and support for individuals and families.</p></div>
+      <div class="bg-black/[0.28] border border-icgk-gold/40 rounded-xl p-5 transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_10px_26px_rgba(0,0,0,0.35)]"><div class="text-3xl mb-2">🌙</div><h3 class="text-icgk-gold-bright text-lg mb-1">New Muslim Support</h3><p class="text-icgk-muted text-[0.92rem]">Welcoming and mentoring those who have embraced Islam.</p></div>
+      <div class="bg-black/[0.28] border border-icgk-gold/40 rounded-xl p-5 transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_10px_26px_rgba(0,0,0,0.35)]"><div class="text-3xl mb-2">🕊️</div><h3 class="text-icgk-gold-bright text-lg mb-1">Interfaith Relations</h3><p class="text-icgk-muted text-[0.92rem]">Building bridges of understanding with our neighbors.</p></div>
+      <div class="bg-black/[0.28] border border-icgk-gold/40 rounded-xl p-5 transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_10px_26px_rgba(0,0,0,0.35)]"><div class="text-3xl mb-2">🤲</div><h3 class="text-icgk-gold-bright text-lg mb-1">Janāzah &amp; Burial</h3><p class="text-icgk-muted text-[0.92rem]">Funeral prayers and burial assistance for families in need.</p></div>
+      <div class="bg-black/[0.28] border border-icgk-gold/40 rounded-xl p-5 transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_10px_26px_rgba(0,0,0,0.35)]"><div class="text-3xl mb-2">🪪</div><h3 class="text-icgk-gold-bright text-lg mb-1">Membership</h3><p class="text-icgk-muted text-[0.92rem]">Join ICGK and help shape the future of our community.</p></div>
     </div>
   </div>
 </section>
 
 <!-- ===== RESOURCES ===== -->
-<section id="resources">
-  <div class="container">
-    <div class="section-head">
-      <h2>Resources</h2>
-      <div class="sub">Learn about Islam, the sacred months, and the path of faith</div>
-      <hr class="star">
+<section id="resources" class="py-10 scroll-mt-[70px]">
+  <div class="max-w-[1000px] mx-auto px-4">
+    <div class="text-center mb-7">
+      <h2 class="text-icgk-gold text-[2rem]">Resources</h2>
+      <div class="text-icgk-muted mt-1">Learn about Islam, the sacred months, and the path of faith</div>
+      <hr class="max-w-[200px] border-0 border-t border-icgk-gold/40 mt-2.5 mx-auto relative after:content-['✦'] after:text-icgk-gold after:absolute after:-top-3 after:left-1/2 after:-translate-x-1/2 after:bg-icgk-green-mid after:px-2.5">
     </div>
-    <div class="res-links">
-      <a class="res-link" href="what-is-islam.html"><span class="ri">📖</span><h3>What Is Islam?</h3><span class="arrow">→</span></a>
-      <a class="res-link" href="new-to-islam.html"><span class="ri">🕌</span><h3>New to Islam?</h3><span class="arrow">→</span></a>
-      <a class="res-link" href="how-to-pray.html"><span class="ri">🤲</span><h3>How to Pray (Ṣalāh)</h3><span class="arrow">→</span></a>
-      <a class="res-link" href="ramadan.html"><span class="ri">🌑</span><h3>Ramadan Guide</h3><span class="arrow">→</span></a>
-      <a class="res-link" href="hajj.html"><span class="ri">🕋</span><h3>Hajj &amp; Umrah</h3><span class="arrow">→</span></a>
-      <a class="res-link" href="muharram.html"><span class="ri">🌙</span><h3>Muharram &amp; Ashura</h3><span class="arrow">→</span></a>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5">
+      <a class="group flex items-center gap-3.5 no-underline bg-black/[0.28] border border-icgk-gold/40 rounded-xl px-4.5 py-4 transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_10px_26px_rgba(0,0,0,0.35)]" href="what-is-islam.html"><span class="text-2xl leading-none">📖</span><h3 class="text-icgk-gold-bright text-base m-0">What Is Islam?</h3><span class="ml-auto text-icgk-gold text-lg transition duration-200 group-hover:translate-x-1">→</span></a>
+      <a class="group flex items-center gap-3.5 no-underline bg-black/[0.28] border border-icgk-gold/40 rounded-xl px-4.5 py-4 transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_10px_26px_rgba(0,0,0,0.35)]" href="new-to-islam.html"><span class="text-2xl leading-none">🕌</span><h3 class="text-icgk-gold-bright text-base m-0">New to Islam?</h3><span class="ml-auto text-icgk-gold text-lg transition duration-200 group-hover:translate-x-1">→</span></a>
+      <a class="group flex items-center gap-3.5 no-underline bg-black/[0.28] border border-icgk-gold/40 rounded-xl px-4.5 py-4 transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_10px_26px_rgba(0,0,0,0.35)]" href="how-to-pray.html"><span class="text-2xl leading-none">🤲</span><h3 class="text-icgk-gold-bright text-base m-0">How to Pray (Ṣalāh)</h3><span class="ml-auto text-icgk-gold text-lg transition duration-200 group-hover:translate-x-1">→</span></a>
+      <a class="group flex items-center gap-3.5 no-underline bg-black/[0.28] border border-icgk-gold/40 rounded-xl px-4.5 py-4 transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_10px_26px_rgba(0,0,0,0.35)]" href="ramadan.html"><span class="text-2xl leading-none">🌑</span><h3 class="text-icgk-gold-bright text-base m-0">Ramadan Guide</h3><span class="ml-auto text-icgk-gold text-lg transition duration-200 group-hover:translate-x-1">→</span></a>
+      <a class="group flex items-center gap-3.5 no-underline bg-black/[0.28] border border-icgk-gold/40 rounded-xl px-4.5 py-4 transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_10px_26px_rgba(0,0,0,0.35)]" href="hajj.html"><span class="text-2xl leading-none">🕋</span><h3 class="text-icgk-gold-bright text-base m-0">Hajj &amp; Umrah</h3><span class="ml-auto text-icgk-gold text-lg transition duration-200 group-hover:translate-x-1">→</span></a>
+      <a class="group flex items-center gap-3.5 no-underline bg-black/[0.28] border border-icgk-gold/40 rounded-xl px-4.5 py-4 transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_10px_26px_rgba(0,0,0,0.35)]" href="muharram.html"><span class="text-2xl leading-none">🌙</span><h3 class="text-icgk-gold-bright text-base m-0">Muharram &amp; Ashura</h3><span class="ml-auto text-icgk-gold text-lg transition duration-200 group-hover:translate-x-1">→</span></a>
     </div>
-    <div class="res-more">
+    <div class="text-center mt-5.5">
       <a class="btn btn-primary" href="resources.html">Browse all resources →</a>
     </div>
   </div>
 </section>
 
 <!-- ===== VISIT ===== -->
-<section id="visit">
-  <div class="container">
-    <div class="section-head">
-      <h2>Visit Us</h2>
-      <div class="sub">You are always welcome at the masjid</div>
-      <hr class="star">
+<section id="visit" class="py-10 scroll-mt-[70px]">
+  <div class="max-w-[1000px] mx-auto px-4">
+    <div class="text-center mb-7">
+      <h2 class="text-icgk-gold text-[2rem]">Visit Us</h2>
+      <div class="text-icgk-muted mt-1">You are always welcome at the masjid</div>
+      <hr class="max-w-[200px] border-0 border-t border-icgk-gold/40 mt-2.5 mx-auto relative after:content-['✦'] after:text-icgk-gold after:absolute after:-top-3 after:left-1/2 after:-translate-x-1/2 after:bg-icgk-green-mid after:px-2.5">
     </div>
-    <div class="visit-grid">
-      <div class="panel visit-info">
-        <div class="row">
-          <div class="ri">📍</div>
-          <div><span class="rl">Address</span><span class="rv" id="addr-line">5600 TX-195, Killeen, TX 76542</span></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
+      <div class="flex flex-col justify-center bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-7 py-7">
+        <div class="flex gap-3 py-2.5 border-b border-icgk-gold/[0.18]">
+          <div class="text-icgk-gold-bright text-xl min-w-[28px] text-center">📍</div>
+          <div><span class="text-icgk-gold-bright font-bold block text-[0.85rem] tracking-wide uppercase">Address</span><span class="text-icgk-text" id="addr-line">5600 TX-195, Killeen, TX 76542</span></div>
         </div>
-        <div class="row">
-          <div class="ri">🕌</div>
-          <div><span class="rl">Daily Prayers</span><span class="rv">All five daily ṣalāh in congregation — see times above</span></div>
+        <div class="flex gap-3 py-2.5 border-b border-icgk-gold/[0.18]">
+          <div class="text-icgk-gold-bright text-xl min-w-[28px] text-center">🕌</div>
+          <div><span class="text-icgk-gold-bright font-bold block text-[0.85rem] tracking-wide uppercase">Daily Prayers</span><span class="text-icgk-text">All five daily ṣalāh in congregation — see times above</span></div>
         </div>
-        <div class="row">
-          <div class="ri">🌐</div>
-          <div><span class="rl">Website</span><span class="rv"><a href="https://icgk.org" target="_blank" rel="noopener">icgk.org</a></span></div>
+        <div class="flex gap-3 py-2.5 border-b border-icgk-gold/[0.18]">
+          <div class="text-icgk-gold-bright text-xl min-w-[28px] text-center">🌐</div>
+          <div><span class="text-icgk-gold-bright font-bold block text-[0.85rem] tracking-wide uppercase">Website</span><span class="text-icgk-text"><a href="https://icgk.org" target="_blank" rel="noopener">icgk.org</a></span></div>
         </div>
-        <div class="row">
-          <div class="ri">📘</div>
-          <div><span class="rl">Facebook</span><span class="rv"><a href="https://www.facebook.com/Islamic-Community-of-Greater-Killeen-256571815189294/" target="_blank" rel="noopener">@IslamicCommunityofGreaterKilleen</a></span></div>
+        <div class="flex gap-3 py-2.5 border-b border-icgk-gold/[0.18]">
+          <div class="text-icgk-gold-bright text-xl min-w-[28px] text-center">📘</div>
+          <div><span class="text-icgk-gold-bright font-bold block text-[0.85rem] tracking-wide uppercase">Facebook</span><span class="text-icgk-text"><a href="https://www.facebook.com/Islamic-Community-of-Greater-Killeen-256571815189294/" target="_blank" rel="noopener">@IslamicCommunityofGreaterKilleen</a></span></div>
         </div>
-        <div class="row">
-          <div class="ri">🧭</div>
-          <div><span class="rl">Directions</span><span class="rv"><a id="dir-link" href="https://www.google.com/maps/dir/?api=1&destination=31.0699627,-97.7614774" target="_blank" rel="noopener">Open in Google Maps</a></span></div>
+        <div class="flex gap-3 py-2.5">
+          <div class="text-icgk-gold-bright text-xl min-w-[28px] text-center">🧭</div>
+          <div><span class="text-icgk-gold-bright font-bold block text-[0.85rem] tracking-wide uppercase">Directions</span><span class="text-icgk-text"><a id="dir-link" href="https://www.google.com/maps/dir/?api=1&destination=31.0699627,-97.7614774" target="_blank" rel="noopener">Open in Google Maps</a></span></div>
         </div>
       </div>
-      <div class="map-box panel" style="padding:6px">
-        <iframe id="map" title="ICGK location map" loading="lazy" src="https://www.google.com/maps?q=31.0699627,-97.7614774&z=15&output=embed"></iframe>
+      <div class="bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl p-1.5">
+        <iframe id="map" class="w-full h-full min-h-[320px] border-0 rounded-xl [filter:saturate(.9)_brightness(.95)]" title="ICGK location map" loading="lazy" src="https://www.google.com/maps?q=31.0699627,-97.7614774&z=15&output=embed"></iframe>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ===== CONTACT ===== -->
-<section id="contact">
-  <div class="container">
-    <div class="section-head">
-      <h2>Get in Touch</h2>
-      <div class="sub">Questions, suggestions, or want to get involved? Send us a message.</div>
-      <hr class="star">
+<section id="contact" class="py-10 scroll-mt-[70px]">
+  <div class="max-w-[1000px] mx-auto px-4">
+    <div class="text-center mb-7">
+      <h2 class="text-icgk-gold text-[2rem]">Get in Touch</h2>
+      <div class="text-icgk-muted mt-1">Questions, suggestions, or want to get involved? Send us a message.</div>
+      <hr class="max-w-[200px] border-0 border-t border-icgk-gold/40 mt-2.5 mx-auto relative after:content-['✦'] after:text-icgk-gold after:absolute after:-top-3 after:left-1/2 after:-translate-x-1/2 after:bg-icgk-green-mid after:px-2.5">
     </div>
-    <div class="panel contact-wrap">
-      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you" id="contact-form" class="cform">
+    <div class="max-w-[760px] mx-auto bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-7 py-7">
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you" id="contact-form">
         <input type="hidden" name="form-name" value="contact">
-        <p class="hp"><label>Please leave this field empty: <input name="bot-field"></label></p>
-        <div class="cform-row">
-          <div class="cfield">
-            <label for="cf-name">Name <span class="req">*</span></label>
-            <input id="cf-name" name="name" type="text" required autocomplete="name" placeholder="Your name">
+        <p class="absolute -left-[9999px]"><label>Please leave this field empty: <input name="bot-field"></label></p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="mb-4 flex flex-col">
+            <label class="text-icgk-gold-bright text-[0.88rem] tracking-wide mb-1.5" for="cf-name">Name <span class="text-icgk-gold">*</span></label>
+            <input class="font-serif text-base text-icgk-text bg-black/30 border border-icgk-gold/45 rounded-lg px-3.5 py-2.5 w-full transition duration-200 placeholder:text-icgk-muted placeholder:opacity-70 focus:outline-none focus:border-icgk-gold-bright focus:shadow-[0_0_0_3px_rgba(212,166,74,0.18)]" id="cf-name" name="name" type="text" required autocomplete="name" placeholder="Your name">
           </div>
-          <div class="cfield">
-            <label for="cf-email">Email <span class="req">*</span></label>
-            <input id="cf-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+          <div class="mb-4 flex flex-col">
+            <label class="text-icgk-gold-bright text-[0.88rem] tracking-wide mb-1.5" for="cf-email">Email <span class="text-icgk-gold">*</span></label>
+            <input class="font-serif text-base text-icgk-text bg-black/30 border border-icgk-gold/45 rounded-lg px-3.5 py-2.5 w-full transition duration-200 placeholder:text-icgk-muted placeholder:opacity-70 focus:outline-none focus:border-icgk-gold-bright focus:shadow-[0_0_0_3px_rgba(212,166,74,0.18)]" id="cf-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
           </div>
         </div>
-        <div class="cform-row">
-          <div class="cfield">
-            <label for="cf-phone">Phone <span class="opt">(optional)</span></label>
-            <input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="(254) 000-0000">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="mb-4 flex flex-col">
+            <label class="text-icgk-gold-bright text-[0.88rem] tracking-wide mb-1.5" for="cf-phone">Phone <span class="text-icgk-muted text-xs">(optional)</span></label>
+            <input class="font-serif text-base text-icgk-text bg-black/30 border border-icgk-gold/45 rounded-lg px-3.5 py-2.5 w-full transition duration-200 placeholder:text-icgk-muted placeholder:opacity-70 focus:outline-none focus:border-icgk-gold-bright focus:shadow-[0_0_0_3px_rgba(212,166,74,0.18)]" id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="(254) 000-0000">
           </div>
-          <div class="cfield">
-            <label for="cf-reason">Reason for contacting</label>
-            <select id="cf-reason" name="reason">
+          <div class="mb-4 flex flex-col">
+            <label class="text-icgk-gold-bright text-[0.88rem] tracking-wide mb-1.5" for="cf-reason">Reason for contacting</label>
+            <select class="font-serif text-base text-icgk-text bg-black/30 border border-icgk-gold/45 rounded-lg px-3.5 py-2.5 w-full transition duration-200 appearance-none cursor-pointer focus:outline-none focus:border-icgk-gold-bright focus:shadow-[0_0_0_3px_rgba(212,166,74,0.18)]" id="cf-reason" name="reason">
               <option>General inquiry</option>
               <option>Membership / Get involved</option>
               <option>New Muslim support</option>
@@ -627,31 +354,31 @@
             </select>
           </div>
         </div>
-        <div class="cfield">
-          <label for="cf-message">Message <span class="req">*</span></label>
-          <textarea id="cf-message" name="message" rows="5" required placeholder="How can we help you?"></textarea>
+        <div class="mb-4 flex flex-col">
+          <label class="text-icgk-gold-bright text-[0.88rem] tracking-wide mb-1.5" for="cf-message">Message <span class="text-icgk-gold">*</span></label>
+          <textarea class="font-serif text-base text-icgk-text bg-black/30 border border-icgk-gold/45 rounded-lg px-3.5 py-2.5 w-full transition duration-200 resize-y min-h-[120px] placeholder:text-icgk-muted placeholder:opacity-70 focus:outline-none focus:border-icgk-gold-bright focus:shadow-[0_0_0_3px_rgba(212,166,74,0.18)]" id="cf-message" name="message" rows="5" required placeholder="How can we help you?"></textarea>
         </div>
-        <div class="cform-actions">
-          <button type="submit" class="btn btn-primary">✉️ Send Message</button>
-          <span class="cform-status" id="cform-status" role="status" aria-live="polite"></span>
+        <div class="flex items-center gap-4 flex-wrap mt-1">
+          <button type="submit" class="btn btn-primary cursor-pointer disabled:opacity-60 disabled:cursor-default">✉️ Send Message</button>
+          <span class="cform-status text-icgk-muted text-sm" id="cform-status" role="status" aria-live="polite"></span>
         </div>
       </form>
-      <div class="cform-success" id="cform-success" hidden>
-        <div class="ci">✅</div>
-        <h3>Jazākum Allāhu khayran!</h3>
-        <p>Your message has been received, in shā' Allāh we'll get back to you soon.</p>
+      <div class="text-center py-7 px-2.5" id="cform-success" hidden>
+        <div class="text-5xl">✅</div>
+        <h3 class="text-icgk-gold-bright text-2xl mt-2.5 mb-1.5">Jazākum Allāhu khayran!</h3>
+        <p class="text-icgk-cream">Your message has been received, in shā' Allāh we'll get back to you soon.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ===== DONATE ===== -->
-<section id="donate">
-  <div class="container">
-    <div class="donate-band">
-      <h2>Support Your Masjid</h2>
-      <p>Ṣadaqah jāriyah — your giving keeps the masjid running and helps us build a bigger home for our growing community. The Prophet ﷺ said charity does not decrease wealth.</p>
-      <div class="cta">
+<section id="donate" class="py-10">
+  <div class="max-w-[1000px] mx-auto px-4">
+    <div class="text-center bg-gradient-to-br from-icgk-gold/[0.16] to-black/30 border-[1.5px] border-icgk-gold rounded-2xl px-6 py-10">
+      <h2 class="text-icgk-gold text-[2rem]">Support Your Masjid</h2>
+      <p class="text-icgk-cream max-w-[600px] mx-auto mt-2.5 mb-5.5">Ṣadaqah jāriyah — your giving keeps the masjid running and helps us build a bigger home for our growing community. The Prophet ﷺ said charity does not decrease wealth.</p>
+      <div class="flex gap-3.5 justify-center flex-wrap">
         <a class="btn btn-primary" href="https://app.autobooks.co/pay/icgk" target="_blank" rel="noopener">❤️ Donate Now</a>
       </div>
     </div>
@@ -659,35 +386,35 @@
 </section>
 
 <!-- ===== FOOTER ===== -->
-<footer>
-  <div class="foot-grid">
-    <div class="foot-brand">
-      <span class="mark">☪</span>
-      <span class="nm">Islamic Community of Greater Killeen</span>
-      <p id="foot-addr">5600 TX-195, Killeen, TX 76542</p>
-      <p style="margin-top:8px">May Allah accept from us and from you. 🤲</p>
+<footer class="border-t border-icgk-gold/35 mt-10 px-4 pt-9 pb-7 bg-icgk-green-dark/60">
+  <div class="max-w-[1000px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[2fr_1fr_1fr] gap-7">
+    <div class="sm:col-span-2 md:col-span-1">
+      <span class="text-2xl text-icgk-gold">☪</span>
+      <span class="text-icgk-gold text-xl block my-1.5">Islamic Community of Greater Killeen</span>
+      <p class="text-icgk-muted text-[0.9rem]" id="foot-addr">5600 TX-195, Killeen, TX 76542</p>
+      <p class="text-icgk-muted text-[0.9rem] mt-2">May Allah accept from us and from you. 🤲</p>
     </div>
     <div>
-      <h4>Explore</h4>
-      <a href="#prayer">Prayer Times</a>
-      <a href="#jumuah">Jumu'ah</a>
-      <a href="#events">Events</a>
-      <a href="events-archive.html">Past Events</a>
-      <a href="#about">About</a>
-      <a href="imam.html">Our Imam</a>
-      <a href="#programs">Programs</a>
-      <a href="#resources">Resources</a>
-      <a href="#contact">Contact</a>
+      <h4 class="text-icgk-gold-bright text-sm tracking-[1.5px] uppercase mb-3">Explore</h4>
+      <a class="text-icgk-cream no-underline block py-1 text-[0.95rem] hover:text-icgk-gold-bright" href="#prayer">Prayer Times</a>
+      <a class="text-icgk-cream no-underline block py-1 text-[0.95rem] hover:text-icgk-gold-bright" href="#jumuah">Jumu'ah</a>
+      <a class="text-icgk-cream no-underline block py-1 text-[0.95rem] hover:text-icgk-gold-bright" href="#events">Events</a>
+      <a class="text-icgk-cream no-underline block py-1 text-[0.95rem] hover:text-icgk-gold-bright" href="events-archive.html">Past Events</a>
+      <a class="text-icgk-cream no-underline block py-1 text-[0.95rem] hover:text-icgk-gold-bright" href="#about">About</a>
+      <a class="text-icgk-cream no-underline block py-1 text-[0.95rem] hover:text-icgk-gold-bright" href="imam.html">Our Imam</a>
+      <a class="text-icgk-cream no-underline block py-1 text-[0.95rem] hover:text-icgk-gold-bright" href="#programs">Programs</a>
+      <a class="text-icgk-cream no-underline block py-1 text-[0.95rem] hover:text-icgk-gold-bright" href="#resources">Resources</a>
+      <a class="text-icgk-cream no-underline block py-1 text-[0.95rem] hover:text-icgk-gold-bright" href="#contact">Contact</a>
     </div>
     <div>
-      <h4>Connect</h4>
-      <a href="https://icgk.org" target="_blank" rel="noopener">icgk.org</a>
-      <a href="https://www.facebook.com/Islamic-Community-of-Greater-Killeen-256571815189294/" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://app.autobooks.co/pay/icgk" target="_blank" rel="noopener">Donate</a>
-      <a id="foot-dir" href="https://www.google.com/maps/dir/?api=1&destination=31.0699627,-97.7614774" target="_blank" rel="noopener">Directions</a>
+      <h4 class="text-icgk-gold-bright text-sm tracking-[1.5px] uppercase mb-3">Connect</h4>
+      <a class="text-icgk-cream no-underline block py-1 text-[0.95rem] hover:text-icgk-gold-bright" href="https://icgk.org" target="_blank" rel="noopener">icgk.org</a>
+      <a class="text-icgk-cream no-underline block py-1 text-[0.95rem] hover:text-icgk-gold-bright" href="https://www.facebook.com/Islamic-Community-of-Greater-Killeen-256571815189294/" target="_blank" rel="noopener">Facebook</a>
+      <a class="text-icgk-cream no-underline block py-1 text-[0.95rem] hover:text-icgk-gold-bright" href="https://app.autobooks.co/pay/icgk" target="_blank" rel="noopener">Donate</a>
+      <a class="text-icgk-cream no-underline block py-1 text-[0.95rem] hover:text-icgk-gold-bright" id="foot-dir" href="https://www.google.com/maps/dir/?api=1&destination=31.0699627,-97.7614774" target="_blank" rel="noopener">Directions</a>
     </div>
   </div>
-  <div class="foot-bottom">
+  <div class="text-center text-icgk-muted text-[0.82rem] mt-7 pt-4.5 border-t border-icgk-gold/[0.15]">
     © <span id="year"></span> Islamic Community of Greater Killeen · Killeen, Texas ·
     Prayer times via <a href="https://ourmasajid.com" target="_blank" rel="noopener">OurMasajid</a>
   </div>
@@ -715,6 +442,12 @@
 
   document.getElementById("year").textContent = new Date().getFullYear();
 
+  function toggleNav() {
+    var nav = document.getElementById("navlinks");
+    nav.classList.toggle("hidden");
+    nav.classList.toggle("flex");
+  }
+
   function fmt(date) {
     return date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
   }
@@ -736,7 +469,7 @@
 
   function renderError(msg) {
     var grid = document.getElementById("prayer-grid");
-    grid.innerHTML = '<div class="loading" style="grid-column:1/-1">' + msg +
+    grid.innerHTML = '<div class="loading col-span-full">' + msg +
       ' <br><br><button class="linkish" onclick="toggleMonthly(true)">Open the full prayer schedule →</button></div>';
   }
 
@@ -826,7 +559,7 @@
             grid.innerHTML +=
               '<div class="' + cls + '">' +
                 '<div class="pname">' + p.name + "</div>" +
-                '<div class="parab">' + p.ar + "</div>" +
+                '<div class="parab" dir="rtl">' + p.ar + "</div>" +
                 '<div class="plabel">' + label + "</div>" +
                 '<div class="piqama">' + bigTime + "</div>" +
                 '<div class="padhan">' + sub + "</div>" +
@@ -842,7 +575,7 @@
           } else {
             nextEl.textContent = "Fajr tomorrow, in shā' Allāh";
           }
-          nextEl.style.display = "";
+          nextEl.classList.remove("hidden");
         }
 
         render();
@@ -857,10 +590,10 @@
   function toggleMonthly(forceOpen) {
     var box = document.getElementById("monthly-box");
     var btn = document.getElementById("monthly-toggle");
-    var open = forceOpen || !box.classList.contains("open");
-    box.classList.toggle("open", open);
+    var open = forceOpen || box.classList.contains("hidden");
+    box.classList.toggle("hidden", !open);
     if (open && !box.dataset.loaded) {
-      box.innerHTML = '<iframe title="Monthly prayer schedule" loading="lazy" src="' + MONTHLY_URL + '"></iframe>';
+      box.innerHTML = '<iframe title="Monthly prayer schedule" loading="lazy" class="w-full h-[780px] border-0 rounded-xl bg-white" src="' + MONTHLY_URL + '"></iframe>';
       box.dataset.loaded = "1";
     }
     btn.textContent = open ? "Hide monthly schedule ▴" : "View full monthly schedule ▾";

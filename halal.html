@@ -1,112 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Halal Eating — Islamic Community of Greater Killeen</title>
 <meta name="description" content="A practical guide to halal and haram food in Islam — what's permitted, what to avoid, reading labels, and eating out. From the Islamic Community of Greater Killeen.">
-<link rel="stylesheet" href="resource.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="tailwind-config.js"></script>
+<style type="text/tailwindcss">
+  @layer components {
+    .btn {
+      @apply inline-flex items-center gap-2 px-6 py-3 m-1.5 rounded-full no-underline text-base font-bold tracking-wide border-[1.5px] border-icgk-gold transition duration-200;
+    }
+    .btn-primary {
+      @apply bg-icgk-gold text-icgk-green-dark hover:bg-icgk-gold-bright hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(212,166,74,0.3)];
+    }
+    .btn-ghost {
+      @apply text-icgk-gold-bright hover:bg-icgk-gold/15 hover:-translate-y-0.5;
+    }
+  }
+</style>
 </head>
-<body>
-<div class="container">
+<body class="font-serif text-icgk-text min-h-screen leading-[1.65] bg-fixed px-4 pt-6 pb-16 bg-[radial-gradient(1200px_600px_at_50%_-10%,rgba(212,166,74,0.10),transparent_60%),linear-gradient(135deg,#0c2a1f_0%,#11402f_100%)]">
+<div class="max-w-[920px] mx-auto">
 
-  <a class="back" href="resources.html">← Back to Resources</a>
+  <a class="inline-block mb-4.5 text-icgk-gold-bright no-underline text-[0.92rem] tracking-wide hover:text-icgk-gold" href="resources.html">← Back to Resources</a>
 
-  <header>
-    <div class="moon">🍽️</div>
-    <div class="small">What We Eat</div>
-    <h1>Halal Eating</h1>
-    <div class="arabic">ٱلْحَلَال وَٱلْحَرَام</div>
-    <div class="sub">Permitted &amp; Forbidden Food</div>
+  <header class="relative text-center px-5 pt-11 pb-9.5 border-2 border-icgk-gold rounded-2xl mb-6.5 overflow-hidden bg-[radial-gradient(600px_300px_at_50%_0%,rgba(212,166,74,0.12),transparent_70%),rgba(0,0,0,0.28)] before:content-[''] before:absolute before:inset-2 before:border before:border-icgk-gold/35 before:rounded-xl before:pointer-events-none">
+    <div class="text-[2.6rem] leading-none drop-shadow-[0_0_12px_rgba(240,198,116,0.5)]">🍽️</div>
+    <div class="text-icgk-gold-bright text-[0.95rem] tracking-[4px] uppercase mt-2.5">What We Eat</div>
+    <h1 class="text-icgk-gold text-[2.2rem] sm:text-[3rem] mt-1.5 mb-0.5 tracking-wide drop-shadow-[0_2px_18px_rgba(0,0,0,0.4)]">Halal Eating</h1>
+    <div dir="rtl" class="text-[1.6rem] sm:text-[2rem] text-icgk-gold-bright my-1.5 leading-[1.4]">ٱلْحَلَال وَٱلْحَرَام</div>
+    <div class="text-icgk-cream tracking-[4px] mt-1.5 text-base uppercase">Permitted &amp; Forbidden Food</div>
   </header>
 
-  <div class="info-grid">
-    <div class="card"><div class="icon">✅</div><div><span class="label">Ḥalāl</span><span class="value">Permitted &amp; pure</span></div></div>
-    <div class="card"><div class="icon">⛔</div><div><span class="label">Ḥarām</span><span class="value">Forbidden</span></div></div>
-    <div class="card"><div class="icon">🏷️</div><div><span class="label">In Practice</span><span class="value">Read labels &amp; ask</span></div></div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6.5">
+    <div class="bg-black/30 border-[1.5px] border-icgk-gold rounded-xl px-5 py-4.5 flex items-center gap-3.5 transition duration-200 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:border-icgk-gold-bright"><div class="text-[1.9rem] text-icgk-gold-bright min-w-[40px] text-center">✅</div><div><span class="text-icgk-gold-bright font-bold text-[0.85rem] tracking-wide uppercase block">Ḥalāl</span><span class="text-icgk-text text-[1.05rem]">Permitted &amp; pure</span></div></div>
+    <div class="bg-black/30 border-[1.5px] border-icgk-gold rounded-xl px-5 py-4.5 flex items-center gap-3.5 transition duration-200 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:border-icgk-gold-bright"><div class="text-[1.9rem] text-icgk-gold-bright min-w-[40px] text-center">⛔</div><div><span class="text-icgk-gold-bright font-bold text-[0.85rem] tracking-wide uppercase block">Ḥarām</span><span class="text-icgk-text text-[1.05rem]">Forbidden</span></div></div>
+    <div class="bg-black/30 border-[1.5px] border-icgk-gold rounded-xl px-5 py-4.5 flex items-center gap-3.5 transition duration-200 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:border-icgk-gold-bright"><div class="text-[1.9rem] text-icgk-gold-bright min-w-[40px] text-center">🏷️</div><div><span class="text-icgk-gold-bright font-bold text-[0.85rem] tracking-wide uppercase block">In Practice</span><span class="text-icgk-text text-[1.05rem]">Read labels &amp; ask</span></div></div>
   </div>
 
-  <section>
-    <h2><span class="badge">🍽️</span> Eating as Worship</h2>
-    <p class="lead">What a Muslim eats is part of their faith. Allah invites the believers to eat from what is good and pure (ṭayyib) and ḥalāl (permitted), and to thank Him for it.</p>
-    <blockquote>"O you who believe! Eat from the good things We have provided for you, and be grateful to Allah."<span class="src">— Qur'an 2:172</span></blockquote>
-    <p>The default in Islam is that food is permitted — only specific things are forbidden, and Allah has made those clear.</p>
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center gap-3"><span class="text-2xl">🍽️</span> Eating as Worship</h2>
+    <p class="mb-3 text-[1.12rem] text-icgk-cream">What a Muslim eats is part of their faith. Allah invites the believers to eat from what is good and pure (ṭayyib) and ḥalāl (permitted), and to thank Him for it.</p>
+    <blockquote class="border-l-[3px] border-icgk-gold bg-icgk-gold/[0.07] rounded-r-[10px] px-4.5 py-3.5 my-3.5 italic text-icgk-cream">"O you who believe! Eat from the good things We have provided for you, and be grateful to Allah."<span class="block mt-2 not-italic text-[0.85rem] text-icgk-muted tracking-wide">— Qur'an 2:172</span></blockquote>
+    <p class="text-icgk-text">The default in Islam is that food is permitted — only specific things are forbidden, and Allah has made those clear.</p>
   </section>
 
-  <section>
-    <h2><span class="badge">✅</span> What Is Ḥalāl</h2>
-    <ul class="clean">
-      <li>All fruits, vegetables, grains, and legumes.</li>
-      <li>Fish and other seafood.</li>
-      <li>Milk, eggs, and dairy from ḥalāl animals.</li>
-      <li>Meat from permitted animals (cattle, sheep, goat, poultry) that is <b>slaughtered Islamically</b> (dhabīḥah) — in the name of Allah, draining the blood.</li>
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center gap-3"><span class="text-2xl">✅</span> What Is Ḥalāl</h2>
+    <ul class="list-none my-2">
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright">All fruits, vegetables, grains, and legumes.</li>
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright">Fish and other seafood.</li>
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright">Milk, eggs, and dairy from ḥalāl animals.</li>
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright">Meat from permitted animals (cattle, sheep, goat, poultry) that is <b class="text-icgk-gold-bright">slaughtered Islamically</b> (dhabīḥah) — in the name of Allah, draining the blood.</li>
     </ul>
   </section>
 
-  <section>
-    <h2><span class="badge">⛔</span> What Is Ḥarām</h2>
-    <p>The Qur'an (5:3, 2:173) names the main forbidden foods:</p>
-    <ul class="clean">
-      <li><b>Pork</b> and all its by-products (gelatin, lard, etc.).</li>
-      <li><b>Blood</b> and meat from animals that died of themselves or were not slaughtered properly.</li>
-      <li><b>Alcohol</b> and all intoxicants — and any food cooked with them.</li>
-      <li>Meat slaughtered in the name of other than Allah.</li>
-      <li>Carnivorous animals with fangs and birds of prey.</li>
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center gap-3"><span class="text-2xl">⛔</span> What Is Ḥarām</h2>
+    <p class="mb-3 text-icgk-text">The Qur'an (5:3, 2:173) names the main forbidden foods:</p>
+    <ul class="list-none my-2">
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright"><b class="text-icgk-gold-bright">Pork</b> and all its by-products (gelatin, lard, etc.).</li>
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright"><b class="text-icgk-gold-bright">Blood</b> and meat from animals that died of themselves or were not slaughtered properly.</li>
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright"><b class="text-icgk-gold-bright">Alcohol</b> and all intoxicants — and any food cooked with them.</li>
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright">Meat slaughtered in the name of other than Allah.</li>
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright">Carnivorous animals with fangs and birds of prey.</li>
     </ul>
   </section>
 
-  <section>
-    <h2><span class="badge">🏷️</span> Reading Labels</h2>
-    <p>Many everyday products contain hidden non-ḥalāl ingredients. Watch for:</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Ingredient</th><th>Watch out because…</th></tr></thead>
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center gap-3"><span class="text-2xl">🏷️</span> Reading Labels</h2>
+    <p class="mb-3 text-icgk-text">Many everyday products contain hidden non-ḥalāl ingredients. Watch for:</p>
+    <div class="overflow-x-auto mt-3.5">
+      <table class="w-full border-collapse min-w-[460px] [&>tbody>tr:last-child>td]:border-0">
+        <thead><tr><th class="px-3.5 py-2.75 text-left border-b border-icgk-gold/[0.18] align-top text-icgk-gold-bright text-[0.82rem] tracking-wide uppercase">Ingredient</th><th class="px-3.5 py-2.75 text-left border-b border-icgk-gold/[0.18] align-top text-icgk-gold-bright text-[0.82rem] tracking-wide uppercase">Watch out because…</th></tr></thead>
         <tbody>
-          <tr><td><b>Gelatin</b></td><td>Often from pork; common in gummies, marshmallows, some yogurts.</td></tr>
-          <tr><td><b>Enzymes / Rennet</b></td><td>In cheese — may be animal-derived; look for microbial/vegetable.</td></tr>
-          <tr><td><b>Mono/diglycerides</b></td><td>Can be animal-sourced; check or look for plant-based.</td></tr>
-          <tr><td><b>"Natural flavors"</b></td><td>May include alcohol or animal derivatives — verify if unsure.</td></tr>
-          <tr><td><b>Vanilla extract</b></td><td>Often contains alcohol; small amounts in baking are debated — many avoid.</td></tr>
-          <tr><td><b>L-cysteine</b></td><td>A dough conditioner sometimes from non-ḥalāl sources.</td></tr>
+          <tr><td class="px-3.5 py-2.75 text-left border-b border-icgk-gold/[0.18] align-top text-icgk-text"><b class="text-icgk-gold-bright">Gelatin</b></td><td class="px-3.5 py-2.75 text-left border-b border-icgk-gold/[0.18] align-top text-icgk-text">Often from pork; common in gummies, marshmallows, some yogurts.</td></tr>
+          <tr><td class="px-3.5 py-2.75 text-left border-b border-icgk-gold/[0.18] align-top text-icgk-text"><b class="text-icgk-gold-bright">Enzymes / Rennet</b></td><td class="px-3.5 py-2.75 text-left border-b border-icgk-gold/[0.18] align-top text-icgk-text">In cheese — may be animal-derived; look for microbial/vegetable.</td></tr>
+          <tr><td class="px-3.5 py-2.75 text-left border-b border-icgk-gold/[0.18] align-top text-icgk-text"><b class="text-icgk-gold-bright">Mono/diglycerides</b></td><td class="px-3.5 py-2.75 text-left border-b border-icgk-gold/[0.18] align-top text-icgk-text">Can be animal-sourced; check or look for plant-based.</td></tr>
+          <tr><td class="px-3.5 py-2.75 text-left border-b border-icgk-gold/[0.18] align-top text-icgk-text"><b class="text-icgk-gold-bright">"Natural flavors"</b></td><td class="px-3.5 py-2.75 text-left border-b border-icgk-gold/[0.18] align-top text-icgk-text">May include alcohol or animal derivatives — verify if unsure.</td></tr>
+          <tr><td class="px-3.5 py-2.75 text-left border-b border-icgk-gold/[0.18] align-top text-icgk-text"><b class="text-icgk-gold-bright">Vanilla extract</b></td><td class="px-3.5 py-2.75 text-left border-b border-icgk-gold/[0.18] align-top text-icgk-text">Often contains alcohol; small amounts in baking are debated — many avoid.</td></tr>
+          <tr><td class="px-3.5 py-2.75 text-left border-b border-icgk-gold/[0.18] align-top text-icgk-text"><b class="text-icgk-gold-bright">L-cysteine</b></td><td class="px-3.5 py-2.75 text-left border-b border-icgk-gold/[0.18] align-top text-icgk-text">A dough conditioner sometimes from non-ḥalāl sources.</td></tr>
         </tbody>
       </table>
     </div>
-    <p style="margin-top:12px">Look for a recognized <b>ḥalāl certification</b> symbol when available.</p>
+    <p class="mt-3 text-icgk-text">Look for a recognized <b class="text-icgk-gold-bright">ḥalāl certification</b> symbol when available.</p>
   </section>
 
-  <section>
-    <h2><span class="badge">🍴</span> Eating Out</h2>
-    <ul class="clean">
-      <li>Choose ḥalāl-certified restaurants when you can.</li>
-      <li>Seafood and vegetarian dishes are a safe option at non-ḥalāl venues.</li>
-      <li>Ask how meat is sourced; avoid dishes cooked with wine or other alcohol.</li>
-      <li>Be mindful of shared fryers and cross-contamination with pork.</li>
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center gap-3"><span class="text-2xl">🍴</span> Eating Out</h2>
+    <ul class="list-none my-2">
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright">Choose ḥalāl-certified restaurants when you can.</li>
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright">Seafood and vegetarian dishes are a safe option at non-ḥalāl venues.</li>
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright">Ask how meat is sourced; avoid dishes cooked with wine or other alcohol.</li>
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright">Be mindful of shared fryers and cross-contamination with pork.</li>
     </ul>
   </section>
 
-  <section>
-    <h2><span class="badge">🤲</span> Etiquette of Eating</h2>
-    <ul class="clean">
-      <li>Say <em>Bismillāh</em> before eating; if you forget, say <em>Bismillāhi awwalahu wa ākhirahu</em>.</li>
-      <li>Eat with the right hand, and from what is nearest to you.</li>
-      <li>Avoid waste and overeating — "the son of Adam fills no vessel worse than his stomach."</li>
-      <li>Finish with <em>Alḥamdulillāh</em>, thanking Allah for the provision.</li>
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center gap-3"><span class="text-2xl">🤲</span> Etiquette of Eating</h2>
+    <ul class="list-none my-2">
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright">Say <em>Bismillāh</em> before eating; if you forget, say <em>Bismillāhi awwalahu wa ākhirahu</em>.</li>
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright">Eat with the right hand, and from what is nearest to you.</li>
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright">Avoid waste and overeating — "the son of Adam fills no vessel worse than his stomach."</li>
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright">Finish with <em>Alḥamdulillāh</em>, thanking Allah for the provision.</li>
     </ul>
   </section>
 
-  <section class="cta-band">
-    <h2 class="center"><span class="badge">❓</span> Questions About Food?</h2>
-    <p>If you're new to ḥalāl eating or unsure about something, ask — we're glad to help and can point you to local ḥalāl markets and restaurants.</p>
-    <div style="margin-top:18px">
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5 text-center">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center justify-center gap-3"><span class="text-2xl">❓</span> Questions About Food?</h2>
+    <p class="text-icgk-text">If you're new to ḥalāl eating or unsure about something, ask — we're glad to help and can point you to local ḥalāl markets and restaurants.</p>
+    <div class="mt-4.5">
       <a class="btn btn-primary" href="index.html#contact">✉️ Ask Us</a>
       <a class="btn btn-ghost" href="new-to-islam.html">🌱 New to Islam?</a>
     </div>
   </section>
 
-  <footer>
-    <span class="name">Islamic Community of Greater Killeen</span>
-    <p class="dua">May Allah nourish us with what is pure and ḥalāl and make us grateful. Āmīn.</p>
-    <p class="note">For local ḥalāl recommendations, reach out to your local masjid &nbsp;•&nbsp; icgk.org</p>
+  <footer class="text-center text-icgk-muted px-4 pt-7 pb-1 text-[0.9rem]">
+    <span class="text-icgk-gold-bright text-[1.1rem] tracking-[2px] block mb-1.5">Islamic Community of Greater Killeen</span>
+    <p class="text-icgk-cream italic mb-3.5">May Allah nourish us with what is pure and ḥalāl and make us grateful. Āmīn.</p>
+    <p class="text-[0.82rem] text-icgk-muted">For local ḥalāl recommendations, reach out to your local masjid &nbsp;•&nbsp; icgk.org</p>
   </footer>
 
 </div>

@@ -1,95 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Manners &amp; Character (Akhlāq) — Islamic Community of Greater Killeen</title>
 <meta name="description" content="Islamic manners and character (akhlāq) — honesty, kindness to parents and neighbors, good speech, and the noble character the Prophet ﷺ came to perfect. From the Islamic Community of Greater Killeen.">
-<link rel="stylesheet" href="resource.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="tailwind-config.js"></script>
+<style type="text/tailwindcss">
+  @layer components {
+    .btn {
+      @apply inline-flex items-center gap-2 px-6 py-3 m-1.5 rounded-full no-underline text-base font-bold tracking-wide border-[1.5px] border-icgk-gold transition duration-200;
+    }
+    .btn-primary {
+      @apply bg-icgk-gold text-icgk-green-dark hover:bg-icgk-gold-bright hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(212,166,74,0.3)];
+    }
+    .btn-ghost {
+      @apply text-icgk-gold-bright hover:bg-icgk-gold/15 hover:-translate-y-0.5;
+    }
+  }
+</style>
 </head>
-<body>
-<div class="container">
+<body class="font-serif text-icgk-text min-h-screen leading-[1.65] bg-fixed px-4 pt-6 pb-16 bg-[radial-gradient(1200px_600px_at_50%_-10%,rgba(212,166,74,0.10),transparent_60%),linear-gradient(135deg,#0c2a1f_0%,#11402f_100%)]">
+<div class="max-w-[920px] mx-auto">
 
-  <a class="back" href="resources.html">← Back to Resources</a>
+  <a class="inline-block mb-4.5 text-icgk-gold-bright no-underline text-[0.92rem] tracking-wide hover:text-icgk-gold" href="resources.html">← Back to Resources</a>
 
-  <header>
-    <div class="moon">🤝</div>
-    <div class="small">The Heart of Faith</div>
-    <h1>Manners &amp; Character</h1>
-    <div class="arabic">ٱلْأَخْلَاق</div>
-    <div class="sub">Akhlāq in Islam</div>
+  <header class="relative text-center px-5 pt-11 pb-9.5 border-2 border-icgk-gold rounded-2xl mb-6.5 overflow-hidden bg-[radial-gradient(600px_300px_at_50%_0%,rgba(212,166,74,0.12),transparent_70%),rgba(0,0,0,0.28)] before:content-[''] before:absolute before:inset-2 before:border before:border-icgk-gold/35 before:rounded-xl before:pointer-events-none">
+    <div class="text-[2.6rem] leading-none drop-shadow-[0_0_12px_rgba(240,198,116,0.5)]">🤝</div>
+    <div class="text-icgk-gold-bright text-[0.95rem] tracking-[4px] uppercase mt-2.5">The Heart of Faith</div>
+    <h1 class="text-icgk-gold text-[2.2rem] sm:text-[3rem] mt-1.5 mb-0.5 tracking-wide drop-shadow-[0_2px_18px_rgba(0,0,0,0.4)]">Manners &amp; Character</h1>
+    <div dir="rtl" class="text-[1.6rem] sm:text-[2rem] text-icgk-gold-bright my-1.5 leading-[1.4]">ٱلْأَخْلَاق</div>
+    <div class="text-icgk-cream tracking-[4px] mt-1.5 text-base uppercase">Akhlāq in Islam</div>
   </header>
 
-  <div class="info-grid">
-    <div class="card"><div class="icon">💬</div><div><span class="label">Good Speech</span><span class="value">Truthful &amp; kind words</span></div></div>
-    <div class="card"><div class="icon">👪</div><div><span class="label">Family</span><span class="value">Honoring parents &amp; kin</span></div></div>
-    <div class="card"><div class="icon">🏡</div><div><span class="label">Neighbors</span><span class="value">Care &amp; good treatment</span></div></div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6.5">
+    <div class="bg-black/30 border-[1.5px] border-icgk-gold rounded-xl px-5 py-4.5 flex items-center gap-3.5 transition duration-200 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:border-icgk-gold-bright"><div class="text-[1.9rem] text-icgk-gold-bright min-w-[40px] text-center">💬</div><div><span class="text-icgk-gold-bright font-bold text-[0.85rem] tracking-wide uppercase block">Good Speech</span><span class="text-icgk-text text-[1.05rem]">Truthful &amp; kind words</span></div></div>
+    <div class="bg-black/30 border-[1.5px] border-icgk-gold rounded-xl px-5 py-4.5 flex items-center gap-3.5 transition duration-200 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:border-icgk-gold-bright"><div class="text-[1.9rem] text-icgk-gold-bright min-w-[40px] text-center">👪</div><div><span class="text-icgk-gold-bright font-bold text-[0.85rem] tracking-wide uppercase block">Family</span><span class="text-icgk-text text-[1.05rem]">Honoring parents &amp; kin</span></div></div>
+    <div class="bg-black/30 border-[1.5px] border-icgk-gold rounded-xl px-5 py-4.5 flex items-center gap-3.5 transition duration-200 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:border-icgk-gold-bright"><div class="text-[1.9rem] text-icgk-gold-bright min-w-[40px] text-center">🏡</div><div><span class="text-icgk-gold-bright font-bold text-[0.85rem] tracking-wide uppercase block">Neighbors</span><span class="text-icgk-text text-[1.05rem]">Care &amp; good treatment</span></div></div>
   </div>
 
-  <section>
-    <h2><span class="badge">🤝</span> Character Is the Core</h2>
-    <p class="lead">In Islam, worship and good character are inseparable. The Prophet ﷺ summed up the purpose of his entire mission in one sentence:</p>
-    <blockquote>"I was only sent to perfect noble character."<span class="src">— Musnad Aḥmad</span></blockquote>
-    <p>Good akhlāq is not a side matter — it is among the heaviest things on the scale of deeds and one of the surest paths to Paradise.</p>
-    <blockquote>"Nothing is placed on the scale heavier than good character."<span class="src">— Sunan Abī Dāwūd</span></blockquote>
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center gap-3"><span class="text-2xl">🤝</span> Character Is the Core</h2>
+    <p class="mb-3 text-[1.12rem] text-icgk-cream">In Islam, worship and good character are inseparable. The Prophet ﷺ summed up the purpose of his entire mission in one sentence:</p>
+    <blockquote class="border-l-[3px] border-icgk-gold bg-icgk-gold/[0.07] rounded-r-[10px] px-4.5 py-3.5 my-3.5 italic text-icgk-cream">"I was only sent to perfect noble character."<span class="block mt-2 not-italic text-[0.85rem] text-icgk-muted tracking-wide">— Musnad Aḥmad</span></blockquote>
+    <p class="mb-3 text-icgk-text">Good akhlāq is not a side matter — it is among the heaviest things on the scale of deeds and one of the surest paths to Paradise.</p>
+    <blockquote class="border-l-[3px] border-icgk-gold bg-icgk-gold/[0.07] rounded-r-[10px] px-4.5 py-3.5 my-3.5 italic text-icgk-cream">"Nothing is placed on the scale heavier than good character."<span class="block mt-2 not-italic text-[0.85rem] text-icgk-muted tracking-wide">— Sunan Abī Dāwūd</span></blockquote>
   </section>
 
-  <section>
-    <h2><span class="badge">💬</span> The Tongue &amp; Good Speech</h2>
-    <p>So much of character lives in how we speak. The Prophet ﷺ said: "Whoever believes in Allah and the Last Day, let him speak good or remain silent."</p>
-    <ul class="clean">
-      <li><b>Be truthful</b> — honesty leads to righteousness, and righteousness to Paradise.</li>
-      <li><b>Avoid backbiting and gossip</b> — speaking ill of others behind their backs is gravely sinful.</li>
-      <li><b>Keep your promises</b> and honor your word.</li>
-      <li><b>Speak gently</b> — a kind word is itself a charity, and a smile is a good deed.</li>
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center gap-3"><span class="text-2xl">💬</span> The Tongue &amp; Good Speech</h2>
+    <p class="mb-3 text-icgk-text">So much of character lives in how we speak. The Prophet ﷺ said: "Whoever believes in Allah and the Last Day, let him speak good or remain silent."</p>
+    <ul class="list-none my-2">
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright"><b class="text-icgk-gold-bright">Be truthful</b> — honesty leads to righteousness, and righteousness to Paradise.</li>
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright"><b class="text-icgk-gold-bright">Avoid backbiting and gossip</b> — speaking ill of others behind their backs is gravely sinful.</li>
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright"><b class="text-icgk-gold-bright">Keep your promises</b> and honor your word.</li>
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright"><b class="text-icgk-gold-bright">Speak gently</b> — a kind word is itself a charity, and a smile is a good deed.</li>
     </ul>
   </section>
 
-  <section>
-    <h2><span class="badge">👪</span> Honoring Parents &amp; Family</h2>
-    <p>After worshipping Allah alone, kindness to parents is among the most emphasized duties in the Qur'an:</p>
-    <blockquote>"Your Lord has decreed that you worship none but Him, and that you be kind to parents… and speak to them a noble word."<span class="src">— Qur'an 17:23</span></blockquote>
-    <p>This includes obeying them in good, caring for them in old age, and maintaining ties with relatives (ṣilat al-raḥim) — even those who are difficult.</p>
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center gap-3"><span class="text-2xl">👪</span> Honoring Parents &amp; Family</h2>
+    <p class="mb-3 text-icgk-text">After worshipping Allah alone, kindness to parents is among the most emphasized duties in the Qur'an:</p>
+    <blockquote class="border-l-[3px] border-icgk-gold bg-icgk-gold/[0.07] rounded-r-[10px] px-4.5 py-3.5 my-3.5 italic text-icgk-cream">"Your Lord has decreed that you worship none but Him, and that you be kind to parents… and speak to them a noble word."<span class="block mt-2 not-italic text-[0.85rem] text-icgk-muted tracking-wide">— Qur'an 17:23</span></blockquote>
+    <p class="text-icgk-text">This includes obeying them in good, caring for them in old age, and maintaining ties with relatives (ṣilat al-raḥim) — even those who are difficult.</p>
   </section>
 
-  <section>
-    <h2><span class="badge">🏡</span> The Rights of Neighbors</h2>
-    <p>The Prophet ﷺ stressed the neighbor's rights so often that the companions thought neighbors might be made heirs:</p>
-    <blockquote>"Whoever believes in Allah and the Last Day, let him be good to his neighbor."<span class="src">— Sahih al-Bukhari &amp; Muslim</span></blockquote>
-    <p>A neighbor's faith does not matter to their right of good treatment — share food, check on them, ease their hardships, and never harm them.</p>
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center gap-3"><span class="text-2xl">🏡</span> The Rights of Neighbors</h2>
+    <p class="mb-3 text-icgk-text">The Prophet ﷺ stressed the neighbor's rights so often that the companions thought neighbors might be made heirs:</p>
+    <blockquote class="border-l-[3px] border-icgk-gold bg-icgk-gold/[0.07] rounded-r-[10px] px-4.5 py-3.5 my-3.5 italic text-icgk-cream">"Whoever believes in Allah and the Last Day, let him be good to his neighbor."<span class="block mt-2 not-italic text-[0.85rem] text-icgk-muted tracking-wide">— Sahih al-Bukhari &amp; Muslim</span></blockquote>
+    <p class="text-icgk-text">A neighbor's faith does not matter to their right of good treatment — share food, check on them, ease their hardships, and never harm them.</p>
   </section>
 
-  <section>
-    <h2><span class="badge">🌿</span> Noble Qualities to Cultivate</h2>
-    <div class="tiles">
-      <div class="tile"><div class="ti">🕊️</div><div class="name">Patience</div><div class="note">Ṣabr in hardship</div></div>
-      <div class="tile"><div class="ti">🙏</div><div class="name">Gratitude</div><div class="note">Shukr to Allah</div></div>
-      <div class="tile"><div class="ti">💛</div><div class="name">Mercy</div><div class="note">Compassion for all</div></div>
-      <div class="tile"><div class="ti">🤲</div><div class="name">Humility</div><div class="note">Free of arrogance</div></div>
-      <div class="tile"><div class="ti">🎁</div><div class="name">Generosity</div><div class="note">Giving freely</div></div>
-      <div class="tile"><div class="ti">😌</div><div class="name">Forgiveness</div><div class="note">Pardoning others</div></div>
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center gap-3"><span class="text-2xl">🌿</span> Noble Qualities to Cultivate</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3.5 mt-3.5">
+      <div class="text-center border-[1.5px] border-icgk-gold rounded-[10px] px-3.5 py-4.5 bg-black/30"><div class="text-3xl">🕊️</div><div class="text-icgk-gold-bright font-bold tracking-wide mt-0.5">Patience</div><div class="text-icgk-muted text-[0.85rem] mt-1">Ṣabr in hardship</div></div>
+      <div class="text-center border-[1.5px] border-icgk-gold rounded-[10px] px-3.5 py-4.5 bg-black/30"><div class="text-3xl">🙏</div><div class="text-icgk-gold-bright font-bold tracking-wide mt-0.5">Gratitude</div><div class="text-icgk-muted text-[0.85rem] mt-1">Shukr to Allah</div></div>
+      <div class="text-center border-[1.5px] border-icgk-gold rounded-[10px] px-3.5 py-4.5 bg-black/30"><div class="text-3xl">💛</div><div class="text-icgk-gold-bright font-bold tracking-wide mt-0.5">Mercy</div><div class="text-icgk-muted text-[0.85rem] mt-1">Compassion for all</div></div>
+      <div class="text-center border-[1.5px] border-icgk-gold rounded-[10px] px-3.5 py-4.5 bg-black/30"><div class="text-3xl">🤲</div><div class="text-icgk-gold-bright font-bold tracking-wide mt-0.5">Humility</div><div class="text-icgk-muted text-[0.85rem] mt-1">Free of arrogance</div></div>
+      <div class="text-center border-[1.5px] border-icgk-gold rounded-[10px] px-3.5 py-4.5 bg-black/30"><div class="text-3xl">🎁</div><div class="text-icgk-gold-bright font-bold tracking-wide mt-0.5">Generosity</div><div class="text-icgk-muted text-[0.85rem] mt-1">Giving freely</div></div>
+      <div class="text-center border-[1.5px] border-icgk-gold rounded-[10px] px-3.5 py-4.5 bg-black/30"><div class="text-3xl">😌</div><div class="text-icgk-gold-bright font-bold tracking-wide mt-0.5">Forgiveness</div><div class="text-icgk-muted text-[0.85rem] mt-1">Pardoning others</div></div>
     </div>
   </section>
 
-  <section>
-    <h2><span class="badge">🌍</span> Mercy to All Creation</h2>
-    <p>Good character extends beyond people. The Prophet ﷺ taught that a woman was forgiven for giving water to a thirsty dog, and that another was punished for confining a cat. Kindness to animals, care for the environment, and not wasting resources are all part of Islamic character.</p>
-    <blockquote>"The believers most complete in faith are those with the best character."<span class="src">— Sunan al-Tirmidhī</span></blockquote>
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center gap-3"><span class="text-2xl">🌍</span> Mercy to All Creation</h2>
+    <p class="mb-3 text-icgk-text">Good character extends beyond people. The Prophet ﷺ taught that a woman was forgiven for giving water to a thirsty dog, and that another was punished for confining a cat. Kindness to animals, care for the environment, and not wasting resources are all part of Islamic character.</p>
+    <blockquote class="border-l-[3px] border-icgk-gold bg-icgk-gold/[0.07] rounded-r-[10px] px-4.5 py-3.5 my-3.5 italic text-icgk-cream">"The believers most complete in faith are those with the best character."<span class="block mt-2 not-italic text-[0.85rem] text-icgk-muted tracking-wide">— Sunan al-Tirmidhī</span></blockquote>
   </section>
 
-  <section class="cta-band">
-    <h2 class="center"><span class="badge">🤝</span> Live the Example</h2>
-    <p>The best way to grow in character is good company and a connection to the Qur'an and Sunnah. Come be part of our community.</p>
-    <div style="margin-top:18px">
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5 text-center">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center justify-center gap-3"><span class="text-2xl">🤝</span> Live the Example</h2>
+    <p class="mb-3 text-icgk-text">The best way to grow in character is good company and a connection to the Qur'an and Sunnah. Come be part of our community.</p>
+    <div class="mt-4.5">
       <a class="btn btn-primary" href="seerah.html">🌟 The Prophet's Example</a>
       <a class="btn btn-ghost" href="index.html#visit">📍 Visit the Masjid</a>
     </div>
   </section>
 
-  <footer>
-    <span class="name">Islamic Community of Greater Killeen</span>
-    <p class="dua">O Allah, guide us to the best of character, for none guides to it but You. Āmīn.</p>
-    <p class="note">For halaqas on character and spirituality, reach out to your local masjid &nbsp;•&nbsp; icgk.org</p>
+  <footer class="text-center text-icgk-muted px-4 pt-7 pb-1 text-[0.9rem]">
+    <span class="text-icgk-gold-bright text-[1.1rem] tracking-[2px] block mb-1.5">Islamic Community of Greater Killeen</span>
+    <p class="text-icgk-cream italic mb-3.5">O Allah, guide us to the best of character, for none guides to it but You. Āmīn.</p>
+    <p class="text-[0.82rem] text-icgk-muted">For halaqas on character and spirituality, reach out to your local masjid &nbsp;•&nbsp; icgk.org</p>
   </footer>
 
 </div>
