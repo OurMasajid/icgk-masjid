@@ -1,342 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hajj &amp; Umrah — Islamic Community of Greater Killeen</title>
 <meta name="description" content="An overview of Hajj and Umrah — the pilgrimage to Makkah, its rites, preparation, and meaning — from the Islamic Community of Greater Killeen.">
-<style>
-  :root {
-    --green-dark: #0c2a1f;
-    --green-mid: #11402f;
-    --gold: #d4a64a;
-    --gold-bright: #f0c674;
-    --cream: #f5e9c8;
-    --text: #f8efd6;
-    --muted: #cdbf9a;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Georgia', 'Times New Roman', serif;
-    background:
-      radial-gradient(1200px 600px at 50% -10%, rgba(212,166,74,0.10), transparent 60%),
-      linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
-    background-attachment: fixed;
-    color: var(--text);
-    min-height: 100vh;
-    padding: 24px 16px 64px;
-    line-height: 1.65;
-  }
-  .container { max-width: 920px; margin: 0 auto; }
-
-  .back { display: inline-block; margin-bottom: 18px; color: var(--gold-bright); text-decoration: none; font-size: .92rem; letter-spacing: .5px; }
-  .back:hover { color: var(--gold); }
-
-  /* ---------- Header ---------- */
-  header {
-    position: relative;
-    text-align: center;
-    padding: 44px 20px 38px;
-    border: 2px solid var(--gold);
-    border-radius: 18px;
-    background:
-      radial-gradient(600px 300px at 50% 0%, rgba(212,166,74,0.12), transparent 70%),
-      rgba(0,0,0,0.28);
-    margin-bottom: 26px;
-    overflow: hidden;
-  }
-  header::before {
-    content: "";
-    position: absolute; inset: 8px;
-    border: 1px solid rgba(212,166,74,0.35);
-    border-radius: 12px;
-    pointer-events: none;
-  }
-  .moon { font-size: 2.6rem; line-height: 1; filter: drop-shadow(0 0 12px rgba(240,198,116,0.5)); }
-  header .small { color: var(--gold-bright); font-size: 0.95rem; letter-spacing: 4px; text-transform: uppercase; margin-top: 10px; }
-  header h1 { color: var(--gold); font-size: 3rem; margin: 6px 0 2px; letter-spacing: 1px; text-shadow: 0 2px 18px rgba(0,0,0,0.4); }
-  .arabic { font-size: 2rem; color: var(--gold-bright); margin: 6px 0; direction: rtl; line-height: 1.4; }
-  header .sub { color: var(--cream); letter-spacing: 4px; margin-top: 6px; font-size: 1rem; text-transform: uppercase; }
-
-  /* ---------- Quick facts ---------- */
-  .info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 16px;
-    margin-bottom: 26px;
-  }
-  .card {
-    background: rgba(0,0,0,0.3);
-    border: 1.5px solid var(--gold);
-    border-radius: 12px;
-    padding: 18px 20px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-  }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.35); border-color: var(--gold-bright); }
-  .card .icon { font-size: 1.9rem; color: var(--gold-bright); min-width: 40px; text-align: center; }
-  .card .label { color: var(--gold-bright); font-weight: bold; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; display: block; }
-  .card .value { color: var(--text); font-size: 1.05rem; }
-
-  /* ---------- Sections ---------- */
-  section {
-    background: rgba(0,0,0,0.25);
-    border: 1.5px solid var(--gold);
-    border-radius: 12px;
-    padding: 28px 30px;
-    margin-bottom: 22px;
-  }
-  section h2 { color: var(--gold); font-size: 1.7rem; margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
-  section h2 .badge { font-size: 1.5rem; }
-  section h3 { color: var(--gold-bright); font-size: 1.2rem; margin: 18px 0 6px; }
-  section p { margin-bottom: 12px; color: var(--text); }
-  section p:last-child { margin-bottom: 0; }
-  .lead { font-size: 1.12rem; color: var(--cream); }
-
-  ul.clean { list-style: none; margin: 8px 0; }
-  ul.clean li { position: relative; padding: 8px 0 8px 30px; border-bottom: 1px solid rgba(212,166,74,0.15); }
-  ul.clean li:last-child { border-bottom: none; }
-  ul.clean li::before { content: "✦"; position: absolute; left: 4px; top: 8px; color: var(--gold-bright); }
-  ul.clean b { color: var(--gold-bright); }
-
-  /* Quote blocks */
-  blockquote {
-    border-left: 3px solid var(--gold);
-    background: rgba(212,166,74,0.07);
-    border-radius: 0 10px 10px 0;
-    padding: 14px 18px;
-    margin: 14px 0;
-    font-style: italic;
-    color: var(--cream);
-  }
-  blockquote .src { display: block; margin-top: 8px; font-style: normal; font-size: 0.85rem; color: var(--muted); letter-spacing: 1px; }
-
-  /* Numbered steps */
-  ol.steps { list-style: none; counter-reset: step; margin: 8px 0; }
-  ol.steps li {
-    position: relative; padding: 12px 0 12px 50px; counter-increment: step;
-    border-bottom: 1px solid rgba(212,166,74,0.15);
-  }
-  ol.steps li:last-child { border-bottom: none; }
-  ol.steps li::before {
-    content: counter(step);
-    position: absolute; left: 0; top: 12px;
-    width: 34px; height: 34px; line-height: 34px; text-align: center;
-    background: var(--gold); color: var(--green-dark);
-    border-radius: 999px; font-weight: bold;
-  }
-  ol.steps b { color: var(--gold-bright); }
-  ol.steps .day { color: var(--muted); font-size: 0.82rem; letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 2px; }
-
-  /* Ihram highlight */
-  .ihram {
-    border: 2px solid var(--gold-bright);
-    background:
-      radial-gradient(400px 200px at 50% 0%, rgba(240,198,116,0.10), transparent 70%),
-      rgba(0,0,0,0.35);
-  }
-  .talbiyah { text-align: center; }
-  .talbiyah .ar-big { font-size: 1.6rem; color: var(--gold); direction: rtl; line-height: 1.7; margin: 6px 0; }
-  .talbiyah .translit { color: var(--gold-bright); font-style: italic; letter-spacing: .5px; }
-  .talbiyah .en { color: var(--cream); margin-top: 6px; }
-
-  /* Compare table */
-  .table-wrap { overflow-x: auto; margin-top: 14px; }
-  table { width: 100%; border-collapse: collapse; min-width: 460px; }
-  th, td { padding: 11px 14px; text-align: left; border-bottom: 1px solid rgba(212,166,74,0.18); vertical-align: top; }
-  th { color: var(--gold-bright); font-size: 0.82rem; letter-spacing: 1px; text-transform: uppercase; }
-  td { color: var(--text); }
-  tr:last-child td { border-bottom: none; }
-  td b { color: var(--gold-bright); }
-
-  /* Inline page links */
-  .pagelink { color: var(--gold-bright); text-decoration: none; border-bottom: 1px solid rgba(212,166,74,0.4); }
-  .pagelink:hover { color: var(--gold); }
-
-  /* CTA */
-  .cta-band { text-align: center; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 12px 24px; border-radius: 999px; text-decoration: none;
-    font-size: 1rem; font-weight: bold; letter-spacing: .5px; margin: 6px;
-    border: 1.5px solid var(--gold); transition: transform .15s, background .2s, color .2s, box-shadow .2s;
-  }
-  .btn-primary { background: var(--gold); color: var(--green-dark); }
-  .btn-primary:hover { background: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,166,74,0.3); }
-  .btn-ghost { color: var(--gold-bright); }
-  .btn-ghost:hover { background: rgba(212,166,74,0.15); transform: translateY(-2px); }
-
-  /* Footer */
-  footer { text-align: center; color: var(--muted); padding: 28px 16px 4px; font-size: 0.9rem; }
-  footer .name { color: var(--gold-bright); font-size: 1.1rem; letter-spacing: 2px; display: block; margin-bottom: 6px; }
-  footer .dua { color: var(--cream); font-style: italic; margin-bottom: 14px; }
-  .note { font-size: 0.82rem; color: var(--muted); }
-
-  @media (max-width: 560px) {
-    header h1 { font-size: 2.2rem; }
-    .arabic { font-size: 1.6rem; }
-    section { padding: 22px 18px; }
-    .talbiyah .ar-big { font-size: 1.3rem; }
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="tailwind-config.js"></script>
+<style type="text/tailwindcss">
+  @layer components {
+    .btn {
+      @apply inline-flex items-center gap-2 px-6 py-3 m-1.5 rounded-full no-underline text-base font-bold tracking-wide border-[1.5px] border-icgk-gold transition duration-200;
+    }
+    .btn-primary {
+      @apply bg-icgk-gold text-icgk-green-dark hover:bg-icgk-gold-bright hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(212,166,74,0.3)];
+    }
+    .btn-ghost {
+      @apply text-icgk-gold-bright hover:bg-icgk-gold/15 hover:-translate-y-0.5;
+    }
   }
 </style>
 </head>
-<body>
-<div class="container">
+<body class="font-serif text-icgk-text min-h-screen leading-[1.65] bg-fixed px-4 pt-6 pb-16 bg-[radial-gradient(1200px_600px_at_50%_-10%,rgba(212,166,74,0.10),transparent_60%),linear-gradient(135deg,#0c2a1f_0%,#11402f_100%)]">
+<div class="max-w-[920px] mx-auto">
 
-  <a class="back" href="resources.html">← Back to Resources</a>
+  <a class="inline-block mb-4.5 text-icgk-gold-bright no-underline text-[0.92rem] tracking-wide hover:text-icgk-gold" href="resources.html">← Back to Resources</a>
 
-  <header>
-    <div class="moon">🕋</div>
-    <div class="small">The Journey of a Lifetime</div>
-    <h1>Hajj &amp; Umrah</h1>
-    <div class="arabic">ٱلْحَجّ وَٱلْعُمْرَة</div>
-    <div class="sub">Pilgrimage to Makkah</div>
+  <header class="relative text-center px-5 pt-11 pb-9.5 border-2 border-icgk-gold rounded-2xl mb-6.5 overflow-hidden bg-[radial-gradient(600px_300px_at_50%_0%,rgba(212,166,74,0.12),transparent_70%),rgba(0,0,0,0.28)] before:content-[''] before:absolute before:inset-2 before:border before:border-icgk-gold/35 before:rounded-xl before:pointer-events-none">
+    <div class="text-[2.6rem] leading-none drop-shadow-[0_0_12px_rgba(240,198,116,0.5)]">🕋</div>
+    <div class="text-icgk-gold-bright text-[0.95rem] tracking-[4px] uppercase mt-2.5">The Journey of a Lifetime</div>
+    <h1 class="text-icgk-gold text-[2.2rem] sm:text-[3rem] mt-1.5 mb-0.5 tracking-wide drop-shadow-[0_2px_18px_rgba(0,0,0,0.4)]">Hajj &amp; Umrah</h1>
+    <div dir="rtl" class="text-[1.6rem] sm:text-[2rem] text-icgk-gold-bright my-1.5 leading-[1.4]">ٱلْحَجّ وَٱلْعُمْرَة</div>
+    <div class="text-icgk-cream tracking-[4px] mt-1.5 text-base uppercase">Pilgrimage to Makkah</div>
   </header>
 
   <!-- Quick facts -->
-  <div class="info-grid">
-    <div class="card">
-      <div class="icon">🕋</div>
-      <div>
-        <span class="label">Hajj</span>
-        <span class="value">The 5th pillar of Islam</span>
-      </div>
-    </div>
-    <div class="card">
-      <div class="icon">🗓️</div>
-      <div>
-        <span class="label">When</span>
-        <span class="value">Dhul-Hijjah, the 12th month</span>
-      </div>
-    </div>
-    <div class="card">
-      <div class="icon">☝️</div>
-      <div>
-        <span class="label">Obligation</span>
-        <span class="value">Once in a lifetime, if able</span>
-      </div>
-    </div>
-    <div class="card">
-      <div class="icon">🤍</div>
-      <div>
-        <span class="label">The Reward</span>
-        <span class="value">Sins forgiven — like a newborn</span>
-      </div>
-    </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6.5">
+    <div class="bg-black/30 border-[1.5px] border-icgk-gold rounded-xl px-5 py-4.5 flex items-center gap-3.5 transition duration-200 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:border-icgk-gold-bright"><div class="text-[1.9rem] text-icgk-gold-bright min-w-[40px] text-center">🕋</div><div><span class="text-icgk-gold-bright font-bold text-[0.85rem] tracking-wide uppercase block">Hajj</span><span class="text-icgk-text text-[1.05rem]">The 5th pillar of Islam</span></div></div>
+    <div class="bg-black/30 border-[1.5px] border-icgk-gold rounded-xl px-5 py-4.5 flex items-center gap-3.5 transition duration-200 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:border-icgk-gold-bright"><div class="text-[1.9rem] text-icgk-gold-bright min-w-[40px] text-center">🗓️</div><div><span class="text-icgk-gold-bright font-bold text-[0.85rem] tracking-wide uppercase block">When</span><span class="text-icgk-text text-[1.05rem]">Dhul-Hijjah, the 12th month</span></div></div>
+    <div class="bg-black/30 border-[1.5px] border-icgk-gold rounded-xl px-5 py-4.5 flex items-center gap-3.5 transition duration-200 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:border-icgk-gold-bright"><div class="text-[1.9rem] text-icgk-gold-bright min-w-[40px] text-center">☝️</div><div><span class="text-icgk-gold-bright font-bold text-[0.85rem] tracking-wide uppercase block">Obligation</span><span class="text-icgk-text text-[1.05rem]">Once in a lifetime, if able</span></div></div>
+    <div class="bg-black/30 border-[1.5px] border-icgk-gold rounded-xl px-5 py-4.5 flex items-center gap-3.5 transition duration-200 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.35)] hover:border-icgk-gold-bright"><div class="text-[1.9rem] text-icgk-gold-bright min-w-[40px] text-center">🤍</div><div><span class="text-icgk-gold-bright font-bold text-[0.85rem] tracking-wide uppercase block">The Reward</span><span class="text-icgk-text text-[1.05rem]">Sins forgiven — like a newborn</span></div></div>
   </div>
 
   <!-- What is Hajj -->
-  <section>
-    <h2><span class="badge">🕋</span> What Is Hajj?</h2>
-    <p class="lead">Hajj is the annual pilgrimage to Makkah and the fifth pillar of Islam — an obligation once in a lifetime upon every Muslim who is physically and financially able to make the journey.</p>
-    <p>It takes place during the days of <b>Dhul-Hijjah</b>, the twelfth and final month of the Islamic year, and retraces the footsteps of Prophet Ibrāhīm (Abraham), his wife Hājar, and their son Ismāʿīl, peace be upon them — and is perfected in the example of the Prophet Muhammad ﷺ.</p>
-    <blockquote>
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center gap-3"><span class="text-2xl">🕋</span> What Is Hajj?</h2>
+    <p class="text-[1.12rem] text-icgk-cream mb-3">Hajj is the annual pilgrimage to Makkah and the fifth pillar of Islam — an obligation once in a lifetime upon every Muslim who is physically and financially able to make the journey.</p>
+    <p class="mb-3 text-icgk-text">It takes place during the days of <b>Dhul-Hijjah</b>, the twelfth and final month of the Islamic year, and retraces the footsteps of Prophet Ibrāhīm (Abraham), his wife Hājar, and their son Ismāʿīl, peace be upon them — and is perfected in the example of the Prophet Muhammad ﷺ.</p>
+    <blockquote class="border-l-[3px] border-icgk-gold bg-icgk-gold/[0.07] rounded-r-[10px] px-4.5 py-3.5 my-3.5 italic text-icgk-cream">
       "And Hajj to the House is a duty owed to Allah by those who are able to make the journey."
-      <span class="src">— Qur'an 3:97</span>
+      <span class="block mt-2 not-italic text-[0.85rem] text-icgk-muted tracking-wide">— Qur'an 3:97</span>
     </blockquote>
-    <p>Millions of Muslims of every race, language, and background gather as equals — all in simple white garments — in the greatest display of unity and submission to Allah on earth.</p>
+    <p class="text-icgk-text">Millions of Muslims of every race, language, and background gather as equals — all in simple white garments — in the greatest display of unity and submission to Allah on earth.</p>
   </section>
 
   <!-- The reward -->
-  <section>
-    <h2><span class="badge">🤍</span> The Immense Reward</h2>
-    <p>An accepted Hajj wipes the slate completely clean and has no reward less than Paradise:</p>
-    <blockquote>
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center gap-3"><span class="text-2xl">🤍</span> The Immense Reward</h2>
+    <p class="mb-3 text-icgk-text">An accepted Hajj wipes the slate completely clean and has no reward less than Paradise:</p>
+    <blockquote class="border-l-[3px] border-icgk-gold bg-icgk-gold/[0.07] rounded-r-[10px] px-4.5 py-3.5 my-3.5 italic text-icgk-cream">
       "Whoever performs Hajj for the sake of Allah and does not commit any obscenity or wrongdoing returns (free of sin) as the day his mother bore him."
-      <span class="src">— Sahih al-Bukhari</span>
+      <span class="block mt-2 not-italic text-[0.85rem] text-icgk-muted tracking-wide">— Sahih al-Bukhari</span>
     </blockquote>
-    <blockquote>
+    <blockquote class="border-l-[3px] border-icgk-gold bg-icgk-gold/[0.07] rounded-r-[10px] px-4.5 py-3.5 my-3.5 italic text-icgk-cream">
       "An accepted Hajj has no reward except Paradise."
-      <span class="src">— Sahih al-Bukhari &amp; Muslim</span>
+      <span class="block mt-2 not-italic text-[0.85rem] text-icgk-muted tracking-wide">— Sahih al-Bukhari &amp; Muslim</span>
     </blockquote>
   </section>
 
   <!-- Ihram & Talbiyah -->
-  <section class="ihram">
-    <h2><span class="badge">🤍</span> Iḥrām — The Sacred State</h2>
-    <p>The pilgrimage begins by entering <b>iḥrām</b>, a state of consecration entered at appointed boundaries (mīqāt). Men wear two simple unstitched white cloths; women wear plain modest dress. In iḥrām, the pilgrim avoids certain acts — cutting hair or nails, perfume, arguing, and marital relations — focusing wholly on Allah.</p>
-    <p>Upon entering iḥrām, the pilgrim makes their intention and calls out the <b>Talbiyah</b>, the timeless cry of the pilgrim:</p>
-    <div class="talbiyah">
-      <div class="ar-big">لَبَّيْكَ ٱللَّٰهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ</div>
-      <p class="translit">Labbayk Allāhumma labbayk, labbayka lā sharīka laka labbayk…</p>
-      <p class="en">"Here I am, O Allah, here I am. Here I am, You have no partner, here I am. Truly all praise, grace, and dominion are Yours — You have no partner."</p>
+  <section class="border-2 border-icgk-gold-bright bg-[radial-gradient(400px_200px_at_50%_0%,rgba(240,198,116,0.10),transparent_70%),rgba(0,0,0,0.35)] rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center gap-3"><span class="text-2xl">🤍</span> Iḥrām — The Sacred State</h2>
+    <p class="mb-3 text-icgk-text">The pilgrimage begins by entering <b>iḥrām</b>, a state of consecration entered at appointed boundaries (mīqāt). Men wear two simple unstitched white cloths; women wear plain modest dress. In iḥrām, the pilgrim avoids certain acts — cutting hair or nails, perfume, arguing, and marital relations — focusing wholly on Allah.</p>
+    <p class="mb-3 text-icgk-text">Upon entering iḥrām, the pilgrim makes their intention and calls out the <b>Talbiyah</b>, the timeless cry of the pilgrim:</p>
+    <div class="text-center">
+      <div class="text-[1.6rem] text-icgk-gold direction-rtl leading-[1.7] my-1.5" dir="rtl">لَبَّيْكَ ٱللَّٰهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ</div>
+      <p class="text-icgk-gold-bright italic tracking-[0.5px] mb-0">Labbayk Allāhumma labbayk, labbayka lā sharīka laka labbayk…</p>
+      <p class="text-icgk-cream mt-1.5">"Here I am, O Allah, here I am. Here I am, You have no partner, here I am. Truly all praise, grace, and dominion are Yours — You have no partner."</p>
     </div>
   </section>
 
   <!-- The rites of Hajj -->
-  <section>
-    <h2><span class="badge">🗺️</span> The Rites of Hajj</h2>
-    <p>Over roughly five days (8th–13th of Dhul-Hijjah), the pilgrim performs a series of sacred rites:</p>
-    <ol class="steps">
-      <li><span class="day">8th of Dhul-Hijjah — Minā</span><b>Travel to Minā.</b> Pilgrims spend the day and night in prayer and remembrance in the tent city of Minā.</li>
-      <li><span class="day">9th — ʿArafah</span><b>The Day of ʿArafah.</b> The heart of Hajj: standing in prayer and du'ā on the plain of ʿArafah until sunset. "Hajj is ʿArafah." Then on to Muzdalifah for the night.</li>
-      <li><span class="day">10th — Eid al-Adḥā</span><b>Stoning &amp; sacrifice.</b> Stone the largest pillar (Jamrat al-ʿAqabah), offer the sacrifice (qurbānī), and shave or trim the hair. Then perform Ṭawāf al-Ifāḍah around the Kaʿbah.</li>
-      <li><span class="day">11th–13th — Minā</span><b>Days of Tashrīq.</b> Remain in Minā, stoning the three pillars each day in remembrance of Allah.</li>
-      <li><span class="day">Before departure</span><b>Farewell Ṭawāf.</b> A final ṭawāf around the Kaʿbah bids farewell to the Sacred House.</li>
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center gap-3"><span class="text-2xl">🗺️</span> The Rites of Hajj</h2>
+    <p class="mb-3 text-icgk-text">Over roughly five days (8th–13th of Dhul-Hijjah), the pilgrim performs a series of sacred rites:</p>
+    <ol class="list-none counter-reset my-2">
+      <li class="relative pl-[50px] py-3 border-b border-icgk-gold/[0.15] last:border-0 before:content-['1'] before:absolute before:left-0 before:top-3 before:w-[34px] before:h-[34px] before:leading-[34px] before:text-center before:bg-icgk-gold before:text-icgk-green-dark before:rounded-full before:font-bold before:counter-[step]"><span class="text-icgk-muted text-[0.82rem] tracking-wide uppercase block mb-0.5">8th of Dhul-Hijjah — Minā</span><b class="text-icgk-gold-bright">Travel to Minā.</b> Pilgrims spend the day and night in prayer and remembrance in the tent city of Minā.</li>
+      <li class="relative pl-[50px] py-3 border-b border-icgk-gold/[0.15] last:border-0 before:content-['2'] before:absolute before:left-0 before:top-3 before:w-[34px] before:h-[34px] before:leading-[34px] before:text-center before:bg-icgk-gold before:text-icgk-green-dark before:rounded-full before:font-bold before:counter-[step]"><span class="text-icgk-muted text-[0.82rem] tracking-wide uppercase block mb-0.5">9th — ʿArafah</span><b class="text-icgk-gold-bright">The Day of ʿArafah.</b> The heart of Hajj: standing in prayer and du'ā on the plain of ʿArafah until sunset. "Hajj is ʿArafah." Then on to Muzdalifah for the night.</li>
+      <li class="relative pl-[50px] py-3 border-b border-icgk-gold/[0.15] last:border-0 before:content-['3'] before:absolute before:left-0 before:top-3 before:w-[34px] before:h-[34px] before:leading-[34px] before:text-center before:bg-icgk-gold before:text-icgk-green-dark before:rounded-full before:font-bold before:counter-[step]"><span class="text-icgk-muted text-[0.82rem] tracking-wide uppercase block mb-0.5">10th — Eid al-Adḥā</span><b class="text-icgk-gold-bright">Stoning &amp; sacrifice.</b> Stone the largest pillar (Jamrat al-ʿAqabah), offer the sacrifice (qurbānī), and shave or trim the hair. Then perform Ṭawāf al-Ifāḍah around the Kaʿbah.</li>
+      <li class="relative pl-[50px] py-3 border-b border-icgk-gold/[0.15] last:border-0 before:content-['4'] before:absolute before:left-0 before:top-3 before:w-[34px] before:h-[34px] before:leading-[34px] before:text-center before:bg-icgk-gold before:text-icgk-green-dark before:rounded-full before:font-bold before:counter-[step]"><span class="text-icgk-muted text-[0.82rem] tracking-wide uppercase block mb-0.5">11th–13th — Minā</span><b class="text-icgk-gold-bright">Days of Tashrīq.</b> Remain in Minā, stoning the three pillars each day in remembrance of Allah.</li>
+      <li class="relative pl-[50px] py-3 border-b border-icgk-gold/[0.15] last:border-0 before:content-['5'] before:absolute before:left-0 before:top-3 before:w-[34px] before:h-[34px] before:leading-[34px] before:text-center before:bg-icgk-gold before:text-icgk-green-dark before:rounded-full before:font-bold before:counter-[step]"><span class="text-icgk-muted text-[0.82rem] tracking-wide uppercase block mb-0.5">Before departure</span><b class="text-icgk-gold-bright">Farewell Ṭawāf.</b> A final ṭawāf around the Kaʿbah bids farewell to the Sacred House.</li>
     </ol>
   </section>
 
   <!-- Umrah -->
-  <section>
-    <h2><span class="badge">🌙</span> What Is Umrah?</h2>
-    <p>Umrah is often called the "lesser pilgrimage." Unlike Hajj, it is <b>not obligatory</b> and can be performed at <b>any time of year</b>. It is shorter and consists of a few core rites performed in iḥrām:</p>
-    <ol class="steps">
-      <li><b>Iḥrām</b> — enter the sacred state at the mīqāt with the intention for Umrah.</li>
-      <li><b>Ṭawāf</b> — circle the Kaʿbah seven times.</li>
-      <li><b>Saʿī</b> — walk seven times between the hills of Ṣafā and Marwah, as Hājar did seeking water for Ismāʿīl.</li>
-      <li><b>Ḥalq / Taqṣīr</b> — shave or trim the hair to exit iḥrām.</li>
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center gap-3"><span class="text-2xl">🌙</span> What Is Umrah?</h2>
+    <p class="mb-3 text-icgk-text">Umrah is often called the "lesser pilgrimage." Unlike Hajj, it is <b>not obligatory</b> and can be performed at <b>any time of year</b>. It is shorter and consists of a few core rites performed in iḥrām:</p>
+    <ol class="list-none counter-reset my-2">
+      <li class="relative pl-[50px] py-3 border-b border-icgk-gold/[0.15] last:border-0 before:content-['1'] before:absolute before:left-0 before:top-3 before:w-[34px] before:h-[34px] before:leading-[34px] before:text-center before:bg-icgk-gold before:text-icgk-green-dark before:rounded-full before:font-bold"><b class="text-icgk-gold-bright">Iḥrām</b> — enter the sacred state at the mīqāt with the intention for Umrah.</li>
+      <li class="relative pl-[50px] py-3 border-b border-icgk-gold/[0.15] last:border-0 before:content-['2'] before:absolute before:left-0 before:top-3 before:w-[34px] before:h-[34px] before:leading-[34px] before:text-center before:bg-icgk-gold before:text-icgk-green-dark before:rounded-full before:font-bold"><b class="text-icgk-gold-bright">Ṭawāf</b> — circle the Kaʿbah seven times.</li>
+      <li class="relative pl-[50px] py-3 border-b border-icgk-gold/[0.15] last:border-0 before:content-['3'] before:absolute before:left-0 before:top-3 before:w-[34px] before:h-[34px] before:leading-[34px] before:text-center before:bg-icgk-gold before:text-icgk-green-dark before:rounded-full before:font-bold"><b class="text-icgk-gold-bright">Saʿī</b> — walk seven times between the hills of Ṣafā and Marwah, as Hājar did seeking water for Ismāʿīl.</li>
+      <li class="relative pl-[50px] py-3 border-b border-icgk-gold/[0.15] last:border-0 before:content-['4'] before:absolute before:left-0 before:top-3 before:w-[34px] before:h-[34px] before:leading-[34px] before:text-center before:bg-icgk-gold before:text-icgk-green-dark before:rounded-full before:font-bold"><b class="text-icgk-gold-bright">Ḥalq / Taqṣīr</b> — shave or trim the hair to exit iḥrām.</li>
     </ol>
-    <p style="margin-top:12px">Umrah in Ramadan carries especially great reward — the Prophet ﷺ said it is equal in reward to a Hajj.</p>
+    <p class="mt-3 text-icgk-text">Umrah in Ramadan carries especially great reward — the Prophet ﷺ said it is equal in reward to a Hajj.</p>
   </section>
 
   <!-- Hajj vs Umrah -->
-  <section>
-    <h2><span class="badge">⚖️</span> Hajj vs. Umrah at a Glance</h2>
-    <div class="table-wrap">
-      <table>
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center gap-3"><span class="text-2xl">⚖️</span> Hajj vs. Umrah at a Glance</h2>
+    <div class="overflow-x-auto mt-3.5">
+      <table class="w-full border-collapse min-w-[460px]">
         <thead>
-          <tr><th></th><th>Hajj</th><th>Umrah</th></tr>
+          <tr><th class="px-3.5 py-2.5 text-left text-icgk-gold-bright text-[0.82rem] tracking-wide uppercase border-b border-icgk-gold/[0.18]"></th><th class="px-3.5 py-2.5 text-left text-icgk-gold-bright text-[0.82rem] tracking-wide uppercase border-b border-icgk-gold/[0.18]">Hajj</th><th class="px-3.5 py-2.5 text-left text-icgk-gold-bright text-[0.82rem] tracking-wide uppercase border-b border-icgk-gold/[0.18]">Umrah</th></tr>
         </thead>
         <tbody>
-          <tr><td><b>Ruling</b></td><td>Obligatory once, if able</td><td>Recommended (Sunnah)</td></tr>
-          <tr><td><b>Time</b></td><td>Only in Dhul-Hijjah</td><td>Any time of year</td></tr>
-          <tr><td><b>Length</b></td><td>About 5 days</td><td>A few hours</td></tr>
-          <tr><td><b>Key rites</b></td><td>ʿArafah, Minā, Muzdalifah, stoning, sacrifice, ṭawāf, saʿī</td><td>Ṭawāf, saʿī, hair trimming</td></tr>
+          <tr><td class="px-3.5 py-2.5 text-icgk-text border-b border-icgk-gold/[0.18]"><b>Ruling</b></td><td class="px-3.5 py-2.5 text-icgk-text border-b border-icgk-gold/[0.18]">Obligatory once, if able</td><td class="px-3.5 py-2.5 text-icgk-text border-b border-icgk-gold/[0.18]">Recommended (Sunnah)</td></tr>
+          <tr><td class="px-3.5 py-2.5 text-icgk-text border-b border-icgk-gold/[0.18]"><b>Time</b></td><td class="px-3.5 py-2.5 text-icgk-text border-b border-icgk-gold/[0.18]">Only in Dhul-Hijjah</td><td class="px-3.5 py-2.5 text-icgk-text border-b border-icgk-gold/[0.18]">Any time of year</td></tr>
+          <tr><td class="px-3.5 py-2.5 text-icgk-text border-b border-icgk-gold/[0.18]"><b>Length</b></td><td class="px-3.5 py-2.5 text-icgk-text border-b border-icgk-gold/[0.18]">About 5 days</td><td class="px-3.5 py-2.5 text-icgk-text border-b border-icgk-gold/[0.18]">A few hours</td></tr>
+          <tr><td class="px-3.5 py-2.5 text-icgk-text"><b>Key rites</b></td><td class="px-3.5 py-2.5 text-icgk-text">ʿArafah, Minā, Muzdalifah, stoning, sacrifice, ṭawāf, saʿī</td><td class="px-3.5 py-2.5 text-icgk-text">Ṭawāf, saʿī, hair trimming</td></tr>
         </tbody>
       </table>
     </div>
   </section>
 
   <!-- Preparing -->
-  <section>
-    <h2><span class="badge">🧳</span> Preparing for the Journey</h2>
-    <ul class="clean">
-      <li><b>Make sincere intention</b> for Allah alone, and seek to make your wealth and provision ḥalāl.</li>
-      <li><b>Repent and settle your affairs</b> — seek forgiveness, return rights, and pay off debts before you go.</li>
-      <li><b>Learn the rites</b> beforehand, or travel with a knowledgeable, reputable Hajj/Umrah group.</li>
-      <li><b>Prepare physically</b> — Hajj involves a great deal of walking; build your stamina and see a doctor for needed vaccinations.</li>
-      <li><b>Adopt good character</b> — patience and gentleness with fellow pilgrims are part of an accepted pilgrimage.</li>
-      <li><b>Make much du'ā</b> — these are some of the most beloved places and days for supplication.</li>
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center gap-3"><span class="text-2xl">🧳</span> Preparing for the Journey</h2>
+    <ul class="list-none my-2">
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright"><b class="text-icgk-gold-bright">Make sincere intention</b> for Allah alone, and seek to make your wealth and provision ḥalāl.</li>
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright"><b class="text-icgk-gold-bright">Repent and settle your affairs</b> — seek forgiveness, return rights, and pay off debts before you go.</li>
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright"><b class="text-icgk-gold-bright">Learn the rites</b> beforehand, or travel with a knowledgeable, reputable Hajj/Umrah group.</li>
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright"><b class="text-icgk-gold-bright">Prepare physically</b> — Hajj involves a great deal of walking; build your stamina and see a doctor for needed vaccinations.</li>
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright"><b class="text-icgk-gold-bright">Adopt good character</b> — patience and gentleness with fellow pilgrims are part of an accepted pilgrimage.</li>
+      <li class="relative pl-[30px] py-2 border-b border-icgk-gold/[0.15] last:border-0 before:content-['✦'] before:absolute before:left-1 before:top-2 before:text-icgk-gold-bright"><b class="text-icgk-gold-bright">Make much du'ā</b> — these are some of the most beloved places and days for supplication.</li>
     </ul>
   </section>
 
   <!-- CTA -->
-  <section class="cta-band">
-    <h2 style="justify-content:center"><span class="badge">🤝</span> Planning Your Pilgrimage?</h2>
-    <p>If you're preparing for Hajj or Umrah, the community can help — with guidance on the rites, trusted travel groups, and connecting you with others making the journey. Reach out to the masjid.</p>
-    <div style="margin-top:18px">
+  <section class="bg-black/25 border-[1.5px] border-icgk-gold rounded-xl px-4.5 sm:px-7.5 py-5.5 sm:py-7 mb-5.5 text-center">
+    <h2 class="text-icgk-gold text-[1.7rem] mb-3.5 flex items-center justify-center gap-3"><span class="text-2xl">🤝</span> Planning Your Pilgrimage?</h2>
+    <p class="mb-3 text-icgk-text">If you're preparing for Hajj or Umrah, the community can help — with guidance on the rites, trusted travel groups, and connecting you with others making the journey. Reach out to the masjid.</p>
+    <div class="mt-4.5">
       <a class="btn btn-primary" href="index.html#contact">✉️ Get in Touch</a>
       <a class="btn btn-ghost" href="index.html#visit">📍 Visit the Masjid</a>
     </div>
   </section>
 
-  <footer>
-    <span class="name">Islamic Community of Greater Killeen</span>
-    <p class="dua">May Allah invite you to His House, accept your pilgrimage, and return you with your sins forgiven. Āmīn.</p>
-    <p class="note">For Hajj/Umrah guidance and group information, please reach out to your local masjid &nbsp;•&nbsp; icgk.org</p>
+  <footer class="text-center text-icgk-muted px-4 pt-7 pb-1 text-[0.9rem]">
+    <span class="text-icgk-gold-bright text-[1.1rem] tracking-[2px] block mb-1.5">Islamic Community of Greater Killeen</span>
+    <p class="text-icgk-cream italic mb-3.5">May Allah invite you to His House, accept your pilgrimage, and return you with your sins forgiven. Āmīn.</p>
+    <p class="text-[0.82rem] text-icgk-muted">For Hajj/Umrah guidance and group information, please reach out to your local masjid &nbsp;•&nbsp; icgk.org</p>
   </footer>
 
 </div>

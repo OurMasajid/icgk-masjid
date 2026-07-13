@@ -1,67 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Thank You — Islamic Community of Greater Killeen</title>
 <meta name="robots" content="noindex">
-<style>
-  :root {
-    --green-dark: #0c2a1f;
-    --green-mid: #11402f;
-    --gold: #d4a64a;
-    --gold-bright: #f0c674;
-    --cream: #f5e9c8;
-    --text: #f8efd6;
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="tailwind-config.js"></script>
+<style type="text/tailwindcss">
+  @layer components {
+    .btn {
+      @apply inline-flex items-center gap-2 px-6 py-3 rounded-full no-underline text-base font-bold tracking-wide border-[1.5px] border-icgk-gold transition duration-200;
+    }
+    .btn-primary {
+      @apply bg-icgk-gold text-icgk-green-dark hover:bg-icgk-gold-bright hover:-translate-y-0.5;
+    }
+    .btn-ghost {
+      @apply text-icgk-gold-bright hover:bg-icgk-gold/15 hover:-translate-y-0.5;
+    }
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Georgia', 'Times New Roman', serif;
-    background:
-      radial-gradient(1200px 600px at 50% -10%, rgba(212,166,74,0.10), transparent 60%),
-      linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
-    color: var(--text);
-    min-height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-    padding: 24px; text-align: center;
-  }
-  .card {
-    max-width: 560px;
-    background: rgba(0,0,0,0.28);
-    border: 2px solid var(--gold);
-    border-radius: 18px;
-    padding: 52px 34px;
-    position: relative;
-    overflow: hidden;
-  }
-  .card::before {
-    content: ""; position: absolute; inset: 8px;
-    border: 1px solid rgba(212,166,74,0.35); border-radius: 12px; pointer-events: none;
-  }
-  .icon { font-size: 4rem; filter: drop-shadow(0 0 14px rgba(240,198,116,0.4)); }
-  .ar { direction: rtl; color: var(--gold-bright); font-size: 1.7rem; margin: 12px 0 4px; }
-  h1 { color: var(--gold); font-size: 2.1rem; margin: 6px 0 10px; }
-  p { color: var(--cream); font-size: 1.12rem; line-height: 1.6; margin-bottom: 28px; }
-  .btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 12px 24px; border-radius: 999px; text-decoration: none;
-    font-size: 1rem; font-weight: bold; letter-spacing: .5px;
-    border: 1.5px solid var(--gold); transition: transform .15s, background .2s, color .2s;
-  }
-  .btn-primary { background: var(--gold); color: var(--green-dark); }
-  .btn-primary:hover { background: var(--gold-bright); transform: translateY(-2px); }
-  .btn-ghost { color: var(--gold-bright); }
-  .btn-ghost:hover { background: rgba(212,166,74,0.15); transform: translateY(-2px); }
 </style>
 </head>
-<body>
-  <div class="card">
-    <div class="icon">🤲</div>
-    <div class="ar">جَزَاكُمُ ٱللَّٰهُ خَيْرًا</div>
-    <h1>Thank You!</h1>
-    <p>Your message has been received. In shā' Allāh, someone from the Islamic Community of Greater Killeen will get back to you soon.</p>
-    <div class="btns">
+<body class="font-serif text-icgk-text min-h-screen bg-fixed px-6 py-6 flex items-center justify-center text-center bg-[radial-gradient(1200px_600px_at_50%_-10%,rgba(212,166,74,0.10),transparent_60%),linear-gradient(135deg,#0c2a1f_0%,#11402f_100%)]">
+  <div class="relative max-w-[560px] bg-black/[0.28] border-2 border-icgk-gold rounded-[18px] px-8.5 py-13 overflow-hidden before:content-[''] before:absolute before:inset-2 before:border before:border-icgk-gold/35 before:rounded-xl before:pointer-events-none">
+    <div class="text-7xl drop-shadow-[0_0_14px_rgba(240,198,116,0.4)] relative z-10">🤲</div>
+    <div dir="rtl" class="text-icgk-gold-bright text-[1.7rem] my-3">جَزَاكُمُ ٱللَّٰهُ خَيْرًا</div>
+    <h1 class="text-icgk-gold text-[2.1rem] my-2.5 relative z-10">Thank You!</h1>
+    <p class="text-icgk-cream text-[1.12rem] leading-[1.6] mb-7 relative z-10">Your message has been received. In shā' Allāh, someone from the Islamic Community of Greater Killeen will get back to you soon.</p>
+    <div class="flex gap-3.5 justify-center flex-wrap relative z-10">
       <a class="btn btn-primary" href="/">← Back to Home</a>
       <a class="btn btn-ghost" href="/#prayer">Prayer Times</a>
     </div>

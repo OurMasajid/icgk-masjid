@@ -13,6 +13,9 @@ tailwind.config = {
       },
       fontFamily: {
         serif: ["Georgia", "Times New Roman", "serif"],
+        cinzel: ["Cinzel", "serif"],
+        lato: ["Lato", "sans-serif"],
+        amiri: ["Amiri", "serif"],
       },
     },
   },
