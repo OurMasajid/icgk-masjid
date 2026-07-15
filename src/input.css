@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  a { @apply text-icgk-gold-bright; }
+}
+
+@layer components {
+  .btn-404 { @apply inline-block px-[2.4rem] py-[0.85rem] bg-gradient-to-br from-icgk-gold to-[#a07830] text-icgk-green-dark font-cinzel text-[0.85rem] font-bold tracking-widest uppercase no-underline cursor-pointer transition-all duration-200 text-center; }
+  .btn-404:hover { @apply -translate-y-[3px] shadow-[0_12px_32px_rgba(212,166,74,0.35)]; }
+  .link-soft { @apply text-icgk-gold-bright text-[0.92rem] tracking-wider no-underline border-b border-icgk-gold/40 pb-0.5 transition-all duration-200; }
+  .link-soft:hover { @apply text-icgk-cream border-icgk-gold-bright; }
+  .btn { @apply inline-flex items-center gap-2 px-6 py-3 m-1.5 rounded-full no-underline text-base font-bold tracking-wide border-[1.5px] border-icgk-gold transition duration-200; }
+  .btn-primary { @apply bg-icgk-gold text-icgk-green-dark hover:bg-icgk-gold-bright hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(212,166,74,0.3)]; }
+  .btn-ghost { @apply text-icgk-gold-bright hover:bg-icgk-gold/15 hover:-translate-y-0.5; }
+  .archive-card { @apply flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl overflow-hidden transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]; }
+  .archive-card .flyer { @apply bg-black flex items-center justify-center; }
+  .archive-card .flyer img { @apply block w-full h-auto max-h-[420px] object-contain; }
+  .archive-card .body { @apply px-[1.375rem] pt-5 pb-[1.375rem]; }
+  .archive-card .eyebrow { @apply text-icgk-gold-bright tracking-[2px] uppercase text-[0.72rem]; }
+  .archive-card h3 { @apply text-icgk-gold text-[1.3rem] mt-1 mb-1.5; }
+  .archive-card .when { @apply text-icgk-cream text-[0.95rem] mb-1; }
+  .archive-card .where { @apply text-icgk-muted text-[0.9rem]; }
+  .archive-card .blurb { @apply text-icgk-text mt-2.5 text-[0.95rem]; }
+  .linkish { @apply bg-transparent border-none text-icgk-gold-bright cursor-pointer underline p-0 font-serif; }
+  .loading { @apply text-icgk-muted text-center py-5 italic; }
+  .pcard { @apply bg-black/30 border border-icgk-gold/40 rounded-xl px-2.5 py-4 text-center transition duration-200; }
+  .pcard.is-active { @apply border-icgk-gold-bright -translate-y-1; background: radial-gradient(200px 120px at 50% 0%, rgba(240,198,116,0.18), rgba(0,0,0,0.3)); box-shadow: 0 0 0 1px #f0c674 inset, 0 8px 28px rgba(0,0,0,0.4); }
+  .pcard.sunrise { @apply opacity-90; }
+  .pcard.sunrise .plabel { @apply invisible; }
+  .pname { @apply text-icgk-gold-bright font-bold tracking-wide text-[0.95rem]; }
+  .parab { @apply text-icgk-muted text-[0.8rem] mb-2.5 min-h-[1em]; }
+  .plabel { @apply text-icgk-gold-bright text-[0.66rem] tracking-[2px] uppercase; }
+  .piqama { @apply text-icgk-text text-[1.55rem] leading-[1.15]; }
+  .padhan { @apply text-icgk-muted text-[0.82rem] mt-1.5; }
+  .padhan b { @apply text-icgk-cream font-normal; }
+  .event-card { @apply grid gap-0 bg-black/25 border-[1.5px] border-icgk-gold rounded-2xl overflow-hidden transition duration-200 hover:-translate-y-1 hover:shadow-[0_14px_32px_rgba(0,0,0,0.4)] hover:border-icgk-gold-bright; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+  .event-card + .event-card { @apply mt-5; }
+  .event-flyer { @apply bg-black flex items-center justify-center min-h-[320px]; }
+  .event-flyer img { @apply block w-full h-full object-contain max-h-[620px]; }
+  .event-body { @apply px-7 py-7 flex flex-col justify-center; }
+  .event-eyebrow { @apply text-icgk-gold-bright tracking-[3px] uppercase text-[0.76rem]; }
+  .event-title { @apply text-icgk-gold text-2xl leading-tight mt-1.5 mb-0.5; }
+  .event-tagline { @apply text-icgk-cream italic mb-3.5; }
+  .event-meta { @apply grid gap-2 my-2.5; }
+  .event-meta .row { @apply flex gap-2.5 items-start; }
+  .event-meta .ri { @apply text-icgk-gold-bright min-w-[22px] text-center; }
+  .event-meta .rv { @apply text-icgk-text; }
+  .event-meta .rv .sub { @apply block text-icgk-muted text-[0.85rem]; }
+  .event-blurb { @apply text-icgk-cream mb-4; }
+  .event-cta { @apply flex gap-2.5 flex-wrap; }
+  @media (max-width: 760px) { .event-card { grid-template-columns: 1fr; } .event-flyer { min-height: 0; } .event-flyer img { max-height: 580px; } .event-body { padding: 22px 22px 24px; } }
+  .cform-status.err { @apply text-[#f0a674]; }
+}

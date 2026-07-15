@@ -5,29 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Page Not Found — Islamic Community of Greater Killeen</title>
 <meta name="robots" content="noindex">
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="tailwind-config.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<style type="text/tailwindcss">
-  @layer components {
-    .btn {
-      @apply inline-block px-[2.4rem] py-[0.85rem] bg-gradient-to-br from-icgk-gold to-[#a07830] text-icgk-green-dark font-cinzel text-[0.85rem] font-bold tracking-widest uppercase no-underline cursor-pointer transition-all duration-200 text-center;
-    }
-    .btn:hover {
-      @apply -translate-y-[3px] shadow-[0_12px_32px_rgba(212,166,74,0.35)];
-    }
-    .link-soft {
-      @apply text-icgk-gold-bright text-[0.92rem] tracking-wider no-underline border-b border-icgk-gold/40 pb-0.5 transition-all duration-200;
-    }
-    .link-soft:hover {
-      @apply text-icgk-cream border-icgk-gold-bright;
-    }
-  }
-</style>
+<link rel="stylesheet" href="/styles.css">
 <style>
-  .btn {
+  .btn-404 {
     clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
   }
   @keyframes fadeUp {
@@ -115,7 +98,7 @@
   </p>
 
   <div class="flex flex-col items-center gap-[1.1rem]">
-    <a class="btn" href="/">Return Home</a>
+    <a class="btn-404" href="/">Return Home</a>
     <a class="link-soft" href="/#prayer">View Prayer Times →</a>
   </div>
 

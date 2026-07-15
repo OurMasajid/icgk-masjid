@@ -5,74 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Islamic Community of Greater Killeen</title>
 <meta name="description" content="The Islamic Community of Greater Killeen (ICGK) — daily prayer times, Jumu'ah, programs, and community in Killeen, Texas. All are welcome.">
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="tailwind-config.js"></script>
-<style type="text/tailwindcss">
-  @layer base {
-    a { @apply text-icgk-gold-bright; }
-  }
-  @layer components {
-    .btn {
-      @apply inline-flex items-center gap-2 px-6 py-3 rounded-full no-underline text-base font-bold tracking-wide border-[1.5px] border-icgk-gold transition duration-200;
-    }
-    .btn-primary {
-      @apply bg-icgk-gold text-icgk-green-dark hover:bg-icgk-gold-bright hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(212,166,74,0.3)];
-    }
-    .btn-ghost {
-      @apply text-icgk-gold-bright hover:bg-icgk-gold/15 hover:-translate-y-0.5;
-    }
-    .linkish {
-      @apply bg-transparent border-none text-icgk-gold-bright cursor-pointer underline p-0 font-serif;
-    }
-    .loading {
-      @apply text-icgk-muted text-center py-5 italic;
-    }
-
-    .pcard {
-      @apply bg-black/30 border border-icgk-gold/40 rounded-xl px-2.5 py-4 text-center transition duration-200;
-    }
-    .pcard.is-active {
-      @apply border-icgk-gold-bright -translate-y-1;
-      background: radial-gradient(200px 120px at 50% 0%, rgba(240,198,116,0.18), rgba(0,0,0,0.3));
-      box-shadow: 0 0 0 1px #f0c674 inset, 0 8px 28px rgba(0,0,0,0.4);
-    }
-    .pcard.sunrise { @apply opacity-90; }
-    .pcard.sunrise .plabel { @apply invisible; }
-    .pname { @apply text-icgk-gold-bright font-bold tracking-wide text-[0.95rem]; }
-    .parab { @apply text-icgk-muted text-[0.8rem] mb-2.5 min-h-[1em]; }
-    .plabel { @apply text-icgk-gold-bright text-[0.66rem] tracking-[2px] uppercase; }
-    .piqama { @apply text-icgk-text text-[1.55rem] leading-[1.15]; }
-    .padhan { @apply text-icgk-muted text-[0.82rem] mt-1.5; }
-    .padhan b { @apply text-icgk-cream font-normal; }
-
-    .event-card {
-      @apply grid gap-0 bg-black/25 border-[1.5px] border-icgk-gold rounded-2xl overflow-hidden transition duration-200 hover:-translate-y-1 hover:shadow-[0_14px_32px_rgba(0,0,0,0.4)] hover:border-icgk-gold-bright;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-    }
-    .event-card + .event-card { @apply mt-5; }
-    .event-flyer { @apply bg-black flex items-center justify-center min-h-[320px]; }
-    .event-flyer img { @apply block w-full h-full object-contain max-h-[620px]; }
-    .event-body { @apply px-7 py-7 flex flex-col justify-center; }
-    .event-eyebrow { @apply text-icgk-gold-bright tracking-[3px] uppercase text-[0.76rem]; }
-    .event-title { @apply text-icgk-gold text-2xl leading-tight mt-1.5 mb-0.5; }
-    .event-tagline { @apply text-icgk-cream italic mb-3.5; }
-    .event-meta { @apply grid gap-2 my-2.5; }
-    .event-meta .row { @apply flex gap-2.5 items-start; }
-    .event-meta .ri { @apply text-icgk-gold-bright min-w-[22px] text-center; }
-    .event-meta .rv { @apply text-icgk-text; }
-    .event-meta .rv .sub { @apply block text-icgk-muted text-[0.85rem]; }
-    .event-blurb { @apply text-icgk-cream mb-4; }
-    .event-cta { @apply flex gap-2.5 flex-wrap; }
-    @media (max-width: 760px) {
-      .event-card { grid-template-columns: 1fr; }
-      .event-flyer { min-height: 0; }
-      .event-flyer img { max-height: 580px; }
-      .event-body { padding: 22px 22px 24px; }
-    }
-
-    .cform-status.err { @apply text-[#f0a674]; }
-  }
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
 </head>
 <body class="font-serif text-icgk-text min-h-screen leading-[1.65] bg-fixed bg-[radial-gradient(1200px_600px_at_50%_-10%,rgba(212,166,74,0.10),transparent_60%),linear-gradient(135deg,#0c2a1f_0%,#11402f_100%)]">
 
