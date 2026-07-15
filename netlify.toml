@@ -1,11 +1,11 @@
 # Netlify configuration — Islamic Community of Greater Killeen
-# Static HTML site (no build step). Netlify Forms are detected automatically
-# from the data-netlify form in index.html.
+# Static HTML site. CSS is precompiled from Tailwind (see tailwind.config.js /
+# src/input.css) into a single styles.css at deploy time. Netlify Forms are
+# detected automatically from the data-netlify form in index.html.
 
 [build]
   publish = "."
-  # No build command needed — this is plain static HTML.
-  command = ""
+  command = "npm install && npm run build:css"
 
 # Sensible security headers (these do not affect the external widgets/maps
 # this site embeds — they only apply to our own responses).
