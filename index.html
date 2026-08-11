@@ -87,12 +87,12 @@
       </div>
 
       <div class="flex justify-between items-center flex-wrap gap-2.5 mt-4 text-icgk-muted text-[0.85rem]">
-        <span id="iqama-note">Adhan times calculated for Killeen (ISNA method). Iqāmah times set by the masjid.</span>
-        <button class="linkish" id="monthly-toggle" onclick="toggleMonthly()">View full monthly schedule ▾</button>
+        <span id="iqama-note">Adhan times calculated for Killeen (ISNA method). Iqāmah times set by the masjid on OurMasajid.</span>
+        <button class="linkish" id="monthly-toggle" onclick="toggleMonthly()">View the next 40 days ▾</button>
       </div>
 
       <div class="mt-[1.125rem] hidden" id="monthly-box">
-        <!-- iframe injected on first open -->
+        <!-- schedule table rendered from the OurMasajid feed -->
       </div>
     </div>
   </div>
@@ -428,21 +428,28 @@
   </div>
 </footer>
 
-<!-- Events data + Adhan.js -->
+<!-- Events data -->
 <script src="events-data.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/adhan@4.4.3/lib/bundles/adhan.umd.min.js"></script>
 <script>
   // ===== Config =====
-  var MASJID_KEY = "https://ourmasajid.github.io/masjid-1qBN97_jl61meT05BcR_K14kP63MOMSVJjZnhMoPipEs";
-  var MONTHLY_URL = "https://r.ourmasajid.com/prayer/monthly3.html?masjidKey=" + MASJID_KEY + "&showHijri=false&hijriAdjustment=0";
+  // Prayer times come from ICGK's masjid record on OurMasajid. Adhan times are
+  // calculated server-side from the masjid's coordinates (ISNA) and iqāmah
+  // times are whatever the masjid set in its OurMasajid admin — so this page
+  // has no calculation of its own to keep in sync, and no library to load.
+  // Every time arrives twice: an ISO instant (for "which prayer is next" math,
+  // correct from any timezone) and a string already formatted in Killeen's
+  // local time (for display, correct for out-of-town visitors).
+  var OM_ENDPOINT = "https://ourmasajid.com/api/masajid/icgk/prayer-times";
+  var OM_DAYS = 40;               // today's card + the full monthly table
+  var OM_REFRESH_MS = 30 * 60 * 1000; // re-pull so a screen left up rolls over
 
   var PRAYERS = [
-    { key: "fajr",    name: "Fajr",    ar: "الفجر",   iqama: "Fajr_Iqamah" },
-    { key: "sunrise", name: "Sunrise", ar: "الشروق",  iqama: null },
-    { key: "dhuhr",   name: "Dhuhr",   ar: "الظهر",   iqama: "Zuhr_Iqamah" },
-    { key: "asr",     name: "Asr",     ar: "العصر",   iqama: "Asr_Iqamah" },
-    { key: "maghrib", name: "Maghrib", ar: "المغرب",  iqama: "Maghrib_Iqamah" },
-    { key: "isha",    name: "Isha",    ar: "العشاء",  iqama: "Esha_Iqamah" }
+    { key: "fajr",    name: "Fajr",    ar: "الفجر" },
+    { key: "sunrise", name: "Sunrise", ar: "الشروق" },
+    { key: "dhuhr",   name: "Dhuhr",   ar: "الظهر" },
+    { key: "asr",     name: "Asr",     ar: "العصر" },
+    { key: "maghrib", name: "Maghrib", ar: "المغرب" },
+    { key: "isha",    name: "Isha",    ar: "العشاء" }
   ];
 
   // Keep the current prayer highlighted until 20 minutes before the next adhan.
@@ -456,161 +463,221 @@
     nav.classList.toggle("flex");
   }
 
-  function fmt(date) {
-    return date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
-  }
-  function fmtDate(date) {
-    return date.toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
+  // The feed as last fetched. Everything below reads from this, so a failed
+  // refresh leaves the previous (still broadly correct) times on screen.
+  var omFeed = null;
+
+  // "2026-08-14" -> "Friday, August 14, 2026". Parsed at noon so the date can't
+  // slip a day in timezones behind UTC.
+  function fmtDate(isoDate) {
+    return new Date(isoDate + "T12:00:00").toLocaleDateString("en-US", {
+      weekday: "long", year: "numeric", month: "long", day: "numeric"
+    });
   }
 
-  // Most recent iqama change on or before `date` (mirrors the OurMasajid widget logic)
-  function iqamaFor(prayerData, date) {
-    var current = {};
-    for (var i = 0; i < prayerData.length; i++) {
-      var c = prayerData[i];
-      if (new Date(c.Date) <= date) {
-        current = c;
-      } else { break; }
+  // "13:30" -> "1:30 PM". Jumu'ah times are wall-clock at the masjid, so this
+  // is plain string work — no timezone involved.
+  function fmtClock(hhmm) {
+    var parts = hhmm.split(":");
+    var h = parseInt(parts[0], 10);
+    var suffix = h < 12 ? "AM" : "PM";
+    return ((h % 12) || 12) + ":" + parts[1] + " " + suffix;
+  }
+
+  // Today as the masjid reckons it — not as the visitor's device does. Keeps a
+  // page left open overnight (or opened from another timezone) on the right row.
+  function masjidToday(feed) {
+    try {
+      return new Date().toLocaleDateString("en-CA", { timeZone: feed.masjid.timezone });
+    } catch (e) {
+      return feed.days[0].date;
     }
-    return current;
+  }
+
+  function dayFor(feed, isoDate) {
+    for (var i = 0; i < feed.days.length; i++) {
+      if (feed.days[i].date === isoDate) return feed.days[i];
+    }
+    return feed.days[0];
   }
 
   function renderError(msg) {
     var grid = document.getElementById("prayer-grid");
     grid.innerHTML = '<div class="loading col-span-full">' + msg +
-      ' <br><br><button class="linkish" onclick="toggleMonthly(true)">Open the full prayer schedule →</button></div>';
+      ' <br><br><a class="linkish" href="https://ourmasajid.com/m/icgk/prayer-times" target="_blank" rel="noopener">Open the full prayer schedule →</a></div>';
   }
 
-  function buildPrayers() {
-    if (!window.adhan) { renderError("Prayer calculation library could not load."); return; }
-    var today = new Date();
-    document.getElementById("today-date").textContent = "🗓️ " + fmtDate(today);
+  // Masjid identity (address, map, directions) also comes from the OurMasajid
+  // record, so an address change there reaches the site without an edit here.
+  function applyMasjidInfo(m) {
+    var full = [m.addressLine, m.city, m.state].filter(Boolean).join(", ") + (m.zip ? " " + m.zip : "");
+    document.getElementById("addr-line").textContent = full;
+    document.getElementById("foot-addr").textContent = full;
+    document.getElementById("map").src = "https://www.google.com/maps?q=" + m.lat + "," + m.lng + "&z=15&output=embed";
+    var dir = "https://www.google.com/maps/dir/?api=1&destination=" + m.lat + "," + m.lng;
+    document.getElementById("dir-link").href = dir;
+    document.getElementById("foot-dir").href = dir;
+  }
 
-    fetch(MASJID_KEY + "/data.json?cache=" + Date.now())
-      .then(function (r) { if (!r.ok) throw new Error("data"); return r.json(); })
-      .then(function (data) {
-        var info = data["Info"]["data"][0];
-        var coordsParts = info.coordinates.split(",");
-        var lat = parseFloat(coordsParts[0]);
-        var lon = parseFloat(coordsParts[1]);
+  // Jumu'ah sessions in feed order: first session fills the left card, second
+  // the right. A masjid that drops to one session just leaves the second card
+  // showing its built-in copy rather than a blank.
+  function applyJumuah(sessions) {
+    if (!sessions || !sessions.length) return;
+    var ids = ["jumuah-time", "jumuah-time-2"];
+    for (var i = 0; i < ids.length && i < sessions.length; i++) {
+      var s = sessions[i];
+      var t = s.khutbahTime || s.iqamahTime;
+      if (t) document.getElementById(ids[i]).textContent = fmtClock(t);
+    }
+  }
 
-        // Populate identity / map / jumu'ah from the live feed where available
-        if (info.address) {
-          var full = [info.address, info.city, info.state].filter(Boolean).join(", ") + (info.zip ? " " + info.zip : "");
-          document.getElementById("addr-line").textContent = full;
-          document.getElementById("foot-addr").textContent = full;
-        }
-        document.getElementById("map").src = "https://www.google.com/maps?q=" + lat + "," + lon + "&z=15&output=embed";
-        var dir = "https://www.google.com/maps/dir/?api=1&destination=" + lat + "," + lon;
-        document.getElementById("dir-link").href = dir;
-        document.getElementById("foot-dir").href = dir;
+  function renderToday() {
+    if (!omFeed) return;
+    var grid = document.getElementById("prayer-grid");
+    var nextEl = document.getElementById("next-prayer");
+    var day = dayFor(omFeed, masjidToday(omFeed));
+    var times = day.times;
+    var now = new Date();
 
-        if (data["Jumma"] && data["Jumma"]["data"] && data["Jumma"]["data"][0]) {
-          var j = data["Jumma"]["data"][0];
-          if (j.Khutba) document.getElementById("jumuah-time").textContent = j.Khutba;
-          if (j.Khateeb) document.getElementById("jumuah-khateeb").textContent = j.Khateeb;
-          if (j.Language) document.getElementById("jumuah-lang").textContent = j.Language;
-        }
-        if (data["Jumma"] && data["Jumma"]["data"] && data["Jumma"]["data"][1]) {
-          var j2 = data["Jumma"]["data"][1];
-          if (j2.Khutba) document.getElementById("jumuah-time-2").textContent = j2.Khutba;
-          if (j2.Khateeb) document.getElementById("jumuah-khateeb-2").textContent = j2.Khateeb;
-          if (j2.Language) document.getElementById("jumuah-lang-2").textContent = j2.Language;
-        }
+    document.getElementById("today-date").textContent = "🗓️ " + fmtDate(day.date);
 
-        var coordinates = new adhan.Coordinates(lat, lon);
-        var params = adhan.CalculationMethod.NorthAmerica();
-        var times = new adhan.PrayerTimes(coordinates, today, params);
-        var iq = iqamaFor(data["Daily Prayer"]["data"], today);
+    // Next upcoming prayer today (sunrise has no iqāmah, so skip it)
+    var nextKey = null;
+    for (var i = 0; i < PRAYERS.length; i++) {
+      var k = PRAYERS[i].key;
+      if (k === "sunrise") continue;
+      if (new Date(times[k].adhanAt) > now) { nextKey = k; break; }
+    }
 
-        // Re-evaluate the highlight and countdown on a timer so a page left open
-        // (e.g. on a display at the masjid) stays current through the day.
-        var grid = document.getElementById("prayer-grid");
-        var nextEl = document.getElementById("next-prayer");
+    // Current prayer = the most recent one whose adhan has already passed.
+    // Before Fajr, the active prayer is the previous night's Isha.
+    var currentKey = null;
+    for (var c = 0; c < PRAYERS.length; c++) {
+      var ck = PRAYERS[c].key;
+      if (ck === "sunrise") continue;
+      if (new Date(times[ck].adhanAt) <= now) currentKey = ck;
+    }
+    if (!currentKey) currentKey = "isha";
 
-        function render() {
-          var now = new Date();
+    // Stay on the current prayer until 20 min before the next adhan,
+    // then move the highlight to the next prayer.
+    var highlightKey = currentKey;
+    if (nextKey && (new Date(times[nextKey].adhanAt) - now) <= HIGHLIGHT_LEAD_MS) {
+      highlightKey = nextKey;
+    }
 
-          // Next upcoming prayer today (sunrise has no iqāmah, so skip it)
-          var nextKey = null;
-          for (var i = 0; i < PRAYERS.length; i++) {
-            var k = PRAYERS[i].key;
-            if (k === "sunrise") continue;
-            if (times[k] > now) { nextKey = k; break; }
-          }
+    var html = "";
+    PRAYERS.forEach(function (p) {
+      var t = times[p.key];
+      var cls = "pcard" + (p.key === "sunrise" ? " sunrise" : "") + (p.key === highlightKey ? " is-active" : "");
+      var label, bigTime, sub;
+      if (p.key === "sunrise") {
+        label = "Sunrise";                 // hidden via CSS, keeps vertical rhythm
+        bigTime = t.adhanTime;             // sunrise has no iqāmah — show its time
+        sub = "&nbsp;";
+      } else {
+        label = "Iqāmah";
+        bigTime = t.iqamahTime || "—";
+        sub = "Adhan <b>" + t.adhanTime + "</b>";
+      }
+      html +=
+        '<div class="' + cls + '">' +
+          '<div class="pname">' + p.name + "</div>" +
+          '<div class="parab" dir="rtl">' + p.ar + "</div>" +
+          '<div class="plabel">' + label + "</div>" +
+          '<div class="piqama">' + bigTime + "</div>" +
+          '<div class="padhan">' + sub + "</div>" +
+        "</div>";
+    });
+    grid.innerHTML = html;
 
-          // Current prayer = the most recent one whose adhan has already passed.
-          // Before Fajr, the active prayer is the previous night's Isha.
-          var currentKey = null;
-          for (var c = 0; c < PRAYERS.length; c++) {
-            var ck = PRAYERS[c].key;
-            if (ck === "sunrise") continue;
-            if (times[ck] <= now) currentKey = ck;
-          }
-          if (!currentKey) currentKey = "isha";
+    if (nextKey) {
+      var np = PRAYERS.filter(function (p) { return p.key === nextKey; })[0];
+      var mins = Math.round((new Date(times[nextKey].adhanAt) - now) / 60000);
+      var h = Math.floor(mins / 60), m = mins % 60;
+      var inTxt = (h > 0 ? h + "h " : "") + m + "m";
+      nextEl.textContent = "Next: " + np.name + " in " + inTxt;
+    } else {
+      nextEl.textContent = "Fajr tomorrow, in shā' Allāh";
+    }
+    nextEl.classList.remove("hidden");
+  }
 
-          // Stay on the current prayer until 20 min before the next adhan,
-          // then move the highlight to the next prayer.
-          var highlightKey = currentKey;
-          if (nextKey && (times[nextKey] - now) <= HIGHLIGHT_LEAD_MS) {
-            highlightKey = nextKey;
-          }
-
-          grid.innerHTML = "";
-          PRAYERS.forEach(function (p) {
-            var t = times[p.key];
-            var cls = "pcard" + (p.key === "sunrise" ? " sunrise" : "") + (p.key === highlightKey ? " is-active" : "");
-            var label, bigTime, sub;
-            if (p.key === "sunrise") {
-              label = "Sunrise";                 // hidden via CSS, keeps vertical rhythm
-              bigTime = fmt(t);                  // sunrise has no iqāmah — show its time
-              sub = "&nbsp;";
-            } else {
-              label = "Iqāmah";
-              bigTime = (p.iqama && iq[p.iqama]) ? iq[p.iqama] : "—";
-              sub = "Adhan <b>" + fmt(t) + "</b>";
-            }
-            grid.innerHTML +=
-              '<div class="' + cls + '">' +
-                '<div class="pname">' + p.name + "</div>" +
-                '<div class="parab" dir="rtl">' + p.ar + "</div>" +
-                '<div class="plabel">' + label + "</div>" +
-                '<div class="piqama">' + bigTime + "</div>" +
-                '<div class="padhan">' + sub + "</div>" +
-              "</div>";
-          });
-
-          if (nextKey) {
-            var np = PRAYERS.filter(function (p) { return p.key === nextKey; })[0];
-            var mins = Math.round((times[nextKey] - now) / 60000);
-            var h = Math.floor(mins / 60), m = mins % 60;
-            var inTxt = (h > 0 ? h + "h " : "") + m + "m";
-            nextEl.textContent = "Next: " + np.name + " in " + inTxt;
-          } else {
-            nextEl.textContent = "Fajr tomorrow, in shā' Allāh";
-          }
-          nextEl.classList.remove("hidden");
-        }
-
-        render();
-        setInterval(render, 30000);
-      })
-      .catch(function () {
-        renderError("Couldn't load live prayer times right now.");
+  function loadPrayerTimes() {
+    return fetch(OM_ENDPOINT + "?days=" + OM_DAYS)
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function (feed) {
+        if (!feed.days || !feed.days.length) throw new Error("empty feed");
+        omFeed = feed;
+        applyMasjidInfo(feed.masjid);
+        applyJumuah(dayFor(feed, masjidToday(feed)).jumuah);
+        document.getElementById("iqama-note").textContent =
+          "Adhan times calculated for Killeen (" + feed.calculation.method +
+          " method). Iqāmah times set by the masjid on OurMasajid.";
+        renderToday();
+        renderMonthly();
       });
   }
 
-  // Lazy-load the official monthly schedule iframe only when opened
+  function buildPrayers() {
+    loadPrayerTimes().catch(function () {
+      if (!omFeed) renderError("Couldn't load live prayer times right now.");
+    });
+    // Re-render on a timer so a page left open (e.g. on a display at the
+    // masjid) keeps its highlight and countdown current, and re-pull
+    // periodically so it rolls into the next day and picks up iqāmah changes.
+    setInterval(renderToday, 30000);
+    setInterval(function () {
+      loadPrayerTimes().catch(function () { /* keep showing what we have */ });
+    }, OM_REFRESH_MS);
+  }
+
+  // The long-range schedule is built from the same feed the card above uses —
+  // one request covers both, so opening it costs nothing and it can never
+  // disagree with today's times.
+  function renderMonthly() {
+    var box = document.getElementById("monthly-box");
+    if (!omFeed || !box) return;
+    var today = masjidToday(omFeed);
+
+    var head = '<tr class="text-icgk-gold-bright text-[0.7rem] uppercase tracking-[1.5px]">' +
+      ["Date", "Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha"].map(function (h) {
+        return '<th class="text-left font-bold px-2 py-2 whitespace-nowrap">' + h + "</th>";
+      }).join("") + "</tr>";
+
+    var rows = omFeed.days.map(function (day) {
+      var isToday = day.date === today;
+      var cells = PRAYERS.map(function (p) {
+        var t = day.times[p.key];
+        // Sunrise has no iqāmah; every other row is iqāmah over adhan.
+        var main = p.key === "sunrise" ? t.adhanTime : (t.iqamahTime || "—");
+        var sub = p.key === "sunrise" ? "" : '<span class="block text-icgk-muted text-[0.72rem]">' + t.adhanTime + "</span>";
+        return '<td class="px-2 py-2 whitespace-nowrap' + (p.key === "sunrise" ? " text-icgk-muted" : "") + '">' + main + sub + "</td>";
+      }).join("");
+      var label = new Date(day.date + "T12:00:00").toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
+      return '<tr class="border-t border-icgk-gold/20' + (isToday ? " bg-icgk-gold/10 text-icgk-cream" : "") + '">' +
+        '<td class="px-2 py-2 whitespace-nowrap font-bold">' + (isToday ? "Today" : label) +
+        (isToday ? '<span class="block text-icgk-muted text-[0.72rem] font-normal">' + label + "</span>" : "") +
+        "</td>" + cells + "</tr>";
+    }).join("");
+
+    box.innerHTML =
+      '<div class="overflow-x-auto rounded-xl border border-icgk-gold/30">' +
+        '<table class="w-full text-[0.85rem] text-icgk-text border-collapse">' +
+          "<thead>" + head + "</thead><tbody>" + rows + "</tbody>" +
+        "</table>" +
+      "</div>" +
+      '<p class="text-icgk-muted text-[0.8rem] mt-2">Large number = iqāmah, small number = adhan. ' +
+      'Schedule maintained by the masjid on <a href="' + omFeed.masjid.url + '" target="_blank" rel="noopener">OurMasajid</a>.</p>';
+  }
+
   function toggleMonthly(forceOpen) {
     var box = document.getElementById("monthly-box");
     var btn = document.getElementById("monthly-toggle");
     var open = forceOpen || box.classList.contains("hidden");
     box.classList.toggle("hidden", !open);
-    if (open && !box.dataset.loaded) {
-      box.innerHTML = '<iframe title="Monthly prayer schedule" loading="lazy" class="w-full h-[780px] border-0 rounded-xl bg-white" src="' + MONTHLY_URL + '"></iframe>';
-      box.dataset.loaded = "1";
-    }
-    btn.textContent = open ? "Hide monthly schedule ▴" : "View full monthly schedule ▾";
+    btn.textContent = open ? "Hide full schedule ▴" : "View the next " + OM_DAYS + " days ▾";
   }
 
   // ===== Contact form — submit to Netlify via AJAX so the visitor stays on the page =====
