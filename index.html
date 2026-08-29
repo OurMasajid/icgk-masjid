@@ -432,16 +432,25 @@
 <script src="events-data.js"></script>
 <script>
   // ===== Config =====
-  // Prayer times come from ICGK's masjid record on OurMasajid. Adhan times are
-  // calculated server-side from the masjid's coordinates (ISNA) and iqāmah
-  // times are whatever the masjid set in its OurMasajid admin — so this page
-  // has no calculation of its own to keep in sync, and no library to load.
+  // Prayer times come from two places. The baseline is ICGK's masjid record on
+  // OurMasajid: adhan calculated server-side from the masjid's coordinates
+  // (ISNA), iqāmah as set in the OurMasajid admin. Over that sits the printed
+  // schedule committed next to this file, which wins for the dates it covers.
+  // Either way this page does no calculation of its own and loads no library.
   // Every time arrives twice: an ISO instant (for "which prayer is next" math,
   // correct from any timezone) and a string already formatted in Killeen's
   // local time (for display, correct for out-of-town visitors).
   var OM_ENDPOINT = "https://ourmasajid.com/api/masajid/icgk/prayer-times";
   var OM_DAYS = 40;               // today's card + the full monthly table
   var OM_REFRESH_MS = 30 * 60 * 1000; // re-pull so a screen left up rolls over
+
+  // The masjid's printed schedule, committed alongside the site. It wins over
+  // the feed for every date it covers, so those days stay right even when the
+  // OurMasajid record hasn't caught up. Its day entries are shaped exactly like
+  // the feed's, so both sources render through the same code below. Dates it
+  // doesn't cover — and the address, map and Jumu'ah — still come from the feed.
+  var LOCAL_SCHEDULE = "prayer-times-2026-09.json";
+  var MASJID_TZ = "America/Chicago";  // used when the feed is unreachable
 
   var PRAYERS = [
     { key: "fajr",    name: "Fajr",    ar: "الفجر" },
@@ -488,7 +497,8 @@
   // page left open overnight (or opened from another timezone) on the right row.
   function masjidToday(feed) {
     try {
-      return new Date().toLocaleDateString("en-CA", { timeZone: feed.masjid.timezone });
+      var tz = (feed.masjid && feed.masjid.timezone) || MASJID_TZ;
+      return new Date().toLocaleDateString("en-CA", { timeZone: tz });
     } catch (e) {
       return feed.days[0].date;
     }
@@ -604,20 +614,79 @@
     nextEl.classList.remove("hidden");
   }
 
+  // Overlay the printed schedule onto the feed. Only dates the feed already
+  // carries are replaced, so the table keeps the feed's window and can't be
+  // dragged backwards into days that have already passed.
+  function mergeSchedule(feed, local) {
+    if (!local || !local.days || !local.days.length) return feed;
+    var printed = {};
+    local.days.forEach(function (d) { printed[d.date] = d; });
+    var merged = {};
+    for (var k in feed) { if (feed.hasOwnProperty(k)) merged[k] = feed[k]; }
+    merged.days = feed.days.map(function (d) {
+      var p = printed[d.date];
+      if (!p) return d;
+      // Jumu'ah stays with the feed: the masjid changes it there, not on the sheet.
+      return { date: p.date, weekday: p.weekday, times: p.times, jumuah: d.jumuah,
+               printed: true };
+    });
+    return merged;
+  }
+
+  // Nothing but the printed schedule made it. Enough to render the days it
+  // covers; the address and map keep the values already in the HTML.
+  function localOnlyFeed(local) {
+    var today = new Date().toLocaleDateString("en-CA", { timeZone: MASJID_TZ });
+    var days = local.days.filter(function (d) { return d.date >= today; });
+    if (!days.length) return null;
+    days = days.map(function (d) {
+      return { date: d.date, weekday: d.weekday, times: d.times, jumuah: d.jumuah,
+               printed: true };
+    });
+    return { masjid: null, calculation: local.calculation, days: days, degraded: true };
+  }
+
+  function noteFor(feed, day) {
+    if (feed.degraded) {
+      return "Showing the masjid's printed schedule — live times from OurMasajid " +
+             "aren't reachable right now.";
+    }
+    if (dayFor(feed, day).printed) {
+      return "Times follow the masjid's printed schedule. Dates outside it come from OurMasajid.";
+    }
+    var note = "Adhan times calculated for Killeen (" +
+      ((feed.calculation && feed.calculation.method) || "ISNA") +
+      " method). Iqāmah times set by the masjid on OurMasajid.";
+    // Late August: today is from the feed, but the table below already shows September.
+    var anyPrinted = feed.days.some(function (d) { return d.printed; });
+    return anyPrinted ? note + " September follows the masjid's printed schedule." : note;
+  }
+
   function loadPrayerTimes() {
-    return fetch(OM_ENDPOINT + "?days=" + OM_DAYS)
+    var wantFeed = fetch(OM_ENDPOINT + "?days=" + OM_DAYS)
       .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
       .then(function (feed) {
         if (!feed.days || !feed.days.length) throw new Error("empty feed");
-        omFeed = feed;
-        applyMasjidInfo(feed.masjid);
-        applyJumuah(dayFor(feed, masjidToday(feed)).jumuah);
-        document.getElementById("iqama-note").textContent =
-          "Adhan times calculated for Killeen (" + feed.calculation.method +
-          " method). Iqāmah times set by the masjid on OurMasajid.";
-        renderToday();
-        renderMonthly();
-      });
+        return feed;
+      })
+      .catch(function () { return null; });
+
+    var wantLocal = fetch(LOCAL_SCHEDULE)
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .catch(function () { return null; });
+
+    return Promise.all([wantFeed, wantLocal]).then(function (both) {
+      var feed = both[0], local = both[1];
+      var combined = feed ? mergeSchedule(feed, local) : (local && localOnlyFeed(local));
+      if (!combined) throw new Error("no schedule available");
+      omFeed = combined;
+      if (combined.masjid) applyMasjidInfo(combined.masjid);
+      var today = masjidToday(combined);
+      applyJumuah(dayFor(combined, today).jumuah);
+      document.getElementById("iqama-note").textContent = noteFor(combined, today);
+      renderToday();
+      renderMonthly();
+    });
   }
 
   function buildPrayers() {
@@ -669,7 +738,9 @@
         "</table>" +
       "</div>" +
       '<p class="text-icgk-muted text-[0.8rem] mt-2">Large number = iqāmah, small number = adhan. ' +
-      'Schedule maintained by the masjid on <a href="' + omFeed.masjid.url + '" target="_blank" rel="noopener">OurMasajid</a>.</p>';
+      (omFeed.masjid && omFeed.masjid.url
+        ? 'Schedule maintained by the masjid on <a href="' + omFeed.masjid.url + '" target="_blank" rel="noopener">OurMasajid</a>.'
+        : 'Schedule maintained by the masjid.') + "</p>";
   }
 
   function toggleMonthly(forceOpen) {
