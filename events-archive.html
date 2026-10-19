@@ -7,40 +7,106 @@
 <meta name="description" content="Archive of past events at the Islamic Community of Greater Killeen (ICGK) — fundraisers, programs, and community gatherings.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+<meta name="theme-color" content="#FAF7F0">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script src="/site.js" defer></script>
 </head>
-<body class="font-serif text-icgk-text min-h-screen leading-[1.65] bg-fixed px-4 pt-6 pb-16 bg-[radial-gradient(1200px_600px_at_50%_-10%,rgba(212,166,74,0.10),transparent_60%),linear-gradient(135deg,#0c2a1f_0%,#11402f_100%)]">
-<div class="max-w-[1000px] mx-auto">
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" id="site-header">
+  <div class="site-header-inner">
+    <a class="brand" href="/" aria-label="Islamic Community of Greater Killeen — home">
+      <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><g transform="translate(24 24)"><rect x="-16" y="-16" width="32" height="32" rx="3" fill="#14513B"/><rect x="-16" y="-16" width="32" height="32" rx="3" fill="#14513B" transform="rotate(45)"/><circle r="9" fill="none" stroke="#E8C67F" stroke-width="2.2"/><circle r="3.2" fill="#E8C67F"/></g></svg>
+      <span><span class="brand-name">ICGK</span><span class="brand-sub">Greater Killeen</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="sr-only">Menu</span>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <a class="nav-link" href="/#prayer">Prayer Times</a>
+      <a class="nav-link" href="/#visit">Visit</a>
+      <a class="nav-link" href="/#programs">Programs</a>
+      <a class="nav-link" href="/resources.html">Learn</a>
+      <a class="nav-link" href="/honest-questions.html">Hard Questions</a>
+      <a class="nav-link" href="/#contact">Contact</a>
+      <a class="nav-donate" href="https://app.autobooks.co/pay/icgk" target="_blank" rel="noopener">Donate</a>
+    </nav>
+  </div>
+</header>
+<main id="main" class="article">
 
-  <a class="inline-block mb-[1.125rem] text-icgk-gold-bright no-underline text-[0.92rem] tracking-wide hover:text-icgk-gold" href="index.html">← Back to Home</a>
+  <a class="back-link" href="index.html">← Back to Home</a>
 
-  <header class="relative text-center px-5 pt-10 pb-[1.875rem] border-2 border-icgk-gold rounded-2xl mb-7 overflow-hidden bg-[radial-gradient(600px_300px_at_50%_0%,rgba(212,166,74,0.12),transparent_70%),rgba(0,0,0,0.28)] before:content-[''] before:absolute before:inset-2 before:border before:border-icgk-gold/35 before:rounded-xl before:pointer-events-none">
-    <div class="text-[2.4rem] leading-none drop-shadow-[0_0_12px_rgba(240,198,116,0.5)]">📜</div>
-    <div class="text-icgk-gold-bright text-[0.9rem] tracking-[4px] uppercase mt-2">Archive</div>
-    <h1 class="text-icgk-gold text-[2.4rem] mt-1.5 mb-1 drop-shadow-[0_2px_18px_rgba(0,0,0,0.4)]">Past Events</h1>
-    <div class="text-icgk-cream italic mt-1">Looking back at our community gatherings</div>
+  <header class="page-hero">
+    <div class="page-hero-icon" aria-hidden="true">📜</div>
+    <div class="page-eyebrow">Archive</div>
+    <h1 class="page-title">Past Events</h1>
+    <div class="page-intro">Looking back at our community gatherings</div>
   </header>
 
   <div id="archive-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
-  <div id="empty-state" class="text-center px-6 py-[3.75rem] border-[1.5px] border-dashed border-icgk-gold/50 rounded-2xl text-icgk-muted" hidden>
-    <span class="text-[2.4rem] block mb-2.5 text-icgk-gold">🌙</span>
-    <h2 class="text-icgk-gold-bright text-[1.3rem] mb-1.5">No past events yet</h2>
+  <div id="empty-state" class="rounded-2xl border border-dashed border-line-strong px-6 py-14 text-center text-ink-muted" hidden>
+    <span class="text-[2.4rem] block mb-2.5 text-pine">🌙</span>
+    <h2 class="text-brass-dark text-[1.3rem] mb-1.5">No past events yet</h2>
     <p>Events will appear here automatically after they conclude.</p>
   </div>
 
-  <div class="text-center mt-[1.875rem]">
+  <div class="btn-row center">
     <a class="btn btn-primary" href="index.html#events">See upcoming events →</a>
     <a class="btn btn-ghost" href="index.html">← Home</a>
   </div>
 
-  <footer class="text-center text-icgk-muted px-4 pt-7 pb-1 text-[0.9rem] mt-[1.875rem]">
-    <span class="text-icgk-gold-bright text-[1.05rem] tracking-[2px] block mb-1.5">Islamic Community of Greater Killeen</span>
-    <div>May Allah accept from us and from you. 🤲</div>
-  </footer>
+  <div class="article-end">
+    <div class="dua">May Allah accept from us and from you. 🤲</div>
+  </div>
 
-</div>
-
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><g transform="translate(24 24)"><rect x="-16" y="-16" width="32" height="32" rx="3" fill="#E8C67F"/><rect x="-16" y="-16" width="32" height="32" rx="3" fill="#E8C67F" transform="rotate(45)"/><circle r="9" fill="none" stroke="#08261C" stroke-width="2.2"/><circle r="3.2" fill="#08261C"/></g></svg>
+        <span><span class="brand-name">ICGK</span><span class="brand-sub">Islamic Community of Greater Killeen</span></span>
+      </div>
+      <p class="footer-verse">“O humanity, We created you from a male and a female, and made you into peoples and tribes so that you may come to know one another.”<cite>Qur'an 49:13</cite></p>
+    </div>
+    <div>
+      <h2 class="footer-h">Visit</h2>
+      <div class="footer-links">
+        <span>5600 TX-195, Killeen, TX 76542</span>
+        <a href="tel:+12546348799">254-634-8799</a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=31.0699627,-97.7614774" target="_blank" rel="noopener">Directions</a>
+        <a href="https://www.facebook.com/Islamic-Community-of-Greater-Killeen-256571815189294/" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <div>
+      <h2 class="footer-h">Explore</h2>
+      <div class="footer-links">
+        <a href="/#prayer">Prayer times</a>
+        <a href="/#programs">Programs</a>
+        <a href="/events-archive.html">Past events</a>
+        <a href="/imam.html">Our Imam</a>
+        <a href="/resources.html">Learn about Islam</a>
+        <a href="/honest-questions.html">Hard questions</a>
+      </div>
+    </div>
+    <div>
+      <h2 class="footer-h">Get involved</h2>
+      <div class="footer-links">
+        <a href="/#contact">Contact us</a>
+        <a href="/#visit">Plan a visit</a>
+        <a href="https://app.autobooks.co/pay/icgk" target="_blank" rel="noopener">Donate</a>
+        <a href="https://icgk.org" target="_blank" rel="noopener">icgk.org</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="wrap">© <span data-year>2026</span> Islamic Community of Greater Killeen · Killeen, Texas</div>
+  </div>
+</footer>
 <script src="events-data.js"></script>
 <script>
   (function () {

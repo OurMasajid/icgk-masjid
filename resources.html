@@ -7,254 +7,261 @@
 <meta name="description" content="Islamic resources from the Islamic Community of Greater Killeen — learn about Islam, the sacred months, new Muslim guides, and more.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+<meta name="theme-color" content="#FAF7F0">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script src="/site.js" defer></script>
 </head>
-<body class="font-serif text-icgk-text min-h-screen leading-[1.65] bg-fixed bg-[radial-gradient(1200px_600px_at_50%_-10%,rgba(212,166,74,0.10),transparent_60%),linear-gradient(135deg,#0c2a1f_0%,#11402f_100%)]">
-
-<!-- ===== NAV ===== -->
-<nav class="sticky top-0 z-50 bg-icgk-green-dark/[0.86] backdrop-blur-md border-b border-icgk-gold/35">
-  <div class="max-w-[1000px] mx-auto flex items-center justify-between gap-3 px-4 py-2.5">
-    <a class="flex items-center gap-2.5 text-icgk-gold no-underline" href="index.html">
-      <span class="text-2xl drop-shadow-[0_0_8px_rgba(240,198,116,0.5)]">☪</span>
-      <span class="leading-tight"><b class="block text-base text-icgk-gold tracking-wide leading-tight">ICGK</b><span class="text-[0.72rem] text-icgk-muted tracking-[2px] uppercase">Greater Killeen</span></span>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" id="site-header">
+  <div class="site-header-inner">
+    <a class="brand" href="/" aria-label="Islamic Community of Greater Killeen — home">
+      <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><g transform="translate(24 24)"><rect x="-16" y="-16" width="32" height="32" rx="3" fill="#14513B"/><rect x="-16" y="-16" width="32" height="32" rx="3" fill="#14513B" transform="rotate(45)"/><circle r="9" fill="none" stroke="#E8C67F" stroke-width="2.2"/><circle r="3.2" fill="#E8C67F"/></g></svg>
+      <span><span class="brand-name">ICGK</span><span class="brand-sub">Greater Killeen</span></span>
     </a>
-    <button class="md:hidden bg-transparent border border-icgk-gold text-icgk-gold-bright rounded-lg px-2.5 py-1.5 text-lg cursor-pointer" aria-label="Menu" onclick="toggleNav()">☰</button>
-    <div class="hidden md:flex flex-col md:flex-row items-stretch md:items-center gap-1.5 flex-wrap absolute md:relative top-full inset-x-0 md:inset-auto bg-icgk-green-dark/[0.98] md:bg-transparent px-4 md:px-0 pt-2.5 md:pt-0 pb-4 md:pb-0 border-b md:border-0 border-icgk-gold/35" id="navlinks">
-      <a class="text-icgk-cream no-underline text-[0.92rem] px-2.5 py-1.5 rounded-lg transition duration-200 hover:bg-icgk-gold/15 hover:text-icgk-gold-bright" href="index.html#prayer">Prayer Times</a>
-      <a class="text-icgk-cream no-underline text-[0.92rem] px-2.5 py-1.5 rounded-lg transition duration-200 hover:bg-icgk-gold/15 hover:text-icgk-gold-bright" href="index.html#jumuah">Jumu'ah</a>
-      <a class="text-icgk-cream no-underline text-[0.92rem] px-2.5 py-1.5 rounded-lg transition duration-200 hover:bg-icgk-gold/15 hover:text-icgk-gold-bright" href="index.html#about">About</a>
-      <a class="text-icgk-cream no-underline text-[0.92rem] px-2.5 py-1.5 rounded-lg transition duration-200 hover:bg-icgk-gold/15 hover:text-icgk-gold-bright" href="index.html#programs">Programs</a>
-      <a class="text-icgk-cream no-underline text-[0.92rem] px-2.5 py-1.5 rounded-lg transition duration-200 hover:bg-icgk-gold/15 hover:text-icgk-gold-bright" href="index.html#visit">Visit</a>
-      <a class="text-icgk-gold-bright bg-icgk-gold/[0.12] no-underline text-[0.92rem] px-2.5 py-1.5 rounded-lg transition duration-200" href="resources.html">Resources</a>
-      <a class="text-icgk-cream no-underline text-[0.92rem] px-2.5 py-1.5 rounded-lg transition duration-200 border border-icgk-gold hover:bg-icgk-gold hover:text-icgk-green-dark" href="https://app.autobooks.co/pay/icgk" target="_blank" rel="noopener">Donate</a>
-    </div>
-  </div>
-</nav>
-
-<!-- ===== HERO ===== -->
-<header class="text-center px-4 pt-14 pb-9">
-  <div class="max-w-[1000px] mx-auto px-4">
-    <div class="text-icgk-gold-bright tracking-[4px] uppercase text-[0.9rem]">Learn &amp; Grow</div>
-    <h1 class="text-icgk-gold text-[2.8rem] leading-[1.1] mt-2.5 mb-2">Resources</h1>
-    <div dir="rtl" class="text-icgk-gold-bright text-[1.8rem] my-1">اقْرَأْ بِاسْمِ رَبِّكَ</div>
-    <p class="text-icgk-cream text-[1.15rem] italic mt-2 mx-auto max-w-[640px]">Guides and readings to learn about Islam, the sacred months, and the path of faith — for Muslims, new Muslims, and curious neighbors alike.</p>
-    <hr class="max-w-[200px] border-0 border-t border-icgk-gold/40 mt-[1.375rem] mx-auto relative after:content-['✦'] after:text-icgk-gold after:absolute after:-top-3 after:left-1/2 after:-translate-x-1/2 after:bg-icgk-green-mid after:px-2.5">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="sr-only">Menu</span>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <a class="nav-link" href="/#prayer">Prayer Times</a>
+      <a class="nav-link" href="/#visit">Visit</a>
+      <a class="nav-link" href="/#programs">Programs</a>
+      <a class="nav-link" href="/resources.html" aria-current="page">Learn</a>
+      <a class="nav-link" href="/honest-questions.html">Hard Questions</a>
+      <a class="nav-link" href="/#contact">Contact</a>
+      <a class="nav-donate" href="https://app.autobooks.co/pay/icgk" target="_blank" rel="noopener">Donate</a>
+    </nav>
   </div>
 </header>
 
-<!-- ===== RESOURCE CARDS ===== -->
-<section class="pt-6 pb-14">
-  <div class="max-w-[1000px] mx-auto px-4">
+<main id="main" class="article max-w-wrap">
+
+  <header class="page-hero">
+    <div class="page-eyebrow">Learn &amp; grow</div>
+    <h1 class="page-title">Guides &amp; Resources</h1>
+    <div dir="rtl" class="page-arabic">اقْرَأْ بِاسْمِ رَبِّكَ</div>
+    <p class="page-intro">Guides and readings to learn about Islam, the sacred months, and the path of faith — for Muslims, new Muslims, and curious neighbors alike.</p>
+  </header>
 
     <!-- Start Here -->
-    <div class="mt-2 mb-4">
-      <h2 class="text-icgk-gold text-2xl flex items-center gap-2.5">🌱 Start Here <span class="flex-1 h-px bg-icgk-gold/30"></span></h2>
-      <p class="text-icgk-muted text-[0.92rem] mt-0.5">New to Islam, or just curious? Begin with these.</p>
+    <div class="res-group">
+      <h2>🌱 Start Here</h2>
+      <p>New to Islam, or just curious? Begin with these.</p>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[1.125rem]">
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="what-is-islam.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">📖</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">What Is Islam?</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">A clear, welcoming introduction — what Muslims believe, the Five Pillars, and the message of the Prophets.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a class="res-card" href="what-is-islam.html">
+        <div class="res-icon" aria-hidden="true">📖</div><h3>What Is Islam?</h3>
+        <p>A clear, welcoming introduction — what Muslims believe, the Five Pillars, and the message of the Prophets.</p>
+        <span class="res-more">Read more →</span>
       </a>
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="new-to-islam.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">🕌</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">New to Islam?</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">A step-by-step guide for new Muslims — taking your shahādah, learning to pray, and finding support.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+      <a class="res-card" href="honest-questions.html">
+        <div class="res-icon" aria-hidden="true">💬</div><h3>Hard Questions, Honest Answers</h3>
+        <p>Violence, Sharia, women, loyalty, “taqiyya” — the questions skeptics ask, answered plainly with sources you can check.</p>
+        <span class="res-more">Read more →</span>
       </a>
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="first-year.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">📈</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">Your First Year</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">A gentle, month-by-month roadmap for growing in your new faith at your own pace.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+      <a class="res-card" href="new-to-islam.html">
+        <div class="res-icon" aria-hidden="true">🕌</div><h3>New to Islam?</h3>
+        <p>A step-by-step guide for new Muslims — taking your shahādah, learning to pray, and finding support.</p>
+        <span class="res-more">Read more →</span>
       </a>
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="faq.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">❓</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">FAQ About Islam</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">Honest answers to the questions we hear most — for neighbors, friends, and the curious.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+      <a class="res-card" href="first-year.html">
+        <div class="res-icon" aria-hidden="true">📈</div><h3>Your First Year</h3>
+        <p>A gentle, month-by-month roadmap for growing in your new faith at your own pace.</p>
+        <span class="res-more">Read more →</span>
+      </a>
+      <a class="res-card" href="faq.html">
+        <div class="res-icon" aria-hidden="true">❓</div><h3>FAQ About Islam</h3>
+        <p>Honest answers to the questions we hear most — for neighbors, friends, and the curious.</p>
+        <span class="res-more">Read more →</span>
       </a>
     </div>
 
     <!-- Worship & Practice -->
-    <div class="mt-[2.375rem] mb-4">
-      <h2 class="text-icgk-gold text-2xl flex items-center gap-2.5">🤲 Worship &amp; Practice <span class="flex-1 h-px bg-icgk-gold/30"></span></h2>
-      <p class="text-icgk-muted text-[0.92rem] mt-0.5">The how-to of daily Islamic life.</p>
+    <div class="res-group">
+      <h2>🤲 Worship &amp; Practice</h2>
+      <p>The how-to of daily Islamic life.</p>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[1.125rem]">
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="how-to-pray.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">🤲</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">How to Pray (Ṣalāh)</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">A step-by-step walkthrough of the five daily prayers, with Arabic and transliteration.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a class="res-card" href="how-to-pray.html">
+        <div class="res-icon" aria-hidden="true">🤲</div><h3>How to Pray (Ṣalāh)</h3>
+        <p>A step-by-step walkthrough of the five daily prayers, with Arabic and transliteration.</p>
+        <span class="res-more">Read more →</span>
       </a>
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="wudu.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">💧</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">Wuḍū' &amp; Ghusl</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">How to perform ablution and the full ritual bath — and what breaks them.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+      <a class="res-card" href="wudu.html">
+        <div class="res-icon" aria-hidden="true">💧</div><h3>Wuḍū' &amp; Ghusl</h3>
+        <p>How to perform ablution and the full ritual bath — and what breaks them.</p>
+        <span class="res-more">Read more →</span>
       </a>
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="quran.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">📖</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">The Qur'an</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">What the Qur'an is, how to start reading, recommended translations, and its etiquette.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+      <a class="res-card" href="quran.html">
+        <div class="res-icon" aria-hidden="true">📖</div><h3>The Qur'an</h3>
+        <p>What the Qur'an is, how to start reading, recommended translations, and its etiquette.</p>
+        <span class="res-more">Read more →</span>
       </a>
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="dua-dhikr.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">📿</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">Du'ā &amp; Dhikr</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">Everyday supplications and the remembrance of Allah — morning and evening adhkār.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+      <a class="res-card" href="dua-dhikr.html">
+        <div class="res-icon" aria-hidden="true">📿</div><h3>Du'ā &amp; Dhikr</h3>
+        <p>Everyday supplications and the remembrance of Allah — morning and evening adhkār.</p>
+        <span class="res-more">Read more →</span>
       </a>
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="zakat.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">💰</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">Zakāt</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">The third pillar — who pays, the niṣāb, how to calculate 2.5%, and who can receive it.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+      <a class="res-card" href="zakat.html">
+        <div class="res-icon" aria-hidden="true">💰</div><h3>Zakāt</h3>
+        <p>The third pillar — who pays, the niṣāb, how to calculate 2.5%, and who can receive it.</p>
+        <span class="res-more">Read more →</span>
       </a>
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="voluntary-fasting.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">🌙</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">Fasting Beyond Ramadan</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">The Sunnah fasts — Mondays &amp; Thursdays, the white days, Arafah, Ashura, and Shawwāl.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+      <a class="res-card" href="voluntary-fasting.html">
+        <div class="res-icon" aria-hidden="true">🌙</div><h3>Fasting Beyond Ramadan</h3>
+        <p>The Sunnah fasts — Mondays &amp; Thursdays, the white days, Arafah, Ashura, and Shawwāl.</p>
+        <span class="res-more">Read more →</span>
       </a>
     </div>
 
     <!-- The Islamic Year -->
-    <div class="mt-[2.375rem] mb-4">
-      <h2 class="text-icgk-gold text-2xl flex items-center gap-2.5">🗓️ The Islamic Year <span class="flex-1 h-px bg-icgk-gold/30"></span></h2>
-      <p class="text-icgk-muted text-[0.92rem] mt-0.5">The blessed months, seasons, and holy days.</p>
+    <div class="res-group">
+      <h2>🗓️ The Islamic Year</h2>
+      <p>The blessed months, seasons, and holy days.</p>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[1.125rem]">
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="ramadan.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">🌑</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">Ramadan Guide</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">Fasting, Taraweeh, Laylat al-Qadr, and Zakāt al-Fiṭr — making the most of the month.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a class="res-card" href="ramadan.html">
+        <div class="res-icon" aria-hidden="true">🌑</div><h3>Ramadan Guide</h3>
+        <p>Fasting, Taraweeh, Laylat al-Qadr, and Zakāt al-Fiṭr — making the most of the month.</p>
+        <span class="res-more">Read more →</span>
       </a>
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="eid.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">🎉</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">The Two Eids</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">Eid al-Fiṭr and Eid al-Adḥā — the Eid prayer, Qurbānī, and the sunnahs of the day.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+      <a class="res-card" href="eid.html">
+        <div class="res-icon" aria-hidden="true">🎉</div><h3>The Two Eids</h3>
+        <p>Eid al-Fiṭr and Eid al-Adḥā — the Eid prayer, Qurbānī, and the sunnahs of the day.</p>
+        <span class="res-more">Read more →</span>
       </a>
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="dhul-hijjah.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">⭐</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">Dhul-Hijjah</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">The best ten days of the year, the Day of Arafah, and what to do if you're not on Hajj.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+      <a class="res-card" href="dhul-hijjah.html">
+        <div class="res-icon" aria-hidden="true">⭐</div><h3>Dhul-Hijjah</h3>
+        <p>The best ten days of the year, the Day of Arafah, and what to do if you're not on Hajj.</p>
+        <span class="res-more">Read more →</span>
       </a>
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="hajj.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">🕋</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">Hajj &amp; Umrah</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">The pilgrimage to Makkah — the rites, the preparation, and its place in a Muslim's life.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+      <a class="res-card" href="hajj.html">
+        <div class="res-icon" aria-hidden="true">🕋</div><h3>Hajj &amp; Umrah</h3>
+        <p>The pilgrimage to Makkah — the rites, the preparation, and its place in a Muslim's life.</p>
+        <span class="res-more">Read more →</span>
       </a>
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="muharram.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">🌙</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">Muharram &amp; Ashura</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">The Month of Allah: its sacredness, the Day of Ashura, and the Hijri new year.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+      <a class="res-card" href="muharram.html">
+        <div class="res-icon" aria-hidden="true">🌙</div><h3>Muharram &amp; Ashura</h3>
+        <p>The Month of Allah: its sacredness, the Day of Ashura, and the Hijri new year.</p>
+        <span class="res-more">Read more →</span>
       </a>
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="islamic-calendar.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">📅</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">The Islamic Calendar</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">The twelve lunar months, the four sacred months, and how dates are set by the moon.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+      <a class="res-card" href="islamic-calendar.html">
+        <div class="res-icon" aria-hidden="true">📅</div><h3>The Islamic Calendar</h3>
+        <p>The twelve lunar months, the four sacred months, and how dates are set by the moon.</p>
+        <span class="res-more">Read more →</span>
       </a>
     </div>
 
     <!-- Belief & Character -->
-    <div class="mt-[2.375rem] mb-4">
-      <h2 class="text-icgk-gold text-2xl flex items-center gap-2.5">🌟 Belief &amp; Character <span class="flex-1 h-px bg-icgk-gold/30"></span></h2>
-      <p class="text-icgk-muted text-[0.92rem] mt-0.5">The foundations of faith and how to live it.</p>
+    <div class="res-group">
+      <h2>🌟 Belief &amp; Character</h2>
+      <p>The foundations of faith and how to live it.</p>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[1.125rem]">
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="seerah.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">🌟</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">The Prophet Muhammad ﷺ</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">His life, his character, and his message — the example every Muslim strives to follow.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a class="res-card" href="seerah.html">
+        <div class="res-icon" aria-hidden="true">🌟</div><h3>The Prophet Muhammad ﷺ</h3>
+        <p>His life, his character, and his message — the example every Muslim strives to follow.</p>
+        <span class="res-more">Read more →</span>
       </a>
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="prophets.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">📜</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">The Prophets of Islam</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">From Adam to Muhammad ﷺ — one message through many messengers, including Musa and Isa.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+      <a class="res-card" href="prophets.html">
+        <div class="res-icon" aria-hidden="true">📜</div><h3>The Prophets of Islam</h3>
+        <p>From Adam to Muhammad ﷺ — one message through many messengers, including Musa and Isa.</p>
+        <span class="res-more">Read more →</span>
       </a>
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="akhlaq.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">🤝</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">Manners &amp; Character</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">Honesty, kindness to parents and neighbors, good speech — the heart of faith.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+      <a class="res-card" href="akhlaq.html">
+        <div class="res-icon" aria-hidden="true">🤝</div><h3>Manners &amp; Character</h3>
+        <p>Honesty, kindness to parents and neighbors, good speech — the heart of faith.</p>
+        <span class="res-more">Read more →</span>
       </a>
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="hijab.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">🧕</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">Modesty &amp; Dress</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">The meaning of ḥijāb and ḥayā' for women and men, and why Muslims dress modestly.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+      <a class="res-card" href="hijab.html">
+        <div class="res-icon" aria-hidden="true">🧕</div><h3>Modesty &amp; Dress</h3>
+        <p>The meaning of ḥijāb and ḥayā' for women and men, and why Muslims dress modestly.</p>
+        <span class="res-more">Read more →</span>
       </a>
     </div>
 
     <!-- Life & Living -->
-    <div class="mt-[2.375rem] mb-4">
-      <h2 class="text-icgk-gold text-2xl flex items-center gap-2.5">🏡 Life &amp; Living <span class="flex-1 h-px bg-icgk-gold/30"></span></h2>
-      <p class="text-icgk-muted text-[0.92rem] mt-0.5">Islam in everyday life and its milestones.</p>
+    <div class="res-group">
+      <h2>🏡 Life &amp; Living</h2>
+      <p>Islam in everyday life and its milestones.</p>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[1.125rem]">
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="halal.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">🍽️</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">Halal Eating</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">What's ḥalāl and ḥarām, reading labels, and eating out with confidence.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a class="res-card" href="halal.html">
+        <div class="res-icon" aria-hidden="true">🍽️</div><h3>Halal Eating</h3>
+        <p>What's ḥalāl and ḥarām, reading labels, and eating out with confidence.</p>
+        <span class="res-more">Read more →</span>
       </a>
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="life-events.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">🕊️</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">Life Events</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">Nikāḥ (marriage), Janāzah (funerals), and Aqīqah (welcoming a newborn).</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+      <a class="res-card" href="life-events.html">
+        <div class="res-icon" aria-hidden="true">🕊️</div><h3>Life Events</h3>
+        <p>Nikāḥ (marriage), Janāzah (funerals), and Aqīqah (welcoming a newborn).</p>
+        <span class="res-more">Read more →</span>
       </a>
     </div>
 
     <!-- Tools & Reference -->
-    <div class="mt-[2.375rem] mb-4">
-      <h2 class="text-icgk-gold text-2xl flex items-center gap-2.5">🧭 Tools &amp; Reference <span class="flex-1 h-px bg-icgk-gold/30"></span></h2>
-      <p class="text-icgk-muted text-[0.92rem] mt-0.5">Handy utilities and quick lookups.</p>
+    <div class="res-group">
+      <h2>🧭 Tools &amp; Reference</h2>
+      <p>Handy utilities and quick lookups.</p>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[1.125rem]">
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="tools.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">🧭</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">Qibla &amp; Date Tools</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">Find the Qibla direction from your location and convert Gregorian dates to Hijri.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Open tools →</span>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <a class="res-card" href="tools.html">
+        <div class="res-icon" aria-hidden="true">🧭</div><h3>Qibla &amp; Date Tools</h3>
+        <p>Find the Qibla direction from your location and convert Gregorian dates to Hijri.</p>
+        <span class="res-more">Open tools →</span>
       </a>
-      <a class="flex flex-col bg-black/[0.28] border-[1.5px] border-icgk-gold rounded-2xl px-6 pt-6 pb-5 no-underline text-inherit transition duration-200 hover:-translate-y-1 hover:border-icgk-gold-bright hover:shadow-[0_12px_30px_rgba(0,0,0,0.4)]" href="glossary.html">
-        <div class="text-[2.2rem] leading-none mb-3 drop-shadow-[0_0_8px_rgba(240,198,116,0.35)]">📚</div><h3 class="text-icgk-gold-bright text-xl mb-1.5">Glossary</h3>
-        <p class="text-icgk-muted text-[0.95rem] flex-1">A searchable list of common Arabic and Islamic terms used across the site.</p>
-        <span class="text-icgk-gold text-[0.9rem] tracking-wide mt-3.5 font-bold">Read more →</span>
+      <a class="res-card" href="glossary.html">
+        <div class="res-icon" aria-hidden="true">📚</div><h3>Glossary</h3>
+        <p>A searchable list of common Arabic and Islamic terms used across the site.</p>
+        <span class="res-more">Read more →</span>
       </a>
     </div>
 
-  </div>
-</section>
-
-<!-- ===== FOOTER ===== -->
-<footer class="border-t border-icgk-gold/35 mt-5 px-4 pt-9 pb-7 bg-icgk-green-dark/60">
-  <div class="max-w-[1000px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[2fr_1fr_1fr] gap-7">
-    <div class="sm:col-span-2 md:col-span-1">
-      <span class="text-2xl text-icgk-gold">☪</span>
-      <span class="text-icgk-gold text-xl block my-1.5">Islamic Community of Greater Killeen</span>
-      <p class="text-icgk-muted text-[0.9rem]">5600 TX-195, Killeen, TX 76542</p>
-      <p class="text-icgk-muted text-[0.9rem] mt-2">May Allah accept from us and from you. 🤲</p>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true"><g transform="translate(24 24)"><rect x="-16" y="-16" width="32" height="32" rx="3" fill="#E8C67F"/><rect x="-16" y="-16" width="32" height="32" rx="3" fill="#E8C67F" transform="rotate(45)"/><circle r="9" fill="none" stroke="#08261C" stroke-width="2.2"/><circle r="3.2" fill="#08261C"/></g></svg>
+        <span><span class="brand-name">ICGK</span><span class="brand-sub">Islamic Community of Greater Killeen</span></span>
+      </div>
+      <p class="footer-verse">“O humanity, We created you from a male and a female, and made you into peoples and tribes so that you may come to know one another.”<cite>Qur'an 49:13</cite></p>
     </div>
     <div>
-      <h4 class="text-icgk-gold-bright text-sm tracking-[1.5px] uppercase mb-3">Explore</h4>
-      <a class="text-icgk-cream no-underline block py-1 text-[0.95rem] hover:text-icgk-gold-bright" href="index.html#prayer">Prayer Times</a>
-      <a class="text-icgk-cream no-underline block py-1 text-[0.95rem] hover:text-icgk-gold-bright" href="index.html#jumuah">Jumu'ah</a>
-      <a class="text-icgk-cream no-underline block py-1 text-[0.95rem] hover:text-icgk-gold-bright" href="index.html#about">About</a>
-      <a class="text-icgk-cream no-underline block py-1 text-[0.95rem] hover:text-icgk-gold-bright" href="index.html#programs">Programs</a>
-      <a class="text-icgk-cream no-underline block py-1 text-[0.95rem] hover:text-icgk-gold-bright" href="resources.html">Resources</a>
+      <h2 class="footer-h">Visit</h2>
+      <div class="footer-links">
+        <span>5600 TX-195, Killeen, TX 76542</span>
+        <a href="tel:+12546348799">254-634-8799</a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=31.0699627,-97.7614774" target="_blank" rel="noopener">Directions</a>
+        <a href="https://www.facebook.com/Islamic-Community-of-Greater-Killeen-256571815189294/" target="_blank" rel="noopener">Facebook</a>
+      </div>
     </div>
     <div>
-      <h4 class="text-icgk-gold-bright text-sm tracking-[1.5px] uppercase mb-3">Connect</h4>
-      <a class="text-icgk-cream no-underline block py-1 text-[0.95rem] hover:text-icgk-gold-bright" href="https://icgk.org" target="_blank" rel="noopener">icgk.org</a>
-      <a class="text-icgk-cream no-underline block py-1 text-[0.95rem] hover:text-icgk-gold-bright" href="https://www.facebook.com/Islamic-Community-of-Greater-Killeen-256571815189294/" target="_blank" rel="noopener">Facebook</a>
-      <a class="text-icgk-cream no-underline block py-1 text-[0.95rem] hover:text-icgk-gold-bright" href="https://app.autobooks.co/pay/icgk" target="_blank" rel="noopener">Donate</a>
-      <a class="text-icgk-cream no-underline block py-1 text-[0.95rem] hover:text-icgk-gold-bright" href="index.html#contact">Contact</a>
+      <h2 class="footer-h">Explore</h2>
+      <div class="footer-links">
+        <a href="/#prayer">Prayer times</a>
+        <a href="/#programs">Programs</a>
+        <a href="/events-archive.html">Past events</a>
+        <a href="/imam.html">Our Imam</a>
+        <a href="/resources.html">Learn about Islam</a>
+        <a href="/honest-questions.html">Hard questions</a>
+      </div>
+    </div>
+    <div>
+      <h2 class="footer-h">Get involved</h2>
+      <div class="footer-links">
+        <a href="/#contact">Contact us</a>
+        <a href="/#visit">Plan a visit</a>
+        <a href="https://app.autobooks.co/pay/icgk" target="_blank" rel="noopener">Donate</a>
+        <a href="https://icgk.org" target="_blank" rel="noopener">icgk.org</a>
+      </div>
     </div>
   </div>
-  <div class="text-center text-icgk-muted text-[0.82rem] mt-7 pt-[1.125rem] border-t border-icgk-gold/[0.15]">
-    © <span id="year"></span> Islamic Community of Greater Killeen · Killeen, Texas
+  <div class="footer-bottom">
+    <div class="wrap">© <span data-year>2026</span> Islamic Community of Greater Killeen · Killeen, Texas</div>
   </div>
 </footer>
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-  function toggleNav() {
-    var nav = document.getElementById("navlinks");
-    nav.classList.toggle("hidden");
-    nav.classList.toggle("flex");
-  }
-</script>
 </body>
 </html>
