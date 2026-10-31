@@ -1,0 +1,1514 @@
+{
+  "_about": "November 2026 prayer times for ICGK, transcribed from the masjid's printed schedule. index.html loads this file and lets it override the OurMasajid feed for any date it covers; dates outside it still come from the feed. Day entries match the feed's shape exactly, so both paths render through the same code.",
+  "source": {
+    "document": "ICGK Prayer Schedule, Jumada II 1448 / November 2026 (Azaan & Iqama)",
+    "masjid": "Islamic Community of Greater Killeen",
+    "timezone": "America/Chicago",
+    "note": "Daylight saving time ends Sunday Nov 1, so every time here is CST. Iqamah changes in five blocks, each carried forward until the next. The sheet leaves the Maghrib iqamah cell for Nov 11-13 blank; it carries the Nov 7 block forward. Hijri days are Jumada I through Nov 10 and Jumada II from Nov 11, reproduced as printed."
+  },
+  "calculation": {
+    "method": "ICGK printed schedule",
+    "asr": "Standard"
+  },
+  "coversFrom": "2026-11-01",
+  "coversThrough": "2026-11-30",
+  "iqamahChanges": [
+    {
+      "effectiveFrom": "2026-11-01",
+      "iqamah": {
+        "fajr": "06:00",
+        "duha": "07:10",
+        "dhuhr": "13:00",
+        "asr": "15:30",
+        "maghrib": "17:50",
+        "isha": "19:30"
+      }
+    },
+    {
+      "effectiveFrom": "2026-11-07",
+      "iqamah": {
+        "fajr": "06:05",
+        "duha": "07:10",
+        "dhuhr": "13:00",
+        "asr": "15:30",
+        "maghrib": "17:50",
+        "isha": "19:30"
+      }
+    },
+    {
+      "effectiveFrom": "2026-11-14",
+      "iqamah": {
+        "fajr": "06:10",
+        "duha": "07:20",
+        "dhuhr": "13:00",
+        "asr": "15:30",
+        "maghrib": "17:45",
+        "isha": "19:30"
+      }
+    },
+    {
+      "effectiveFrom": "2026-11-21",
+      "iqamah": {
+        "fajr": "06:15",
+        "duha": "07:25",
+        "dhuhr": "13:00",
+        "asr": "15:30",
+        "maghrib": "17:40",
+        "isha": "19:30"
+      }
+    },
+    {
+      "effectiveFrom": "2026-11-28",
+      "iqamah": {
+        "fajr": "06:20",
+        "duha": "07:30",
+        "dhuhr": "13:00",
+        "asr": "15:30",
+        "maghrib": "17:40",
+        "isha": "19:30"
+      }
+    }
+  ],
+  "days": [
+    {
+      "date": "2026-11-01",
+      "weekday": "Sun",
+      "hijriDay": 21,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-01T11:40:00.000Z",
+          "adhanTime": "5:40 AM",
+          "iqamahAt": "2026-11-01T12:00:00.000Z",
+          "iqamahTime": "6:00 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-01T12:46:00.000Z",
+          "adhanTime": "6:46 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-01T18:16:00.000Z",
+          "adhanTime": "12:16 PM",
+          "iqamahAt": "2026-11-01T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-01T21:20:00.000Z",
+          "adhanTime": "3:20 PM",
+          "iqamahAt": "2026-11-01T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-01T23:44:00.000Z",
+          "adhanTime": "5:44 PM",
+          "iqamahAt": "2026-11-01T23:50:00.000Z",
+          "iqamahTime": "5:50 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-02T00:50:00.000Z",
+          "adhanTime": "6:50 PM",
+          "iqamahAt": "2026-11-02T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-02",
+      "weekday": "Mon",
+      "hijriDay": 22,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-02T11:40:00.000Z",
+          "adhanTime": "5:40 AM",
+          "iqamahAt": "2026-11-02T12:00:00.000Z",
+          "iqamahTime": "6:00 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-02T12:47:00.000Z",
+          "adhanTime": "6:47 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-02T18:16:00.000Z",
+          "adhanTime": "12:16 PM",
+          "iqamahAt": "2026-11-02T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-02T21:19:00.000Z",
+          "adhanTime": "3:19 PM",
+          "iqamahAt": "2026-11-02T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-02T23:43:00.000Z",
+          "adhanTime": "5:43 PM",
+          "iqamahAt": "2026-11-02T23:50:00.000Z",
+          "iqamahTime": "5:50 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-03T00:50:00.000Z",
+          "adhanTime": "6:50 PM",
+          "iqamahAt": "2026-11-03T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-03",
+      "weekday": "Tue",
+      "hijriDay": 23,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-03T11:41:00.000Z",
+          "adhanTime": "5:41 AM",
+          "iqamahAt": "2026-11-03T12:00:00.000Z",
+          "iqamahTime": "6:00 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-03T12:48:00.000Z",
+          "adhanTime": "6:48 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-03T18:16:00.000Z",
+          "adhanTime": "12:16 PM",
+          "iqamahAt": "2026-11-03T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-03T21:18:00.000Z",
+          "adhanTime": "3:18 PM",
+          "iqamahAt": "2026-11-03T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-03T23:42:00.000Z",
+          "adhanTime": "5:42 PM",
+          "iqamahAt": "2026-11-03T23:50:00.000Z",
+          "iqamahTime": "5:50 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-04T00:49:00.000Z",
+          "adhanTime": "6:49 PM",
+          "iqamahAt": "2026-11-04T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-04",
+      "weekday": "Wed",
+      "hijriDay": 24,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-04T11:42:00.000Z",
+          "adhanTime": "5:42 AM",
+          "iqamahAt": "2026-11-04T12:00:00.000Z",
+          "iqamahTime": "6:00 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-04T12:49:00.000Z",
+          "adhanTime": "6:49 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-04T18:16:00.000Z",
+          "adhanTime": "12:16 PM",
+          "iqamahAt": "2026-11-04T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-04T21:18:00.000Z",
+          "adhanTime": "3:18 PM",
+          "iqamahAt": "2026-11-04T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-04T23:41:00.000Z",
+          "adhanTime": "5:41 PM",
+          "iqamahAt": "2026-11-04T23:50:00.000Z",
+          "iqamahTime": "5:50 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-05T00:48:00.000Z",
+          "adhanTime": "6:48 PM",
+          "iqamahAt": "2026-11-05T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-05",
+      "weekday": "Thu",
+      "hijriDay": 25,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-05T11:43:00.000Z",
+          "adhanTime": "5:43 AM",
+          "iqamahAt": "2026-11-05T12:00:00.000Z",
+          "iqamahTime": "6:00 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-05T12:49:00.000Z",
+          "adhanTime": "6:49 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-05T18:16:00.000Z",
+          "adhanTime": "12:16 PM",
+          "iqamahAt": "2026-11-05T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-05T21:17:00.000Z",
+          "adhanTime": "3:17 PM",
+          "iqamahAt": "2026-11-05T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-05T23:40:00.000Z",
+          "adhanTime": "5:40 PM",
+          "iqamahAt": "2026-11-05T23:50:00.000Z",
+          "iqamahTime": "5:50 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-06T00:48:00.000Z",
+          "adhanTime": "6:48 PM",
+          "iqamahAt": "2026-11-06T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-06",
+      "weekday": "Fri",
+      "hijriDay": 26,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-06T11:43:00.000Z",
+          "adhanTime": "5:43 AM",
+          "iqamahAt": "2026-11-06T12:00:00.000Z",
+          "iqamahTime": "6:00 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-06T12:50:00.000Z",
+          "adhanTime": "6:50 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-06T18:16:00.000Z",
+          "adhanTime": "12:16 PM",
+          "iqamahAt": "2026-11-06T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-06T21:17:00.000Z",
+          "adhanTime": "3:17 PM",
+          "iqamahAt": "2026-11-06T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-06T23:40:00.000Z",
+          "adhanTime": "5:40 PM",
+          "iqamahAt": "2026-11-06T23:50:00.000Z",
+          "iqamahTime": "5:50 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-07T00:47:00.000Z",
+          "adhanTime": "6:47 PM",
+          "iqamahAt": "2026-11-07T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-07",
+      "weekday": "Sat",
+      "hijriDay": 27,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-07T11:44:00.000Z",
+          "adhanTime": "5:44 AM",
+          "iqamahAt": "2026-11-07T12:05:00.000Z",
+          "iqamahTime": "6:05 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-07T12:51:00.000Z",
+          "adhanTime": "6:51 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-07T18:16:00.000Z",
+          "adhanTime": "12:16 PM",
+          "iqamahAt": "2026-11-07T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-07T21:16:00.000Z",
+          "adhanTime": "3:16 PM",
+          "iqamahAt": "2026-11-07T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-07T23:39:00.000Z",
+          "adhanTime": "5:39 PM",
+          "iqamahAt": "2026-11-07T23:50:00.000Z",
+          "iqamahTime": "5:50 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-08T00:46:00.000Z",
+          "adhanTime": "6:46 PM",
+          "iqamahAt": "2026-11-08T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "weekday": "Sun",
+      "hijriDay": 28,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-08T11:45:00.000Z",
+          "adhanTime": "5:45 AM",
+          "iqamahAt": "2026-11-08T12:05:00.000Z",
+          "iqamahTime": "6:05 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-08T12:52:00.000Z",
+          "adhanTime": "6:52 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-08T18:16:00.000Z",
+          "adhanTime": "12:16 PM",
+          "iqamahAt": "2026-11-08T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-08T21:16:00.000Z",
+          "adhanTime": "3:16 PM",
+          "iqamahAt": "2026-11-08T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-08T23:38:00.000Z",
+          "adhanTime": "5:38 PM",
+          "iqamahAt": "2026-11-08T23:50:00.000Z",
+          "iqamahTime": "5:50 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-09T00:46:00.000Z",
+          "adhanTime": "6:46 PM",
+          "iqamahAt": "2026-11-09T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "weekday": "Mon",
+      "hijriDay": 29,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-09T11:45:00.000Z",
+          "adhanTime": "5:45 AM",
+          "iqamahAt": "2026-11-09T12:05:00.000Z",
+          "iqamahTime": "6:05 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-09T12:52:00.000Z",
+          "adhanTime": "6:52 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-09T18:16:00.000Z",
+          "adhanTime": "12:16 PM",
+          "iqamahAt": "2026-11-09T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-09T21:16:00.000Z",
+          "adhanTime": "3:16 PM",
+          "iqamahAt": "2026-11-09T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-09T23:38:00.000Z",
+          "adhanTime": "5:38 PM",
+          "iqamahAt": "2026-11-09T23:50:00.000Z",
+          "iqamahTime": "5:50 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-10T00:46:00.000Z",
+          "adhanTime": "6:46 PM",
+          "iqamahAt": "2026-11-10T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "weekday": "Tue",
+      "hijriDay": 30,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-10T11:46:00.000Z",
+          "adhanTime": "5:46 AM",
+          "iqamahAt": "2026-11-10T12:05:00.000Z",
+          "iqamahTime": "6:05 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-10T12:54:00.000Z",
+          "adhanTime": "6:54 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-10T18:16:00.000Z",
+          "adhanTime": "12:16 PM",
+          "iqamahAt": "2026-11-10T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-10T21:15:00.000Z",
+          "adhanTime": "3:15 PM",
+          "iqamahAt": "2026-11-10T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-10T23:37:00.000Z",
+          "adhanTime": "5:37 PM",
+          "iqamahAt": "2026-11-10T23:50:00.000Z",
+          "iqamahTime": "5:50 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-11T00:45:00.000Z",
+          "adhanTime": "6:45 PM",
+          "iqamahAt": "2026-11-11T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-11",
+      "weekday": "Wed",
+      "hijriDay": 1,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-11T11:47:00.000Z",
+          "adhanTime": "5:47 AM",
+          "iqamahAt": "2026-11-11T12:05:00.000Z",
+          "iqamahTime": "6:05 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-11T12:54:00.000Z",
+          "adhanTime": "6:54 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-11T18:17:00.000Z",
+          "adhanTime": "12:17 PM",
+          "iqamahAt": "2026-11-11T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-11T21:14:00.000Z",
+          "adhanTime": "3:14 PM",
+          "iqamahAt": "2026-11-11T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-11T23:36:00.000Z",
+          "adhanTime": "5:36 PM",
+          "iqamahAt": "2026-11-11T23:50:00.000Z",
+          "iqamahTime": "5:50 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-12T00:44:00.000Z",
+          "adhanTime": "6:44 PM",
+          "iqamahAt": "2026-11-12T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-12",
+      "weekday": "Thu",
+      "hijriDay": 2,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-12T11:48:00.000Z",
+          "adhanTime": "5:48 AM",
+          "iqamahAt": "2026-11-12T12:05:00.000Z",
+          "iqamahTime": "6:05 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-12T12:55:00.000Z",
+          "adhanTime": "6:55 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-12T18:17:00.000Z",
+          "adhanTime": "12:17 PM",
+          "iqamahAt": "2026-11-12T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-12T21:14:00.000Z",
+          "adhanTime": "3:14 PM",
+          "iqamahAt": "2026-11-12T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-12T23:36:00.000Z",
+          "adhanTime": "5:36 PM",
+          "iqamahAt": "2026-11-12T23:50:00.000Z",
+          "iqamahTime": "5:50 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-13T00:44:00.000Z",
+          "adhanTime": "6:44 PM",
+          "iqamahAt": "2026-11-13T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-13",
+      "weekday": "Fri",
+      "hijriDay": 3,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-13T11:48:00.000Z",
+          "adhanTime": "5:48 AM",
+          "iqamahAt": "2026-11-13T12:05:00.000Z",
+          "iqamahTime": "6:05 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-13T12:56:00.000Z",
+          "adhanTime": "6:56 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-13T18:17:00.000Z",
+          "adhanTime": "12:17 PM",
+          "iqamahAt": "2026-11-13T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-13T21:13:00.000Z",
+          "adhanTime": "3:13 PM",
+          "iqamahAt": "2026-11-13T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-13T23:35:00.000Z",
+          "adhanTime": "5:35 PM",
+          "iqamahAt": "2026-11-13T23:50:00.000Z",
+          "iqamahTime": "5:50 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-14T00:43:00.000Z",
+          "adhanTime": "6:43 PM",
+          "iqamahAt": "2026-11-14T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
+      "weekday": "Sat",
+      "hijriDay": 4,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-14T11:49:00.000Z",
+          "adhanTime": "5:49 AM",
+          "iqamahAt": "2026-11-14T12:10:00.000Z",
+          "iqamahTime": "6:10 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-14T12:57:00.000Z",
+          "adhanTime": "6:57 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-14T18:17:00.000Z",
+          "adhanTime": "12:17 PM",
+          "iqamahAt": "2026-11-14T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-14T21:13:00.000Z",
+          "adhanTime": "3:13 PM",
+          "iqamahAt": "2026-11-14T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-14T23:35:00.000Z",
+          "adhanTime": "5:35 PM",
+          "iqamahAt": "2026-11-14T23:45:00.000Z",
+          "iqamahTime": "5:45 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-15T00:43:00.000Z",
+          "adhanTime": "6:43 PM",
+          "iqamahAt": "2026-11-15T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-15",
+      "weekday": "Sun",
+      "hijriDay": 5,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-15T11:50:00.000Z",
+          "adhanTime": "5:50 AM",
+          "iqamahAt": "2026-11-15T12:10:00.000Z",
+          "iqamahTime": "6:10 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-15T12:58:00.000Z",
+          "adhanTime": "6:58 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-15T18:17:00.000Z",
+          "adhanTime": "12:17 PM",
+          "iqamahAt": "2026-11-15T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-15T21:12:00.000Z",
+          "adhanTime": "3:12 PM",
+          "iqamahAt": "2026-11-15T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-15T23:34:00.000Z",
+          "adhanTime": "5:34 PM",
+          "iqamahAt": "2026-11-15T23:45:00.000Z",
+          "iqamahTime": "5:45 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-16T00:42:00.000Z",
+          "adhanTime": "6:42 PM",
+          "iqamahAt": "2026-11-16T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-16",
+      "weekday": "Mon",
+      "hijriDay": 6,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-16T11:51:00.000Z",
+          "adhanTime": "5:51 AM",
+          "iqamahAt": "2026-11-16T12:10:00.000Z",
+          "iqamahTime": "6:10 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-16T12:59:00.000Z",
+          "adhanTime": "6:59 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-16T18:17:00.000Z",
+          "adhanTime": "12:17 PM",
+          "iqamahAt": "2026-11-16T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-16T21:12:00.000Z",
+          "adhanTime": "3:12 PM",
+          "iqamahAt": "2026-11-16T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-16T23:34:00.000Z",
+          "adhanTime": "5:34 PM",
+          "iqamahAt": "2026-11-16T23:45:00.000Z",
+          "iqamahTime": "5:45 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-17T00:42:00.000Z",
+          "adhanTime": "6:42 PM",
+          "iqamahAt": "2026-11-17T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-17",
+      "weekday": "Tue",
+      "hijriDay": 7,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-17T11:51:00.000Z",
+          "adhanTime": "5:51 AM",
+          "iqamahAt": "2026-11-17T12:10:00.000Z",
+          "iqamahTime": "6:10 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-17T13:00:00.000Z",
+          "adhanTime": "7:00 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-17T18:17:00.000Z",
+          "adhanTime": "12:17 PM",
+          "iqamahAt": "2026-11-17T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-17T21:12:00.000Z",
+          "adhanTime": "3:12 PM",
+          "iqamahAt": "2026-11-17T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-17T23:33:00.000Z",
+          "adhanTime": "5:33 PM",
+          "iqamahAt": "2026-11-17T23:45:00.000Z",
+          "iqamahTime": "5:45 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-18T00:42:00.000Z",
+          "adhanTime": "6:42 PM",
+          "iqamahAt": "2026-11-18T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-18",
+      "weekday": "Wed",
+      "hijriDay": 8,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-18T11:52:00.000Z",
+          "adhanTime": "5:52 AM",
+          "iqamahAt": "2026-11-18T12:10:00.000Z",
+          "iqamahTime": "6:10 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-18T13:00:00.000Z",
+          "adhanTime": "7:00 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-18T18:18:00.000Z",
+          "adhanTime": "12:18 PM",
+          "iqamahAt": "2026-11-18T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-18T21:11:00.000Z",
+          "adhanTime": "3:11 PM",
+          "iqamahAt": "2026-11-18T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-18T23:33:00.000Z",
+          "adhanTime": "5:33 PM",
+          "iqamahAt": "2026-11-18T23:45:00.000Z",
+          "iqamahTime": "5:45 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-19T00:41:00.000Z",
+          "adhanTime": "6:41 PM",
+          "iqamahAt": "2026-11-19T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-19",
+      "weekday": "Thu",
+      "hijriDay": 9,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-19T11:53:00.000Z",
+          "adhanTime": "5:53 AM",
+          "iqamahAt": "2026-11-19T12:10:00.000Z",
+          "iqamahTime": "6:10 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-19T13:01:00.000Z",
+          "adhanTime": "7:01 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-19T18:18:00.000Z",
+          "adhanTime": "12:18 PM",
+          "iqamahAt": "2026-11-19T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-19T21:11:00.000Z",
+          "adhanTime": "3:11 PM",
+          "iqamahAt": "2026-11-19T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-19T23:32:00.000Z",
+          "adhanTime": "5:32 PM",
+          "iqamahAt": "2026-11-19T23:45:00.000Z",
+          "iqamahTime": "5:45 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-20T00:41:00.000Z",
+          "adhanTime": "6:41 PM",
+          "iqamahAt": "2026-11-20T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-20",
+      "weekday": "Fri",
+      "hijriDay": 10,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-20T11:54:00.000Z",
+          "adhanTime": "5:54 AM",
+          "iqamahAt": "2026-11-20T12:10:00.000Z",
+          "iqamahTime": "6:10 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-20T13:02:00.000Z",
+          "adhanTime": "7:02 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-20T18:18:00.000Z",
+          "adhanTime": "12:18 PM",
+          "iqamahAt": "2026-11-20T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-20T21:11:00.000Z",
+          "adhanTime": "3:11 PM",
+          "iqamahAt": "2026-11-20T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-20T23:32:00.000Z",
+          "adhanTime": "5:32 PM",
+          "iqamahAt": "2026-11-20T23:45:00.000Z",
+          "iqamahTime": "5:45 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-21T00:41:00.000Z",
+          "adhanTime": "6:41 PM",
+          "iqamahAt": "2026-11-21T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-21",
+      "weekday": "Sat",
+      "hijriDay": 11,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-21T11:54:00.000Z",
+          "adhanTime": "5:54 AM",
+          "iqamahAt": "2026-11-21T12:15:00.000Z",
+          "iqamahTime": "6:15 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-21T13:03:00.000Z",
+          "adhanTime": "7:03 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-21T18:18:00.000Z",
+          "adhanTime": "12:18 PM",
+          "iqamahAt": "2026-11-21T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-21T21:11:00.000Z",
+          "adhanTime": "3:11 PM",
+          "iqamahAt": "2026-11-21T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-21T23:32:00.000Z",
+          "adhanTime": "5:32 PM",
+          "iqamahAt": "2026-11-21T23:40:00.000Z",
+          "iqamahTime": "5:40 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-22T00:40:00.000Z",
+          "adhanTime": "6:40 PM",
+          "iqamahAt": "2026-11-22T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-22",
+      "weekday": "Sun",
+      "hijriDay": 12,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-22T11:55:00.000Z",
+          "adhanTime": "5:55 AM",
+          "iqamahAt": "2026-11-22T12:15:00.000Z",
+          "iqamahTime": "6:15 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-22T13:04:00.000Z",
+          "adhanTime": "7:04 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-22T18:19:00.000Z",
+          "adhanTime": "12:19 PM",
+          "iqamahAt": "2026-11-22T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-22T21:10:00.000Z",
+          "adhanTime": "3:10 PM",
+          "iqamahAt": "2026-11-22T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-22T23:31:00.000Z",
+          "adhanTime": "5:31 PM",
+          "iqamahAt": "2026-11-22T23:40:00.000Z",
+          "iqamahTime": "5:40 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-23T00:40:00.000Z",
+          "adhanTime": "6:40 PM",
+          "iqamahAt": "2026-11-23T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-23",
+      "weekday": "Mon",
+      "hijriDay": 13,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-23T11:56:00.000Z",
+          "adhanTime": "5:56 AM",
+          "iqamahAt": "2026-11-23T12:15:00.000Z",
+          "iqamahTime": "6:15 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-23T13:05:00.000Z",
+          "adhanTime": "7:05 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-23T18:19:00.000Z",
+          "adhanTime": "12:19 PM",
+          "iqamahAt": "2026-11-23T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-23T21:10:00.000Z",
+          "adhanTime": "3:10 PM",
+          "iqamahAt": "2026-11-23T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-23T23:31:00.000Z",
+          "adhanTime": "5:31 PM",
+          "iqamahAt": "2026-11-23T23:40:00.000Z",
+          "iqamahTime": "5:40 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-24T00:40:00.000Z",
+          "adhanTime": "6:40 PM",
+          "iqamahAt": "2026-11-24T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-24",
+      "weekday": "Tue",
+      "hijriDay": 14,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-24T11:57:00.000Z",
+          "adhanTime": "5:57 AM",
+          "iqamahAt": "2026-11-24T12:15:00.000Z",
+          "iqamahTime": "6:15 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-24T13:06:00.000Z",
+          "adhanTime": "7:06 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-24T18:19:00.000Z",
+          "adhanTime": "12:19 PM",
+          "iqamahAt": "2026-11-24T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-24T21:10:00.000Z",
+          "adhanTime": "3:10 PM",
+          "iqamahAt": "2026-11-24T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-24T23:31:00.000Z",
+          "adhanTime": "5:31 PM",
+          "iqamahAt": "2026-11-24T23:40:00.000Z",
+          "iqamahTime": "5:40 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-25T00:40:00.000Z",
+          "adhanTime": "6:40 PM",
+          "iqamahAt": "2026-11-25T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-25",
+      "weekday": "Wed",
+      "hijriDay": 15,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-25T11:57:00.000Z",
+          "adhanTime": "5:57 AM",
+          "iqamahAt": "2026-11-25T12:15:00.000Z",
+          "iqamahTime": "6:15 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-25T13:06:00.000Z",
+          "adhanTime": "7:06 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-25T18:20:00.000Z",
+          "adhanTime": "12:20 PM",
+          "iqamahAt": "2026-11-25T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-25T21:10:00.000Z",
+          "adhanTime": "3:10 PM",
+          "iqamahAt": "2026-11-25T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-25T23:30:00.000Z",
+          "adhanTime": "5:30 PM",
+          "iqamahAt": "2026-11-25T23:40:00.000Z",
+          "iqamahTime": "5:40 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-26T00:40:00.000Z",
+          "adhanTime": "6:40 PM",
+          "iqamahAt": "2026-11-26T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-26",
+      "weekday": "Thu",
+      "hijriDay": 16,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-26T11:58:00.000Z",
+          "adhanTime": "5:58 AM",
+          "iqamahAt": "2026-11-26T12:15:00.000Z",
+          "iqamahTime": "6:15 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-26T13:07:00.000Z",
+          "adhanTime": "7:07 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-26T18:20:00.000Z",
+          "adhanTime": "12:20 PM",
+          "iqamahAt": "2026-11-26T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-26T21:10:00.000Z",
+          "adhanTime": "3:10 PM",
+          "iqamahAt": "2026-11-26T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-26T23:30:00.000Z",
+          "adhanTime": "5:30 PM",
+          "iqamahAt": "2026-11-26T23:40:00.000Z",
+          "iqamahTime": "5:40 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-27T00:40:00.000Z",
+          "adhanTime": "6:40 PM",
+          "iqamahAt": "2026-11-27T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "weekday": "Fri",
+      "hijriDay": 17,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-27T11:59:00.000Z",
+          "adhanTime": "5:59 AM",
+          "iqamahAt": "2026-11-27T12:15:00.000Z",
+          "iqamahTime": "6:15 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-27T13:08:00.000Z",
+          "adhanTime": "7:08 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-27T18:20:00.000Z",
+          "adhanTime": "12:20 PM",
+          "iqamahAt": "2026-11-27T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-27T21:10:00.000Z",
+          "adhanTime": "3:10 PM",
+          "iqamahAt": "2026-11-27T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-27T23:30:00.000Z",
+          "adhanTime": "5:30 PM",
+          "iqamahAt": "2026-11-27T23:40:00.000Z",
+          "iqamahTime": "5:40 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-28T00:39:00.000Z",
+          "adhanTime": "6:39 PM",
+          "iqamahAt": "2026-11-28T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-28",
+      "weekday": "Sat",
+      "hijriDay": 18,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-28T12:00:00.000Z",
+          "adhanTime": "6:00 AM",
+          "iqamahAt": "2026-11-28T12:20:00.000Z",
+          "iqamahTime": "6:20 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-28T13:09:00.000Z",
+          "adhanTime": "7:09 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-28T18:21:00.000Z",
+          "adhanTime": "12:21 PM",
+          "iqamahAt": "2026-11-28T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-28T21:10:00.000Z",
+          "adhanTime": "3:10 PM",
+          "iqamahAt": "2026-11-28T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-28T23:30:00.000Z",
+          "adhanTime": "5:30 PM",
+          "iqamahAt": "2026-11-28T23:40:00.000Z",
+          "iqamahTime": "5:40 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-29T00:39:00.000Z",
+          "adhanTime": "6:39 PM",
+          "iqamahAt": "2026-11-29T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-29",
+      "weekday": "Sun",
+      "hijriDay": 19,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-29T12:00:00.000Z",
+          "adhanTime": "6:00 AM",
+          "iqamahAt": "2026-11-29T12:20:00.000Z",
+          "iqamahTime": "6:20 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-29T13:10:00.000Z",
+          "adhanTime": "7:10 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-29T18:21:00.000Z",
+          "adhanTime": "12:21 PM",
+          "iqamahAt": "2026-11-29T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-29T21:09:00.000Z",
+          "adhanTime": "3:09 PM",
+          "iqamahAt": "2026-11-29T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-29T23:30:00.000Z",
+          "adhanTime": "5:30 PM",
+          "iqamahAt": "2026-11-29T23:40:00.000Z",
+          "iqamahTime": "5:40 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-11-30T00:39:00.000Z",
+          "adhanTime": "6:39 PM",
+          "iqamahAt": "2026-11-30T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-30",
+      "weekday": "Mon",
+      "hijriDay": 20,
+      "times": {
+        "fajr": {
+          "adhanAt": "2026-11-30T12:01:00.000Z",
+          "adhanTime": "6:01 AM",
+          "iqamahAt": "2026-11-30T12:20:00.000Z",
+          "iqamahTime": "6:20 AM"
+        },
+        "sunrise": {
+          "adhanAt": "2026-11-30T13:11:00.000Z",
+          "adhanTime": "7:11 AM"
+        },
+        "dhuhr": {
+          "adhanAt": "2026-11-30T18:21:00.000Z",
+          "adhanTime": "12:21 PM",
+          "iqamahAt": "2026-11-30T19:00:00.000Z",
+          "iqamahTime": "1:00 PM"
+        },
+        "asr": {
+          "adhanAt": "2026-11-30T21:09:00.000Z",
+          "adhanTime": "3:09 PM",
+          "iqamahAt": "2026-11-30T21:30:00.000Z",
+          "iqamahTime": "3:30 PM"
+        },
+        "maghrib": {
+          "adhanAt": "2026-11-30T23:30:00.000Z",
+          "adhanTime": "5:30 PM",
+          "iqamahAt": "2026-11-30T23:40:00.000Z",
+          "iqamahTime": "5:40 PM"
+        },
+        "isha": {
+          "adhanAt": "2026-12-01T00:39:00.000Z",
+          "adhanTime": "6:39 PM",
+          "iqamahAt": "2026-12-01T01:30:00.000Z",
+          "iqamahTime": "7:30 PM"
+        }
+      },
+      "jumuah": [
+        {
+          "khutbahTime": "13:30",
+          "iqamahTime": null,
+          "label": "1:30"
+        }
+      ]
+    }
+  ]
+}
